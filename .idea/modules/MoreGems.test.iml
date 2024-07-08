@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="FacetManager">
+    <facet type="minecraft" name="Minecraft">
+      <configuration>
+        <autoDetectTypes>
+          <platformType>MCP</platformType>
+          <platformType>NEOFORGE</platformType>
+          <platformType>MIXIN</platformType>
+        </autoDetectTypes>
+        <projectReimportVersion>1</projectReimportVersion>
+      </configuration>
+    </facet>
+  </component>
+  <component name="McpModuleSettings">
+    <option name="mappingFile" value="D:\Minecraft\Modding\MoreGems\build\neoForm\neoFormJoined1.21-20240613.152323\steps\mergeMappings\output.jar" />
+    <option name="minecraftVersion" value="21.0" />
+    <option name="platformVersion" value="21.0.76-beta" />
+    <option name="srgType" value="TSRG" />
+  </component>
+</module>
