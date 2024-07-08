@@ -1,6 +1,8 @@
 package de.bigbull.moregems;
 
 import com.mojang.logging.LogUtils;
+import de.bigbull.moregems.data.DataGenerators;
+import de.bigbull.moregems.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -36,11 +38,17 @@ import org.slf4j.Logger;
 public class main
 {
     public static final String MODID = "moregems";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static Logger logger = LogUtils.getLogger();
+
     public main(IEventBus modEventBus, ModContainer modContainer) {
+
+        ModItems.ITEMS.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         NeoForge.EVENT_BUS.register(this);
+
+        modEventBus.addListener(DataGenerators::gatherData);
 
         modEventBus.addListener(this::addCreative);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
