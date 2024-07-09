@@ -2,8 +2,9 @@ package de.bigbull.moregems.main;
 
 import com.mojang.logging.LogUtils;
 import de.bigbull.moregems.data.DataGenerators;
-import de.bigbull.moregems.item.ModItems;
-import de.bigbull.moregems.ui.CreativeModeTabUI;
+import de.bigbull.moregems.init.BlockInit;
+import de.bigbull.moregems.init.ItemInit;
+import de.bigbull.moregems.init.CreativeTabInit;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -14,7 +15,6 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
 
@@ -26,8 +26,9 @@ public class Main
 
     public Main(IEventBus modEventBus, ModContainer modContainer) {
         NeoForge.EVENT_BUS.register(this);
-        ModItems.ITEMS.register(modEventBus);
-        CreativeModeTabUI.CREATIVE_MODE_TABS.register(modEventBus);
+        ItemInit.ITEMS.register(modEventBus);
+        BlockInit.BLOCKS.register(modEventBus);
+        CreativeTabInit.CREATIVE_MODE_TABS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(DataGenerators::gatherData);

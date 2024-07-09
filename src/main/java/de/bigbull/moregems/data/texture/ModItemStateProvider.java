@@ -1,6 +1,6 @@
 package de.bigbull.moregems.data.texture;
 
-import de.bigbull.moregems.item.ModItems;
+import de.bigbull.moregems.init.ItemInit;
 import de.bigbull.moregems.main.Main;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -15,7 +15,7 @@ public class ModItemStateProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        item(ModItems.VIBRANIUM.get());
+        item(ItemInit.RAW_VIBRANIUM.get());
     }
 
     private void item(Item item) {
