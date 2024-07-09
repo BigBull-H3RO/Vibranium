@@ -1,21 +1,9 @@
-package de.bigbull.moregems;
+package de.bigbull.moregems.main;
 
 import com.mojang.logging.LogUtils;
 import de.bigbull.moregems.data.DataGenerators;
 import de.bigbull.moregems.item.ModItems;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
+import de.bigbull.moregems.ui.CreativeModeTabUI;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -28,29 +16,22 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 
-@Mod(main.MODID)
-public class main
+@Mod(Main.MODID)
+public class Main
 {
     public static final String MODID = "moregems";
     public static Logger logger = LogUtils.getLogger();
 
-    public main(IEventBus modEventBus, ModContainer modContainer) {
-
+    public Main(IEventBus modEventBus, ModContainer modContainer) {
+        NeoForge.EVENT_BUS.register(this);
         ModItems.ITEMS.register(modEventBus);
+        CreativeModeTabUI.CREATIVE_MODE_TABS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
-
-        NeoForge.EVENT_BUS.register(this);
-
         modEventBus.addListener(DataGenerators::gatherData);
 
-        modEventBus.addListener(this::addCreative);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
@@ -58,9 +39,6 @@ public class main
 
     }
 
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
-    }
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {

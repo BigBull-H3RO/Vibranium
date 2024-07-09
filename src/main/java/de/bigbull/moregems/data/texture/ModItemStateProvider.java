@@ -1,8 +1,8 @@
 package de.bigbull.moregems.data.texture;
 
 import de.bigbull.moregems.item.ModItems;
-import de.bigbull.moregems.main;
-import de.bigbull.moregems.util.NameUtility;
+import de.bigbull.moregems.main.Main;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class ModItemStateProvider extends ItemModelProvider {
     public ModItemStateProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, main.MODID, existingFileHelper);
+        super(output, Main.MODID, existingFileHelper);
     }
 
     @Override
@@ -19,9 +19,13 @@ public class ModItemStateProvider extends ItemModelProvider {
     }
 
     private void item(Item item) {
-        String name = NameUtility.getItemName(item);
+        String name = getItemName(item);
         getBuilder(name)
                 .parent(getExistingFile(mcLoc("item/generated")))
                 .texture("layer0", "item/" + name);
+    }
+
+    private String getItemName(Item item) {
+        return BuiltInRegistries.ITEM.getKey(item).toString().replace(Main.MODID + ":", "");
     }
 }
