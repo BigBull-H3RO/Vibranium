@@ -17,6 +17,9 @@ public class BlockInit {
     public static final DeferredBlock<Block> BLOCK_OF_RAW_VIBRANIUM = registerBlock("block_of_raw_vibranium", () ->
             new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_GOLD_BLOCK)));
 
+    public static final DeferredBlock<Block> DEPPSLATE_VIBRANIUM_ORE = registerBlock("deepslate_vibranium_ore", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_EMERALD_ORE)));
+
     public static DeferredBlock<Block> registerBlock(String name, Supplier<Block> block) {
         DeferredBlock<Block> blockReg = BLOCKS.register(name, block);
         ItemInit.ITEMS.register(name, () -> new BlockItem(blockReg.get(), new Item.Properties()

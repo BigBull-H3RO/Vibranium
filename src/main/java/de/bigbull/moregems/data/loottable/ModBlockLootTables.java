@@ -5,9 +5,7 @@ import de.bigbull.moregems.main.Main;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 import java.util.Optional;
@@ -23,6 +21,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
+        dropSelf(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get());
     }
 
     @Override

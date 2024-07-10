@@ -20,6 +20,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
-
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get());
     }
 }
