@@ -17,17 +17,17 @@ import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class ModBiomesModifiers {
-    protected static ResourceKey<BiomeModifier> ADD_DEEPSLATE_VIBRANIUM_ORE = createKey("add_deepslate_vibranium_ore");
+    protected static ResourceKey<BiomeModifier> ADD_VIBRANIUM_ORE = createKey("add_vibranium_ore");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
 
         context.register(
-                ADD_DEEPSLATE_VIBRANIUM_ORE,
+                ADD_VIBRANIUM_ORE,
                 new BiomeModifiers.AddFeaturesBiomeModifier(
                         biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.DEEPSLATE_VIBRANIUM_ORE)),
+                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.VIBRANIUM_ORE)),
                         GenerationStep.Decoration.UNDERGROUND_ORES
                 )
         );

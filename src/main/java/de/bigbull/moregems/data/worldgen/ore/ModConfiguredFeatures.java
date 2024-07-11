@@ -17,18 +17,18 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import java.util.List;
 
 public class ModConfiguredFeatures {
-    protected static ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_DEEPSLATE_VIBRANIUM_ORE = createKey("overworld_deepslate_vibranium_ore");
+    protected static ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_VIBRANIUM_ORE = createKey("overworld_vibranium_ore");
 
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplacable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplacable = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
-        List<OreConfiguration.TargetBlockState> deepslateVibraniumOre = List.of(
-                OreConfiguration.target(stoneReplacable, BlockInit.DEPPSLATE_VIBRANIUM_ORE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplacable, BlockInit.DEPPSLATE_VIBRANIUM_ORE.get().defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> VibraniumOre =
+                List.of(OreConfiguration.target(stoneReplacable, BlockInit.DEPPSLATE_VIBRANIUM_ORE.get().defaultBlockState()),
+                        OreConfiguration.target(deepslateReplacable, BlockInit.DEPPSLATE_VIBRANIUM_ORE.get().defaultBlockState()));
 
-        register(context, OVERWORLD_DEEPSLATE_VIBRANIUM_ORE, Feature.ORE, new OreConfiguration(deepslateVibraniumOre, 4));
+        register(context, OVERWORLD_VIBRANIUM_ORE, Feature.ORE, new OreConfiguration(VibraniumOre, 4));
     }
 
     private static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {

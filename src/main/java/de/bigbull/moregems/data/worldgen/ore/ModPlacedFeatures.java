@@ -16,15 +16,16 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import java.util.List;
 
 public class ModPlacedFeatures {
-    public static ResourceKey<PlacedFeature> DEEPSLATE_VIBRANIUM_ORE = createKey("deepslate_vibranium_ore");
+    public static ResourceKey<PlacedFeature> VIBRANIUM_ORE = createKey("vibranium_ore");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         Holder<ConfiguredFeature<?, ?>> holder =
-                configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_DEEPSLATE_VIBRANIUM_ORE);
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_VIBRANIUM_ORE);
 
-        register(context, DEEPSLATE_VIBRANIUM_ORE, holder, ModOrePlacement.commonOrePlacements(3, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(20))));
+        // 3 veins per chunk, between y -64 and 20
+        register(context, VIBRANIUM_ORE, holder, ModOrePlacement.commonOrePlacements(3, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-15))));
     }
 
 
