@@ -1,6 +1,7 @@
 package de.bigbull.moregems.data.loottable;
 
 import de.bigbull.moregems.init.BlockInit;
+import de.bigbull.moregems.init.ItemInit;
 import de.bigbull.moregems.main.Main;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,8 +21,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get(), createOreDrop(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get(), ItemInit.RAW_VIBRANIUM.get()));
+
         dropSelf(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
-        dropSelf(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get());
     }
 
     @Override

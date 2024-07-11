@@ -5,6 +5,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -18,7 +19,14 @@ public class BlockInit {
             new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_GOLD_BLOCK)));
 
     public static final DeferredBlock<Block> DEPPSLATE_VIBRANIUM_ORE = registerBlock("deepslate_vibranium_ore", () ->
-            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_EMERALD_ORE)));
+            new Block(BlockBehaviour.Properties.of()
+                    .destroyTime(3.0F)
+                    .explosionResistance(10.0F)
+                    .sound(SoundType.DEEPSLATE)
+                    .lightLevel((state) -> 5)
+                    .requiresCorrectToolForDrops()));
+
+
 
     public static DeferredBlock<Block> registerBlock(String name, Supplier<Block> block) {
         DeferredBlock<Block> blockReg = BLOCKS.register(name, block);

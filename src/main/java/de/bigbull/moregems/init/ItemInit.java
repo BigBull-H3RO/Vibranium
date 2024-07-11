@@ -8,6 +8,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ItemInit {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Main.MODID);
 
-    public static final DeferredItem<Item> RAW_VIBRANIUM = ITEMS.register("raw_vibranium", () -> new Item(new Item.Properties().fireResistant()));
+
+
+    public static DeferredItem<Item> RAW_VIBRANIUM = ITEMS.register("raw_vibranium", () -> new Item(new Item.Properties().fireResistant()));
 
 }
