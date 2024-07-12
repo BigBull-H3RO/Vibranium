@@ -1,7 +1,7 @@
-package de.bigbull.moregems.data.loottable;
+package de.bigbull.gemsofpower.data.loottable;
 
 import com.google.common.collect.Sets;
-import de.bigbull.moregems.main.ModInfo;
+import de.bigbull.gemsofpower.main.ModInfo;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.WritableRegistry;
 import net.minecraft.data.PackOutput;

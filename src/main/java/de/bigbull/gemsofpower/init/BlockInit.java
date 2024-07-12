@@ -1,6 +1,6 @@
-package de.bigbull.moregems.init;
+package de.bigbull.gemsofpower.init;
 
-import de.bigbull.moregems.main.ModInfo;
+import de.bigbull.gemsofpower.main.ModInfo;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;

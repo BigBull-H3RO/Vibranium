@@ -1,7 +1,7 @@
-package de.bigbull.moregems.data.texture;
+package de.bigbull.gemsofpower.data.texture;
 
-import de.bigbull.moregems.init.ItemInit;
-import de.bigbull.moregems.main.ModInfo;
+import de.bigbull.gemsofpower.init.ItemInit;
+import de.bigbull.gemsofpower.main.ModInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -40,14 +40,14 @@ public class ModItemStateProvider extends ItemModelProvider {
     private void itemGenerated(DeferredItem item) {
         //String name = getItemName(item);
         //getBuilder(name).parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "item/" + name);
-        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"),"layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID,"item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 8)));
+        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"),"layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID,"item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 11)));
     }
     private void itemHandheld(DeferredItem item) {
-        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/handheld"),"layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 8)));
+        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/handheld"),"layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 11)));
     }
 
     private void itemBlock(DeferredItem item) {
-        withExistingParent(item.getId().getPath(), ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "block/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 8)));
+        withExistingParent(item.getId().getPath(), ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "block/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 11)));
     }
 
 

@@ -1,7 +1,7 @@
-package de.bigbull.moregems.data.worldgen.ore;
+package de.bigbull.gemsofpower.data.worldgen.ore;
 
-import de.bigbull.moregems.init.BlockInit;
-import de.bigbull.moregems.main.ModInfo;
+import de.bigbull.gemsofpower.init.BlockInit;
+import de.bigbull.gemsofpower.main.ModInfo;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;

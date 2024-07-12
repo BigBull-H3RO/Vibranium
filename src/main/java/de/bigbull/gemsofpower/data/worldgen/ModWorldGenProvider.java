@@ -1,8 +1,8 @@
-package de.bigbull.moregems.data.worldgen;
+package de.bigbull.gemsofpower.data.worldgen;
 
-import de.bigbull.moregems.data.worldgen.ore.ModConfiguredFeatures;
-import de.bigbull.moregems.data.worldgen.ore.ModPlacedFeatures;
-import de.bigbull.moregems.main.ModInfo;
+import de.bigbull.gemsofpower.data.worldgen.ore.ModConfiguredFeatures;
+import de.bigbull.gemsofpower.data.worldgen.ore.ModPlacedFeatures;
+import de.bigbull.gemsofpower.main.ModInfo;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;

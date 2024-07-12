@@ -1,7 +1,7 @@
-package de.bigbull.moregems.data.texture;
+package de.bigbull.gemsofpower.data.texture;
 
-import de.bigbull.moregems.init.BlockInit;
-import de.bigbull.moregems.main.ModInfo;
+import de.bigbull.gemsofpower.init.BlockInit;
+import de.bigbull.gemsofpower.main.ModInfo;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;

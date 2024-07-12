@@ -1,6 +1,6 @@
-package de.bigbull.moregems.data.worldgen.ore;
+package de.bigbull.gemsofpower.data.worldgen.ore;
 
-import de.bigbull.moregems.main.ModInfo;
+import de.bigbull.gemsofpower.main.ModInfo;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;

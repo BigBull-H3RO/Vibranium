@@ -1,4 +1,4 @@
-package de.bigbull.moregems.main;
+package de.bigbull.gemsofpower.main;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 

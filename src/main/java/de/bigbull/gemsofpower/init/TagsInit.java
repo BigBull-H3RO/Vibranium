@@ -1,6 +1,6 @@
-package de.bigbull.moregems.init;
+package de.bigbull.gemsofpower.init;
 
-import de.bigbull.moregems.main.ModInfo;
+import de.bigbull.gemsofpower.main.ModInfo;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -50,6 +50,6 @@ public class TagsInit {
     }
 
     //materials tags
-    public static final TagKey<Item> VIRANMIUM_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath("moregems", "materials/vibranium"));
+    public static final TagKey<Item> VIRANMIUM_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath("gemsofpower", "materials/vibranium"));
 
 }

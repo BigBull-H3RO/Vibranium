@@ -1,8 +1,8 @@
-package de.bigbull.moregems.data.loottable;
+package de.bigbull.gemsofpower.data.loottable;
 
-import de.bigbull.moregems.init.BlockInit;
-import de.bigbull.moregems.init.ItemInit;
-import de.bigbull.moregems.main.ModInfo;
+import de.bigbull.gemsofpower.init.BlockInit;
+import de.bigbull.gemsofpower.init.ItemInit;
+import de.bigbull.gemsofpower.main.ModInfo;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;

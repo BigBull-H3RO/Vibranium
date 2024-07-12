@@ -434,7 +434,7 @@
 [12Juli2024 20:53:07.472] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
 [12Juli2024 20:53:07.528] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.3+5
 [12Juli2024 20:53:09.795] [Render thread/DEBUG] [net.neoforged.fml.ModWorkManager/LOADING]: Using 16 threads for parallel mod-loading
-[12Juli2024 20:53:09.802] [Render thread/DEBUG] [net.neoforged.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for [de.bigbull.moregems.main.Main]
+[12Juli2024 20:53:09.802] [Render thread/DEBUG] [net.neoforged.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for [de.bigbull.gemsofpower.main.Main]
 [12Juli2024 20:53:09.804] [Render thread/DEBUG] [net.neoforged.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for [net.neoforged.neoforge.common.NeoForgeMod, net.neoforged.neoforge.client.ClientNeoForgeMod]
 [12Juli2024 20:53:09.818] [modloading-worker-0/DEBUG] [net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion/CORE]: Found NeoForge version 21.0.86-beta
 [12Juli2024 20:53:09.818] [modloading-worker-0/DEBUG] [net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion/CORE]: Found FML version 4.0.18

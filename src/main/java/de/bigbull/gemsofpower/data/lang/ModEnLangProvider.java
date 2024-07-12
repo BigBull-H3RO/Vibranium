@@ -1,9 +1,9 @@
-package de.bigbull.moregems.data.lang;
+package de.bigbull.gemsofpower.data.lang;
 
-import de.bigbull.moregems.init.BlockInit;
-import de.bigbull.moregems.init.ItemInit;
-import de.bigbull.moregems.init.CreativeTabInit;
-import de.bigbull.moregems.main.ModInfo;
+import de.bigbull.gemsofpower.init.BlockInit;
+import de.bigbull.gemsofpower.init.ItemInit;
+import de.bigbull.gemsofpower.init.CreativeTabInit;
+import de.bigbull.gemsofpower.main.ModInfo;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -32,6 +32,6 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_HELMET, "Vibranium Helmet");
 
         //others
-        add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "MoreGems");
+        add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Gems of Power");
     }
 }

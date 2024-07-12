@@ -1,4 +1,4 @@
-package de.bigbull.moregems.data.worldgen.ore;
+package de.bigbull.gemsofpower.data.worldgen.ore;
 
 import net.minecraft.world.level.levelgen.placement.*;
 

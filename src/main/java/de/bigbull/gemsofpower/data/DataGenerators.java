@@ -1,13 +1,13 @@
-package de.bigbull.moregems.data;
+package de.bigbull.gemsofpower.data;
 
-import de.bigbull.moregems.data.loottable.ModLootTables;
-import de.bigbull.moregems.data.tag.ModBlockTagsProvider;
-import de.bigbull.moregems.data.tag.ModItemTagsProvider;
-import de.bigbull.moregems.data.texture.ModBlockStateProvider;
-import de.bigbull.moregems.data.texture.ModItemStateProvider;
-import de.bigbull.moregems.data.worldgen.ModWorldGenProvider;
-import de.bigbull.moregems.main.Main;
-import de.bigbull.moregems.data.lang.ModEnLangProvider;
+import de.bigbull.gemsofpower.data.loottable.ModLootTables;
+import de.bigbull.gemsofpower.data.tag.ModBlockTagsProvider;
+import de.bigbull.gemsofpower.data.tag.ModItemTagsProvider;
+import de.bigbull.gemsofpower.data.texture.ModBlockStateProvider;
+import de.bigbull.gemsofpower.data.texture.ModItemStateProvider;
+import de.bigbull.gemsofpower.data.worldgen.ModWorldGenProvider;
+import de.bigbull.gemsofpower.main.Main;
+import de.bigbull.gemsofpower.data.lang.ModEnLangProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;

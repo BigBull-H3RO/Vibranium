@@ -1,8 +1,8 @@
-package de.bigbull.moregems.main;
+package de.bigbull.gemsofpower.main;
 
 import com.mojang.logging.LogUtils;
-import de.bigbull.moregems.data.DataGenerators;
-import de.bigbull.moregems.init.*;
+import de.bigbull.gemsofpower.data.DataGenerators;
+import de.bigbull.gemsofpower.init.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;

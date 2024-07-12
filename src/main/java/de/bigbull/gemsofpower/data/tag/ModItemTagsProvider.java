@@ -1,8 +1,8 @@
-package de.bigbull.moregems.data.tag;
+package de.bigbull.gemsofpower.data.tag;
 
-import de.bigbull.moregems.init.ItemInit;
-import de.bigbull.moregems.init.TagsInit;
-import de.bigbull.moregems.main.ModInfo;
+import de.bigbull.gemsofpower.init.ItemInit;
+import de.bigbull.gemsofpower.init.TagsInit;
+import de.bigbull.gemsofpower.main.ModInfo;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
