@@ -2,7 +2,7 @@ package de.bigbull.moregems.data.tag;
 
 import de.bigbull.moregems.init.BlockInit;
 import de.bigbull.moregems.init.TagsInit;
-import de.bigbull.moregems.main.Main;
+import de.bigbull.moregems.main.ModInfo;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTagsProvider extends BlockTagsProvider {
     public ModBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, Main.MODID, existingFileHelper);
+        super(output, lookupProvider, ModInfo.MODID, existingFileHelper);
     }
 
     @Override
@@ -29,7 +29,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTag(TagsInit.BlockTagsInit.BLOCK_OF_RAW_VIBRANIUM_TAG)
                 .addTag(TagsInit.BlockTagsInit.DEEPSLATE_VIBRANIUM_ORE_TAG);
 
-        // TagKey<Block> ??? = createNeoForgeTag("needs_netherite_tool")
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .addTag(TagsInit.BlockTagsInit.BLOCK_OF_RAW_VIBRANIUM_TAG)
                 .addTag(TagsInit.BlockTagsInit.DEEPSLATE_VIBRANIUM_ORE_TAG);

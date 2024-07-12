@@ -1,6 +1,6 @@
 package de.bigbull.moregems.init;
 
-import de.bigbull.moregems.main.Main;
+import de.bigbull.moregems.main.ModInfo;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CreativeTabInit {
-    public static DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Main.MODID);
+    public static DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ModInfo.MODID);
 
     public static String MAIN_TAB_ONE_TITLE = "main.tab.one";
 

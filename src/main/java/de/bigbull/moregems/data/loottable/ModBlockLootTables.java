@@ -2,7 +2,7 @@ package de.bigbull.moregems.data.loottable;
 
 import de.bigbull.moregems.init.BlockInit;
 import de.bigbull.moregems.init.ItemInit;
-import de.bigbull.moregems.main.Main;
+import de.bigbull.moregems.main.ModInfo;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -30,7 +30,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected Iterable<Block> getKnownBlocks() {
         return BuiltInRegistries.BLOCK.stream()
                 .filter(block -> Optional.of(BuiltInRegistries.BLOCK.getKey(block))
-                        .filter(key -> key.getNamespace().equals(Main.MODID))
+                        .filter(key -> key.getNamespace().equals(ModInfo.MODID))
                         .isPresent())
                 .collect(Collectors.toSet());
     }
