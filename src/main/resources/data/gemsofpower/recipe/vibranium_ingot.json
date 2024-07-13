@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "gemsofpower:raw_vibranium"
+    },
+    {
+      "item": "gemsofpower:raw_vibranium"
+    },
+    {
+      "item": "gemsofpower:raw_vibranium"
+    },
+    {
+      "item": "gemsofpower:raw_vibranium"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "gemsofpower:vibranium_ingot"
+  }
+}

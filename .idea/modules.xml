@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Gems_of_Power.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Gems_of_Power.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Gems_of_Power.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Gems_of_Power.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MoreGems.main.iml" filepath="$PROJECT_DIR$/.idea/modules/MoreGems.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MoreGems.test.iml" filepath="$PROJECT_DIR$/.idea/modules/MoreGems.test.iml" />
     </modules>
   </component>
 </project>

@@ -26,5 +26,5 @@ public class ArmorMaterialsInit {
                 map.put(ArmorItem.Type.HELMET, 3);
             }),
             18, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(TagsInit.VIRANMIUM_TAG),
-            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "vibranium"))), 0, 0));
+            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "vibranium"))), 2, 0));
 }

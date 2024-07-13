@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "#U#",
+    "#V#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
+    },
+    "V": {
+      "item": "gemsofpower:vibranium_ingot"
+    },
+    "U": {
+      "item": "gemsofpower:vibranium_upgrade_smithing_template"
+    }
+  },
+  "result": {
+    "id": "gemsofpower:vibranium_upgrade_smithing_template",
+    "count": 2
+  }
+}
