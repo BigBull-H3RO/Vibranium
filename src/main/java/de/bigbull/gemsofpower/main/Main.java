@@ -2,6 +2,7 @@ package de.bigbull.gemsofpower.main;
 
 import com.mojang.logging.LogUtils;
 import de.bigbull.gemsofpower.data.DataGenerators;
+import de.bigbull.gemsofpower.data.loot.ModLootModifiers;
 import de.bigbull.gemsofpower.init.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -25,6 +26,7 @@ public class Main
         ItemInit.ITEMS.register(modEventBus);
         BlockInit.BLOCKS.register(modEventBus);
         CreativeTabInit.CREATIVE_MODE_TABS.register(modEventBus);
+        ModLootModifiers.LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(DataGenerators::gatherData);

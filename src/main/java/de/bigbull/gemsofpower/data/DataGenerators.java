@@ -1,5 +1,6 @@
 package de.bigbull.gemsofpower.data;
 
+import de.bigbull.gemsofpower.data.loot.ModGlobalLootModifiersProvider;
 import de.bigbull.gemsofpower.data.loottable.ModLootTables;
 import de.bigbull.gemsofpower.data.tag.ModBlockTagsProvider;
 import de.bigbull.gemsofpower.data.tag.ModItemTagsProvider;
@@ -29,6 +30,7 @@ public class DataGenerators {
             generator.addProvider(true, new ModItemTagsProvider(output, event.getLookupProvider(), modBlockTagsProvider, existingFileHelper));
             generator.addProvider(true, new ModLootTables(output, event.getLookupProvider()));
             generator.addProvider(true, new ModWorldGenProvider(output, event.getLookupProvider()));
+            generator.addProvider(true, new ModGlobalLootModifiersProvider(output, event.getLookupProvider()));
         } catch (RuntimeException e) {
             Main.logger.error("Failed to generate data", e);
         }
