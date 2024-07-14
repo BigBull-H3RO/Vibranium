@@ -32,5 +32,22 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                         ItemInit.VIBRANIUM_LEGGINGS.get(),
                         ItemInit.VIBRANIUM_CHESTPLATE.get(),
                         ItemInit.VIBRANIUM_HELMET.get());
+
+        tag(ItemTags.SWORDS)
+                .add(ItemInit.VIBRANIUM_SWORD.get());
+
+        tag(ItemTags.PICKAXES)
+                .add(ItemInit.VIBRANIUM_PICKAXE.get());
+
+        tag(ItemTags.AXES)
+                .add(ItemInit.VIBRANIUM_AXE.get());
+
+        tag(ItemTags.SHOVELS)
+                .add(ItemInit.VIBRANIUM_SHOVEL.get());
+
+        tag(ItemTags.HOES)
+                .add(ItemInit.VIBRANIUM_HOE.get());
+
+
     }
 }

@@ -21,9 +21,14 @@ public class ModEnLangProvider extends LanguageProvider {
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block of Raw Vibranium");
-
-        //Ores
         addBlock(BlockInit.DEPPSLATE_VIBRANIUM_ORE, "Deepslate Vibranium Ore");
+
+        //Tools
+        addItem(ItemInit.VIBRANIUM_SWORD, "Vibranium Sword");
+        addItem(ItemInit.VIBRANIUM_PICKAXE, "Vibranium Pickaxe");
+        addItem(ItemInit.VIBRANIUM_AXE, "Vibranium Axe");
+        addItem(ItemInit.VIBRANIUM_SHOVEL, "Vibranium Shovel");
+        addItem(ItemInit.VIBRANIUM_HOE, "Vibranium Hoe");
 
         //Armors
         addItem(ItemInit.VIBRANIUM_BOOTS, "Vibranium Boots");

@@ -26,20 +26,17 @@ public class ModItemStateProvider extends ItemModelProvider {
         itemHandheld(ItemInit.VIBRANIUM_CHESTPLATE);
         itemHandheld(ItemInit.VIBRANIUM_HELMET);
 
-        //Blocks
+        //Tools
+        itemHandheld(ItemInit.VIBRANIUM_SWORD);
+        itemHandheld(ItemInit.VIBRANIUM_PICKAXE);
+        itemHandheld(ItemInit.VIBRANIUM_AXE);
+        itemHandheld(ItemInit.VIBRANIUM_SHOVEL);
+        itemHandheld(ItemInit.VIBRANIUM_HOE);
 
-//        item(ItemInit.RAW_VIBRANIUM.get());
-//        item(ItemInit.VIBRANIUM_INGOT.get());
-//        item(ItemInit.VIBRANIUM_BOOTS.get());
-//        item(ItemInit.VIBRANIUM_LEGGINGS.get());
-//        item(ItemInit.VIBRANIUM_CHESTPLATE.get());
-//        item(ItemInit.VIBRANIUM_HELMET.get());
-//        item(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get());
+        //Blocks
     }
 
     private void itemGenerated(DeferredItem item) {
-        //String name = getItemName(item);
-        //getBuilder(name).parent(getExistingFile(mcLoc("item/generated"))).texture("layer0", "item/" + name);
         singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"),"layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID,"item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 11)));
     }
     private void itemHandheld(DeferredItem item) {
@@ -49,18 +46,4 @@ public class ModItemStateProvider extends ItemModelProvider {
     private void itemBlock(DeferredItem item) {
         withExistingParent(item.getId().getPath(), ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "block/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 11)));
     }
-
-
-
-//    private void item(Item item) {
-//        String name = getItemName(item);
-//        getBuilder(name)
-//                .parent(getExistingFile(mcLoc("item/generated")))
-//                .texture("layer0", "item/" + name);
-//    }
-//
-//    private @NotNull String getItemName(Item item) {
-//        return BuiltInRegistries.ITEM.getKey(item).toString().replace(ModInfo.MODID + ":", "");
-//    }
-
 }
