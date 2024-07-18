@@ -25,7 +25,6 @@ public class ModItemStateProvider extends ItemModelProvider {
         itemGenerated(ItemInit.VIBRANIUM_LEGGINGS);
         itemGenerated(ItemInit.VIBRANIUM_CHESTPLATE);
         itemGenerated(ItemInit.VIBRANIUM_HELMET);
-
         itemGenerated(ItemInit.VIBRANIUM_WOLF_ARMOR);
 
         //Tools

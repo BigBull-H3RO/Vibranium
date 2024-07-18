@@ -36,6 +36,7 @@ public class ItemInit {
                             ResourceLocation.fromNamespaceAndPath("minecraft","item/empty_slot_sword"),
                             ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_armor_slot_chestplate"),
                             ResourceLocation.fromNamespaceAndPath("minecraft","item/empty_slot_pickaxe"),
+                            ResourceLocation.fromNamespaceAndPath(ModInfo.MODID,"item/empty_slot_wolf_armor"),
                             ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_armor_slot_leggings"),
                             ResourceLocation.fromNamespaceAndPath("minecraft","item/empty_slot_axe"),
                             ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_armor_slot_boots"),
