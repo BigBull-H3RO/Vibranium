@@ -35,6 +35,7 @@ public class TagsInit {
         //Items
         public static final TagKey<Item> VIBRANIUM_INGOT_TAG = ItemTags.create(createGenericItemsLocation("vibranium_ingot"));
         public static final TagKey<Item> VIBRANIUM_UPGRADE_SMITHING_TEMPLATE_TAG = ItemTags.create(createGenericItemsLocation("vibranium_upgrade_smithing_template"));
+        public static final TagKey<Item> VIBRANIUM_WOLF_ARMOR_TAG = ItemTags.create(createGenericItemsLocation("vibranium_wolf_armor"));
 
         //Blocks
         public static final TagKey<Item> BLOCK_OF_RAW_VIBRANIUM_TAG = ItemTags.create(createBlockLocation("block_of_raw_vibranium"));

@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "gemsofpower:raw_vibranium"
+    },
+    {
+      "item": "gemsofpower:raw_vibranium"
+    },
+    {
+      "item": "gemsofpower:raw_vibranium"
+    },
+    {
+      "item": "gemsofpower:raw_vibranium"
+    },
+    {
+      "item": "gemsofpower:raw_vibranium"
+    },
+    {
+      "item": "gemsofpower:raw_vibranium"
+    },
+    {
+      "item": "gemsofpower:raw_vibranium"
+    },
+    {
+      "item": "gemsofpower:raw_vibranium"
+    },
+    {
+      "item": "gemsofpower:raw_vibranium"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "gemsofpower:block_of_raw_vibranium"
+  }
+}

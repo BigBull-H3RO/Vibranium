@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "de.bigbull.gemsofpower.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "refmap": "gemsofpower.refmap.json",
+  "mixins": [
+    "WolfMixin"
+  ],
+  "client": [
+    "client.WolfModelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

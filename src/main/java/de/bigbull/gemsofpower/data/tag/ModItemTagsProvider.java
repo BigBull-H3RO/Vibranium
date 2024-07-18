@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -26,6 +27,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagsInit.ItemTagsInit.RAW_VIBRANIUM_TAG).add(ItemInit.RAW_VIBRANIUM.get());
         tag(TagsInit.ItemTagsInit.VIBRANIUM_INGOT_TAG).add(ItemInit.VIBRANIUM_INGOT.get());
         tag(TagsInit.ItemTagsInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE_TAG).add(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get());
+
+        tag(TagsInit.ItemTagsInit.VIBRANIUM_WOLF_ARMOR_TAG).add(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
 
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(   ItemInit.VIBRANIUM_BOOTS.get(),
@@ -47,7 +50,5 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.HOES)
                 .add(ItemInit.VIBRANIUM_HOE.get());
-
-
     }
 }

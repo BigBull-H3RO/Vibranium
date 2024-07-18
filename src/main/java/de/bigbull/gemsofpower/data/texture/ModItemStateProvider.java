@@ -21,26 +21,25 @@ public class ModItemStateProvider extends ItemModelProvider {
         itemGenerated(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE);
 
         //Armors
-        itemHandheld(ItemInit.VIBRANIUM_BOOTS);
-        itemHandheld(ItemInit.VIBRANIUM_LEGGINGS);
-        itemHandheld(ItemInit.VIBRANIUM_CHESTPLATE);
-        itemHandheld(ItemInit.VIBRANIUM_HELMET);
+        itemGenerated(ItemInit.VIBRANIUM_BOOTS);
+        itemGenerated(ItemInit.VIBRANIUM_LEGGINGS);
+        itemGenerated(ItemInit.VIBRANIUM_CHESTPLATE);
+        itemGenerated(ItemInit.VIBRANIUM_HELMET);
+
+        itemGenerated(ItemInit.VIBRANIUM_WOLF_ARMOR);
 
         //Tools
-        itemHandheld(ItemInit.VIBRANIUM_SWORD);
-        itemHandheld(ItemInit.VIBRANIUM_PICKAXE);
-        itemHandheld(ItemInit.VIBRANIUM_AXE);
-        itemHandheld(ItemInit.VIBRANIUM_SHOVEL);
-        itemHandheld(ItemInit.VIBRANIUM_HOE);
+        itemGenerated(ItemInit.VIBRANIUM_SWORD);
+        itemGenerated(ItemInit.VIBRANIUM_PICKAXE);
+        itemGenerated(ItemInit.VIBRANIUM_AXE);
+        itemGenerated(ItemInit.VIBRANIUM_SHOVEL);
+        itemGenerated(ItemInit.VIBRANIUM_HOE);
 
         //Blocks
     }
 
     private void itemGenerated(DeferredItem item) {
         singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"),"layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID,"item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 11)));
-    }
-    private void itemHandheld(DeferredItem item) {
-        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/handheld"),"layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 11)));
     }
 
     private void itemBlock(DeferredItem item) {

@@ -18,13 +18,15 @@ public class ArmorMaterialsInit {
 
     public static DeferredRegister<ArmorMaterial> MATERIAL = DeferredRegister.create(BuiltInRegistries.ARMOR_MATERIAL, ModInfo.MODID);
 
-    public static final Holder<ArmorMaterial> VIBRANIUM_ARMOR_MATERIAL = MATERIAL.register("vibranium", () -> new ArmorMaterial(
+    public static final Holder<ArmorMaterial> VIBRANIUM_MATERIAL = MATERIAL.register("vibranium", () -> new ArmorMaterial(
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.BOOTS, 3);
                 map.put(ArmorItem.Type.LEGGINGS, 6);
                 map.put(ArmorItem.Type.CHESTPLATE, 8);
                 map.put(ArmorItem.Type.HELMET, 3);
+                map.put(ArmorItem.Type.BODY, 11);
             }),
-            18, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(TagsInit.ToolTagsInit.VIBRANIUM_TAG),
+            18, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ItemInit.VIBRANIUM_INGOT),
             List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "vibranium"))), 4,  0.2f));
 }
+

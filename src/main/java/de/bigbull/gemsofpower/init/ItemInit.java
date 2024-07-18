@@ -10,7 +10,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
 
-
 public class ItemInit {
 
     public static final Component VIBRANIUM_UPGRADE_APPLIES_TO = Component.translatable("item.vibraniumupgrademod.vibranium_upgrade_smithing_template.applies_to").withStyle(ChatFormatting.BLUE);
@@ -47,14 +46,15 @@ public class ItemInit {
 
     //Armor
     public static final DeferredItem<ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots",
-            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().stacksTo(1).durability(650)));
+            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().stacksTo(1).durability(650)));
     public static final DeferredItem<ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings",
-            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant().stacksTo(1).durability(700)));
+            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant().stacksTo(1).durability(700)));
     public static final DeferredItem<ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.register("vibranium_chestplate",
-            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().stacksTo(1).durability(750)));
+            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().stacksTo(1).durability(750)));
     public static final DeferredItem<ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet",
-            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties().fireResistant().stacksTo(1).durability(550)));
-
+            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties().fireResistant().stacksTo(1).durability(550)));
+    public static final DeferredItem<Item> VIBRANIUM_WOLF_ARMOR = ITEMS.register("vibranium_wolf_armor",
+            () -> new WolfArmorInit(ArmorMaterialsInit.VIBRANIUM_MATERIAL, AnimalArmorItem.BodyType.CANINE , false, new Item.Properties().stacksTo(1).durability(120)));
 
     //Tools
     public static final DeferredItem<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword", () ->
