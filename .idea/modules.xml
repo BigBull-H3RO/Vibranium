@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Gems_of_Power.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Gems_of_Power.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Gems_of_Power.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Gems_of_Power.test.iml" />
-    </modules>
-  </component>
-</project>
