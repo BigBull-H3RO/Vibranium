@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "de.bigbull.vibranium.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "refmap": "vibranium.refmap.json",
+  "mixins": [
+    "WolfMixin"
+  ],
+  "client": [
+    "client.WolfModelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
