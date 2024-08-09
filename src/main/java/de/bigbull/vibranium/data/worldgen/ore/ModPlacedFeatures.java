@@ -1,6 +1,5 @@
 package de.bigbull.vibranium.data.worldgen.ore;
 
-import de.bigbull.vibranium.main.Config;
 import de.bigbull.vibranium.main.ModInfo;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -21,12 +20,11 @@ public class ModPlacedFeatures {
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
-
         Holder<ConfiguredFeature<?, ?>> holder = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_VIBRANIUM_ORE);
 
-        int veinSize = Config.COMMON.VibraniumVeinSize.get();
-        int minHeight = Config.COMMON.VibraniumMinHeight.get();
-        int maxHeight = Config.COMMON.VibraniumMaxHeight.get();
+        int veinSize = 2;
+        int minHeight = -64;
+        int maxHeight = -15;
 
         register(context, VIBRANIUM_ORE, holder, ModOrePlacement.commonOrePlacements(veinSize, HeightRangePlacement.uniform(VerticalAnchor.absolute(minHeight), VerticalAnchor.absolute(maxHeight))));
     }

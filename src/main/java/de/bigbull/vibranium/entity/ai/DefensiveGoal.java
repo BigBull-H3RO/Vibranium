@@ -15,7 +15,7 @@ public class DefensiveGoal extends Goal {
 
     public DefensiveGoal(VibraGolemEntity entity) {
         this.entity = entity;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.TARGET));
+        this.setFlags(EnumSet.noneOf(Goal.Flag.class));
     }
 
     @Override

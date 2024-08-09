@@ -6,6 +6,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -48,8 +49,8 @@ public class ItemInit {
                             ResourceLocation.fromNamespaceAndPath("minecraft","item/empty_slot_shovel")),
                     List.of(ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_slot_ingot"))
             ));
-    public static final DeferredItem<SpawnEggItem> VIBRA_GOLEM_SPAWN_EGG = ITEMS.register("vibra_golem_entity_spawn_egg",
-            () -> new SpawnEggItem(MobEnities.VIBRAGOLEM.get(), 0x28272b, 0x020250, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<DeferredSpawnEggItem> VIBRA_GOLEM_SPAWN_EGG = ITEMS.register("vibra_golem_entity_spawn_egg",
+            () -> new DeferredSpawnEggItem(MobEnities.VIBRAGOLEM, 0x28272B, 0x020250, new Item.Properties().stacksTo(16)));
 
     //Armor
     public static final DeferredItem<ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots",
@@ -74,7 +75,7 @@ public class ItemInit {
     //Tools
     public static final DeferredItem<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword", () ->
             new SwordItem(TagsInit.MaterialTagsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(SwordItem.createAttributes(
-                    TagsInit.MaterialTagsInit.VIBRANIUM, 5.5f, -2.4f))));
+                    TagsInit.MaterialTagsInit.VIBRANIUM, 5.5f, -2.2f))));
     public static final DeferredItem<PickaxeItem> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe", () ->
             new PickaxeItem(TagsInit.MaterialTagsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(PickaxeItem.createAttributes(
                     TagsInit.MaterialTagsInit.VIBRANIUM, 2.5f, -2.8f))));
