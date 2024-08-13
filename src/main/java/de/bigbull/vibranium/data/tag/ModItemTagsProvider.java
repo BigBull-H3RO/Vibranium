@@ -48,9 +48,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(   ItemInit.VIBRANIUM_BOOTS.get(),
-                        ItemInit.VIBRANIUM_LEGGINGS.get(),
-                        ItemInit.VIBRANIUM_CHESTPLATE.get(),
-                        ItemInit.VIBRANIUM_HELMET.get());
+                            ItemInit.VIBRANIUM_LEGGINGS.get(),
+                            ItemInit.VIBRANIUM_CHESTPLATE.get(),
+                            ItemInit.VIBRANIUM_HELMET.get());
 
         tag(TagsInit.ItemTagsInit.VIBRANIUM_WOLF_ARMOR_TAG)
                 .add(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
@@ -62,15 +62,17 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ItemInit.VIBRANIUM_SWORD.get());
 
         tag(ItemTags.PICKAXES)
-                .add(ItemInit.VIBRANIUM_PICKAXE.get());
+                .add(   ItemInit.VIBRANIUM_PICKAXE.get());
 
         tag(ItemTags.AXES)
-                .add(ItemInit.VIBRANIUM_AXE.get());
+                .add(   ItemInit.VIBRANIUM_AXE.get());
 
         tag(ItemTags.SHOVELS)
-                .add(ItemInit.VIBRANIUM_SHOVEL.get());
+                .add(   ItemInit.VIBRANIUM_SHOVEL.get());
 
         tag(ItemTags.HOES)
                 .add(ItemInit.VIBRANIUM_HOE.get());
+
+        tag(TagsInit.ToolTagsInit.VIRABNIUM_MACE_TAG).add(ItemInit.VIBRANIUM_MACE.get());
     }
 }

@@ -5,15 +5,13 @@ import de.bigbull.vibranium.data.DataGenerators;
 import de.bigbull.vibranium.data.loot.ModLootModifiers;
 import de.bigbull.vibranium.entity.MobEnities;
 import de.bigbull.vibranium.event.ClientEventProviders;
-import de.bigbull.vibranium.event.EventHandler;
+import de.bigbull.vibranium.event.VibraGolemEvent;
 import de.bigbull.vibranium.event.EventRegisters;
 import de.bigbull.vibranium.init.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -26,7 +24,7 @@ public class Main
 
     public Main(IEventBus modEventBus, ModContainer modContainer) {
         NeoForge.EVENT_BUS.register(this);
-        NeoForge.EVENT_BUS.register(EventHandler.class);
+        NeoForge.EVENT_BUS.register(VibraGolemEvent.class);
 
         ArmorMaterialsInit.MATERIAL.register(modEventBus);
         ItemInit.ITEMS.register(modEventBus);
@@ -43,7 +41,6 @@ public class Main
         modEventBus.addListener(EventRegisters::registerEntityAttributes);
         modEventBus.addListener(EventRegisters::registerSpawnPlacements);
         modEventBus.addListener(ClientEventProviders::registerEnityRenderers);
-
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

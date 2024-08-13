@@ -4,6 +4,7 @@ import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.main.ModInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -30,21 +31,46 @@ public class ModItemStateProvider extends ItemModelProvider {
         itemGenerated(ItemInit.VIBRANIUM_HORSE_ARMOR);
 
         //Tools
-        itemGenerated(ItemInit.VIBRANIUM_SWORD);
-        itemGenerated(ItemInit.VIBRANIUM_PICKAXE);
-        itemGenerated(ItemInit.VIBRANIUM_AXE);
-        itemGenerated(ItemInit.VIBRANIUM_SHOVEL);
-        itemGenerated(ItemInit.VIBRANIUM_HOE);
-
-        //Blocks
-
+        itemHandheld(ItemInit.VIBRANIUM_SWORD);
+        itemHandheld(ItemInit.VIBRANIUM_PICKAXE);
+        itemHandheld(ItemInit.VIBRANIUM_AXE);
+        itemHandheld(ItemInit.VIBRANIUM_SHOVEL);
+        itemHandheld(ItemInit.VIBRANIUM_HOE);
+        itemHandheldWithTransform(ItemInit.VIBRANIUM_MACE);
     }
 
     private void itemGenerated(DeferredItem item) {
         singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"),"layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID,"item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 9)));
     }
 
-    private void itemBlock(DeferredItem item) {
-        withExistingParent(item.getId().getPath(), ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "block/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 9)));
+    private void itemHandheld(DeferredItem item) {
+        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/handheld"),"layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID,"item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 9)));
+    }
+
+    private void itemHandheldWithTransform(DeferredItem item) {
+        getBuilder(item.getId().getPath())
+                .parent(getExistingFile(ResourceLocation.withDefaultNamespace("item/handheld")))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 9)))
+                .transforms()
+                .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
+                .rotation(0, -90, 55)
+                .translation(0, 4.0f, 1)
+                .scale(1, 1, 1)
+                .end()
+                .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
+                .rotation(0, 90, -55)
+                .translation(0, 4.0f, 1)
+                .scale(1, 1, 1)
+                .end()
+                .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
+                .rotation(0, -90, 25)
+                .translation(0, 3, 0.8f)
+                .scale(0.9f, 0.9f, 0.9f)
+                .end()
+                .transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
+                .rotation(0, 90, -25)
+                .translation(0, 3, 0.8f)
+                .scale(0.9f, 0.9f, 0.9f)
+                .end();
     }
 }

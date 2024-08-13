@@ -7,7 +7,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -17,7 +19,11 @@ public class BlockInit {
     public static DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ModInfo.MODID);
 
     public static final DeferredBlock<Block> BLOCK_OF_RAW_VIBRANIUM = registerBlock("block_of_raw_vibranium", () ->
-            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_GOLD_BLOCK)));
+            new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM)
+                    .mapColor(MapColor.COLOR_BLUE)
+                    .requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F)));
+
     public static final DeferredBlock<Block> DEPPSLATE_VIBRANIUM_ORE = registerBlock("deepslate_vibranium_ore", () ->
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BLACK)
@@ -27,12 +33,17 @@ public class BlockInit {
                     .requiresCorrectToolForDrops()));
 
 
+    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
+        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
+        registerBlockItem(name, toReturn);
+        return toReturn;
+    }
 
-    public static DeferredBlock<Block> registerBlock(String name, Supplier<Block> block) {
-        DeferredBlock<Block> blockReg = BLOCKS.register(name, block);
-        ItemInit.ITEMS.register(name, () -> new BlockItem(blockReg.get(), new Item.Properties()
-                .fireResistant()
-        ));
-        return blockReg;
+    private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
+        ItemInit.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().fireResistant()));
+    }
+
+    public static void register(IEventBus eventBus) {
+        BLOCKS.register(eventBus);
     }
 }

@@ -53,5 +53,6 @@ public class TagsInit {
 
     public static class ToolTagsInit {
         public static final TagKey<Item> VIBRANIUM_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "gems/vibranium"));
+        public static final TagKey<Item> VIRABNIUM_MACE_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "tools/vibranium_mace"));
     }
 }

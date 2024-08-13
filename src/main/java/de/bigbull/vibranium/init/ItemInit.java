@@ -1,11 +1,14 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.entity.MobEnities;
+import de.bigbull.vibranium.init.item.HammerItem;
 import de.bigbull.vibranium.main.ModInfo;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -14,13 +17,13 @@ import java.util.List;
 
 public class ItemInit {
 
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ModInfo.MODID);
+
     public static final Component VIBRANIUM_UPGRADE_APPLIES_TO = Component.translatable("item.vibraniumupgrademod.vibranium_upgrade_smithing_template.applies_to").withStyle(ChatFormatting.BLUE);
     public static final Component VIBRANIUM_UPGRADE_INGREDIENTS = Component.translatable("item.vibraniumupgrademod.vibranium_upgrade_smithing_template.ingredients").withStyle(ChatFormatting.BLUE);
     public static final Component VIBRANIUM_UPGRADE = Component.translatable("upgrade.vibranium_upgrade").withStyle(ChatFormatting.GRAY);
     public static final Component VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable("item.vibraniumupgrademod.vibranium_upgrade_smithing_template.base_slot_description").withStyle(ChatFormatting.WHITE);
     public static final Component VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable("item.vibraniumupgrademod.vibranium_upgrade_smithing_template.additions_slot_description").withStyle(ChatFormatting.WHITE);
-
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ModInfo.MODID);
 
     //Items
     public static final DeferredItem<Item> RAW_VIBRANIUM = ITEMS.register("raw_vibranium",
@@ -28,7 +31,7 @@ public class ItemInit {
     public static final DeferredItem<Item> VIBRANIUM_INGOT = ITEMS.register("vibranium_ingot",
             () -> new Item(new Item.Properties().fireResistant()));
     public static final DeferredItem<Item> VIBRANIUM_CORE = ITEMS.register("vibranium_core",
-            () -> new Item(new Item.Properties().fireResistant()));
+            () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredItem<SmithingTemplateItem> VIBRANIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("vibranium_upgrade_smithing_template",
             () -> new SmithingTemplateItem(
                     VIBRANIUM_UPGRADE_APPLIES_TO,
@@ -88,4 +91,11 @@ public class ItemInit {
     public static final DeferredItem<HoeItem> VIBRANIUM_HOE = ITEMS.register("vibranium_hoe", () ->
             new HoeItem(TagsInit.MaterialTagsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(HoeItem.createAttributes(
                     TagsInit.MaterialTagsInit.VIBRANIUM, -2.5f, 0.0f))));
+    public static final DeferredItem<HammerItem> VIBRANIUM_MACE = ITEMS.register("vibranium_mace", () ->
+            new HammerItem(TagsInit.MaterialTagsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE,
+                    new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(HammerItem.createAttributes(TagsInit.MaterialTagsInit.VIBRANIUM, 5.5f, -3.4f))));
+
+    public static void register(IEventBus eventBus) {
+        ITEMS.register(eventBus);
+    }
 }

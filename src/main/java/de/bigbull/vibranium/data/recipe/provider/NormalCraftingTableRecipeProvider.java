@@ -53,5 +53,15 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .define('V', ItemInit.VIBRANIUM_INGOT)
                 .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT.get()))
                 .save(this.recipeOutput, getModId("vibranium_core"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ItemInit.VIBRANIUM_MACE, 1)
+                .pattern("VHV")
+                .pattern(" R ")
+                .pattern("   ")
+                .define('H', Items.HEAVY_CORE)
+                .define('R', Items.BREEZE_ROD)
+                .define('V', ItemInit.VIBRANIUM_INGOT)
+                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT.get()))
+                .save(this.recipeOutput, getModId("vibranium_mace"));
     }
 }

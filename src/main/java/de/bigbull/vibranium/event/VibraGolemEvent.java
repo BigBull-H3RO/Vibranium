@@ -13,7 +13,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.List;
 
-public class EventHandler {
+public class VibraGolemEvent {
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
         BlockState blockState = event.getState();

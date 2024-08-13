@@ -3,8 +3,10 @@ package de.bigbull.vibranium.data.lang;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.CreativeTabInit;
+import de.bigbull.vibranium.init.item.HammerItem;
 import de.bigbull.vibranium.main.ModInfo;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class ModDeLangProvider extends LanguageProvider {
@@ -30,6 +32,7 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_AXE, "Vibranium Axt");
         addItem(ItemInit.VIBRANIUM_SHOVEL, "Vibranium Schaufel");
         addItem(ItemInit.VIBRANIUM_HOE, "Vibranium Hacke");
+        addItem(ItemInit.VIBRANIUM_MACE, "Vibranium Mace");
 
         //Armors
         addItem(ItemInit.VIBRANIUM_BOOTS, "Vibranium Stiefel");
@@ -46,7 +49,10 @@ public class ModDeLangProvider extends LanguageProvider {
         add(ItemInit.VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION.getString(), "Diamantrüstung, -waffe oder -werkzeug hinzufügen");
         add(ItemInit.VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Vibranium Barren hinzufügen");
 
+        //Vibranium Mace
+        add("item.vibranium_mace.tooltip", "Kann 3x3 Blöcke abbauen");
+
         //others
-        add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Edelsteine der Macht");
+        add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Vibranium");
     }
 }

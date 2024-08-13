@@ -20,6 +20,7 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Smithing Template");
         addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawn Egg");
         addItem(ItemInit.VIBRANIUM_CORE, "Vibranium Core");
+        addItem(ItemInit.VIBRANIUM_MACE, "Vibranium Mace");
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block of Raw Vibranium");
@@ -47,7 +48,10 @@ public class ModEnLangProvider extends LanguageProvider {
         add(ItemInit.VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION.getString(), "Add diamond armor, weapon, or tool");
         add(ItemInit.VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Add Vibranium Ingot");
 
+        //Vibranium Mace
+        add("item.vibranium_mace.tooltip", "Can mine 3x3 blocks");
+
         //others
-        add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Gems of Power");
+        add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Vibranium");
     }
 }

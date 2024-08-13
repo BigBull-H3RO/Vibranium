@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.157'
+    id 'net.neoforged.gradle.userdev' version '7.0.159'
 }
 
 version = mod_version
@@ -61,10 +61,6 @@ dependencies {
 
     //GeckoLib
     implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
-}
-
-tasks.withType(JavaCompile) {
-    options.compilerArgs << "-Xlint:deprecation"
 }
 
 tasks.withType(ProcessResources).configureEach {
