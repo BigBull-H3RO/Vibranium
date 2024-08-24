@@ -22,7 +22,7 @@ public class VibraGolemEvent {
         if (!(event.getLevel() instanceof ServerLevel level)) {
             return;
         }
-        if (blockState.is(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get())) {
+        if (blockState.is(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get()) && !player.isCreative()) {
             List<VibraGolemEntity> golems = level.getEntitiesOfClass(VibraGolemEntity.class, player.getBoundingBox().inflate(20));
             for (VibraGolemEntity vibraGolem : golems) {
                 if (!vibraGolem.isTame()) {
@@ -41,18 +41,21 @@ public class VibraGolemEvent {
             return;
         }
         boolean hasRawVibranium = false;
-        for (ItemStack itemStack : player.getInventory().items) {
-            if (itemStack.getItem() == ItemInit.RAW_VIBRANIUM.get()) {
-                hasRawVibranium = true;
-                break;
+
+        if (!player.isCreative()) {
+            for (ItemStack itemStack : player.getInventory().items) {
+                if (itemStack.getItem() == ItemInit.RAW_VIBRANIUM.get()) {
+                    hasRawVibranium = true;
+                    break;
+                }
             }
-        }
-        if (hasRawVibranium) {
-            List<VibraGolemEntity> golems = level.getEntitiesOfClass(VibraGolemEntity.class, player.getBoundingBox().inflate(20));
-            for (VibraGolemEntity vibraGolem : golems) {
-                if (!vibraGolem.isTame()) {
-                    vibraGolem.setTarget(player);
-                    vibraGolem.setAggressive(true);
+            if (hasRawVibranium) {
+                List<VibraGolemEntity> golems = level.getEntitiesOfClass(VibraGolemEntity.class, player.getBoundingBox().inflate(20));
+                for (VibraGolemEntity vibraGolem : golems) {
+                    if (!vibraGolem.isTame()) {
+                        vibraGolem.setTarget(player);
+                        vibraGolem.setAggressive(true);
+                    }
                 }
             }
         }

@@ -73,9 +73,9 @@ public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
     public void mobInteract(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
         ItemStack itemstack = player.getItemInHand(hand);
         Item item = itemstack.getItem();
-        if (!this.level().isClientSide) {
+        if (!this.level().isClientSide && itemstack.getItem() instanceof WolfArmorInit) {
             if (this.isTame()) {
-                if (itemstack.getItem() instanceof WolfArmorInit && this.isOwnedBy(player) && !this.hasArmor() && !this.isBaby()) {
+                if (this.isOwnedBy(player) && !this.hasArmor() && !this.isBaby()) {
                     this.setBodyArmorItem(itemstack.copyWithCount(1));
                     itemstack.consume(1, player);
                     cir.setReturnValue(InteractionResult.SUCCESS);
