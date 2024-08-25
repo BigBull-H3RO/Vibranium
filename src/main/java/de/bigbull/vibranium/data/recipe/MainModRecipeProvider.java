@@ -3,7 +3,7 @@ package de.bigbull.vibranium.data.recipe;
 import de.bigbull.vibranium.data.recipe.provider.FurnaceRecipeProvider;
 import de.bigbull.vibranium.data.recipe.provider.NormalCraftingTableRecipeProvider;
 import de.bigbull.vibranium.data.recipe.provider.SmithingTableRecipeProvider;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -30,6 +30,6 @@ public class MainModRecipeProvider extends RecipeProvider {
     }
 
     public ResourceLocation getModId(String path) {
-        return ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, path);
+        return ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, path);
     }
 }

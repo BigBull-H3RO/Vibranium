@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.data.texture;
 
 import de.bigbull.vibranium.init.BlockInit;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -11,7 +11,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, ModInfo.MODID, exFileHelper);
+        super(output, Vibranium.MODID, exFileHelper);
     }
 
     @Override

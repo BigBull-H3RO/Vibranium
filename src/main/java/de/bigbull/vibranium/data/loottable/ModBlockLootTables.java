@@ -2,7 +2,7 @@ package de.bigbull.vibranium.data.loottable;
 
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -30,7 +30,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected Iterable<Block> getKnownBlocks() {
         return BuiltInRegistries.BLOCK.stream()
                 .filter(block -> Optional.of(BuiltInRegistries.BLOCK.getKey(block))
-                        .filter(key -> key.getNamespace().equals(ModInfo.MODID))
+                        .filter(key -> key.getNamespace().equals(Vibranium.MODID))
                         .isPresent())
                 .collect(Collectors.toSet());
     }

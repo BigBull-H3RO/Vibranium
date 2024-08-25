@@ -3,7 +3,7 @@ package de.bigbull.vibranium.event.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import de.bigbull.vibranium.init.ItemInit;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.RenderType;
@@ -22,7 +22,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderHighlightEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 
-@EventBusSubscriber(modid = ModInfo.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Vibranium.MODID, value = Dist.CLIENT)
 public class ClientRenderEvent {
     @SubscribeEvent
     public static void onRenderWorldLast(RenderLevelStageEvent event) {

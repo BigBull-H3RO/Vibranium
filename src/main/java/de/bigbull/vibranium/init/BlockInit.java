@@ -1,10 +1,9 @@
 package de.bigbull.vibranium.init;
 
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -16,7 +15,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.function.Supplier;
 
 public class BlockInit {
-    public static DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ModInfo.MODID);
+    public static DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Vibranium.MODID);
 
     public static final DeferredBlock<Block> BLOCK_OF_RAW_VIBRANIUM = registerBlock("block_of_raw_vibranium", () ->
             new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM)
@@ -26,7 +25,7 @@ public class BlockInit {
 
     public static final DeferredBlock<Block> DEPPSLATE_VIBRANIUM_ORE = registerBlock("deepslate_vibranium_ore", () ->
             new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_BLACK)
+                    .mapColor(MapColor.DEEPSLATE)
                     .destroyTime(3.0F)
                     .strength(30.0F, 1200.0F)
                     .sound(SoundType.DEEPSLATE)

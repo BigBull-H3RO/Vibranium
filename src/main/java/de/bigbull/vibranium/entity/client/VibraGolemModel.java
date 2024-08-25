@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.entity.client;
 
 import de.bigbull.vibranium.entity.custom.VibraGolemEntity;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import software.bernie.geckolib.animation.AnimationState;
@@ -12,9 +12,9 @@ import software.bernie.geckolib.model.data.EntityModelData;
 
 
 public class VibraGolemModel extends GeoModel<VibraGolemEntity> {
-    private final ResourceLocation model = ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "geo/vibra_golem.geo.json");
-    private final ResourceLocation texture = ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "textures/entity/vibra/vibra_golem_2.png");
-    private final ResourceLocation animations = ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "animations/vibra_golem.animation.json");
+    private final ResourceLocation model = ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "geo/vibra_golem.geo.json");
+    private final ResourceLocation texture = ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "textures/entity/vibra/vibra_golem_2.png");
+    private final ResourceLocation animations = ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "animations/vibra_golem.animation.json");
 
     @Override
     public ResourceLocation getModelResource(VibraGolemEntity animatable) {

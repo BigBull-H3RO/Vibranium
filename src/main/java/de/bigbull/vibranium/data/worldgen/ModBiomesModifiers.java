@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.data.worldgen;
 
 import de.bigbull.vibranium.data.worldgen.ore.ModPlacedFeatures;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
@@ -34,6 +34,6 @@ public class ModBiomesModifiers {
     }
 
     private static ResourceKey<BiomeModifier> createKey(String name) {
-        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, name));
+        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, name));
     }
 }

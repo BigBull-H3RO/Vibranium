@@ -1,6 +1,6 @@
 package de.bigbull.vibranium.init;
 
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -12,19 +12,19 @@ import net.neoforged.neoforge.common.SimpleTier;
 
 public class TagsInit {
     public static ResourceLocation createOreLocation(String name) {
-        return ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "ores/" + name);
+        return ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "ores/" + name);
     }
 
     public static ResourceLocation createBlockLocation(String name) {
-        return ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, name);
+        return ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, name);
     }
 
     public static ResourceLocation createGenericItemsLocation(String name) {
-        return ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, name);
+        return ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, name);
     }
 
     public static ResourceLocation createRawItemsLocation(String name) {
-        return ResourceLocation.fromNamespaceAndPath(ModInfo.MODID,"raw/" + name);
+        return ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"raw/" + name);
     }
 
     public static class ItemTagsInit {
@@ -52,7 +52,7 @@ public class TagsInit {
     }
 
     public static class ToolTagsInit {
-        public static final TagKey<Item> VIBRANIUM_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "gems/vibranium"));
-        public static final TagKey<Item> VIRABNIUM_MACE_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "tools/vibranium_mace"));
+        public static final TagKey<Item> VIBRANIUM_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "gems/vibranium"));
+        public static final TagKey<Item> VIRABNIUM_MACE_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "tools/vibranium_mace"));
     }
 }

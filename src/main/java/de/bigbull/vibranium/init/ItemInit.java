@@ -2,7 +2,7 @@ package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.entity.MobEnities;
 import de.bigbull.vibranium.init.item.HammerItem;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ItemInit {
 
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ModInfo.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Vibranium.MODID);
 
     public static final Component VIBRANIUM_UPGRADE_APPLIES_TO = Component.translatable("item.vibraniumupgrademod.vibranium_upgrade_smithing_template.applies_to").withStyle(ChatFormatting.BLUE);
     public static final Component VIBRANIUM_UPGRADE_INGREDIENTS = Component.translatable("item.vibraniumupgrademod.vibranium_upgrade_smithing_template.ingredients").withStyle(ChatFormatting.BLUE);
@@ -43,8 +43,8 @@ public class ItemInit {
                             ResourceLocation.fromNamespaceAndPath("minecraft","item/empty_slot_sword"),
                             ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_armor_slot_chestplate"),
                             ResourceLocation.fromNamespaceAndPath("minecraft","item/empty_slot_pickaxe"),
-                            ResourceLocation.fromNamespaceAndPath(ModInfo.MODID,"item/empty_slot_wolf_armor"),
-                            ResourceLocation.fromNamespaceAndPath(ModInfo.MODID,"item/empty_slot_horse_armor"),
+                            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/empty_slot_wolf_armor"),
+                            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/empty_slot_horse_armor"),
                             ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_armor_slot_leggings"),
                             ResourceLocation.fromNamespaceAndPath("minecraft","item/empty_slot_axe"),
                             ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_armor_slot_boots"),

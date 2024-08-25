@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import de.bigbull.vibranium.entity.custom.VibraGolemEntity;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
@@ -18,11 +18,11 @@ import java.util.Map;
 public class VibraGolemGeoRenderLayer extends GeoRenderLayer<VibraGolemEntity> {
     private static final Map<VibraCrackiness.Level, ResourceLocation> resourceLocations = ImmutableMap.of(
             VibraCrackiness.Level.LOW,
-            ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "textures/entity/vibra/vibra_golem_crackiness_low.png"),
+            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "textures/entity/vibra/vibra_golem_crackiness_low.png"),
             VibraCrackiness.Level.MEDIUM,
-            ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "textures/entity/vibra/vibra_golem_crackiness_medium.png"),
+            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "textures/entity/vibra/vibra_golem_crackiness_medium.png"),
             VibraCrackiness.Level.HIGH,
-            ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "textures/entity/vibra/vibra_golem_crackiness_high.png")
+            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "textures/entity/vibra/vibra_golem_crackiness_high.png")
     );
 
     public VibraGolemGeoRenderLayer(GeoRenderer<VibraGolemEntity> entityRenderer) {

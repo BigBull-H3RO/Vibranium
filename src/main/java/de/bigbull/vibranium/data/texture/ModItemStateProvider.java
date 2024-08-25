@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.data.texture;
 
 import de.bigbull.vibranium.init.ItemInit;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 
 public class ModItemStateProvider extends ItemModelProvider {
     public ModItemStateProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, ModInfo.MODID, existingFileHelper);
+        super(output, Vibranium.MODID, existingFileHelper);
     }
 
     @Override
@@ -40,17 +40,17 @@ public class ModItemStateProvider extends ItemModelProvider {
     }
 
     private void itemGenerated(DeferredItem item) {
-        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"),"layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID,"item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 9)));
+        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"),"layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/" + item.getId().getPath().toString().substring(Vibranium.MODID.length() - 9)));
     }
 
     private void itemHandheld(DeferredItem item) {
-        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/handheld"),"layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID,"item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 9)));
+        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/handheld"),"layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/" + item.getId().getPath().toString().substring(Vibranium.MODID.length() - 9)));
     }
 
     private void itemHandheldWithTransform(DeferredItem item) {
         getBuilder(item.getId().getPath())
                 .parent(getExistingFile(ResourceLocation.withDefaultNamespace("item/handheld")))
-                .texture("layer0", ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "item/" + item.getId().getPath().toString().substring(ModInfo.MODID.length() - 9)))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + item.getId().getPath().toString().substring(Vibranium.MODID.length() - 9)))
                 .transforms()
                 .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
                 .rotation(0, -90, 55)

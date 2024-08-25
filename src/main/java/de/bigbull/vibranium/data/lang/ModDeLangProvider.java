@@ -3,14 +3,12 @@ package de.bigbull.vibranium.data.lang;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.CreativeTabInit;
-import de.bigbull.vibranium.init.item.HammerItem;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class ModDeLangProvider extends LanguageProvider {
-    public ModDeLangProvider(PackOutput output) {super(output, ModInfo.MODID, "de_de");
+    public ModDeLangProvider(PackOutput output) {super(output, Vibranium.MODID, "de_de");
     }
 
     @Override

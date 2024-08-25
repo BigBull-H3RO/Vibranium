@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.data.loottable;
 
 import com.google.common.collect.Sets;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.WritableRegistry;
 import net.minecraft.data.PackOutput;
@@ -27,7 +27,7 @@ public class ModLootTables extends LootTableProvider {
     protected void validate(WritableRegistry<LootTable> writableregistry, ValidationContext validationcontext, ProblemReporter.Collector problemreporter$collector) {
         var modLootTablesId = BuiltInLootTables.all()
                 .stream()
-                .filter(id -> id.registry().getNamespace().equals(ModInfo.MODID))
+                .filter(id -> id.registry().getNamespace().equals(Vibranium.MODID))
                 .collect(Collectors.toSet());
 
         for (var id : Sets.difference(modLootTablesId, writableregistry.keySet())) {

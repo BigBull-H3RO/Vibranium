@@ -2,7 +2,7 @@ package de.bigbull.vibranium.data.tag;
 
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.TagsInit;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 public class ModItemTagsProvider extends ItemTagsProvider {
 
     public ModItemTagsProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, BlockTagsProvider provider, ExistingFileHelper existingFileHelper) {
-        super(pOutput, pLookupProvider, provider.contentsGetter(), ModInfo.MODID, existingFileHelper);
+        super(pOutput, pLookupProvider, provider.contentsGetter(), Vibranium.MODID, existingFileHelper);
     }
 
     @Override

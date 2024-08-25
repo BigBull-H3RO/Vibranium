@@ -1,6 +1,6 @@
 package de.bigbull.vibranium.init;
 
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ArmorMaterialsInit {
 
-    public static DeferredRegister<ArmorMaterial> MATERIAL = DeferredRegister.create(BuiltInRegistries.ARMOR_MATERIAL, ModInfo.MODID);
+    public static DeferredRegister<ArmorMaterial> MATERIAL = DeferredRegister.create(BuiltInRegistries.ARMOR_MATERIAL, Vibranium.MODID);
 
     public static final Holder<ArmorMaterial> VIBRANIUM_MATERIAL = MATERIAL.register("vibranium", () -> new ArmorMaterial(
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
@@ -27,6 +27,6 @@ public class ArmorMaterialsInit {
                 map.put(ArmorItem.Type.BODY, 16);
             }),
             18, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ItemInit.VIBRANIUM_INGOT),
-            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(ModInfo.MODID, "vibranium"))), 4,  0.2f));
+            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium"))), 4,  0.2f));
 }
 

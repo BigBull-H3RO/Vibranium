@@ -2,7 +2,7 @@ package de.bigbull.vibranium.data.worldgen;
 
 import de.bigbull.vibranium.data.worldgen.ore.ModConfiguredFeatures;
 import de.bigbull.vibranium.data.worldgen.ore.ModPlacedFeatures;
-import de.bigbull.vibranium.main.ModInfo;
+import de.bigbull.vibranium.main.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -16,9 +16,9 @@ import java.util.concurrent.CompletableFuture;
 public class ModWorldGenProvider extends DatapackBuiltinEntriesProvider {
     public ModWorldGenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, new RegistrySetBuilder()
-                .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
-                .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
-                .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomesModifiers::bootstrap),
-                Set.of(ModInfo.MODID));
+                        .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
+                        .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
+                        .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomesModifiers::bootstrap),
+                Set.of(Vibranium.MODID));
     }
 }
