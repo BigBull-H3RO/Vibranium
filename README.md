@@ -15,4 +15,3 @@
 <h1></h1>
 <h4 align="center">Please report issues to the <a href="https://github.com/BigBull-H3RO/Vibranium/issues">Issue Tracker</a></h4>
 <h4 align="center">Find out more about Create on our <a href="https://www.curseforge.com/minecraft/mc-mods/create">Curseforge</a> or <a href="https://modrinth.com/mod/create">Modrinth</a> Page</h4>
-<h4 align="center">Looking for the Fabric port? <a href="https://github.com/Fabricators-of-Create/Create">Find it here</a></h4>
