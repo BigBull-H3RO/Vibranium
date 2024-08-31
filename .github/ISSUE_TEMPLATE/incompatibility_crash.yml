@@ -1,5 +1,5 @@
 name: ⚠️ Incompatible Mod / Crash Report
-description: Report an issue you've encountered 
+description: Report an incompatible mod or crash 
 labels: [compat]
 body:
   - type: markdown
