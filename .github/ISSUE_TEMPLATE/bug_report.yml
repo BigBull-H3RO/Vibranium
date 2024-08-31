@@ -9,12 +9,12 @@ body:
         
         Thank you for taking your time to report this bug!  
         Before reporting, please ensure that:
-        - You are using the **latest** available version of Connector and its dependencies
+        - You have **checked existing issues** to ensure that the bug has not already been reported. If a similar issue exists, please add any additional information there instead of creating a new report.
+        - You are using the **latest** available version of Vibranium.
         - You've installed a **minimal set of mods** required to reproduce the issue. 
-          Issues with modpacks and excessive amount of mods will *not* be accepted, as they take a long time to diagnose.
-          Knowing which mods are causing problems allows us to focus on fixing the issue as soon as possible.  
-          If you're unsure which mods might be at fault, try using [binary search](https://www.reddit.com/r/feedthebeast/comments/evpy6r/tips_for_modpack_authors_how_to_find_misbehaving/) - removing half of installed mods
-          repeatedly until the faulty mod is found.
+        Issues with modpacks and excessive amount of mods will *not* be accepted, as they take a long time to diagnose.
+        Knowing which mods are causing problems allows us to focus on fixing the issue as soon as possible.  
+        If you're unsure which mods might be at fault, try using [binary search](https://www.reddit.com/r/feedthebeast/comments/evpy6r/tips_for_modpack_authors_how_to_find_misbehaving/) - removing half of installed mods repeatedly until the faulty mod is found.
 
   - type: dropdown
     id: version
