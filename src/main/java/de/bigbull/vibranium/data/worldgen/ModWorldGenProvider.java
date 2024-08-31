@@ -2,7 +2,7 @@ package de.bigbull.vibranium.data.worldgen;
 
 import de.bigbull.vibranium.data.worldgen.ore.ModConfiguredFeatures;
 import de.bigbull.vibranium.data.worldgen.ore.ModPlacedFeatures;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;

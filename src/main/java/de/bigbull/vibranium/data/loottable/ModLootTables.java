@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.data.loottable;
 
 import com.google.common.collect.Sets;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.WritableRegistry;
 import net.minecraft.data.PackOutput;

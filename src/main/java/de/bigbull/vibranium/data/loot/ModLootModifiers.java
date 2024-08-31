@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.data.loot;
 
 import com.mojang.serialization.MapCodec;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.registries.DeferredHolder;

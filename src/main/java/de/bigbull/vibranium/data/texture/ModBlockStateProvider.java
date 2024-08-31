@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.data.texture;
 
 import de.bigbull.vibranium.init.BlockInit;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;

@@ -3,7 +3,7 @@ package de.bigbull.vibranium.data.recipe;
 import de.bigbull.vibranium.data.recipe.provider.FurnaceRecipeProvider;
 import de.bigbull.vibranium.data.recipe.provider.NormalCraftingTableRecipeProvider;
 import de.bigbull.vibranium.data.recipe.provider.SmithingTableRecipeProvider;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.RecipeOutput;

@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.data.worldgen.ore;
 
 import de.bigbull.vibranium.config.VibraniumConfigValues;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;

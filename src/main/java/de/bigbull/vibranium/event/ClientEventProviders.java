@@ -2,7 +2,7 @@ package de.bigbull.vibranium.event;
 
 import de.bigbull.vibranium.entity.MobEnities;
 import de.bigbull.vibranium.entity.client.VibraGolemRenderer;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;

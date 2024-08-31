@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.entity;
 
 import de.bigbull.vibranium.entity.custom.VibraGolemEntity;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;

@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.entity.client;
 
 import de.bigbull.vibranium.entity.custom.VibraGolemEntity;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import software.bernie.geckolib.animation.AnimationState;

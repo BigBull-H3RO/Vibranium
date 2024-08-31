@@ -2,7 +2,7 @@ package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.entity.MobEnities;
 import de.bigbull.vibranium.init.item.HammerItem;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

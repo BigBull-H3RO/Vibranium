@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.data.worldgen.ore;
 
 import de.bigbull.vibranium.init.BlockInit;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;

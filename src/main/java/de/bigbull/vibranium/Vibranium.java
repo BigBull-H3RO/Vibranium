@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.main;
+package de.bigbull.vibranium;
 
 import com.mojang.logging.LogUtils;
 import de.bigbull.vibranium.config.VibraniumConfig;

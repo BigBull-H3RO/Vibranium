@@ -9,13 +9,10 @@ public class VibraniumConfig {
     public static final ModConfigSpec.IntValue VEINS_PER_CHUNK;
     public static final ModConfigSpec.IntValue MAX_HEIGHT;
     public static final ModConfigSpec.IntValue MIN_HEIGHT;
-    public static final ModConfigSpec.BooleanValue ENABLE_ORE_GENERATION;
 
     static {
         BUILDER.push("Vibranium Ore Generation Configurations");
         BUILDER.comment();
-        ENABLE_ORE_GENERATION = BUILDER.comment("Enable or disable Vibranium ore generation")
-                .define("Enable Ore Generation", true);
         VEINS_PER_CHUNK = BUILDER.comment("How many veins of Vibranium ore should spawn per chunk")
                 .defineInRange("Veins per Chunk [Default: 2]", 2, 0, 64);
         MAX_HEIGHT = BUILDER.comment("The maximum height Vibranium ore should spawn")

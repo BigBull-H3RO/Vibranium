@@ -2,7 +2,7 @@ package de.bigbull.vibranium.data.tag;
 
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.TagsInit;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;

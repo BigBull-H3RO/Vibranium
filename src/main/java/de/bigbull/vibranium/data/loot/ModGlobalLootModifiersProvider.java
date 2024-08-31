@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.data.loot;
 
 import de.bigbull.vibranium.init.ItemInit;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;

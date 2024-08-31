@@ -9,7 +9,7 @@ import de.bigbull.vibranium.data.tag.ModItemTagsProvider;
 import de.bigbull.vibranium.data.texture.ModBlockStateProvider;
 import de.bigbull.vibranium.data.texture.ModItemStateProvider;
 import de.bigbull.vibranium.data.worldgen.ModWorldGenProvider;
-import de.bigbull.vibranium.main.Vibranium;
+import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.data.lang.ModEnLangProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
