@@ -7,9 +7,11 @@ body:
       value: |
         ## 📋 Checklist
         
-        Thank you for taking your time to report this bug!  
-        Before reporting, please ensure that:
-        - You have **checked existing issues** to ensure that the bug has not already been reported. If a similar issue exists, please add any additional information there instead of creating a new report.
+        Thank you for taking your time to report this bug!
+        
+        **Before reporting, please ensure that:**
+        - You have **checked existing issues** to ensure that the bug has not already been reported. 
+        If a similar issue exists, please add any additional information there instead of creating a new report.
         - You are using the **latest** available version of Vibranium.
         - You've installed a **minimal set of mods** required to reproduce the issue. 
         Issues with modpacks and excessive amount of mods will *not* be accepted, as they take a long time to diagnose.
@@ -21,6 +23,7 @@ body:
     attributes:
       label: Minecraft version
       description: What version of Minecraft are you running? Please note that only the versions listed below are supported. If you're running an outdated version, update to receive support.
+      multiple: true
       options:
         - "1.21"
         - "1.21.1"
