@@ -5,9 +5,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## 📋 Checklist
+        # 📋 Checklist
         
-        Thank you for taking your time to report this bug!
+        ### Thank you for taking your time to report this bug!
         
         **Before reporting, please ensure that:**
         - You have **checked existing issues** to ensure that the bug has not already been reported. 
