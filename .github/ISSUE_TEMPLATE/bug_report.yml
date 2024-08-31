@@ -6,6 +6,7 @@ body:
     attributes:
       value: |
         ## 📋 Checklist
+        
         Thank you for taking your time to report this bug!  
         Before reporting, please ensure that:
         - You are using the **latest** available version of Connector and its dependencies
