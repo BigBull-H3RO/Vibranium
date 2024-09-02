@@ -1,4 +1,4 @@
-<p align="center"><img src="./.idea/Icon.png" alt="Logo" width="250"></p>
+<p align="center"><img src="./.idea/icon.png" alt="Logo" width="250"></p>
 <h1 align="center">Vibranium  <br>
 	<a href="https://www.curseforge.com/minecraft/mc-mods/create/files"><img src="https://cf.way2muchnoise.eu/versions/328085(c70039).svg" alt="Supported Versions"></a>
 	<a href="https://github.com/BigBull-H3RO/Vibranium/blob/main/LICENSE"><img src="https://img.shields.io/github/license/BigBull-H3RO/Vibranium?style=flat&color=900c3f" alt="License"></a>
