@@ -7,7 +7,8 @@
     <br><br>
 </h1>
 
-<p>**Welcome to the Vibranium Mod, an exciting addition to your Minecraft experience that introduces a powerful new resource and a variety of innovative tools and features.**
+<p>
+**Welcome to the Vibranium Mod, an exciting addition to your Minecraft experience that introduces a powerful new resource and a variety of innovative tools and features.**
 
 Discover **Vibranium**, a rare and valuable ore that empowers you to craft an array of unique items. With Vibranium, you can create durable **Vibranium Armor** to protect yourself, as well as specialized **Wolf and Horse Armor** to safeguard your loyal companions.
 
