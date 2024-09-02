@@ -26,9 +26,28 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         //Items
         tag(TagsInit.ItemTagsInit.RAW_VIBRANIUM_TAG).add(ItemInit.RAW_VIBRANIUM.get());
+        tag(TagsInit.ItemTagsInit.VIBRANIUM_INGOT_TAG).add(ItemInit.VIBRANIUM_INGOT.get());
         tag(TagsInit.ItemTagsInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE_TAG).add(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get());
         tag(TagsInit.ItemTagsInit.VIBRA_GOLEM_SPAWN_EGG_TAG).add(ItemInit.VIBRA_GOLEM_SPAWN_EGG.get());
         tag(TagsInit.ItemTagsInit.VIBRANIUM_CORE_TAG).add(ItemInit.VIBRANIUM_CORE.get());
+
+        //Armor
+        tag(TagsInit.ItemTagsInit.VIBRANIUM_HELMET_TAG).add(ItemInit.VIBRANIUM_HELMET.get());
+        tag(TagsInit.ItemTagsInit.VIBRANIUM_CHESTPLATE_TAG).add(ItemInit.VIBRANIUM_CHESTPLATE.get());
+        tag(TagsInit.ItemTagsInit.VIBRANIUM_LEGGINGS_TAG).add(ItemInit.VIBRANIUM_LEGGINGS.get());
+        tag(TagsInit.ItemTagsInit.VIBRANIUM_BOOTS_TAG).add(ItemInit.VIBRANIUM_BOOTS.get());
+
+        //ArmorAnimals
+        tag(TagsInit.ItemTagsInit.VIBRANIUM_WOLF_ARMOR_TAG).add(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
+        tag(TagsInit.ItemTagsInit.VIBRANIUM_HORSE_ARMOR_TAG).add(ItemInit.VIBRANIUM_HORSE_ARMOR.get());
+
+        //Tools
+        tag(TagsInit.ToolTagsInit.VIRABNIUM_MACE_TAG).add(ItemInit.VIBRANIUM_MACE.get());
+        tag(TagsInit.ToolTagsInit.VIBRANIUM_SWORD_TAG).add(ItemInit.VIBRANIUM_SWORD.get());
+        tag(TagsInit.ToolTagsInit.VIBRANIUM_PICKAXE_TAG).add(ItemInit.VIBRANIUM_PICKAXE.get());
+        tag(TagsInit.ToolTagsInit.VIBRANIUM_AXE_TAG).add(ItemInit.VIBRANIUM_AXE.get());
+        tag(TagsInit.ToolTagsInit.VIBRANIUM_SHOVEL_TAG).add(ItemInit.VIBRANIUM_SHOVEL.get());
+        tag(TagsInit.ToolTagsInit.VIBRANIUM_HOE_TAG).add(ItemInit.VIBRANIUM_HOE.get());
 
         tag(ItemTags.TRIM_MATERIALS)
                 .add(ItemInit.VIBRANIUM_INGOT.get());
@@ -48,31 +67,36 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(   ItemInit.VIBRANIUM_BOOTS.get(),
-                            ItemInit.VIBRANIUM_LEGGINGS.get(),
-                            ItemInit.VIBRANIUM_CHESTPLATE.get(),
-                            ItemInit.VIBRANIUM_HELMET.get());
-
-        tag(TagsInit.ItemTagsInit.VIBRANIUM_WOLF_ARMOR_TAG)
-                .add(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
-        tag(TagsInit.ItemTagsInit.VIBRANIUM_WOLF_ARMOR_TAG)
-                .add(ItemInit.VIBRANIUM_HORSE_ARMOR.get());
+                        ItemInit.VIBRANIUM_LEGGINGS.get(),
+                        ItemInit.VIBRANIUM_CHESTPLATE.get(),
+                        ItemInit.VIBRANIUM_HELMET.get());
 
         //Tools
         tag(ItemTags.SWORDS)
                 .add(ItemInit.VIBRANIUM_SWORD.get());
 
         tag(ItemTags.PICKAXES)
-                .add(   ItemInit.VIBRANIUM_PICKAXE.get());
+                .add(ItemInit.VIBRANIUM_PICKAXE.get())
+                .add(ItemInit.VIBRANIUM_MACE.get());
 
         tag(ItemTags.AXES)
-                .add(   ItemInit.VIBRANIUM_AXE.get());
+                .add(ItemInit.VIBRANIUM_AXE.get())
+                .add(ItemInit.VIBRANIUM_MACE.get());
 
         tag(ItemTags.SHOVELS)
-                .add(   ItemInit.VIBRANIUM_SHOVEL.get());
+                .add(ItemInit.VIBRANIUM_SHOVEL.get())
+                .add(ItemInit.VIBRANIUM_MACE.get());
 
         tag(ItemTags.HOES)
                 .add(ItemInit.VIBRANIUM_HOE.get());
 
-        tag(TagsInit.ToolTagsInit.VIRABNIUM_MACE_TAG).add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.MINING_ENCHANTABLE)
+                .add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.MINING_LOOT_ENCHANTABLE)
+                .add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.VANISHING_ENCHANTABLE)
+                .add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.DURABILITY_ENCHANTABLE)
+                .add(ItemInit.VIBRANIUM_MACE.get());
     }
 }

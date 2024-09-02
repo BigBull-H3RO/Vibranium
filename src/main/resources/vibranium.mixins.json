@@ -7,9 +7,6 @@
   "mixins": [
     "WolfMixin"
   ],
-  "client": [
-    "client.WolfModelMixin"
-  ],
   "injectors": {
     "defaultRequire": 1
   }

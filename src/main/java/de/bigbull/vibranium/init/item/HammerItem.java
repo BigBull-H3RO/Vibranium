@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HammerItem extends DiggerItem {
+
     public HammerItem(Tier tier, TagKey<Block> tag, Properties properties) {
         super(tier, BlockTags.MINEABLE_WITH_PICKAXE, properties);
     }
@@ -38,6 +39,7 @@ public class HammerItem extends DiggerItem {
                         BlockState targetState = level.getBlockState(targetPos);
                         if (isValidBlockForTool(targetState)) {
                             level.destroyBlock(targetPos, true, entity);
+                            damageItem(stack, player);
                         }
                     }
                     return true;
@@ -45,6 +47,18 @@ public class HammerItem extends DiggerItem {
             }
         }
         return super.mineBlock(stack, level, state, pos, entity);
+    }
+
+    private void damageItem(ItemStack stack, LivingEntity entity) {
+        int damage = stack.getDamageValue() + 1;
+        stack.setDamageValue(damage);
+
+        if (damage >= stack.getMaxDamage()) {
+            stack.shrink(1);
+            if (entity instanceof Player player) {
+                player.getInventory().removeItem(stack);
+            }
+        }
     }
 
     public List<BlockPos> getAffectedPositions(Player player) {
@@ -95,7 +109,7 @@ public class HammerItem extends DiggerItem {
 
     public boolean isValidBlockForTool(BlockState state) {
         return state.isSolidRender(null, BlockPos.ZERO) &&
-                (state.is(BlockTags.MINEABLE_WITH_PICKAXE) || state.is(BlockTags.MINEABLE_WITH_SHOVEL)) &&
+                (state.is(BlockTags.MINEABLE_WITH_PICKAXE) || state.is(BlockTags.MINEABLE_WITH_SHOVEL) || state.is(BlockTags.MINEABLE_WITH_AXE)) &&
                 state.getBlock() != Blocks.AIR;
     }
 

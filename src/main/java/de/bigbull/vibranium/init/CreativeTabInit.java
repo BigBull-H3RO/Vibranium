@@ -37,7 +37,7 @@ public class CreativeTabInit {
 
         });
 
-        builder.icon(() -> new ItemStack(ItemInit.RAW_VIBRANIUM.get()));
+        builder.icon(() -> new ItemStack(ItemInit.VIBRANIUM_MACE.get()));
         builder.title(Component.translatable(MAIN_TAB_ONE_TITLE));
 
         return builder.build();

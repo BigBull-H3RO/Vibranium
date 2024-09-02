@@ -77,23 +77,23 @@ public class ItemInit {
 
     //Tools
     public static final DeferredItem<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword", () ->
-            new SwordItem(TagsInit.MaterialTagsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(SwordItem.createAttributes(
-                    TagsInit.MaterialTagsInit.VIBRANIUM, 5.5f, -2.2f))));
+            new SwordItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(SwordItem.createAttributes(
+                    MaterialsInit.VIBRANIUM, 5.5f, -2.2f))));
     public static final DeferredItem<PickaxeItem> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe", () ->
-            new PickaxeItem(TagsInit.MaterialTagsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(PickaxeItem.createAttributes(
-                    TagsInit.MaterialTagsInit.VIBRANIUM, 2.5f, -2.8f))));
+            new PickaxeItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(PickaxeItem.createAttributes(
+                    MaterialsInit.VIBRANIUM, 2.5f, -2.8f))));
     public static final DeferredItem<AxeItem> VIBRANIUM_AXE = ITEMS.register("vibranium_axe", () ->
-            new AxeItem(TagsInit.MaterialTagsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(AxeItem.createAttributes(
-                    TagsInit.MaterialTagsInit.VIBRANIUM, 6.5f, -2.8f))));
+            new AxeItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(AxeItem.createAttributes(
+                    MaterialsInit.VIBRANIUM, 6.5f, -2.8f))));
     public static final DeferredItem<ShovelItem> VIBRANIUM_SHOVEL = ITEMS.register("vibranium_shovel", () ->
-            new ShovelItem(TagsInit.MaterialTagsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(ShovelItem.createAttributes(
-                    TagsInit.MaterialTagsInit.VIBRANIUM, 3.0f, -3.0f))));
+            new ShovelItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(ShovelItem.createAttributes(
+                    MaterialsInit.VIBRANIUM, 3.0f, -3.0f))));
     public static final DeferredItem<HoeItem> VIBRANIUM_HOE = ITEMS.register("vibranium_hoe", () ->
-            new HoeItem(TagsInit.MaterialTagsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(HoeItem.createAttributes(
-                    TagsInit.MaterialTagsInit.VIBRANIUM, -2.5f, 0.0f))));
+            new HoeItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(HoeItem.createAttributes(
+                    MaterialsInit.VIBRANIUM, -2.5f, 0.0f))));
     public static final DeferredItem<HammerItem> VIBRANIUM_MACE = ITEMS.register("vibranium_mace", () ->
-            new HammerItem(TagsInit.MaterialTagsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE,
-                    new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(HammerItem.createAttributes(TagsInit.MaterialTagsInit.VIBRANIUM, 5.5f, -3.4f))));
+            new HammerItem(MaterialsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE,
+                    new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(HammerItem.createAttributes(MaterialsInit.VIBRANIUM, 5.5f, -3.4f))));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
