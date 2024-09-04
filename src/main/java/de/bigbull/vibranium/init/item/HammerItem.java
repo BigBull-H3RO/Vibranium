@@ -4,14 +4,13 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DiggerItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -34,12 +33,20 @@ public class HammerItem extends DiggerItem {
         if (!level.isClientSide && entity instanceof Player player) {
             if (!player.isShiftKeyDown() || player.isCreative()) {
                 if (isValidBlockForTool(state)) {
-                    List<BlockPos> affectedPositions = getAffectedPositions(player);
+                    List<BlockPos> affectedPositions = getAffectedPositions(player, pos);
+
                     for (BlockPos targetPos : affectedPositions) {
                         BlockState targetState = level.getBlockState(targetPos);
                         if (isValidBlockForTool(targetState)) {
-                            level.destroyBlock(targetPos, true, entity);
-                            damageItem(stack, player);
+                            level.destroyBlock(targetPos, false);
+                            Block.getDrops(targetState, (ServerLevel) level, targetPos, null, entity, stack)
+                                    .forEach(drop -> Block.popResource(level, targetPos, drop));
+
+                            stack.hurtAndBreak(1, entity, EquipmentSlot.MAINHAND);
+
+                            if (stack.getDamageValue() >= stack.getMaxDamage()) {
+                                break;
+                            }
                         }
                     }
                     return true;
@@ -49,19 +56,7 @@ public class HammerItem extends DiggerItem {
         return super.mineBlock(stack, level, state, pos, entity);
     }
 
-    private void damageItem(ItemStack stack, LivingEntity entity) {
-        int damage = stack.getDamageValue() + 1;
-        stack.setDamageValue(damage);
-
-        if (damage >= stack.getMaxDamage()) {
-            stack.shrink(1);
-            if (entity instanceof Player player) {
-                player.getInventory().removeItem(stack);
-            }
-        }
-    }
-
-    public List<BlockPos> getAffectedPositions(Player player) {
+    public List<BlockPos> getAffectedPositions(Player player, BlockPos pos) {
         List<BlockPos> positions = new ArrayList<>();
         HitResult hitResult = getPlayerPOVHitResult(player.level(), player, ClipContext.Fluid.NONE);
 
