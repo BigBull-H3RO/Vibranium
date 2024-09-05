@@ -5,15 +5,19 @@ import de.bigbull.vibranium.config.VibraniumConfig;
 import de.bigbull.vibranium.data.DataGenerators;
 import de.bigbull.vibranium.data.loot.ModLootModifiers;
 import de.bigbull.vibranium.entity.MobEnities;
-import de.bigbull.vibranium.event.ClientEventProviders;
+import de.bigbull.vibranium.entity.client.VibraGolemRenderer;
 import de.bigbull.vibranium.event.VibraGolemEvent;
 import de.bigbull.vibranium.event.EventRegisters;
 import de.bigbull.vibranium.init.*;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -37,9 +41,7 @@ public class Vibranium {
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(DataGenerators::gatherData);
-        modEventBus.addListener(EventRegisters::registerEntityAttributes);
         modEventBus.addListener(EventRegisters::registerSpawnPlacements);
-        modEventBus.addListener(ClientEventProviders::registerEnityRenderers);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, VibraniumConfig.SPEC, "vibranium.toml");
     }
@@ -51,5 +53,13 @@ public class Vibranium {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
 
+    }
+
+    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onclientSetup(FMLClientSetupEvent event) {
+            EntityRenderers.register(MobEnities.VIBRAGOLEM.get(), VibraGolemRenderer::new);
+        }
     }
 }

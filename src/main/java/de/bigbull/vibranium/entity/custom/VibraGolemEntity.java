@@ -19,6 +19,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -43,16 +44,14 @@ import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.*;
-import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.UUID;
 
-public class VibraGolemEntity extends TamableAnimal implements GeoEntity {
+public class VibraGolemEntity extends TamableAnimal {
     private static final EntityDataAccessor<Boolean> SITTING = SynchedEntityData.defineId(VibraGolemEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DEFENSIVE_MODE = SynchedEntityData.defineId(VibraGolemEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<BlockPos> DEFENSIVE_POSITION = SynchedEntityData.defineId(VibraGolemEntity.class, EntityDataSerializers.BLOCK_POS);
-    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private UUID ownerUUID;
     private int attackAnimationTick;
     private DamageSource lastDamageSource;
@@ -62,6 +61,11 @@ public class VibraGolemEntity extends TamableAnimal implements GeoEntity {
     public VibraGolemEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
     }
+
+    public final AnimationState idleAnimationState = new AnimationState();
+    public final AnimationState walkAnimationState = new AnimationState();
+
+    private int idleAnimationTimeout = 0;
 
     public static AttributeSupplier.Builder setAttributes() {
         return TamableAnimal.createMobAttributes()
@@ -98,40 +102,33 @@ public class VibraGolemEntity extends TamableAnimal implements GeoEntity {
     }
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "defaultcontroller", 0, this::predicate));
-        controllers.add(new AnimationController<>(this, "attackcontroller", 0, this::attackPredicate));
-        controllers.add(new AnimationController<>(this, "ragecontroller", 0, this::ragePredicate));
-    }
+    public void tick() {
+        super.tick();
 
-    private PlayState attackPredicate(AnimationState<?> event) {
-        if (this.swinging && event.getController().getAnimationState().equals(AnimationController.State.STOPPED)) {
-            event.getController().forceAnimationReset();
-            event.getController().setAnimation(RawAnimation.begin().then("attack", Animation.LoopType.PLAY_ONCE));
-            this.swinging = false;
+        if (this.level().isClientSide()) {
+            setupAnimationState();
         }
-        return PlayState.CONTINUE;
     }
 
-    private <T extends GeoAnimatable> PlayState ragePredicate(AnimationState<T> event) {
-        if (this.isRaging && event.getController().getAnimationState().equals(AnimationController.State.STOPPED)) {
-            event.getController().forceAnimationReset();
-            event.getController().setAnimation(RawAnimation.begin().then("rage_1", Animation.LoopType.PLAY_ONCE));
-            this.isRaging = false;
-        }
-        return PlayState.CONTINUE;
-    }
-
-    private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> event) {
-        if (event.isMoving()) {
-            event.getController().setAnimation(RawAnimation.begin().then("walk", Animation.LoopType.LOOP));
+    private void setupAnimationState() {
+        if (this.idleAnimationTimeout <= 0) {
+            this.idleAnimationTimeout = this.random.nextInt(40) + 80;
+            this.idleAnimationState.start(this.tickCount);
         } else {
-            event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
+            --this.idleAnimationTimeout;
         }
-        if (this.isSitting()) {
-            event.getController().setAnimation(RawAnimation.begin().then("sit", Animation.LoopType.LOOP));
+    }
+
+    @Override
+    protected void updateWalkAnimation(float particalTick) {
+        float f;
+        if (this.getPose() == Pose.STANDING) {
+            f = Math.min(particalTick * 6F, 1f);
+        } else {
+            f = 0f;
         }
-        return PlayState.CONTINUE;
+
+        this.walkAnimation.update(f, 0.2f);
     }
 
     @Override
@@ -368,10 +365,6 @@ public class VibraGolemEntity extends TamableAnimal implements GeoEntity {
         return (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
     }
 
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return cache;
-    }
     @Override
     protected SoundEvent getSwimSound() {
         return SoundEvents.HOSTILE_SWIM;

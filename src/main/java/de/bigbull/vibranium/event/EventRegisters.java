@@ -1,18 +1,21 @@
 package de.bigbull.vibranium.event;
 
+import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.entity.MobEnities;
 import de.bigbull.vibranium.entity.custom.VibraGolemEntity;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 
+@EventBusSubscriber(modid = Vibranium.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class EventRegisters {
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
-        event.put(MobEnities.VIBRAGOLEM.value(), VibraGolemEntity.setAttributes().build());
+        event.put(MobEnities.VIBRAGOLEM.get(), VibraGolemEntity.setAttributes().build());
     }
 
     @SubscribeEvent
