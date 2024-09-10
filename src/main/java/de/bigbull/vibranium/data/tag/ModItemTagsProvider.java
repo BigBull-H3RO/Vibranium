@@ -48,7 +48,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagsInit.ToolTagsInit.VIBRANIUM_AXE_TAG).add(ItemInit.VIBRANIUM_AXE.get());
         tag(TagsInit.ToolTagsInit.VIBRANIUM_SHOVEL_TAG).add(ItemInit.VIBRANIUM_SHOVEL.get());
         tag(TagsInit.ToolTagsInit.VIBRANIUM_HOE_TAG).add(ItemInit.VIBRANIUM_HOE.get());
+        tag(TagsInit.ToolTagsInit.VIBRANIUM_SHIELD_TAG).add(ItemInit.VIBRANIUM_SHIELD.get());
 
+        //Ingot
         tag(ItemTags.TRIM_MATERIALS)
                 .add(ItemInit.VIBRANIUM_INGOT.get());
 
@@ -90,6 +92,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.HOES)
                 .add(ItemInit.VIBRANIUM_HOE.get());
 
+        tag(ItemTags.DURABILITY_ENCHANTABLE)
+                .add(ItemInit.VIBRANIUM_SHIELD.get());
+
+        //Vibranium Mace
         tag(ItemTags.MINING_ENCHANTABLE)
                 .add(ItemInit.VIBRANIUM_MACE.get());
         tag(ItemTags.MINING_LOOT_ENCHANTABLE)

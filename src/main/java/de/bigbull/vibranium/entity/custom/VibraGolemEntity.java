@@ -1,9 +1,12 @@
+//Alpha Version it's not finished yet
+
 package de.bigbull.vibranium.entity.custom;
 
 import de.bigbull.vibranium.entity.ai.DefensiveGoal;
 import de.bigbull.vibranium.entity.ai.PushGoal;
 import de.bigbull.vibranium.entity.ai.RegenerationGoal;
-import de.bigbull.vibranium.entity.client.VibraCrackiness;
+import de.bigbull.vibranium.entity.ai.VibraGolemAttackGoal;
+import de.bigbull.vibranium.entity.client.Crackniess.VibraCrackiness;
 import de.bigbull.vibranium.init.ItemInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -36,24 +39,19 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.GeoAnimatable;
-import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.animation.*;
-import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.UUID;
 
 public class VibraGolemEntity extends TamableAnimal {
+    private static final EntityDataAccessor<Boolean> ATTACKING = SynchedEntityData.defineId(VibraGolemEntity.class, EntityDataSerializers.BOOLEAN);
+
     private static final EntityDataAccessor<Boolean> SITTING = SynchedEntityData.defineId(VibraGolemEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DEFENSIVE_MODE = SynchedEntityData.defineId(VibraGolemEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<BlockPos> DEFENSIVE_POSITION = SynchedEntityData.defineId(VibraGolemEntity.class, EntityDataSerializers.BLOCK_POS);
     private UUID ownerUUID;
-    private int attackAnimationTick;
     private DamageSource lastDamageSource;
     private boolean isRaging = false;
     private int particlecounter = 10;
@@ -63,9 +61,10 @@ public class VibraGolemEntity extends TamableAnimal {
     }
 
     public final AnimationState idleAnimationState = new AnimationState();
-    public final AnimationState walkAnimationState = new AnimationState();
+    public final AnimationState attackAnimationState = new AnimationState();
 
     private int idleAnimationTimeout = 0;
+    public int attackAnimationTimeout = 0;
 
     public static AttributeSupplier.Builder setAttributes() {
         return TamableAnimal.createMobAttributes()
@@ -82,7 +81,7 @@ public class VibraGolemEntity extends TamableAnimal {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new SitWhenOrderedToGoal(this));
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0, true));
+        this.goalSelector.addGoal(2, new VibraGolemAttackGoal(this, 1.0, true));
         this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.0, 10.0F, 2.0F){
             @Override
             public boolean canUse() {
@@ -117,18 +116,37 @@ public class VibraGolemEntity extends TamableAnimal {
         } else {
             --this.idleAnimationTimeout;
         }
+
+        if (this.isAttacking() && attackAnimationTimeout <= 0) {
+            attackAnimationTimeout = 10;
+            attackAnimationState.start(this.tickCount);
+        } else {
+            --this.attackAnimationTimeout;
+        }
+
+        if (!this.isAttacking()) {
+            attackAnimationState.stop();
+        }
     }
 
     @Override
     protected void updateWalkAnimation(float particalTick) {
         float f;
         if (this.getPose() == Pose.STANDING) {
-            f = Math.min(particalTick * 6F, 1f);
+            f = Math.min(particalTick * 6f, 1f);
         } else {
             f = 0f;
         }
 
         this.walkAnimation.update(f, 0.2f);
+    }
+
+    public void setAttacking(boolean attacking) {
+        this.entityData.set(ATTACKING, attacking);
+    }
+
+    public boolean isAttacking() {
+        return this.entityData.get(ATTACKING);
     }
 
     @Override
@@ -149,6 +167,7 @@ public class VibraGolemEntity extends TamableAnimal {
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
+        builder.define(ATTACKING, false);
         builder.define(SITTING, false);
         builder.define(DEFENSIVE_MODE, false);
         builder.define(DEFENSIVE_POSITION, BlockPos.ZERO);
@@ -156,22 +175,21 @@ public class VibraGolemEntity extends TamableAnimal {
 
     @Override
     public boolean doHurtTarget(Entity entity) {
-        this.attackAnimationTick = 10;
-        this.level().broadcastEntityEvent(this, (byte)4);
+        this.level().broadcastEntityEvent(this, (byte) 4);
+
         float damage = this.getAttackDamage();
         float actualDamage = (int) damage > 0 ? damage / 2.0F + this.random.nextInt((int) damage) : damage;
-        DamageSource damagesource = this.damageSources().mobAttack(this);
-        boolean flag = entity.hurt(damagesource, actualDamage);
-        if (flag) {
-            double knockbackResistance = entity instanceof LivingEntity livingentity ? livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE) : 0.0;
+        DamageSource damageSource = this.damageSources().mobAttack(this);
+
+        boolean success = entity.hurt(damageSource, actualDamage);  // Schaden zufügen
+        if (success) {
+            double knockbackResistance = entity instanceof LivingEntity livingEntity ? livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE) : 0.0;
             double knockback = Math.max(0.0, 1.0 - knockbackResistance);
             entity.setDeltaMovement(entity.getDeltaMovement().add(0.0, 0.4F * knockback, 0.0));
-            if (this.level() instanceof ServerLevel serverlevel) {
-                EnchantmentHelper.doPostAttackEffects(serverlevel, entity, damagesource);
-            }
+            this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);  // Sound abspielen
         }
-        this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
-        return flag;
+
+        return success;
     }
 
     @Override
@@ -204,9 +222,6 @@ public class VibraGolemEntity extends TamableAnimal {
     @Override
     public void aiStep() {
         super.aiStep();
-        if (this.attackAnimationTick > 0) {
-            this.attackAnimationTick--;
-        }
         if (this.isDefensiveMode()) {
             particlecounter++;
             if (particlecounter > 10 && this.level().isClientSide) {
@@ -226,7 +241,6 @@ public class VibraGolemEntity extends TamableAnimal {
     @Override
     public void handleEntityEvent(byte id) {
         if (id == 4) {
-            this.attackAnimationTick = 10;
             this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
         } else if (id == 5) {
             this.isRaging = true;

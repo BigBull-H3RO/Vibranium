@@ -95,6 +95,10 @@ public class ItemInit {
             new HammerItem(MaterialsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(HammerItem.createAttributes(MaterialsInit.VIBRANIUM, 5.5f, -3.4f))));
 
+    //Shield
+    public static final DeferredItem<Item> VIBRANIUM_SHIELD = ITEMS.register("vibranium_shield",
+            () -> new ShieldItem(new Item.Properties().fireResistant().stacksTo(1).durability(1024)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

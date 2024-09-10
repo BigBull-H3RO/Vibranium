@@ -2,6 +2,7 @@ package de.bigbull.vibranium.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.entity.client.Crackniess.VibraGolemCrackinessLayer;
 import de.bigbull.vibranium.entity.custom.VibraGolemEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

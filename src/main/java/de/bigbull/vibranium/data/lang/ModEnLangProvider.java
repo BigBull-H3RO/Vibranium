@@ -20,7 +20,6 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Smithing Template");
         addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawn Egg");
         addItem(ItemInit.VIBRANIUM_CORE, "Vibranium Core");
-        addItem(ItemInit.VIBRANIUM_MACE, "Vibranium Mace");
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block of Raw Vibranium");
@@ -32,6 +31,8 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_AXE, "Vibranium Axe");
         addItem(ItemInit.VIBRANIUM_SHOVEL, "Vibranium Shovel");
         addItem(ItemInit.VIBRANIUM_HOE, "Vibranium Hoe");
+        addItem(ItemInit.VIBRANIUM_MACE, "Vibranium Mace");
+        addItem(ItemInit.VIBRANIUM_SHIELD, "Vibranium Shield");
 
         //Armors
         addItem(ItemInit.VIBRANIUM_BOOTS, "Vibranium Boots");
@@ -47,6 +48,9 @@ public class ModEnLangProvider extends LanguageProvider {
         add(ItemInit.VIBRANIUM_UPGRADE.getString(), "Vibranium Upgrade");
         add(ItemInit.VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION.getString(), "Add diamond armor, weapon, or tool");
         add(ItemInit.VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Add Vibranium Ingot");
+
+        //Entities
+        add("entity.vibra_golem.vibra_golem", "Vibra Golem");
 
         //Vibranium Mace
         add("item.vibranium_mace.tooltip", "Can mine 3x3 blocks");

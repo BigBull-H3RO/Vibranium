@@ -31,6 +31,7 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_SHOVEL, "Vibranium Schaufel");
         addItem(ItemInit.VIBRANIUM_HOE, "Vibranium Hacke");
         addItem(ItemInit.VIBRANIUM_MACE, "Vibranium Mace");
+        addItem(ItemInit.VIBRANIUM_SHIELD, "Vibranium Schild");
 
         //Armors
         addItem(ItemInit.VIBRANIUM_BOOTS, "Vibranium Stiefel");

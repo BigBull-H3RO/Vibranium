@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.entity.client;
+package de.bigbull.vibranium.entity.client.Crackniess;
 
 public class VibraCrackiness {
     public static final VibraCrackiness VIBRA_GOLEM = new VibraCrackiness(0.75F, 0.5F, 0.25F);

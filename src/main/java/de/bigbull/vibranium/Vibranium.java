@@ -7,7 +7,6 @@ import de.bigbull.vibranium.data.loot.ModLootModifiers;
 import de.bigbull.vibranium.entity.MobEnities;
 import de.bigbull.vibranium.entity.client.VibraGolemRenderer;
 import de.bigbull.vibranium.event.VibraGolemEvent;
-import de.bigbull.vibranium.event.EventRegisters;
 import de.bigbull.vibranium.init.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
@@ -41,7 +40,6 @@ public class Vibranium {
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(DataGenerators::gatherData);
-        modEventBus.addListener(EventRegisters::registerSpawnPlacements);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, VibraniumConfig.SPEC, "vibranium.toml");
     }

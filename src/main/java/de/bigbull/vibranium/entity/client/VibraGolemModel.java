@@ -100,6 +100,7 @@ public class VibraGolemModel<T extends Entity> extends HierarchicalModel<T> {
 
 		this.animateWalk(ModAnimationDefinitions.VibraGolemAnimation.walk, limbSwing, limbSwingAmount, 2f, 2.5f);
 		this.animate(((VibraGolemEntity) entity).idleAnimationState, ModAnimationDefinitions.VibraGolemAnimation.idle, ageInTicks, 1f);
+		this.animate(((VibraGolemEntity) entity).attackAnimationState, ModAnimationDefinitions.VibraGolemAnimation.attack, ageInTicks, 1f);
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch, float ageInTicks) {

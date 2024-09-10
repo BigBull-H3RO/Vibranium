@@ -10,6 +10,7 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -60,6 +61,16 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("   ")
                 .define('H', Items.HEAVY_CORE)
                 .define('R', Items.BREEZE_ROD)
+                .define('V', ItemInit.VIBRANIUM_INGOT)
+                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT.get()))
+                .save(this.recipeOutput, getModId("vibranium_mace"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ItemInit.VIBRANIUM_SHIELD, 1)
+                .pattern("WVW")
+                .pattern("WHW")
+                .pattern(" W ")
+                .define('H', Items.HEAVY_CORE)
+                .define('W', ItemTags.PLANKS)
                 .define('V', ItemInit.VIBRANIUM_INGOT)
                 .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT.get()))
                 .save(this.recipeOutput, getModId("vibranium_mace"));
