@@ -9,11 +9,13 @@
 
 **Welcome to the Vibranium Mod, an exciting addition to your Minecraft experience that introduces a powerful new resource and a variety of innovative tools and features.**
 
-Discover **Vibranium**, a rare and valuable ore that empowers you to craft an array of unique items. With Vibranium, you can create durable **Vibranium Armor** to protect yourself, as well as specialized **Wolf and Horse Armor** to safeguard your loyal companions.
+Discover **Vibranium**, a rare and valuable ore that empowers you to craft an array of unique items. **With Vibranium**, you can create durable Vibranium Armor to protect yourself, as well as specialized **Wolf and Horse Armor** to safeguard your loyal companions.
 
-Equip yourself with **Vibranium Tools**, including the essential sword, pickaxe, axe, shovel, and hoe, designed to withstand the toughest challenges. For those who seek efficiency, the **Vibranium Mace Hammer** allows you to mine in a 3x3 area, making resource gathering faster and more enjoyable.
+To craft Vibranium tools, weapons, and armor, you will need the **Vibranium Upgrade**, a special template found in **Trial Chambers**. This template is essential for enhancing your equipment and unlocking the full potential of Vibranium.
 
-But the Vibranium Mod offers more than just tools. Deep beneath the earth, you may encounter the mysterious **Vibra Golem**. This powerful entity can be tamed and will loyally follow and protect you on your adventures, adding an exciting new dimension to your underground explorations.
+Equip yourself with Vibranium Tools, including the essential sword, pickaxe, axe, shovel, and hoe, designed to withstand the toughest challenges. For defense, craft the unique Vibranium Shield to bolster your protection in battle. For those who seek efficiency, the Vibranium Mace Hammer allows you to mine in a 3x3 area, making resource gathering faster and more enjoyable.
+
+Please note that the **Vibra Golem** is currently in the alpha phase and does not spawn naturally in the world yet. This feature is still in development and will be added in future updates.
 
 Immerse yourself in the world of Vibranium and discover how this extraordinary material can change the way you play Minecraft. Whether you're a builder, an explorer, or a fighter, the Vibranium Mod offers something for everyone.
 
