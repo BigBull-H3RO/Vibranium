@@ -19,8 +19,9 @@ But the Vibranium Mod offers more than just tools. Deep beneath the earth, you m
 Immerse yourself in the world of Vibranium and discover how this extraordinary material can change the way you play Minecraft. Whether you're a builder, an explorer, or a fighter, the Vibranium Mod offers something for everyone.
 
 <h1></h1>
-**Note: The Vibra Golem is currently in the alpha phase and does not spawn naturally in the world yet. This feature is still in development and will be added in future updates.**
+
+⚠️**Note: The Vibra Golem is currently in the alpha phase and does not spawn naturally in the world yet. This feature is still in development and will be added in future updates.**
 
 <h1></h1>
 <h4 align="center">Please report issues to the <a href="https://github.com/BigBull-H3RO/Vibranium/issues">Issue Tracker</a></h4>
-<h4 align="center">Find out more about Vibranium on our <a href="https://www.curseforge.com/minecraft/mc-mods/create">Curseforge</a> or <a href="https://modrinth.com/mod/create">Modrinth</a> Page</h4>
+<h4 align="center">Find out more about Vibranium on our <a href="https://www.curseforge.com/minecraft/mc-mods/create">Curseforge</a> Page</h4>
