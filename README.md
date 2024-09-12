@@ -24,4 +24,4 @@ Immerse yourself in the world of Vibranium and discover how this extraordinary m
 
 <h1></h1>
 <h4 align="center">Please report issues to the <a href="https://github.com/BigBull-H3RO/Vibranium/issues">Issue Tracker</a></h4>
-<h4 align="center">Find out more about Vibranium on our <a href="https://www.curseforge.com/minecraft/mc-mods/create">Curseforge</a> Page</h4>
+<h4 align="center">Find out more about Vibranium on our <a href="https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge">Curseforge</a> Page</h4>
