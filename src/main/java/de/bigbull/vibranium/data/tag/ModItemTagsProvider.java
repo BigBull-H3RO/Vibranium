@@ -50,10 +50,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagsInit.ToolTagsInit.VIBRANIUM_HOE_TAG).add(ItemInit.VIBRANIUM_HOE.get());
         tag(TagsInit.ToolTagsInit.VIBRANIUM_SHIELD_TAG).add(ItemInit.VIBRANIUM_SHIELD.get());
 
-        //Ingot
-        tag(ItemTags.TRIM_MATERIALS)
-                .add(ItemInit.VIBRANIUM_INGOT.get());
-
         //Armor
         tag(ItemTags.FOOT_ARMOR)
                 .add(ItemInit.VIBRANIUM_BOOTS.get());

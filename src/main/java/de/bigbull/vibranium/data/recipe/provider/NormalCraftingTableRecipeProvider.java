@@ -27,13 +27,14 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
     public void build() {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockInit.BLOCK_OF_RAW_VIBRANIUM.get(), 1)
                 .requires(Ingredient.of(ItemInit.RAW_VIBRANIUM), 9)
-                .unlockedBy("has_item", has(TagsInit.ItemTagsInit.RAW_VIBRANIUM_TAG))
+                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM.get()))
                 .save(this.recipeOutput, getModId("block_of_raw_vibranium"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT.get(), 1)
                 .requires(Ingredient.of(ItemInit.RAW_VIBRANIUM), 4)
                 .requires(Ingredient.of(Items.DIAMOND), 4)
-                .unlockedBy("has_item", has(TagsInit.ItemTagsInit.RAW_VIBRANIUM_TAG))
+                .requires(Ingredient.of(Items.NETHERITE_SCRAP), 1)
+                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM.get()))
                 .save(this.recipeOutput, getModId("vibranium_ingot"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, 2)
@@ -73,6 +74,6 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .define('W', ItemTags.PLANKS)
                 .define('V', ItemInit.VIBRANIUM_INGOT)
                 .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT.get()))
-                .save(this.recipeOutput, getModId("vibranium_mace"));
+                .save(this.recipeOutput, getModId("vibranium_shield"));
     }
 }

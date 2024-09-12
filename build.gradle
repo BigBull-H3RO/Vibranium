@@ -38,7 +38,7 @@ runs {
 
     server {
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
-        programArgument '--nogui'
+        arguments.add('--nogui') // Ändere 'programArgument' zu 'arguments.add()'
     }
 
     gameTestServer {
@@ -54,10 +54,6 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.compilerArgs << "-Xlint:deprecation" << "-Xlint:removal" << "-Xlint:unchecked"
 }
 
 tasks.withType(ProcessResources).configureEach {
