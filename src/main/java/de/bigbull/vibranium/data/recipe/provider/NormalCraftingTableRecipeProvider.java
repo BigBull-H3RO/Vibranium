@@ -32,8 +32,8 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT.get(), 1)
                 .requires(Ingredient.of(ItemInit.RAW_VIBRANIUM), 4)
+                .requires(Ingredient.of(Items.NETHERITE_INGOT), 1)
                 .requires(Ingredient.of(Items.DIAMOND), 4)
-                .requires(Ingredient.of(Items.NETHERITE_SCRAP), 1)
                 .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM.get()))
                 .save(this.recipeOutput, getModId("vibranium_ingot"));
 

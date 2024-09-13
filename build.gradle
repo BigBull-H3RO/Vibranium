@@ -38,7 +38,7 @@ runs {
 
     server {
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
-        arguments.add('--nogui') // Ändere 'programArgument' zu 'arguments.add()'
+        arguments.add('--nogui')
     }
 
     gameTestServer {
