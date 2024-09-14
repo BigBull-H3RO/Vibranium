@@ -47,17 +47,6 @@ public class HammerItem extends DiggerItem {
         super(tier, BlockTags.MINEABLE_WITH_PICKAXE, properties);
     }
 
-    public static ItemAttributeModifiers createAttributes() {
-        return ItemAttributeModifiers.builder()
-                .add(
-                        Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 6.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND
-                )
-                .add(
-                        Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -3.0F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND
-                )
-                .build();
-    }
-
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
         if (!level.isClientSide && entity instanceof Player player) {
@@ -68,7 +57,7 @@ public class HammerItem extends DiggerItem {
                     for (BlockPos targetPos : affectedPositions) {
                         BlockState targetState = level.getBlockState(targetPos);
                         if (isValidBlockForTool(targetState)) {
-                            level.destroyBlock(targetPos, true);
+                            level.destroyBlock(targetPos, false);
                             Block.getDrops(targetState, (ServerLevel) level, targetPos, null, entity, stack)
                                     .forEach(drop -> Block.popResource(level, targetPos, drop));
 
@@ -132,18 +121,9 @@ public class HammerItem extends DiggerItem {
         return positions;
     }
 
-    public static Tool createToolProperties() {
-        return new Tool(List.of(), 1.0F, 2);
-    }
-
     @Override
     public boolean canAttackBlock(BlockState p_333875_, Level p_333847_, BlockPos p_334073_, Player p_334042_) {
         return !p_334042_.isCreative();
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return 15;
     }
 
     @Override

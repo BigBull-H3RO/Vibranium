@@ -99,8 +99,7 @@ public class ItemInit {
                     new Item.Properties()
                             .fireResistant()
                             .rarity(Rarity.EPIC)
-                            .component(DataComponents.TOOL, MaceItem.createToolProperties())
-                            .attributes(MaceItem.createAttributes())));
+                            .attributes(HammerItem.createAttributes(MaterialsInit.VIBRANIUM, 6.5f, -3.0f))));
     public static final DeferredItem<Item> VIBRANIUM_SHIELD = ITEMS.register("vibranium_shield",
             () -> new ShieldItem(new Item.Properties().fireResistant().stacksTo(1).durability(1024)));
 
