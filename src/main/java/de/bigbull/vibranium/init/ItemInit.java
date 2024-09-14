@@ -4,6 +4,7 @@ import de.bigbull.vibranium.entity.MobEnities;
 import de.bigbull.vibranium.init.item.HammerItem;
 import de.bigbull.vibranium.Vibranium;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -91,11 +92,15 @@ public class ItemInit {
     public static final DeferredItem<HoeItem> VIBRANIUM_HOE = ITEMS.register("vibranium_hoe", () ->
             new HoeItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(HoeItem.createAttributes(
                     MaterialsInit.VIBRANIUM, -2.5f, 0.0f))));
+
+    //Advanced Items
     public static final DeferredItem<HammerItem> VIBRANIUM_MACE = ITEMS.register("vibranium_mace", () ->
             new HammerItem(MaterialsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE,
-                    new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(HammerItem.createAttributes(MaterialsInit.VIBRANIUM, 5.5f, -3.4f))));
-
-    //Shield
+                    new Item.Properties()
+                            .fireResistant()
+                            .rarity(Rarity.EPIC)
+                            .component(DataComponents.TOOL, MaceItem.createToolProperties())
+                            .attributes(MaceItem.createAttributes())));
     public static final DeferredItem<Item> VIBRANIUM_SHIELD = ITEMS.register("vibranium_shield",
             () -> new ShieldItem(new Item.Properties().fireResistant().stacksTo(1).durability(1024)));
 
