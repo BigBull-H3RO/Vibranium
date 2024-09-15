@@ -16,7 +16,7 @@ public class VibraniumConfig {
         VEINS_PER_CHUNK = BUILDER.comment("How many veins of Vibranium ore should spawn per chunk")
                 .defineInRange("Veins per Chunk [Default: 2]", 2, 0, 64);
         MAX_HEIGHT = BUILDER.comment("The maximum height Vibranium ore should spawn")
-                .defineInRange("MaxHeight [Default: -15]", -15, -64, 320);
+                .defineInRange("MaxHeight [Default: -15]", -20, -64, 320);
         MIN_HEIGHT = BUILDER.comment("The minimum height Vibranium ore should spawn")
                 .defineInRange("MinHeight [Default: -64]", -64, -64, 320);
         BUILDER.pop();

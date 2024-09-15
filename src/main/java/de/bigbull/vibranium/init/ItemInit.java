@@ -1,15 +1,13 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.entity.MobEnities;
-import de.bigbull.vibranium.init.item.HammerItem;
+import de.bigbull.vibranium.init.item.VibraniumMaceItem;
 import de.bigbull.vibranium.Vibranium;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -94,16 +92,10 @@ public class ItemInit {
                     MaterialsInit.VIBRANIUM, -2.5f, 0.0f))));
 
     //Advanced Items
-    public static final DeferredItem<HammerItem> VIBRANIUM_MACE = ITEMS.register("vibranium_mace", () ->
-            new HammerItem(MaterialsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE,
-                    new Item.Properties()
-                            .fireResistant()
-                            .rarity(Rarity.EPIC)
-                            .attributes(HammerItem.createAttributes(MaterialsInit.VIBRANIUM, 6.5f, -3.0f))));
+    public static final DeferredItem<VibraniumMaceItem> VIBRANIUM_MACE = ITEMS.register("vibranium_mace", () ->
+            new VibraniumMaceItem(MaterialsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE,
+                    new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(VibraniumMaceItem.createAttributes(
+                            MaterialsInit.VIBRANIUM, 3.0f, -3.0f))));
     public static final DeferredItem<Item> VIBRANIUM_SHIELD = ITEMS.register("vibranium_shield",
             () -> new ShieldItem(new Item.Properties().fireResistant().stacksTo(1).durability(1024)));
-
-    public static void register(IEventBus eventBus) {
-        ITEMS.register(eventBus);
-    }
 }

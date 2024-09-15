@@ -24,7 +24,7 @@ public class SmithingTableRecipeProvider extends MainModRecipeProvider {
         //Vibranium Tools
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()),
-                        Ingredient.of(Items.DIAMOND_SWORD),
+                        Ingredient.of(Items.NETHERITE_SWORD),
                         Ingredient.of(ItemInit.VIBRANIUM_INGOT.get()),
                         RecipeCategory.TOOLS,
                         ItemInit.VIBRANIUM_SWORD.get())
@@ -33,7 +33,7 @@ public class SmithingTableRecipeProvider extends MainModRecipeProvider {
 
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()),
-                        Ingredient.of(Items.DIAMOND_PICKAXE),
+                        Ingredient.of(Items.NETHERITE_PICKAXE),
                         Ingredient.of(ItemInit.VIBRANIUM_INGOT.get()),
                         RecipeCategory.TOOLS,
                         ItemInit.VIBRANIUM_PICKAXE.get())
@@ -42,7 +42,7 @@ public class SmithingTableRecipeProvider extends MainModRecipeProvider {
 
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()),
-                        Ingredient.of(Items.DIAMOND_AXE),
+                        Ingredient.of(Items.NETHERITE_AXE),
                         Ingredient.of(ItemInit.VIBRANIUM_INGOT.get()),
                         RecipeCategory.TOOLS,
                         ItemInit.VIBRANIUM_AXE.get())
@@ -51,7 +51,7 @@ public class SmithingTableRecipeProvider extends MainModRecipeProvider {
 
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()),
-                        Ingredient.of(Items.DIAMOND_SHOVEL),
+                        Ingredient.of(Items.NETHERITE_SHOVEL),
                         Ingredient.of(ItemInit.VIBRANIUM_INGOT.get()),
                         RecipeCategory.TOOLS,
                         ItemInit.VIBRANIUM_SHOVEL.get())
@@ -60,7 +60,7 @@ public class SmithingTableRecipeProvider extends MainModRecipeProvider {
 
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()),
-                        Ingredient.of(Items.DIAMOND_HOE),
+                        Ingredient.of(Items.NETHERITE_HOE),
                         Ingredient.of(ItemInit.VIBRANIUM_INGOT.get()),
                         RecipeCategory.TOOLS,
                         ItemInit.VIBRANIUM_HOE.get())
@@ -70,7 +70,7 @@ public class SmithingTableRecipeProvider extends MainModRecipeProvider {
         //Vibranium Armor
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()),
-                        Ingredient.of(Items.DIAMOND_HELMET),
+                        Ingredient.of(Items.NETHERITE_HELMET),
                         Ingredient.of(ItemInit.VIBRANIUM_INGOT.get()),
                         RecipeCategory.TOOLS,
                         ItemInit.VIBRANIUM_HELMET.get())
@@ -79,7 +79,7 @@ public class SmithingTableRecipeProvider extends MainModRecipeProvider {
 
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()),
-                        Ingredient.of(Items.DIAMOND_CHESTPLATE),
+                        Ingredient.of(Items.NETHERITE_CHESTPLATE),
                         Ingredient.of(ItemInit.VIBRANIUM_INGOT.get()),
                         RecipeCategory.TOOLS,
                         ItemInit.VIBRANIUM_CHESTPLATE.get())
@@ -88,7 +88,7 @@ public class SmithingTableRecipeProvider extends MainModRecipeProvider {
 
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()),
-                        Ingredient.of(Items.DIAMOND_LEGGINGS),
+                        Ingredient.of(Items.NETHERITE_LEGGINGS),
                         Ingredient.of(ItemInit.VIBRANIUM_INGOT.get()),
                         RecipeCategory.TOOLS,
                         ItemInit.VIBRANIUM_LEGGINGS.get())
@@ -97,7 +97,7 @@ public class SmithingTableRecipeProvider extends MainModRecipeProvider {
 
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()),
-                        Ingredient.of(Items.DIAMOND_BOOTS),
+                        Ingredient.of(Items.NETHERITE_BOOTS),
                         Ingredient.of(ItemInit.VIBRANIUM_INGOT.get()),
                         RecipeCategory.TOOLS,
                         ItemInit.VIBRANIUM_BOOTS.get())

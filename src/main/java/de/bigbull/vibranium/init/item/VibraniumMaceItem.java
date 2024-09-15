@@ -5,7 +5,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
@@ -19,13 +18,10 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -40,10 +36,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class HammerItem extends DiggerItem {
+public class VibraniumMaceItem extends DiggerItem {
     private float lastCalculatedDamage = 0.0F;
 
-    public HammerItem(Tier tier, TagKey<Block> tag, Properties properties) {
+    public VibraniumMaceItem(Tier tier, TagKey<Block> tag, Properties properties) {
         super(tier, BlockTags.MINEABLE_WITH_PICKAXE, properties);
     }
 
@@ -175,6 +171,7 @@ public class HammerItem extends DiggerItem {
             } else {
                 float fallDistance = livingentity.fallDistance;
                 float damage;
+
                 if (fallDistance <= 3.0F) {
                     damage = 4.0F * fallDistance;
                 } else if (fallDistance <= 8.0F) {
@@ -188,7 +185,6 @@ public class HammerItem extends DiggerItem {
                 }
 
                 this.lastCalculatedDamage = damage;
-
                 return damage;
             }
         } else {
@@ -217,7 +213,7 @@ public class HammerItem extends DiggerItem {
                 });
     }
 
-    private static Predicate<LivingEntity> knockbackPredicate(Player p_338613_, Entity p_338698_) {
+    private static Predicate<LivingEntity> knockbackPredicate(Player player, Entity entity) {
         return p_344407_ -> {
             boolean flag;
             boolean flag1;
@@ -225,9 +221,9 @@ public class HammerItem extends DiggerItem {
             boolean flag6;
             label62: {
                 flag = !p_344407_.isSpectator();
-                flag1 = p_344407_ != p_338613_ && p_344407_ != p_338698_;
-                flag2 = !p_338613_.isAlliedTo(p_344407_);
-                if (p_344407_ instanceof TamableAnimal tamableanimal && tamableanimal.isTame() && p_338613_.getUUID().equals(tamableanimal.getOwnerUUID())) {
+                flag1 = p_344407_ != player && p_344407_ != entity;
+                flag2 = !player.isAlliedTo(p_344407_);
+                if (p_344407_ instanceof TamableAnimal tamableanimal && tamableanimal.isTame() && player.getUUID().equals(tamableanimal.getOwnerUUID())) {
                     flag6 = true;
                     break label62;
                 }
@@ -247,16 +243,16 @@ public class HammerItem extends DiggerItem {
             }
 
             boolean flag4 = flag6;
-            boolean flag5 = p_338698_.distanceToSqr(p_344407_) <= Math.pow(3.5, 2.0);
+            boolean flag5 = entity.distanceToSqr(p_344407_) <= Math.pow(3.5, 2.0);
             return flag && flag1 && flag2 && flag3 && flag4 && flag5;
         };
     }
 
-    private static double getKnockbackPower(Player p_338265_, LivingEntity p_338630_, Vec3 p_338866_) {
-        return (3.5 - p_338866_.length())
+    private static double getKnockbackPower(Player player, LivingEntity livingEntity, Vec3 vec3) {
+        return (3.5 - vec3.length())
                 * 0.7F
-                * (double)(p_338265_.fallDistance > 5.0F ? 2 : 1)
-                * (1.0 - p_338630_.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+                * (double)(player.fallDistance > 5.0F ? 2 : 1)
+                * (1.0 - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
     }
 
     public static boolean canSmashAttack(LivingEntity p_344836_) {

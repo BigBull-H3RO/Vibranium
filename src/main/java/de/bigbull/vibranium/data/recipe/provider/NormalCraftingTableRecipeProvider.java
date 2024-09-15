@@ -3,7 +3,6 @@ package de.bigbull.vibranium.data.recipe.provider;
 import de.bigbull.vibranium.data.recipe.MainModRecipeProvider;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
-import de.bigbull.vibranium.init.TagsInit;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -25,15 +24,32 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
     }
 
     public void build() {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemInit.RAW_VIBRANIUM.get(), 9)
+                .requires(Ingredient.of(BlockInit.BLOCK_OF_RAW_VIBRANIUM), 1)
+                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM.get()))
+                .save(this.recipeOutput, getModId("raw_vibranium_from_bock_of_raw_vibranium"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT.get(), 9)
+                .requires(Ingredient.of(BlockInit.Vibranium_Block), 1)
+                .group("vibranium_ingot")
+                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM.get()))
+                .save(this.recipeOutput, getModId("vibranium_ingot_from_vibranium_block"));
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockInit.BLOCK_OF_RAW_VIBRANIUM.get(), 1)
                 .requires(Ingredient.of(ItemInit.RAW_VIBRANIUM), 9)
                 .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM.get()))
                 .save(this.recipeOutput, getModId("block_of_raw_vibranium"));
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockInit.Vibranium_Block.get(), 1)
+                .requires(Ingredient.of(ItemInit.VIBRANIUM_INGOT), 9)
+                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT.get()))
+                .save(this.recipeOutput, getModId("vibranium_block"));
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT.get(), 1)
                 .requires(Ingredient.of(ItemInit.RAW_VIBRANIUM), 4)
-                .requires(Ingredient.of(Items.NETHERITE_INGOT), 1)
+                .requires(Ingredient.of(Items.NETHERITE_SCRAP), 1)
                 .requires(Ingredient.of(Items.DIAMOND), 4)
+                .group("vibranium_ingot")
                 .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM.get()))
                 .save(this.recipeOutput, getModId("vibranium_ingot"));
 
@@ -62,7 +78,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("   ")
                 .define('H', Items.HEAVY_CORE)
                 .define('R', Items.BREEZE_ROD)
-                .define('V', ItemInit.VIBRANIUM_INGOT)
+                .define('V', BlockInit.Vibranium_Block)
                 .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT.get()))
                 .save(this.recipeOutput, getModId("vibranium_mace"));
 

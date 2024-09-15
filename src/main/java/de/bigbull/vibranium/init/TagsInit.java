@@ -37,11 +37,12 @@ public class TagsInit {
         public static final TagKey<Item> VIBRANIUM_LEGGINGS_TAG = ItemTags.create(createGenericItemsLocation("vibranium_leggings"));
         public static final TagKey<Item> VIBRANIUM_BOOTS_TAG = ItemTags.create(createGenericItemsLocation("vibranium_boots"));
         public static final TagKey<Item> VIBRANIUM_INGOT_TAG = ItemTags.create(createGenericItemsLocation("vibranium_ingot"));
+        public static final TagKey<Item> RAW_VIBRANIUM_TAG = ItemTags.create(createRawItemsLocation("raw_vibranium"));
 
         //Blocks
         public static final TagKey<Item> BLOCK_OF_RAW_VIBRANIUM_TAG = ItemTags.create(createBlockLocation("block_of_raw_vibranium"));
-        public static final TagKey<Item> RAW_VIBRANIUM_TAG = ItemTags.create(createRawItemsLocation("raw_vibranium"));
         public static final TagKey<Item> DEEPSLATE_VIBRANIUM_ORE_TAG = ItemTags.create(createOreLocation("deepslate_vibranium_ore"));
+        public static final TagKey<Item> VIBRANIUM_BLOCK_TAG = ItemTags.create(createBlockLocation("vibranium_block"));
     }
 
     public static class ToolTagsInit {
@@ -57,5 +58,9 @@ public class TagsInit {
     public static class BlockTagsInit {
         public static final TagKey<Block> BLOCK_OF_RAW_VIBRANIUM_TAG = BlockTags.create(createBlockLocation("block_of_raw_vibranium"));
         public static final TagKey<Block> DEEPSLATE_VIBRANIUM_ORE_TAG = BlockTags.create(createOreLocation("deepslate_vibranium_ore"));
+        public static final TagKey<Block> VIBRANIUM_BLOCK_TAG = BlockTags.create(createBlockLocation("vibranium_block"));
+
+        public static final TagKey<Block> INCORRECT_FOR_VIBRANIUM_TOOL = BlockTags.create(createBlockLocation("incorrect_for_vibranium_tool"));
+        public static final TagKey<Block> NEEDS_VIBRANIUM_TOOL = BlockTags.create(createBlockLocation("needs_vibranium_tool"));
     }
 }
