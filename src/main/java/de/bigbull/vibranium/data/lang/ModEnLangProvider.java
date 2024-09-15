@@ -24,6 +24,7 @@ public class ModEnLangProvider extends LanguageProvider {
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block of Raw Vibranium");
         addBlock(BlockInit.DEPPSLATE_VIBRANIUM_ORE, "Deepslate Vibranium Ore");
+        addBlock(BlockInit.Vibranium_Block, "Vibranium Block");
 
         //Tools
         addItem(ItemInit.VIBRANIUM_SWORD, "Vibranium Sword");
@@ -50,7 +51,7 @@ public class ModEnLangProvider extends LanguageProvider {
         add(ItemInit.VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Add Vibranium Ingot");
 
         //Entities
-        add("entity.vibra_golem.vibra_golem", "Vibra Golem");
+//        add("entity.vibra_golem.vibra_golem", "Vibra Golem");
 
         //Vibranium Mace
         add("item.vibranium_mace.tooltip", "Can mine 3x3 blocks");

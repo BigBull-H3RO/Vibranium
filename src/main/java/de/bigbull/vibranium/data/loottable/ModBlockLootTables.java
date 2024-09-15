@@ -24,6 +24,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get(), createOreDrop(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get(), ItemInit.RAW_VIBRANIUM.get()));
 
         dropSelf(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
+        dropSelf(BlockInit.Vibranium_Block.get());
     }
 
     @Override

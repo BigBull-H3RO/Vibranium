@@ -18,6 +18,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         normalBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
         normalBlock((BlockInit.DEPPSLATE_VIBRANIUM_ORE.get()));
+        normalBlock(BlockInit.Vibranium_Block.get());
     }
 
     private void normalBlock(Block block) {
