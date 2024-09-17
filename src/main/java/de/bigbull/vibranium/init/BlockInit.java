@@ -20,7 +20,7 @@ public class BlockInit {
             new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM)
                     .mapColor(MapColor.COLOR_BLUE)
                     .requiresCorrectToolForDrops()
-                    .strength(5.0F, 6.0F)));
+                    .strength(5.0F, 20.0F)));
 
     public static final DeferredBlock<Block> DEPPSLATE_VIBRANIUM_ORE = registerBlock("deepslate_vibranium_ore", () ->
             new Block(BlockBehaviour.Properties.of()
@@ -35,7 +35,6 @@ public class BlockInit {
                     .strength(50.0F, 1200.0F)
                     .sound(SoundType.NETHERITE_BLOCK)
                     .requiresCorrectToolForDrops()));
-
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

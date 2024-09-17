@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.init.item.VibraniumMaceItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.RenderType;
@@ -12,6 +13,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -22,14 +24,16 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderHighlightEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 
+import java.util.List;
+
 @EventBusSubscriber(modid = Vibranium.MODID, value = Dist.CLIENT)
 public class ClientRenderEvent {
     @SubscribeEvent
     public static void onRenderWorldLast(RenderLevelStageEvent event) {
         Minecraft mc = Minecraft.getInstance();
-        ItemStack heldItem = mc.player.getMainHandItem();
+        ItemStack item = mc.player.getMainHandItem();
 
-        if (heldItem.getItem() != ItemInit.VIBRANIUM_MACE.get()) {
+        if (item.getItem() != ItemInit.VIBRANIUM_MACE.get() || mc.player.isCreative()) {
             return;
         }
 
@@ -53,9 +57,9 @@ public class ClientRenderEvent {
     @SubscribeEvent
     public static void onBlockHighlight(RenderHighlightEvent.Block event) {
         Minecraft mc = Minecraft.getInstance();
-        ItemStack heldItem = mc.player.getMainHandItem();
+        ItemStack item = mc.player.getMainHandItem();
 
-        if (heldItem.getItem() == ItemInit.VIBRANIUM_MACE.get()) {
+        if (item.getItem() == ItemInit.VIBRANIUM_MACE.get() && !mc.player.isCreative()) {
             BlockPos hitPos = event.getTarget().getBlockPos();
             BlockState centerBlockState = mc.level.getBlockState(hitPos);
 
@@ -71,7 +75,7 @@ public class ClientRenderEvent {
         poseStack.pushPose();
         poseStack.translate(-camPos.x, -camPos.y, -camPos.z);
 
-        Iterable<BlockPos> positions = get3x3Positions(center, direction);
+        List<BlockPos> positions = VibraniumMaceItem.getAffectedPositions(mc.player, center);
         for (BlockPos pos : positions) {
             BlockState state = mc.level.getBlockState(pos);
             if (isValidBlock(state)) {
@@ -84,29 +88,14 @@ public class ClientRenderEvent {
 
     private static boolean isValidBlock(BlockState state) {
         Block block = state.getBlock();
-        return !state.isAir() && block.defaultBlockState().isSolidRender(Minecraft.getInstance().level, BlockPos.ZERO);
-    }
-
-    private static Iterable<BlockPos> get3x3Positions(BlockPos center, Direction direction) {
-        switch (direction) {
-            case UP:
-            case DOWN:
-                return BlockPos.betweenClosed(center.offset(-1, 0, -1), center.offset(1, 0, 1));
-            case NORTH:
-            case SOUTH:
-                return BlockPos.betweenClosed(center.offset(-1, -1, 0), center.offset(1, 1, 0));
-            case EAST:
-            case WEST:
-                return BlockPos.betweenClosed(center.offset(0, -1, -1), center.offset(0, 1, 1));
-            default:
-                return BlockPos.betweenClosed(center, center);
-        }
+        FluidState fluidState = state.getFluidState();
+        return (!state.isAir() || fluidState.isEmpty()) && block.defaultBlockState().isSolidRender(Minecraft.getInstance().level, BlockPos.ZERO);
     }
 
     private static void renderBlockOutline(PoseStack poseStack, AABB boundingBox) {
         RenderType renderType = RenderType.lines();
         VertexConsumer builder = Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(renderType);
-        LevelRenderer.renderLineBox(poseStack, builder, boundingBox.minX, boundingBox.minY, boundingBox.minZ, boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ, 0.0F, 0.0F, 0.0F, 0.35F);
+        LevelRenderer.renderLineBox(poseStack, builder, boundingBox.minX, boundingBox.minY, boundingBox.minZ, boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ, 0.0F, 0.0F, 0.0F, 0.4F);
         Minecraft.getInstance().renderBuffers().bufferSource().endBatch(renderType);
     }
 }

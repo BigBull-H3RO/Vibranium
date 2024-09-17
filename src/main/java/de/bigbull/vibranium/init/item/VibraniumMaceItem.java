@@ -71,7 +71,7 @@ public class VibraniumMaceItem extends DiggerItem {
         return super.mineBlock(stack, level, state, pos, entity);
     }
 
-    public List<BlockPos> getAffectedPositions(Player player, BlockPos pos) {
+    public static List<BlockPos> getAffectedPositions(Player player, BlockPos pos) {
         List<BlockPos> positions = new ArrayList<>();
         HitResult hitResult = getPlayerPOVHitResult(player.level(), player, ClipContext.Fluid.NONE);
 
