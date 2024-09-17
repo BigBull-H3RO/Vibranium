@@ -1,7 +1,7 @@
 <p align="center"><img src="./.idea/icon.png" alt="Logo" width="250"></p>
 <h1 align="center">Vibranium  <br>
-	<a href="https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge/files"><img src="https://cf.way2muchnoise.eu/versions/1100508(c70039).svg?cachebuster=1" alt="Supported Versions"></a>
-	<a href="https://github.com/BigBull-H3RO/Vibranium/blob/main/LICENSE"><img src="https://img.shields.io/github/license/BigBull-H3RO/Vibranium?style=flat&color=c70039" alt="License"></a>
+	<a href="https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge/files"><img src="https://cf.way2muchnoise.eu/versions/1100508(0280ff).svg?cachebuster=1" alt="Supported Versions"></a>
+	<a href="https://github.com/BigBull-H3RO/Vibranium/blob/main/LICENSE"><img src="https://img.shields.io/github/license/BigBull-H3RO/Vibranium?style=flat&color=0280ff" alt="License"></a>
 	<a href="https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge"><img src="https://cf.way2muchnoise.eu/1100508.svg?" alt="CurseForge"></a>
 	<a href="https://modrinth.com/mod/vibranium"><img src="https://img.shields.io/modrinth/dt/K3I2cKId?logo=modrinth&label=&suffix=%20&style=flat&color=242629&labelColor=5ca424&logoColor=1c1c1c" alt="Modrinth"></a>
     <br><br>
