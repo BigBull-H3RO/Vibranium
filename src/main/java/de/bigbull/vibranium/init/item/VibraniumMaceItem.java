@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.init.item;
 
-import de.bigbull.vibranium.init.ItemInit;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -31,6 +31,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +48,22 @@ public class VibraniumMaceItem extends DiggerItem {
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
         if (!level.isClientSide && entity instanceof Player player) {
             if (!player.isShiftKeyDown() || player.isCreative()) {
-                if (isValidBlockForTool(state)) {
+                TagKey<Block> requiredTool = getRequiredToolForBlock(state);
+
+                if (requiredTool != null && isValidBlockForTool(state, requiredTool)) {
+                    boolean middleBlockNeedsAdvancedTool = state.is(BlockTags.NEEDS_DIAMOND_TOOL) || state.is(Tags.Blocks.NEEDS_NETHERITE_TOOL);
+
                     List<BlockPos> affectedPositions = getAffectedPositions(player, pos);
+
+                    stack.hurtAndBreak(1, entity, EquipmentSlot.MAINHAND);
+                    affectedPositions.remove(pos);
 
                     for (BlockPos targetPos : affectedPositions) {
                         BlockState targetState = level.getBlockState(targetPos);
-                        if (isValidBlockForTool(targetState)) {
+
+                        if ((middleBlockNeedsAdvancedTool && isValidBlockForTool(targetState, requiredTool)) ||
+                                (!middleBlockNeedsAdvancedTool && !targetState.is(BlockTags.NEEDS_DIAMOND_TOOL) && !targetState.is(Tags.Blocks.NEEDS_NETHERITE_TOOL) && isValidBlockForTool(targetState, requiredTool))) {
+
                             level.destroyBlock(targetPos, false);
                             Block.getDrops(targetState, (ServerLevel) level, targetPos, null, entity, stack)
                                     .forEach(drop -> Block.popResource(level, targetPos, drop));
@@ -260,13 +271,40 @@ public class VibraniumMaceItem extends DiggerItem {
     }
 
     @Override
-    public boolean isValidRepairItem(ItemStack p_334031_, ItemStack p_334058_) {
-        return p_334058_.is(ItemInit.VIBRANIUM_INGOT);
+    public float getDestroySpeed(ItemStack stack, BlockState state) {
+        Player player = Minecraft.getInstance().player;
+        float baseSpeed = this.getTier().getSpeed();
+
+        if (player != null && !player.isShiftKeyDown()) {
+            if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
+                return baseSpeed * 0.10005F;
+            }
+            if (state.is(BlockTags.MINEABLE_WITH_AXE)) {
+                return baseSpeed * 0.35F;
+            }
+            if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
+                return baseSpeed * 0.5F;
+            }
+        }
+        return super.getTier().getSpeed();
     }
 
-    public boolean isValidBlockForTool(BlockState state) {
+    private TagKey<Block> getRequiredToolForBlock(BlockState state) {
+        if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
+            return BlockTags.MINEABLE_WITH_PICKAXE;
+        }
+        if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
+            return BlockTags.MINEABLE_WITH_SHOVEL;
+        }
+        if (state.is(BlockTags.MINEABLE_WITH_AXE)) {
+            return BlockTags.MINEABLE_WITH_AXE;
+        }
+        return null;
+    }
+
+    public boolean isValidBlockForTool(BlockState state, TagKey<Block> requiredTool) {
         return state.isSolidRender(null, BlockPos.ZERO) &&
-                (state.is(BlockTags.MINEABLE_WITH_PICKAXE) || state.is(BlockTags.MINEABLE_WITH_SHOVEL) || state.is(BlockTags.MINEABLE_WITH_AXE)) &&
+                state.is(requiredTool) &&
                 state.getBlock() != Blocks.AIR;
     }
 
