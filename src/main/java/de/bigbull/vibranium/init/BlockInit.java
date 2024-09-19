@@ -20,12 +20,12 @@ public class BlockInit {
             new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM)
                     .mapColor(MapColor.COLOR_BLUE)
                     .requiresCorrectToolForDrops()
-                    .strength(5.0F, 20.0F)));
+                    .strength(6.0F, 1200.0F)));
 
     public static final DeferredBlock<Block> DEPPSLATE_VIBRANIUM_ORE = registerBlock("deepslate_vibranium_ore", () ->
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.DEEPSLATE)
-                    .strength(20.0F, 1200.0F)
+                    .strength(12.0F, 1200.0F)
                     .sound(SoundType.DEEPSLATE)
                     .requiresCorrectToolForDrops()));
 
