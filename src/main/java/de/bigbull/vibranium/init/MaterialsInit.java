@@ -10,7 +10,7 @@ public class MaterialsInit {
             TagsInit.BlockTagsInit.INCORRECT_FOR_VIBRANIUM_TOOL,
             2512,
             10.0f,
-            2.5f,
+            5.0f,
             18,
             () -> Ingredient.of(ItemInit.VIBRANIUM_INGOT));
 }

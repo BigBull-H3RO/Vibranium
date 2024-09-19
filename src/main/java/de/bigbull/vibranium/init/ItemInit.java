@@ -77,25 +77,25 @@ public class ItemInit {
     //Tools
     public static final DeferredItem<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword", () ->
             new SwordItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(SwordItem.createAttributes(
-                    MaterialsInit.VIBRANIUM, 5.5f, -2.2f))));
+                    MaterialsInit.VIBRANIUM, 3.0f, -2.2f))));
     public static final DeferredItem<PickaxeItem> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe", () ->
             new PickaxeItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(PickaxeItem.createAttributes(
-                    MaterialsInit.VIBRANIUM, 2.5f, -2.8f))));
+                    MaterialsInit.VIBRANIUM, 0.0f, -2.8f))));
     public static final DeferredItem<AxeItem> VIBRANIUM_AXE = ITEMS.register("vibranium_axe", () ->
             new AxeItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(AxeItem.createAttributes(
-                    MaterialsInit.VIBRANIUM, 6.5f, -2.8f))));
+                    MaterialsInit.VIBRANIUM, 5.0f, -3.0f))));
     public static final DeferredItem<ShovelItem> VIBRANIUM_SHOVEL = ITEMS.register("vibranium_shovel", () ->
             new ShovelItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(ShovelItem.createAttributes(
-                    MaterialsInit.VIBRANIUM, 3.0f, -3.0f))));
+                    MaterialsInit.VIBRANIUM, 0.5f, -3.0f))));
     public static final DeferredItem<HoeItem> VIBRANIUM_HOE = ITEMS.register("vibranium_hoe", () ->
             new HoeItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(HoeItem.createAttributes(
-                    MaterialsInit.VIBRANIUM, -2.5f, 0.0f))));
+                    MaterialsInit.VIBRANIUM, -5.0f, 0.0f))));
 
     //Advanced Items
     public static final DeferredItem<VibraniumMaceItem> VIBRANIUM_MACE = ITEMS.register("vibranium_mace", () ->
             new VibraniumMaceItem(MaterialsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE,
                     new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(VibraniumMaceItem.createAttributes(
-                            MaterialsInit.VIBRANIUM, 3.0f, -3.0f))));
+                            MaterialsInit.VIBRANIUM, 0.5f, -3.0f))));
     public static final DeferredItem<Item> VIBRANIUM_SHIELD = ITEMS.register("vibranium_shield",
             () -> new ShieldItem(new Item.Properties().fireResistant().stacksTo(1).durability(1024)));
 }

@@ -21,10 +21,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get(), createOreDrop(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get(), ItemInit.RAW_VIBRANIUM.get()));
+        this.add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get(), block -> createSingleItemTableWithSilkTouch(block, ItemInit.RAW_VIBRANIUM.get()));
 
-        dropSelf(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
-        dropSelf(BlockInit.Vibranium_Block.get());
+        this.dropSelf(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
+        this.dropSelf(BlockInit.Vibranium_Block.get());
     }
 
     @Override
