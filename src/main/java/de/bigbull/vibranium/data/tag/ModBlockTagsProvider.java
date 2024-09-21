@@ -25,6 +25,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(TagsInit.BlockTagsInit.INCORRECT_FOR_VIBRANIUM_TOOL);
         tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).addTag(TagsInit.BlockTagsInit.NEEDS_VIBRANIUM_TOOL);
         tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).addTag(Tags.Blocks.NEEDS_NETHERITE_TOOL).addTag(TagsInit.BlockTagsInit.NEEDS_VIBRANIUM_TOOL);
+        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).addTag(Tags.Blocks.NEEDS_NETHERITE_TOOL).addTag(TagsInit.BlockTagsInit.NEEDS_VIBRANIUM_TOOL);
         tag(BlockTags.INCORRECT_FOR_IRON_TOOL).addTag(Tags.Blocks.NEEDS_NETHERITE_TOOL).addTag(TagsInit.BlockTagsInit.NEEDS_VIBRANIUM_TOOL);
         tag(BlockTags.INCORRECT_FOR_STONE_TOOL).addTag(Tags.Blocks.NEEDS_NETHERITE_TOOL).addTag(TagsInit.BlockTagsInit.NEEDS_VIBRANIUM_TOOL);
         tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).addTag(Tags.Blocks.NEEDS_NETHERITE_TOOL).addTag(TagsInit.BlockTagsInit.NEEDS_VIBRANIUM_TOOL);
