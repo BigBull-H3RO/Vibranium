@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "vibranium:block/heart_shaped_herb_bush_stage1"
+  },
+  "render_type": "cutout"
+}

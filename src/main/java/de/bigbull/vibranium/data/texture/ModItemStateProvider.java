@@ -36,7 +36,10 @@ public class ModItemStateProvider extends ItemModelProvider {
         itemHandheld(ItemInit.VIBRANIUM_AXE);
         itemHandheld(ItemInit.VIBRANIUM_SHOVEL);
         itemHandheld(ItemInit.VIBRANIUM_HOE);
+
+        //Addvance Items
         itemHandheldWithTransform(ItemInit.VIBRANIUM_MACE);
+        itemGenerated(ItemInit.HEART_SHAPED_HERB);
     }
 
     private void itemGenerated(DeferredItem item) {

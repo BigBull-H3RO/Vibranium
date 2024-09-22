@@ -53,6 +53,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagsInit.ToolTagsInit.VIBRANIUM_HOE_TAG).add(ItemInit.VIBRANIUM_HOE.get());
         tag(TagsInit.ToolTagsInit.VIBRANIUM_SHIELD_TAG).add(ItemInit.VIBRANIUM_SHIELD.get());
 
+        //Food
+        tag(TagsInit.ItemTagsInit.HEART_SHAPED_HERB_TAG).add(ItemInit.HEART_SHAPED_HERB.get());
+
         //Armor
         tag(ItemTags.FOOT_ARMOR)
                 .add(ItemInit.VIBRANIUM_BOOTS.get());

@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.init.item;
+package de.bigbull.vibranium.init.custom;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;

@@ -1,12 +1,15 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.entity.MobEnities;
-import de.bigbull.vibranium.init.item.VibraniumMaceItem;
+import de.bigbull.vibranium.init.custom.VibraniumMaceItem;
 import de.bigbull.vibranium.Vibranium;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -98,4 +101,16 @@ public class ItemInit {
                             MaterialsInit.VIBRANIUM, 0.5f, -3.0f))));
     public static final DeferredItem<Item> VIBRANIUM_SHIELD = ITEMS.register("vibranium_shield",
             () -> new ShieldItem(new Item.Properties().fireResistant().stacksTo(1).durability(1024)));
+    public static final DeferredItem<Item> HEART_SHAPED_HERB = ITEMS.register("heart_shaped_herb",
+            () -> new ItemNameBlockItem(BlockInit.HEART_SHAPED_HERB_BUSH.get(), new Item.Properties()
+                    .food(new FoodProperties.Builder()
+                            .nutrition(4)
+                            .saturationModifier(0.3F)
+                            .alwaysEdible()
+                            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 600, 1), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 600, 0), 1.0F)
+                            .build())
+                    .stacksTo(16)
+                    .rarity(Rarity.RARE)
+                    .fireResistant()));
 }

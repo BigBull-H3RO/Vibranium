@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import de.bigbull.vibranium.config.VibraniumConfigValues;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.init.item.VibraniumMaceItem;
+import de.bigbull.vibranium.init.custom.VibraniumMaceItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.RenderType;
