@@ -46,6 +46,12 @@ public class BlockInit {
                     .sound(SoundType.SWEET_BERRY_BUSH)
                     .pushReaction(PushReaction.DESTROY)));
 
+    public static final DeferredBlock<Block> ENRICHED_VIBRANIUM_DIRT = registerBlock("enriched_vibranium_dirt", () ->
+            new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DIRT)
+                    .strength(0.8F)
+                    .sound(SoundType.GRAVEL)));
+
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

@@ -1,6 +1,7 @@
 package de.bigbull.vibranium.init.custom;
 
 import com.mojang.serialization.MapCodec;
+import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -36,6 +37,12 @@ public class HSHBushBlock extends BushBlock implements BonemealableBlock {
     public HSHBushBlock(Properties p_51021_) {
         super(p_51021_);
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
+    }
+
+    @Override
+    protected boolean mayPlaceOn(BlockState state, BlockGetter world, BlockPos pos) {
+        // Erlaubt das Pflanzen nur auf Enriched Vibranium Dirt
+        return state.is(BlockInit.ENRICHED_VIBRANIUM_DIRT.get());
     }
 
     @Override

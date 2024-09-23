@@ -3,6 +3,7 @@ package de.bigbull.vibranium.init;
 import de.bigbull.vibranium.entity.MobEnities;
 import de.bigbull.vibranium.init.custom.VibraniumMaceItem;
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.init.custom.WolfArmorInit;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -104,13 +105,19 @@ public class ItemInit {
     public static final DeferredItem<Item> HEART_SHAPED_HERB = ITEMS.register("heart_shaped_herb",
             () -> new ItemNameBlockItem(BlockInit.HEART_SHAPED_HERB_BUSH.get(), new Item.Properties()
                     .food(new FoodProperties.Builder()
-                            .nutrition(4)
-                            .saturationModifier(0.3F)
+                            .nutrition(2)
+                            .saturationModifier(0.5F)
                             .alwaysEdible()
-                            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 600, 1), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 600, 0), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 200, 0), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 200, 0), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 200, 0), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 0), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.DARKNESS, 100, 0), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.POISON, 100, 0), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 200, 0), 1.0F)
                             .build())
                     .stacksTo(16)
-                    .rarity(Rarity.RARE)
-                    .fireResistant()));
+                    .rarity(Rarity.RARE)));
 }
