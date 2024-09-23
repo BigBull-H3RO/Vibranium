@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.init;
+package de.bigbull.vibranium.init.custom;
 
 import com.google.common.base.Suppliers;
 import net.minecraft.Util;

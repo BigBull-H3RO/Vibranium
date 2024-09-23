@@ -3,7 +3,7 @@ package de.bigbull.vibranium.mixin;
 
 import de.bigbull.vibranium.init.ArmorMaterialsInit;
 import de.bigbull.vibranium.init.ItemInit;
-import de.bigbull.vibranium.init.WolfArmorInit;
+import de.bigbull.vibranium.init.custom.WolfArmorInit;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
