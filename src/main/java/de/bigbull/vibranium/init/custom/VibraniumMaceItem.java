@@ -1,7 +1,6 @@
 package de.bigbull.vibranium.init.custom;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -47,7 +46,7 @@ public class VibraniumMaceItem extends DiggerItem {
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
         if (!level.isClientSide && entity instanceof Player player) {
-            if (!player.isShiftKeyDown() || player.isCreative()) {
+            if (!player.isShiftKeyDown()) {
                 TagKey<Block> requiredTool = getRequiredToolForBlock(state);
 
                 if (requiredTool != null && isValidBlockForTool(state, requiredTool)) {
@@ -272,21 +271,18 @@ public class VibraniumMaceItem extends DiggerItem {
 
     @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
-        Player player = Minecraft.getInstance().player;
-        float baseSpeed = this.getTier().getSpeed();
+        float baseSpeed = getTier().getSpeed();
 
-        if (player != null && !player.isShiftKeyDown()) {
-            if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
-                return baseSpeed * 0.10005F;
-            }
-            if (state.is(BlockTags.MINEABLE_WITH_AXE)) {
-                return baseSpeed * 0.35F;
-            }
-            if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
-                return baseSpeed * 0.5F;
-            }
+        if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
+            return baseSpeed * 0.10005F;
         }
-        return super.getTier().getSpeed();
+        if (state.is(BlockTags.MINEABLE_WITH_AXE)) {
+            return baseSpeed * 0.35F;
+        }
+        if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
+            return baseSpeed * 0.5F;
+        }
+        return baseSpeed * 0.5F;
     }
 
     private TagKey<Block> getRequiredToolForBlock(BlockState state) {
