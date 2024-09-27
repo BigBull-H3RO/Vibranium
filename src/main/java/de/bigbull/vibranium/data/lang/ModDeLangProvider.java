@@ -26,6 +26,7 @@ public class ModDeLangProvider extends LanguageProvider {
         addBlock(BlockInit.DEPPSLATE_VIBRANIUM_ORE, "Tiefenschiefer Vibraniumerz");
         addBlock(BlockInit.Vibranium_Block, "Vibranium Block");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_DIRT, "Angereicherte Vibranium Erde");
+        addBlock(BlockInit.ENRICHED_VIBRANIUM_FARMLAND, "Angereichertes Vibranium Ackerland");
 
         //Tools
         addItem(ItemInit.VIBRANIUM_SWORD, "Vibranium Schwert");
@@ -50,6 +51,12 @@ public class ModDeLangProvider extends LanguageProvider {
         add(ItemInit.VIBRANIUM_UPGRADE.getString(), "Vibranium Aufrüstung");
         add(ItemInit.VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION.getString(), "Diamantrüstung, -waffe oder -werkzeug hinzufügen");
         add(ItemInit.VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Vibranium Barren hinzufügen");
+
+        //Potion
+        addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR, "Vibranium Angereichertes Kraut Elixier");
+        addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED, "Vibranium Angereichertes Kraut Elixier");
+        addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED, "Vibranium Angereichertes Kraut Elixier");
+        add("effect.vibranium.kinetic_redistribution", "Kinetische Umverteilung");
 
         //Vibranium Mace
         add("item.vibranium_mace.tooltip", "Kann 3x3 Blöcke abbauen");

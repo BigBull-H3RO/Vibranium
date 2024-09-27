@@ -3,7 +3,7 @@ package de.bigbull.vibranium.mixin;
 
 import de.bigbull.vibranium.init.ArmorMaterialsInit;
 import de.bigbull.vibranium.init.ItemInit;
-import de.bigbull.vibranium.init.custom.WolfArmorInit;
+import de.bigbull.vibranium.init.custom.WolfArmorItem;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -52,7 +52,7 @@ public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
             itemstack.hurtAndBreak(Mth.ceil(p_330695_), this, EquipmentSlot.BODY);
             if (Crackiness.WOLF_ARMOR.byDamage(i, j) != Crackiness.WOLF_ARMOR.byDamage(this.getBodyArmorItem())) {
                 this.playSound(SoundEvents.WOLF_ARMOR_CRACK);
-                if (this.level() instanceof ServerLevel serverlevel && this.getBodyArmorItem().getItem() instanceof WolfArmorInit) {
+                if (this.level() instanceof ServerLevel serverlevel && this.getBodyArmorItem().getItem() instanceof WolfArmorItem) {
                     serverlevel.sendParticles(
                             new ItemParticleOption(ParticleTypes.ITEM, ItemInit.VIBRANIUM_INGOT.get().getDefaultInstance()),
                             this.getX(),
@@ -73,7 +73,7 @@ public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
     public void mobInteract(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
         ItemStack itemstack = player.getItemInHand(hand);
         Item item = itemstack.getItem();
-        if (!this.level().isClientSide && itemstack.getItem() instanceof WolfArmorInit) {
+        if (!this.level().isClientSide && itemstack.getItem() instanceof WolfArmorItem) {
             if (this.isTame()) {
                 if (this.isOwnedBy(player) && !this.hasArmor() && !this.isBaby()) {
                     this.setBodyArmorItem(itemstack.copyWithCount(1));
@@ -118,14 +118,14 @@ public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
 
     @Inject(method = "canArmorAbsorb", at = @At(value = "HEAD"), cancellable = true)
     private void canArmorAbsorb(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
-        if (this.getBodyArmorItem().getItem() instanceof WolfArmorInit && source.is(DamageTypeTags.BYPASSES_WOLF_ARMOR)) {
+        if (this.getBodyArmorItem().getItem() instanceof WolfArmorItem && source.is(DamageTypeTags.BYPASSES_WOLF_ARMOR)) {
             cir.setReturnValue(true);
         }
     }
 
     @Inject(method = "hasArmor", at = @At(value = "HEAD"), cancellable = true)
     public void hasArmor(CallbackInfoReturnable<Boolean> callbackInfo) {
-        if (this.getBodyArmorItem().getItem() instanceof WolfArmorInit) {
+        if (this.getBodyArmorItem().getItem() instanceof WolfArmorItem) {
             callbackInfo.setReturnValue(true);
         }
     }

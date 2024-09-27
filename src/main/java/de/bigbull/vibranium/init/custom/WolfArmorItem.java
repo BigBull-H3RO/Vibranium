@@ -18,7 +18,7 @@ import java.util.EnumMap;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-public class WolfArmorInit extends AnimalArmorItem {
+public class WolfArmorItem extends AnimalArmorItem {
     private static final EnumMap<Type, UUID> ARMOR_MODIFIER_UUID_PER_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
         map.put(ArmorItem.Type.BODY, UUID.fromString("C1C72771-8B8E-BA4A-ACE0-81A93C8928B2"));
     });
@@ -28,7 +28,7 @@ public class WolfArmorInit extends AnimalArmorItem {
     @Nullable
     private final ResourceLocation overlayTextureLocation;
 
-    public WolfArmorInit(Holder<ArmorMaterial> armorMaterial, BodyType bodyType, boolean pboolean, Properties properties) {
+    public WolfArmorItem(Holder<ArmorMaterial> armorMaterial, BodyType bodyType, boolean pboolean, Properties properties) {
         super(armorMaterial, bodyType, pboolean, properties);
         this.armorMaterialHolder = armorMaterial;
         ResourceLocation resourcelocation = armorMaterial.unwrapKey().orElseThrow().location().withPath(p -> "textures/entity/wolf/armor/wolf_armor_" + p);

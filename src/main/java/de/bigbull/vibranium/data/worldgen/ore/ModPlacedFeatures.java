@@ -10,14 +10,14 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
 public class ModPlacedFeatures {
     public static ResourceKey<PlacedFeature> VIBRANIUM_ORE = createKey("vibranium_ore");
+    public static final ResourceKey<PlacedFeature> ENRICHED_VIBRANIUM_PLACED = createKey("enriched_vibranium_placed");
+
     private static final int VEIN_SIZE = VibraniumConfigValues.VEINS_PER_CHUNK;
     private static final int MAX_HEIGHT = VibraniumConfigValues.MAX_HEIGHT;
     private static final int MIN_HEIGHT = VibraniumConfigValues.MIN_HEIGHT;
@@ -25,8 +25,17 @@ public class ModPlacedFeatures {
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         Holder<ConfiguredFeature<?, ?>> holder = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_VIBRANIUM_ORE);
+        Holder<ConfiguredFeature<?, ?>> enrichedVibraniumFeature = configuredFeatures.getOrThrow(ModConfiguredFeatures.ENRICHED_VIBRANIUM_FEATURE);
 
         register(context, VIBRANIUM_ORE, holder, ModOrePlacement.commonOrePlacements(VEIN_SIZE, HeightRangePlacement.uniform(VerticalAnchor.absolute(MIN_HEIGHT), VerticalAnchor.absolute(MAX_HEIGHT))));
+
+        register(context, ENRICHED_VIBRANIUM_PLACED, enrichedVibraniumFeature,
+                List.of(
+                        RarityFilter.onAverageOnceEvery(1000),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)),
+                        BiomeFilter.biome()
+                ));
     }
 
     private static ResourceKey<PlacedFeature> createKey(String name) {

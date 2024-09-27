@@ -6,9 +6,7 @@ import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -34,6 +32,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagsInit.ItemTagsInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE_TAG).add(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get());
         tag(TagsInit.ItemTagsInit.VIBRA_GOLEM_SPAWN_EGG_TAG).add(ItemInit.VIBRA_GOLEM_SPAWN_EGG.get());
         tag(TagsInit.ItemTagsInit.VIBRANIUM_CORE_TAG).add(ItemInit.VIBRANIUM_CORE.get());
+        tag(TagsInit.ItemTagsInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_TAG).add(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR.get());
+        tag(TagsInit.ItemTagsInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED_TAG).add(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED.get());
+        tag(TagsInit.ItemTagsInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED_TAG).add(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED.get());
 
         //Armor
         tag(TagsInit.ItemTagsInit.VIBRANIUM_HELMET_TAG).add(ItemInit.VIBRANIUM_HELMET.get());

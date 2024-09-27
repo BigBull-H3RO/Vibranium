@@ -40,14 +40,27 @@ public class ModItemStateProvider extends ItemModelProvider {
         //Addvance Items
         itemHandheldWithTransform(ItemInit.VIBRANIUM_MACE);
         itemGenerated(ItemInit.HEART_SHAPED_HERB);
+        itemMutliGenerated(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR, "vibranium_enriched_herb_elixir");
+        itemMutliGenerated(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED, "vibranium_enriched_herb_elixir");
+        itemMutliGenerated(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED, "vibranium_enriched_herb_elixir");
     }
 
     private void itemGenerated(DeferredItem item) {
-        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"),"layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/" + item.getId().getPath().toString().substring(Vibranium.MODID.length() - 9)));
+        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"),"layer0",
+                ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/" + item.getId().getPath()));
+    }
+
+    private void itemMutliGenerated(DeferredItem item, String textureName) {
+        singleTexture(
+                item.getId().getPath(),
+                ResourceLocation.withDefaultNamespace("item/generated"),
+                "layer0",
+                ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + textureName)
+        );
     }
 
     private void itemHandheld(DeferredItem item) {
-        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/handheld"),"layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/" + item.getId().getPath().toString().substring(Vibranium.MODID.length() - 9)));
+        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/handheld"),"layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/" + item.getId().getPath()));
     }
 
     private void itemHandheldWithTransform(DeferredItem item) {

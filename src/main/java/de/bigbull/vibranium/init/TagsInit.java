@@ -39,6 +39,9 @@ public class TagsInit {
         public static final TagKey<Item> VIBRANIUM_INGOT_TAG = ItemTags.create(createGenericItemsLocation("vibranium_ingot"));
         public static final TagKey<Item> RAW_VIBRANIUM_TAG = ItemTags.create(createRawItemsLocation("raw_vibranium"));
         public static final TagKey<Item> HEART_SHAPED_HERB_TAG = ItemTags.create(createGenericItemsLocation("heart_shaped_herb"));
+        public static final TagKey<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_TAG = ItemTags.create(createGenericItemsLocation("vibranium_enriched_herb_elixir"));
+        public static final TagKey<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED_TAG = ItemTags.create(createGenericItemsLocation("vibranium_enriched_herb_elixir_extended"));
+        public static final TagKey<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED_TAG = ItemTags.create(createGenericItemsLocation("vibranium_enriched_herb_elixir_enhanced"));
 
         //Blocks
         public static final TagKey<Item> BLOCK_OF_RAW_VIBRANIUM_TAG = ItemTags.create(createBlockLocation("block_of_raw_vibranium"));
@@ -62,6 +65,7 @@ public class TagsInit {
         public static final TagKey<Block> DEEPSLATE_VIBRANIUM_ORE_TAG = BlockTags.create(createOreLocation("deepslate_vibranium_ore"));
         public static final TagKey<Block> VIBRANIUM_BLOCK_TAG = BlockTags.create(createBlockLocation("vibranium_block"));
         public static final TagKey<Block> ENRICHED_VIBRANIUM_DIRT_TAG = BlockTags.create(createBlockLocation("enriched_vibranium_dirt"));
+        public static final TagKey<Block> ENRICHED_VIBRANIUM_FARMLAND_TAG = BlockTags.create(createBlockLocation("enriched_vibranium_farmland"));
 
         public static final TagKey<Block> INCORRECT_FOR_VIBRANIUM_TOOL = BlockTags.create(createBlockLocation("incorrect_for_vibranium_tool"));
         public static final TagKey<Block> NEEDS_VIBRANIUM_TOOL = BlockTags.create(createBlockLocation("needs_vibranium_tool"));

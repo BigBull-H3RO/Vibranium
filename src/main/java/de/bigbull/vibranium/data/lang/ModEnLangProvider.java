@@ -1,8 +1,6 @@
 package de.bigbull.vibranium.data.lang;
 
-import de.bigbull.vibranium.init.BlockInit;
-import de.bigbull.vibranium.init.ItemInit;
-import de.bigbull.vibranium.init.CreativeTabInit;
+import de.bigbull.vibranium.init.*;
 import de.bigbull.vibranium.Vibranium;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -27,6 +25,7 @@ public class ModEnLangProvider extends LanguageProvider {
         addBlock(BlockInit.DEPPSLATE_VIBRANIUM_ORE, "Deepslate Vibranium Ore");
         addBlock(BlockInit.Vibranium_Block, "Vibranium Block");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_DIRT, "Enriched Vibranium Dirt");
+        addBlock(BlockInit.ENRICHED_VIBRANIUM_FARMLAND, "Enriched Vibranium Farmland");
 
         //Tools
         addItem(ItemInit.VIBRANIUM_SWORD, "Vibranium Sword");
@@ -51,6 +50,12 @@ public class ModEnLangProvider extends LanguageProvider {
         add(ItemInit.VIBRANIUM_UPGRADE.getString(), "Vibranium Upgrade");
         add(ItemInit.VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION.getString(), "Add diamond armor, weapon, or tool");
         add(ItemInit.VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Add Vibranium Ingot");
+
+        //Potion
+        addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR, "Vibranium Enriched Herb Elixir");
+        addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED, "Vibranium Enriched Herb Elixir");
+        addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED, "Vibranium Enriched Herb Elixir");
+        add("effect.vibranium.kinetic_redistribution", "Kinetic Redistribution");
 
         //Entities
 //        add("entity.vibra_golem.vibra_golem", "Vibra Golem");

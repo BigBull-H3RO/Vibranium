@@ -2,6 +2,7 @@ package de.bigbull.vibranium.data.worldgen.ore;
 
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.init.FeatureInit;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class ModConfiguredFeatures {
     protected static ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_VIBRANIUM_ORE = createKey("overworld_vibranium_ore");
+    protected static ResourceKey<ConfiguredFeature<?, ?>> ENRICHED_VIBRANIUM_FEATURE = createKey("enriched_vibranium_feature");
 
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
@@ -29,6 +31,8 @@ public class ModConfiguredFeatures {
                         OreConfiguration.target(deepslateReplacable, BlockInit.DEPPSLATE_VIBRANIUM_ORE.get().defaultBlockState()));
 
         register(context, OVERWORLD_VIBRANIUM_ORE, Feature.ORE, new OreConfiguration(VibraniumOre, 4));
+
+        register(context, ENRICHED_VIBRANIUM_FEATURE, FeatureInit.ENRICHED_VIBRANIUM_FEATURE.get(), FeatureConfiguration.NONE);
     }
 
     private static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {
