@@ -1,10 +1,13 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.init.custom.EVDirtBlock;
+import de.bigbull.vibranium.init.custom.EVFarmlandBlock;
 import de.bigbull.vibranium.init.custom.HSHBushBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -47,9 +50,16 @@ public class BlockInit {
                     .pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> ENRICHED_VIBRANIUM_DIRT = registerBlock("enriched_vibranium_dirt", () ->
-            new Block(BlockBehaviour.Properties.of()
+            new EVDirtBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.DIRT)
                     .strength(0.8F)
+                    .sound(SoundType.GRAVEL)));
+
+    public static final DeferredBlock<Block> ENRICHED_VIBRANIUM_FARMLAND = registerBlock("enriched_vibranium_farmland", () ->
+            new EVFarmlandBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DIRT)
+                    .randomTicks()
+                    .strength(0.6F)
                     .sound(SoundType.GRAVEL)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
@@ -60,7 +70,7 @@ public class BlockInit {
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
         if (!name.equals("heart_shaped_herb_bush")) {
-            ItemInit.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().fireResistant()));
+            ItemInit.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
         }
     }
 }
