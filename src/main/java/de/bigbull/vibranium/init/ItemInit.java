@@ -1,9 +1,10 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.entity.MobEnities;
+import de.bigbull.vibranium.init.custom.HSHPotionItem;
 import de.bigbull.vibranium.init.custom.VibraniumMaceItem;
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.init.custom.WolfArmorInit;
+import de.bigbull.vibranium.init.custom.WolfArmorItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -72,7 +73,7 @@ public class ItemInit {
             () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorItem.Type.HELMET,
                     new Item.Properties().fireResistant().stacksTo(1).durability(550)));
     public static final DeferredItem<Item> VIBRANIUM_WOLF_ARMOR = ITEMS.register("vibranium_wolf_armor",
-            () -> new WolfArmorInit(ArmorMaterialsInit.VIBRANIUM_MATERIAL, AnimalArmorItem.BodyType.CANINE, false,
+            () -> new WolfArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, AnimalArmorItem.BodyType.CANINE, false,
                     new Item.Properties().fireResistant().stacksTo(1).durability(120)));
     public static final DeferredItem<Item> VIBRANIUM_HORSE_ARMOR = ITEMS.register("vibranium_horse_armor",
             () -> new AnimalArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, AnimalArmorItem.BodyType.EQUESTRIAN, false,
@@ -108,16 +109,20 @@ public class ItemInit {
                             .nutrition(2)
                             .saturationModifier(0.5F)
                             .alwaysEdible()
-                            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 200, 0), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 200, 0), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 200, 0), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 0), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.DARKNESS, 100, 0), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.POISON, 100, 0), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 200, 0), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400, 0, true, false), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 400, 0, true, false), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.DARKNESS, 200, 0, true, false), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 400, 0, true, false), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 0, true, false), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.POISON, 200, 0, true, false), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 400, 0, true, false), 1.0F)
                             .build())
                     .stacksTo(16)
                     .rarity(Rarity.RARE)));
+    public static final DeferredItem<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR = ITEMS.register("vibranium_enhanced_herb_elixir",
+            () -> new HSHPotionItem(new Item.Properties().stacksTo(1),3600, 0));
+    public static final DeferredItem<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED = ITEMS.register("vibranium_enhanced_herb_elixir_extended",
+            () -> new HSHPotionItem(new Item.Properties().stacksTo(1),9600, 0));
+    public static final DeferredItem<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED = ITEMS.register("vibranium_enhanced_herb_elixir_enhanced",
+            () -> new HSHPotionItem(new Item.Properties().stacksTo(1),1800, 1));
 }
