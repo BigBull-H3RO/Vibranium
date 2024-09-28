@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.init.custom.shield;
+package de.bigbull.vibranium.init.custom.item.shield;
 
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.ItemInit;

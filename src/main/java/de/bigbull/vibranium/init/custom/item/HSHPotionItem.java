@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.init.custom;
+package de.bigbull.vibranium.init.custom.item;
 
 import de.bigbull.vibranium.init.EffectInit;
 import net.minecraft.advancements.CriteriaTriggers;

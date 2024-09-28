@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.init.custom;
+package de.bigbull.vibranium.init.custom.block;
 
 import de.bigbull.vibranium.init.BlockInit;
 import net.minecraft.core.BlockPos;

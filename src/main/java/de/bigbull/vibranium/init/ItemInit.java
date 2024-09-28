@@ -1,10 +1,10 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.entity.MobEnities;
-import de.bigbull.vibranium.init.custom.HSHPotionItem;
-import de.bigbull.vibranium.init.custom.VibraniumMaceItem;
+import de.bigbull.vibranium.init.custom.item.HSHPotionItem;
+import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.init.custom.WolfArmorItem;
+import de.bigbull.vibranium.init.custom.item.WolfArmorItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

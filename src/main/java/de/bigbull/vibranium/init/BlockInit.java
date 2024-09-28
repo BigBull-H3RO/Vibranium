@@ -1,13 +1,12 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.init.custom.EVDirtBlock;
-import de.bigbull.vibranium.init.custom.EVFarmlandBlock;
-import de.bigbull.vibranium.init.custom.HSHBushBlock;
+import de.bigbull.vibranium.init.custom.block.EVDirtBlock;
+import de.bigbull.vibranium.init.custom.block.EVFarmlandBlock;
+import de.bigbull.vibranium.init.custom.block.HSHBushBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
