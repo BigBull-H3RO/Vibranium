@@ -22,7 +22,12 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
     protected void start() {
         add("spawn_vibranium_upgrade_smithing_template", new AddItemModifier(new LootItemCondition[] {
                 new LootTableIdCondition.Builder(
-                        ResourceLocation.parse("chests/trial_chambers")).build(), LootItemRandomChanceCondition.randomChance(0.4f).build() },
+                        ResourceLocation.parse("chests/trial_chambers/reward_common")).build(), LootItemRandomChanceCondition.randomChance(0.4f).build() },
                 ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()));
+
+        add("heart_shaped_herb", new AddItemModifier(new LootItemCondition[] {
+                new LootTableIdCondition.Builder(
+                        ResourceLocation.parse("chests/ruined_portal")).build(), LootItemRandomChanceCondition.randomChance(0.4f).build() },
+                ItemInit.HEART_SHAPED_HERB.get()));
     }
 }

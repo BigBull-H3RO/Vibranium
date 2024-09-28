@@ -32,15 +32,6 @@ public class ModBiomesModifiers {
                         GenerationStep.Decoration.UNDERGROUND_ORES
                 )
         );
-
-        context.register(
-                ADD_ENRICHED_VIBRANIUM,
-                new BiomeModifiers.AddFeaturesBiomeModifier(
-                        biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.ENRICHED_VIBRANIUM_PLACED)),
-                        GenerationStep.Decoration.UNDERGROUND_DECORATION
-                )
-        );
     }
 
     private static ResourceKey<BiomeModifier> createKey(String name) {

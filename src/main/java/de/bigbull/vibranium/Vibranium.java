@@ -38,7 +38,6 @@ public class Vibranium {
         CreativeTabInit.CREATIVE_MODE_TABS.register(modEventBus);
         ModLootModifiers.LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
         EffectInit.EFFECTS.register(modEventBus);
-        FeatureInit.FEATURES.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(DataGenerators::gatherData);
