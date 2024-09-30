@@ -1,6 +1,7 @@
 package de.bigbull.vibranium.init.custom.item;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -16,7 +17,10 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
@@ -25,12 +29,10 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.Tags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,84 +45,36 @@ public class VibraniumMaceItem extends DiggerItem {
         super(tier, BlockTags.MINEABLE_WITH_PICKAXE, properties);
     }
 
-    @Override
-    public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
-        if (!level.isClientSide && entity instanceof Player player) {
-            if (!player.isShiftKeyDown()) {
-                TagKey<Block> requiredTool = getRequiredToolForBlock(state);
+    public static List<BlockPos> getBlocksToBeDestroyed(int range, BlockPos initalBlockPos, Player player) {
+        List<BlockPos> positions = new ArrayList<>();
 
-                if (requiredTool != null && isValidBlockForTool(state, requiredTool)) {
-                    boolean middleBlockNeedsAdvancedTool = state.is(BlockTags.NEEDS_DIAMOND_TOOL) || state.is(Tags.Blocks.NEEDS_NETHERITE_TOOL);
+        BlockHitResult traceResult = player.level().clip(new ClipContext(player.getEyePosition(1f),
+                (player.getEyePosition(1f).add(player.getViewVector(1f).scale(6f))),
+                ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
+        if(traceResult.getType() == HitResult.Type.MISS) {
+            return positions;
+        }
 
-                    List<BlockPos> affectedPositions = getAffectedPositions(player, pos);
-
-                    stack.hurtAndBreak(1, entity, EquipmentSlot.MAINHAND);
-                    affectedPositions.remove(pos);
-
-                    for (BlockPos targetPos : affectedPositions) {
-                        BlockState targetState = level.getBlockState(targetPos);
-
-                        if ((middleBlockNeedsAdvancedTool && isValidBlockForTool(targetState, requiredTool)) ||
-                                (!middleBlockNeedsAdvancedTool && !targetState.is(BlockTags.NEEDS_DIAMOND_TOOL) && !targetState.is(Tags.Blocks.NEEDS_NETHERITE_TOOL) && isValidBlockForTool(targetState, requiredTool))) {
-
-                            level.destroyBlock(targetPos, false);
-                            Block.getDrops(targetState, (ServerLevel) level, targetPos, null, entity, stack)
-                                    .forEach(drop -> Block.popResource(level, targetPos, drop));
-
-                            stack.hurtAndBreak(1, entity, EquipmentSlot.MAINHAND);
-
-                            if (stack.getDamageValue() >= stack.getMaxDamage()) {
-                                break;
-                            }
-                        }
-                    }
-                    return true;
+        if(traceResult.getDirection() == Direction.DOWN || traceResult.getDirection() == Direction.UP) {
+            for(int x = -range; x <= range; x++) {
+                for(int y = -range; y <= range; y++) {
+                    positions.add(new BlockPos(initalBlockPos.getX() + x, initalBlockPos.getY(), initalBlockPos.getZ() + y));
                 }
             }
         }
-        return super.mineBlock(stack, level, state, pos, entity);
-    }
 
-    public static List<BlockPos> getAffectedPositions(Player player, BlockPos pos) {
-        List<BlockPos> positions = new ArrayList<>();
-        HitResult hitResult = getPlayerPOVHitResult(player.level(), player, ClipContext.Fluid.NONE);
-
-        if (hitResult instanceof BlockHitResult) {
-            BlockHitResult blockHitResult = (BlockHitResult) hitResult;
-            BlockPos center = blockHitResult.getBlockPos();
-            Direction direction = blockHitResult.getDirection();
-            positions.add(center);
-
-            switch (direction) {
-                case UP, DOWN -> {
-                    positions.add(center.north());
-                    positions.add(center.south());
-                    positions.add(center.east());
-                    positions.add(center.west());
-                    positions.add(center.north().east());
-                    positions.add(center.north().west());
-                    positions.add(center.south().east());
-                    positions.add(center.south().west());
+        if(traceResult.getDirection() == Direction.NORTH || traceResult.getDirection() == Direction.SOUTH) {
+            for(int x = -range; x <= range; x++) {
+                for(int y = -range; y <= range; y++) {
+                    positions.add(new BlockPos(initalBlockPos.getX() + x, initalBlockPos.getY() + y, initalBlockPos.getZ()));
                 }
-                case NORTH, SOUTH -> {
-                    positions.add(center.above());
-                    positions.add(center.below());
-                    positions.add(center.east());
-                    positions.add(center.west());
-                    positions.add(center.east().above());
-                    positions.add(center.west().above());
-                    positions.add(center.east().below());
-                    positions.add(center.west().below());
-                }
-                case EAST, WEST -> {
-                    positions.add(center.above());
-                    positions.add(center.below());
-                    positions.add(center.north());
-                    positions.add(center.south());
-                    positions.add(center.north().above());
-                    positions.add(center.south().above());
-                    positions.add(center.north().below());
-                    positions.add(center.south().below());
+            }
+        }
+
+        if(traceResult.getDirection() == Direction.EAST || traceResult.getDirection() == Direction.WEST) {
+            for(int x = -range; x <= range; x++) {
+                for(int y = -range; y <= range; y++) {
+                    positions.add(new BlockPos(initalBlockPos.getX(), initalBlockPos.getY() + y, initalBlockPos.getZ() + x));
                 }
             }
         }
@@ -237,7 +191,6 @@ public class VibraniumMaceItem extends DiggerItem {
                     flag6 = true;
                     break label62;
                 }
-
                 flag6 = false;
             }
 
@@ -248,10 +201,8 @@ public class VibraniumMaceItem extends DiggerItem {
                     flag6 = false;
                     break label55;
                 }
-
                 flag6 = true;
             }
-
             boolean flag4 = flag6;
             boolean flag5 = entity.distanceToSqr(p_344407_) <= Math.pow(3.5, 2.0);
             return flag && flag1 && flag2 && flag3 && flag4 && flag5;
@@ -273,39 +224,24 @@ public class VibraniumMaceItem extends DiggerItem {
     public float getDestroySpeed(ItemStack stack, BlockState state) {
         float baseSpeed = getTier().getSpeed();
 
+        if (Minecraft.getInstance().player != null && Minecraft.getInstance().player.isShiftKeyDown()) {
+            return baseSpeed;
+        }
+
         if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
-            return baseSpeed * 0.10005F;
+            return baseSpeed * 0.1005F;
         }
         if (state.is(BlockTags.MINEABLE_WITH_AXE)) {
-            return baseSpeed * 0.35F;
+            return baseSpeed * 0.3F;
         }
         if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
             return baseSpeed * 0.5F;
         }
-        return baseSpeed * 0.5F;
-    }
-
-    private TagKey<Block> getRequiredToolForBlock(BlockState state) {
-        if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
-            return BlockTags.MINEABLE_WITH_PICKAXE;
-        }
-        if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
-            return BlockTags.MINEABLE_WITH_SHOVEL;
-        }
-        if (state.is(BlockTags.MINEABLE_WITH_AXE)) {
-            return BlockTags.MINEABLE_WITH_AXE;
-        }
-        return null;
-    }
-
-    public boolean isValidBlockForTool(BlockState state, TagKey<Block> requiredTool) {
-        return state.isSolidRender(null, BlockPos.ZERO) &&
-                state.is(requiredTool) &&
-                state.getBlock() != Blocks.AIR;
+        return baseSpeed;
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
         list.add(Component.translatable("item.vibranium_mace.tooltip").withStyle(ChatFormatting.GRAY));
     }
 }

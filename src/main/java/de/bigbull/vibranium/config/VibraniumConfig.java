@@ -15,6 +15,8 @@ public class VibraniumConfig {
     public static final ModConfigSpec.DoubleValue OUTLINE_BLUE;
     public static final ModConfigSpec.DoubleValue OUTLINE_ALPHA;
 
+    public static final ModConfigSpec.BooleanValue USE_FAST_MODE;
+
     static {
         BUILDER.push("Vibranium Ore Generation Configurations");
         BUILDER.comment();
@@ -37,6 +39,9 @@ public class VibraniumConfig {
         OUTLINE_ALPHA = BUILDER.comment("Alpha (transparency) component of the outline color [0.0 - 1.0]")
                 .defineInRange("Alpha", 0.4, 0.0, 1.0);
         BUILDER.pop();
+
+        USE_FAST_MODE = BUILDER.comment("Use fast block breaking mode [true = fast, false = detailed]")
+                .define("fastMode", false);
 
         SPEC = BUILDER.build();
     }

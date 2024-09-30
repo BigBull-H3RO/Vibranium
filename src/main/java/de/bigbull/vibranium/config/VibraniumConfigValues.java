@@ -17,4 +17,6 @@ public class VibraniumConfigValues {
     public static double OUTLINE_GREEN = CONFIG_FILE ? VibraniumConfig.OUTLINE_GREEN.get() : VibraniumConfig.OUTLINE_GREEN.getDefault();
     public static double OUTLINE_BLUE = CONFIG_FILE ? VibraniumConfig.OUTLINE_BLUE.get() : VibraniumConfig.OUTLINE_BLUE.getDefault();
     public static double OUTLINE_ALPHA = CONFIG_FILE ? VibraniumConfig.OUTLINE_ALPHA.get() : VibraniumConfig.OUTLINE_ALPHA.getDefault();
+
+    public static boolean USE_FAST_MODE = CONFIG_FILE ? VibraniumConfig.USE_FAST_MODE.get() : VibraniumConfig.USE_FAST_MODE.getDefault();
 }

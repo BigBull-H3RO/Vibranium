@@ -57,7 +57,7 @@ public class ClientRenderEvent {
         poseStack.pushPose();
         poseStack.translate(-camPos.x, -camPos.y, -camPos.z);
 
-        List<BlockPos> positions = VibraniumMaceItem.getAffectedPositions(mc.player, center);
+        List<BlockPos> positions = VibraniumMaceItem.getBlocksToBeDestroyed(1, center, mc.player);
 
         for (BlockPos pos : positions) {
             BlockState state = mc.level.getBlockState(pos);
