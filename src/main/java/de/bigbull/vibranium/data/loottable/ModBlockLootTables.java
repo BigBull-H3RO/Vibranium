@@ -15,7 +15,7 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.Optional;
@@ -33,10 +33,12 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
         this.dropSelf(BlockInit.Vibranium_Block.get());
 
-        this.dropOther(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get(), BlockInit.ENRICHED_VIBRANIUM_DIRT.get());
+        this.dropOther(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get(), Blocks.DIRT);
+        this.add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get(), block -> createSingleItemTableWithSilkTouch(
+                block, ItemInit.RAW_VIBRANIUM.get()));
+        this.add(BlockInit.ENRICHED_VIBRANIUM_DIRT.get(), block -> createSingleItemTableWithSilkTouch(
+                block, Blocks.DIRT));
 
-        this.add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get(), block -> createSingleItemTableWithSilkTouch(block, ItemInit.RAW_VIBRANIUM.get()));
-        this.add(BlockInit.ENRICHED_VIBRANIUM_DIRT.get(), block -> createSingleItemTableWithSilkTouch(block, Blocks.DIRT));
         this.add(
                 BlockInit.HEART_SHAPED_HERB_BUSH.get(),
                 p_249159_ -> this.applyExplosionDecay(

@@ -35,7 +35,7 @@ public class ModEvents {
         Level level = event.getPlayer().level();
         BlockState middleBlockState = event.getLevel().getBlockState(event.getPos());
 
-        if (mainHandItem.getItem() instanceof VibraniumMaceItem hammer && player instanceof ServerPlayer serverPlayer) {
+        if (mainHandItem.getItem() instanceof VibraniumMaceItem Item && player instanceof ServerPlayer serverPlayer) {
             if (!player.isShiftKeyDown()) {
                 BlockPos initialBlockPos = event.getPos();
                 TagKey<Block> requiredTool = getRequiredToolForBlock(middleBlockState);
@@ -48,7 +48,6 @@ public class ModEvents {
                     }
 
                     List<BlockPos> affectedPositions = VibraniumMaceItem.getBlocksToBeDestroyed(1, initialBlockPos, serverPlayer);
-
                     affectedPositions.remove(initialBlockPos);
 
                     for (BlockPos pos : affectedPositions) {

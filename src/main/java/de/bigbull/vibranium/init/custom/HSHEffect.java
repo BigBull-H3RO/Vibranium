@@ -18,7 +18,9 @@ import java.util.Map;
 public class HSHEffect extends MobEffect {
     private static final float DAMAGE_THRESHOLD = 10.0F;
     private final Map<Player, Float> damageTracker = new HashMap<>();
-    private static final float PUSH_DAMAGE = 5.0F;
+    private static final float BASE_PUSH_DAMAGE = 5.0F;
+    private static final double BASE_PUSH_RADIUS = 5.0F;
+    private static final double BASE_PUSH_STRENGTH = 1.5;
 
     public HSHEffect(MobEffectCategory category, int color) {
         super(category, color);
@@ -30,7 +32,11 @@ public class HSHEffect extends MobEffect {
             accumulateDamage(player, damage);
 
             if (damageTracker.getOrDefault(player, 0.0F) >= DAMAGE_THRESHOLD) {
-                applyPushEffect(player, 1.5 + amplifier * 0.5, 5.0 + amplifier * 1.0);
+                double pushStrength = BASE_PUSH_STRENGTH + amplifier * 0.5;
+                double pushRadius = BASE_PUSH_RADIUS + amplifier * 2.5;
+                float pushDamage = (float) (BASE_PUSH_DAMAGE + amplifier * 2.0);
+
+                applyPushEffect(player, pushStrength, pushRadius, pushDamage);
 
                 damageTracker.put(player, 0.0F);
             }
@@ -39,13 +45,11 @@ public class HSHEffect extends MobEffect {
 
     private void accumulateDamage(Player player, float damage) {
         float accumulatedDamage = damageTracker.getOrDefault(player, 0.0F);
-
         accumulatedDamage += damage;
-
         damageTracker.put(player, accumulatedDamage);
     }
 
-    private void applyPushEffect(Player player, double strength, double radius) {
+    private void applyPushEffect(Player player, double strength, double radius, float damage) {
         int particleCount = 120;
         double particleRadius = 3.0;
 
@@ -59,10 +63,9 @@ public class HSHEffect extends MobEffect {
             entity.hurtMarked = true;
 
             DamageSource pushDamageSource = player.damageSources().playerAttack(player);
-            entity.hurt(pushDamageSource, PUSH_DAMAGE);
+            entity.hurt(pushDamageSource, damage);
         }
 
-        // Partikel und Sounds
         if (player.level() instanceof ServerLevel serverLevel) {
             for (int i = 0; i < particleCount; i++) {
                 double angleOffset = (2 * Math.PI / particleCount) * i;
@@ -71,6 +74,7 @@ public class HSHEffect extends MobEffect {
                 serverLevel.sendParticles(ParticleTypes.CLOUD, player.getX() + xParticleOffset, player.getY() - 0.1, player.getZ() + zParticleOffset, 1, 0.0, 0.05, 0.0, 0.05);
             }
         }
+
         player.level().playSound(null, player.blockPosition(), SoundEvents.EVOKER_PREPARE_SUMMON, SoundSource.PLAYERS, 1.0F, 1.0F);
     }
 }

@@ -106,7 +106,7 @@ public class ItemInit {
     public static final DeferredItem<Item> HEART_SHAPED_HERB = ITEMS.register("heart_shaped_herb",
             () -> new ItemNameBlockItem(BlockInit.HEART_SHAPED_HERB_BUSH.get(), new Item.Properties()
                     .food(new FoodProperties.Builder()
-                            .nutrition(2)
+                            .nutrition(5)
                             .saturationModifier(0.5F)
                             .alwaysEdible()
                             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400, 0, true, false), 1.0F)

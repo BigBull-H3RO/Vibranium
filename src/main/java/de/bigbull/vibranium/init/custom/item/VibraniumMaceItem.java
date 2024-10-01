@@ -1,7 +1,6 @@
 package de.bigbull.vibranium.init.custom.item;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -223,10 +222,6 @@ public class VibraniumMaceItem extends DiggerItem {
     @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
         float baseSpeed = getTier().getSpeed();
-
-        if (Minecraft.getInstance().player != null && Minecraft.getInstance().player.isShiftKeyDown()) {
-            return baseSpeed;
-        }
 
         if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
             return baseSpeed * 0.1005F;

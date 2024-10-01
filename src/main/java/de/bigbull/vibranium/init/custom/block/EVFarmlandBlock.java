@@ -14,8 +14,6 @@ import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 
-import javax.annotation.Nullable;
-
 public class EVFarmlandBlock extends FarmBlock {
     public EVFarmlandBlock(Properties properties) {
         super(properties);
@@ -38,7 +36,7 @@ public class EVFarmlandBlock extends FarmBlock {
         BlockState plantState = level.getBlockState(abovePos);
 
         if (plantState.getBlock() instanceof BonemealableBlock plant) {
-            if (random.nextFloat() < 0.15F) {
+            if (random.nextFloat() < 0.2F) {
                 if (plant.isValidBonemealTarget(level, abovePos, plantState)) {
                     plant.performBonemeal(level, random, abovePos, plantState);
                 }
@@ -48,10 +46,9 @@ public class EVFarmlandBlock extends FarmBlock {
 
     @Override
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-        if (!level.isClientSide && net.neoforged.neoforge.common.CommonHooks.onFarmlandTrample(level, pos, null, fallDistance, entity)) {
+        if (!level.isClientSide && net.neoforged.neoforge.common.CommonHooks.onFarmlandTrample(level, pos, BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState(), fallDistance, entity)) {
             turnToEnrichedDirt(entity, state, level, pos);
         }
-        super.fallOn(level, state, pos, entity, fallDistance);
     }
 
     @Override
@@ -61,9 +58,8 @@ public class EVFarmlandBlock extends FarmBlock {
         }
     }
 
-    public static void turnToEnrichedDirt(@Nullable Entity entity, BlockState state, Level level, BlockPos pos) {
-        BlockState enrichedDirt = BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState();
-        BlockState newState = pushEntitiesUp(state, enrichedDirt, level, pos);
+    public static void turnToEnrichedDirt(Entity entity, BlockState state, Level level, BlockPos pos) {
+        BlockState newState = pushEntitiesUp(state, BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState(), level, pos);
         level.setBlockAndUpdate(pos, newState);
         level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(entity, newState));
     }

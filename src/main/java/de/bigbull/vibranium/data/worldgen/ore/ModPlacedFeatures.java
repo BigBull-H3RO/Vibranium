@@ -17,7 +17,7 @@ import java.util.List;
 public class ModPlacedFeatures {
     public static ResourceKey<PlacedFeature> VIBRANIUM_ORE = createKey("vibranium_ore");
 
-    private static final int VEIN_SIZE = VibraniumConfigValues.VEINS_PER_CHUNK;
+    private static final int VEINS_PER_CHUNK = VibraniumConfigValues.VEINS_PER_CHUNK;
     private static final int MAX_HEIGHT = VibraniumConfigValues.MAX_HEIGHT;
     private static final int MIN_HEIGHT = VibraniumConfigValues.MIN_HEIGHT;
 
@@ -25,7 +25,7 @@ public class ModPlacedFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         Holder<ConfiguredFeature<?, ?>> holder = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_VIBRANIUM_ORE);
 
-        register(context, VIBRANIUM_ORE, holder, ModOrePlacement.commonOrePlacements(VEIN_SIZE, HeightRangePlacement.uniform(VerticalAnchor.absolute(MIN_HEIGHT), VerticalAnchor.absolute(MAX_HEIGHT))));
+        register(context, VIBRANIUM_ORE, holder, ModOrePlacement.commonOrePlacements(VEINS_PER_CHUNK, HeightRangePlacement.triangle(VerticalAnchor.absolute(MAX_HEIGHT), VerticalAnchor.absolute(MIN_HEIGHT))));
     }
 
     private static ResourceKey<PlacedFeature> createKey(String name) {
