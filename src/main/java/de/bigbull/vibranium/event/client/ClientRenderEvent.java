@@ -3,6 +3,7 @@ package de.bigbull.vibranium.event.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import de.bigbull.vibranium.config.VibraniumConfigValues;
+import de.bigbull.vibranium.event.ClientKeyBindings;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
@@ -25,10 +26,20 @@ import java.util.List;
 
 @EventBusSubscriber(modid = Vibranium.MODID, value = Dist.CLIENT)
 public class ClientRenderEvent {
+    private static boolean isOutlineEnabled = true;
+
     @SubscribeEvent
     public static void onRenderWorld(RenderHighlightEvent.Block event) {
         Minecraft mc = Minecraft.getInstance();
         ItemStack mainHandItem = mc.player.getMainHandItem();
+
+        if (ClientKeyBindings.toggleOutlineKey.consumeClick()) {
+            isOutlineEnabled = !isOutlineEnabled;
+        }
+
+        if (!isOutlineEnabled) {
+            return;
+        }
 
         if (isValidVibraniumMace(mainHandItem) && mc.hitResult instanceof BlockHitResult hitResult && !mc.player.isCreative()) {
             BlockPos hitPos = hitResult.getBlockPos();
