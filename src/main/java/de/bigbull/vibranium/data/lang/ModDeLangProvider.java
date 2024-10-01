@@ -58,6 +58,22 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED, "Vibranium Angereichertes Kraut Elixier");
         add("effect.vibranium.kinetic_redistribution", "Kinetische Umverteilung");
 
+        //KeyBinding
+        add("key.categories.vibranium", "Vibranium");
+        add("key.vibranium.toggle_outline", "Umrahmung umschalten");
+
+        //JEI
+        add("jei.vibranium.heart_shaped_herb.desc",
+                "Das Herzförmige Kraut kann bei zerstörten Portalen gefunden werden. Sei vorsichtig der Verzehr bringt sowohl positive als auch negative Effekte mit sich.");
+        add("jei.vibranium.vibranium_upgrade_smithing_template.desc",
+                "Diese Schmiedevorlage kann in einer Prüfkammer gefunden werden, versteckt in einem Fass in der Nähe von Betten.");
+        add("jei.vibranium.enriched_vibranium_dirt.desc",
+                "Um angereicherten Vibranium-Erdboden zu erhalten, rechtsklicke mit rohem Vibranium auf normalen Erdboden.");
+        add("jei.vibranium.vibranium_core.desc",
+                "Dieser geheimnisvolle Kern strahlt dieselbe Energie aus wie die Vibra-Golems. Was könnte geschehen, wenn sie aufeinandertreffen?");
+        add("jei.vibranium.enriched_vibranium_farmland.desc",
+                "Die geheimnisvolle Energie im angereicherten Vibranium-Ackerland scheint das Wachstum von Pflanzen zu beschleunigen.");
+
         //Vibranium Mace
         add("item.vibranium_mace.tooltip", "Kann 3x3 Blöcke abbauen");
 

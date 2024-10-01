@@ -33,10 +33,8 @@ public class CustomBrewingRecipe implements IBrewingRecipe {
     }
 
     @SubscribeEvent
-    public static void registerBrewingRecipes(RegisterBrewingRecipesEvent event) {
+    public static void onRegisterBrewingRecipe(RegisterBrewingRecipesEvent event) {
         var builder = event.getBuilder();
-
-        // Rezept: Awkward Potion + Heart Shaped Herb -> Standard Elixir
         builder.addRecipe(new CustomBrewingRecipe(
                 input -> {
                     if (input.getItem() != Items.POTION) {
@@ -52,14 +50,12 @@ public class CustomBrewingRecipe implements IBrewingRecipe {
                 ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR
         ));
 
-        // Rezept: Standard Elixir + Redstone -> Verlängertes Elixir
         builder.addRecipe(new CustomBrewingRecipe(
                 input -> input.getItem() == ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR.get(),
                 Tags.Items.DUSTS_REDSTONE,
                 ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED
         ));
 
-        // Rezept: Standard Elixir + Glowstone Dust -> Verstärktes Elixir
         builder.addRecipe(new CustomBrewingRecipe(
                 input -> input.getItem() == ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR.get(),
                 Tags.Items.DUSTS_GLOWSTONE,
