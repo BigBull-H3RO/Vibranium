@@ -63,15 +63,15 @@ public class ModEnLangProvider extends LanguageProvider {
 
         //JEI
         add("jei.vibranium.heart_shaped_herb.desc",
-                "The Heart-Shaped Herb can be found at Ruined Portals. Be cautious, though consuming it comes with both beneficial and harmful effects");
+                "The Heart-Shaped Herb can be found at Ruined Portals. Be cautious, though consuming it comes with both beneficial and harmful effects.");
         add("jei.vibranium.vibranium_upgrade_smithing_template.desc",
                 "This smithing template can be found in a Trial Chamber, tucked away in a barrel near some beds.");
         add("jei.vibranium.enriched_vibranium_dirt.desc",
-                "To obtain Enriched Vibranium Dirt, right-click on regular dirt with Raw Vibranium.");
+                "To obtain Enriched Vibranium Dirt, right-click on regular dirt with Raw Vibranium. You can separate the Raw Vibranium from the dirt by using a hoe.");
         add("jei.vibranium.vibranium_core.desc",
                 "This mysterious core emits the same energy as the Vibra Golems. What might happen if they come into contact?");
         add("jei.vibranium.enriched_vibranium_farmland.desc",
-                "The mysterious energy within Enriched Vibranium Farmland seems to accelerate the growth of plants.");
+                "The mysterious energy within Enriched Vibranium Farmland seems to accelerate the growth of plants. You can retrieve the Raw Vibranium from the farmland using a hoe.");
 
         //Entities
 //        add("entity.vibra_golem.vibra_golem", "Vibra Golem");

@@ -115,7 +115,7 @@ public class ItemInit {
                             .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 400, 0, true, false), 1.0F)
                             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 0, true, false), 1.0F)
                             .effect(() -> new MobEffectInstance(MobEffects.POISON, 200, 0, true, false), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 400, 0, true, false), 1.0F)
+                            .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 250, 0, true, false), 1.0F)
                             .build())
                     .stacksTo(16)
                     .rarity(Rarity.RARE)));

@@ -25,7 +25,11 @@ public class ModPlacedFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         Holder<ConfiguredFeature<?, ?>> holder = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_VIBRANIUM_ORE);
 
-        register(context, VIBRANIUM_ORE, holder, ModOrePlacement.commonOrePlacements(VEINS_PER_CHUNK, HeightRangePlacement.triangle(VerticalAnchor.absolute(MAX_HEIGHT), VerticalAnchor.absolute(MIN_HEIGHT))));
+        register(context, VIBRANIUM_ORE, holder,
+                ModOrePlacement.commonOrePlacements(VEINS_PER_CHUNK, HeightRangePlacement.uniform(
+                        VerticalAnchor.absolute(MIN_HEIGHT), VerticalAnchor.absolute(MAX_HEIGHT))
+                )
+        );
     }
 
     private static ResourceKey<PlacedFeature> createKey(String name) {

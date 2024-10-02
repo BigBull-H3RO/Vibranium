@@ -68,11 +68,11 @@ public class ModDeLangProvider extends LanguageProvider {
         add("jei.vibranium.vibranium_upgrade_smithing_template.desc",
                 "Diese Schmiedevorlage kann in einer Prüfkammer gefunden werden, versteckt in einem Fass in der Nähe von Betten.");
         add("jei.vibranium.enriched_vibranium_dirt.desc",
-                "Um angereicherten Vibranium-Erdboden zu erhalten, rechtsklicke mit rohem Vibranium auf normalen Erdboden.");
+                "Um Angereicherten Vibranium-Erdboden zu erhalten, klicke mit Rohvibranium auf normalen Erdboden. Du kannst das Rohvibranium mit einer Hacke vom Boden trennen.");
         add("jei.vibranium.vibranium_core.desc",
                 "Dieser geheimnisvolle Kern strahlt dieselbe Energie aus wie die Vibra-Golems. Was könnte geschehen, wenn sie aufeinandertreffen?");
         add("jei.vibranium.enriched_vibranium_farmland.desc",
-                "Die geheimnisvolle Energie im angereicherten Vibranium-Ackerland scheint das Wachstum von Pflanzen zu beschleunigen.");
+                "Die mysteriöse Energie im Angereicherten Vibranium-Ackerland scheint das Pflanzenwachstum zu beschleunigen. Du kannst das Rohvibranium mit einer Hacke aus dem Ackerland zurückgewinnen.");
 
         //Vibranium Mace
         add("item.vibranium_mace.tooltip", "Kann 3x3 Blöcke abbauen");

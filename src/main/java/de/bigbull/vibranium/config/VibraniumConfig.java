@@ -21,9 +21,9 @@ public class VibraniumConfig {
         BUILDER.push("Vibranium Ore Generation Configurations");
         BUILDER.comment();
         VEINS_PER_CHUNK = BUILDER.comment("How many veins of Vibranium ore should spawn per chunk")
-                .defineInRange("Veins per Chunk [Default: 2]", 2, 0, 64);
+                .defineInRange("Veins per Chunk [Default: 3]", 3, 0, 64);
         MAX_HEIGHT = BUILDER.comment("The maximum height Vibranium ore should spawn")
-                .defineInRange("MaxHeight [Default: -15]", -20, -64, 320);
+                .defineInRange("MaxHeight [Default: -10]", -10, -64, 320);
         MIN_HEIGHT = BUILDER.comment("The minimum height Vibranium ore should spawn")
                 .defineInRange("MinHeight [Default: -64]", -64, -64, 320);
         BUILDER.pop();
@@ -41,7 +41,7 @@ public class VibraniumConfig {
         BUILDER.pop();
 
         USE_FAST_MODE = BUILDER.comment("Use fast block breaking mode [true = fast, false = detailed]")
-                .define("fastMode", false);
+                .define("FastMode", false);
 
         SPEC = BUILDER.build();
     }
