@@ -19,7 +19,6 @@ public class VibraniumConfig {
 
     static {
         BUILDER.push("Vibranium Ore Generation Configurations");
-        BUILDER.comment();
         VEINS_PER_CHUNK = BUILDER.comment("How many veins of Vibranium ore should spawn per chunk")
                 .defineInRange("Veins per Chunk [Default: 3]", 3, 0, 64);
         MAX_HEIGHT = BUILDER.comment("The maximum height Vibranium ore should spawn")
@@ -29,7 +28,6 @@ public class VibraniumConfig {
         BUILDER.pop();
 
         BUILDER.push("Vibranium Mace Configurations");
-        BUILDER.comment();
         OUTLINE_RED = BUILDER.comment("Red component of the outline color [0.0 - 1.0]")
                 .defineInRange("Red", 0.0, 0.0, 1.0);
         OUTLINE_GREEN = BUILDER.comment("Green component of the outline color [0.0 - 1.0]")
@@ -38,10 +36,9 @@ public class VibraniumConfig {
                 .defineInRange("Blue", 0.0, 0.0, 1.0);
         OUTLINE_ALPHA = BUILDER.comment("Alpha (transparency) component of the outline color [0.0 - 1.0]")
                 .defineInRange("Alpha", 0.4, 0.0, 1.0);
-        BUILDER.pop();
-
         USE_FAST_MODE = BUILDER.comment("Use fast block breaking mode [true = fast, false = detailed]")
                 .define("FastMode", false);
+        BUILDER.pop();
 
         SPEC = BUILDER.build();
     }
