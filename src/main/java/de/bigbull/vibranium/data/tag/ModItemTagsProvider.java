@@ -25,6 +25,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(TagsInit.BlockTagsInit.DEEPSLATE_VIBRANIUM_ORE_TAG, TagsInit.ItemTagsInit.DEEPSLATE_VIBRANIUM_ORE_TAG);
         copy(TagsInit.BlockTagsInit.VIBRANIUM_BLOCK_TAG, TagsInit.ItemTagsInit.VIBRANIUM_BLOCK_TAG);
         copy(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG, TagsInit.ItemTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG);
+        copy(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_FARMLAND_TAG, TagsInit.ItemTagsInit.ENRICHED_VIBRANIUM_FARMLAND_TAG);
 
         //Items
         tag(TagsInit.ItemTagsInit.RAW_VIBRANIUM_TAG).add(ItemInit.RAW_VIBRANIUM.get());
@@ -47,7 +48,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagsInit.ItemTagsInit.VIBRANIUM_HORSE_ARMOR_TAG).add(ItemInit.VIBRANIUM_HORSE_ARMOR.get());
 
         //Tools
-        tag(TagsInit.ToolTagsInit.VIRABNIUM_MACE_TAG).add(ItemInit.VIBRANIUM_MACE.get());
+        tag(TagsInit.ToolTagsInit.VIBRANIUM_MACE_TAG).add(ItemInit.VIBRANIUM_MACE.get());
         tag(TagsInit.ToolTagsInit.VIBRANIUM_SWORD_TAG).add(ItemInit.VIBRANIUM_SWORD.get());
         tag(TagsInit.ToolTagsInit.VIBRANIUM_PICKAXE_TAG).add(ItemInit.VIBRANIUM_PICKAXE.get());
         tag(TagsInit.ToolTagsInit.VIBRANIUM_AXE_TAG).add(ItemInit.VIBRANIUM_AXE.get());
@@ -60,53 +61,56 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         //Armor
         tag(ItemTags.FOOT_ARMOR)
-                .add(ItemInit.VIBRANIUM_BOOTS.get());
+                .addTag(TagsInit.ItemTagsInit.VIBRANIUM_BOOTS_TAG);
 
         tag(ItemTags.LEG_ARMOR)
-                .add(ItemInit.VIBRANIUM_LEGGINGS.get());
+                .addTag(TagsInit.ItemTagsInit.VIBRANIUM_LEGGINGS_TAG);
 
         tag(ItemTags.CHEST_ARMOR)
-                .add(ItemInit.VIBRANIUM_CHESTPLATE.get());
+                .addTag(TagsInit.ItemTagsInit.VIBRANIUM_CHESTPLATE_TAG);
 
         tag(ItemTags.HEAD_ARMOR)
-                .add(ItemInit.VIBRANIUM_HELMET.get());
+                .addTag(TagsInit.ItemTagsInit.VIBRANIUM_HELMET_TAG);
 
         tag(ItemTags.TRIMMABLE_ARMOR)
-                .add(   ItemInit.VIBRANIUM_BOOTS.get(),
-                        ItemInit.VIBRANIUM_LEGGINGS.get(),
-                        ItemInit.VIBRANIUM_CHESTPLATE.get(),
-                        ItemInit.VIBRANIUM_HELMET.get());
+                .addTag(TagsInit.ItemTagsInit.VIBRANIUM_BOOTS_TAG)
+                .addTag(TagsInit.ItemTagsInit.VIBRANIUM_LEGGINGS_TAG)
+                .addTag(TagsInit.ItemTagsInit.VIBRANIUM_CHESTPLATE_TAG)
+                .addTag(TagsInit.ItemTagsInit.VIBRANIUM_HELMET_TAG);
+
+        tag(ItemTags.BEACON_PAYMENT_ITEMS)
+                .addTag(TagsInit.ItemTagsInit.VIBRANIUM_INGOT_TAG);
 
         //Tools
         tag(ItemTags.SWORDS)
-                .add(ItemInit.VIBRANIUM_SWORD.get());
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_SWORD_TAG);
 
         tag(ItemTags.PICKAXES)
-                .add(ItemInit.VIBRANIUM_PICKAXE.get())
-                .add(ItemInit.VIBRANIUM_MACE.get());
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_PICKAXE_TAG)
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_MACE_TAG);
 
         tag(ItemTags.AXES)
-                .add(ItemInit.VIBRANIUM_AXE.get())
-                .add(ItemInit.VIBRANIUM_MACE.get());
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_AXE_TAG)
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_MACE_TAG);
 
         tag(ItemTags.SHOVELS)
-                .add(ItemInit.VIBRANIUM_SHOVEL.get())
-                .add(ItemInit.VIBRANIUM_MACE.get());
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_SHOVEL_TAG)
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_MACE_TAG);
 
         tag(ItemTags.HOES)
-                .add(ItemInit.VIBRANIUM_HOE.get());
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_HOE_TAG);
 
         tag(ItemTags.DURABILITY_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_SHIELD.get());
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_SHIELD_TAG);
 
         //Vibranium Mace
         tag(ItemTags.MINING_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_MACE.get());
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_MACE_TAG);
         tag(ItemTags.MINING_LOOT_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_MACE.get());
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_MACE_TAG);
         tag(ItemTags.VANISHING_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_MACE.get());
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_MACE_TAG);
         tag(ItemTags.DURABILITY_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_MACE.get());
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_MACE_TAG);
     }
 }

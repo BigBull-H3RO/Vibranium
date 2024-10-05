@@ -48,10 +48,11 @@ public class TagsInit {
         public static final TagKey<Item> DEEPSLATE_VIBRANIUM_ORE_TAG = ItemTags.create(createOreLocation("deepslate_vibranium_ore"));
         public static final TagKey<Item> VIBRANIUM_BLOCK_TAG = ItemTags.create(createBlockLocation("vibranium_block"));
         public static final TagKey<Item> ENRICHED_VIBRANIUM_DIRT_TAG = ItemTags.create(createBlockLocation("enriched_vibranium_dirt"));
+        public static final TagKey<Item> ENRICHED_VIBRANIUM_FARMLAND_TAG = ItemTags.create(createBlockLocation("enriched_vibranium_farmland"));
     }
 
     public static class ToolTagsInit {
-        public static final TagKey<Item> VIRABNIUM_MACE_TAG = ItemTags.create(createGenericItemsLocation("vibranium_mace"));
+        public static final TagKey<Item> VIBRANIUM_MACE_TAG = ItemTags.create(createGenericItemsLocation("vibranium_mace"));
         public static final TagKey<Item> VIBRANIUM_SWORD_TAG = ItemTags.create(createGenericItemsLocation("vibranium_sword"));
         public static final TagKey<Item> VIBRANIUM_PICKAXE_TAG = ItemTags.create(createGenericItemsLocation("vibranium_pickaxe"));
         public static final TagKey<Item> VIBRANIUM_AXE_TAG = ItemTags.create(createGenericItemsLocation("vibranium_axe"));

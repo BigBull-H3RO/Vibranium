@@ -44,6 +44,17 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTag(TagsInit.BlockTagsInit.DEEPSLATE_VIBRANIUM_ORE_TAG)
                 .addTag(TagsInit.BlockTagsInit.VIBRANIUM_BLOCK_TAG);
 
+        tag(BlockTags.MINEABLE_WITH_HOE)
+                .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_FARMLAND_TAG)
+                .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG);
+
+        tag(BlockTags.BIG_DRIPLEAF_PLACEABLE)
+                .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG)
+                .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_FARMLAND_TAG);
+
+        tag(BlockTags.BEACON_BASE_BLOCKS)
+                .addTag(TagsInit.BlockTagsInit.VIBRANIUM_BLOCK_TAG);
+
         //Blocks
         tag(TagsInit.BlockTagsInit.BLOCK_OF_RAW_VIBRANIUM_TAG).add(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
         tag(TagsInit.BlockTagsInit.DEEPSLATE_VIBRANIUM_ORE_TAG).add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get());
