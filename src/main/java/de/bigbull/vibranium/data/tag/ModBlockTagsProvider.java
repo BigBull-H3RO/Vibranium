@@ -55,6 +55,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.BEACON_BASE_BLOCKS)
                 .addTag(TagsInit.BlockTagsInit.VIBRANIUM_BLOCK_TAG);
 
+        tag(BlockTags.DIRT)
+                .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG);
+
         //Blocks
         tag(TagsInit.BlockTagsInit.BLOCK_OF_RAW_VIBRANIUM_TAG).add(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
         tag(TagsInit.BlockTagsInit.DEEPSLATE_VIBRANIUM_ORE_TAG).add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get());
