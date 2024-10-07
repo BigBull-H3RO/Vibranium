@@ -4,7 +4,6 @@ import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.Vibranium;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -23,10 +22,12 @@ public class ModItemStateProvider extends ItemModelProvider {
         itemGenerated(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE);
 
         //Armors
-        itemGenerated(ItemInit.VIBRANIUM_BOOTS);
-        itemGenerated(ItemInit.VIBRANIUM_LEGGINGS);
-        itemGenerated(ItemInit.VIBRANIUM_CHESTPLATE);
-        itemGenerated(ItemInit.VIBRANIUM_HELMET);
+        registerTrimModels(ItemInit.VIBRANIUM_BOOTS);
+        registerTrimModels(ItemInit.VIBRANIUM_LEGGINGS);
+        registerTrimModels(ItemInit.VIBRANIUM_CHESTPLATE);
+        registerTrimModels(ItemInit.VIBRANIUM_HELMET);
+
+        //Animal Armors
         itemGenerated(ItemInit.VIBRANIUM_WOLF_ARMOR);
         itemGenerated(ItemInit.VIBRANIUM_HORSE_ARMOR);
 
@@ -38,7 +39,6 @@ public class ModItemStateProvider extends ItemModelProvider {
         itemHandheld(ItemInit.VIBRANIUM_HOE);
 
         //Addvance Items
-        itemHandheldWithTransform(ItemInit.VIBRANIUM_MACE);
         itemGenerated(ItemInit.HEART_SHAPED_HERB);
         itemMutliGenerated(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR, "vibranium_enriched_herb_elixir");
         itemMutliGenerated(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED, "vibranium_enriched_herb_elixir");
@@ -63,30 +63,51 @@ public class ModItemStateProvider extends ItemModelProvider {
         singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/handheld"),"layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/" + item.getId().getPath()));
     }
 
-    private void itemHandheldWithTransform(DeferredItem item) {
-        getBuilder(item.getId().getPath())
-                .parent(getExistingFile(ResourceLocation.withDefaultNamespace("item/handheld")))
-                .texture("layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + item.getId().getPath().toString().substring(Vibranium.MODID.length() - 9)))
-                .transforms()
-                .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
-                .rotation(0, -90, 55)
-                .translation(0, 4.0f, 1)
-                .scale(1, 1, 1)
+    private void registerTrimModels(DeferredItem item) {
+        String basePath = item.getId().getPath();
+
+        getBuilder(basePath)
+                .parent(getExistingFile(ResourceLocation.withDefaultNamespace("item/generated")))
+                .override()
+                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.1f)
+                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_quartz_trim")))
                 .end()
-                .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
-                .rotation(0, 90, -55)
-                .translation(0, 4.0f, 1)
-                .scale(1, 1, 1)
+                .override()
+                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.2f)
+                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_iron_trim")))
                 .end()
-                .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
-                .rotation(0, -90, 25)
-                .translation(0, 3, 0.8f)
-                .scale(0.9f, 0.9f, 0.9f)
+                .override()
+                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.3f)
+                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_netherite_darker_trim")))
                 .end()
-                .transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
-                .rotation(0, 90, -25)
-                .translation(0, 3, 0.8f)
-                .scale(0.9f, 0.9f, 0.9f)
-                .end();
+                .override()
+                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.4f)
+                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_redstone_trim")))
+                .end()
+                .override()
+                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.5f)
+                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_copper_trim")))
+                .end()
+                .override()
+                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.6f)
+                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_gold_trim")))
+                .end()
+                .override()
+                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.7f)
+                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_emerald_trim")))
+                .end()
+                .override()
+                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.8f)
+                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_diamond_trim")))
+                .end()
+                .override()
+                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.9f)
+                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_lapis_trim")))
+                .end()
+                .override()
+                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 1.0f)
+                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_amethyst_trim")))
+                .end()
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath));
     }
 }
