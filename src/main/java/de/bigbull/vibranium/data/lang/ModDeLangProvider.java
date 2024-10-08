@@ -62,6 +62,10 @@ public class ModDeLangProvider extends LanguageProvider {
         add("key.categories.vibranium", "Vibranium");
         add("key.vibranium.toggle_outline", "Umrahmung umschalten");
 
+        //Enchantments
+        add("enchantment.vibranium.universal_breaker", "Universeller Brecher");
+        add("enchantment.vibranium.universal_breaker.desc", "Ermöglicht das Abbauen aller Blöcke im Bereich, unabhängig von den Werkzeuganforderungen.");
+
         //JEI
         add("jei.vibranium.heart_shaped_herb.desc",
                 "Das Herzförmige Kraut kann bei zerstörten Portalen gefunden werden. Sei vorsichtig der Verzehr bringt sowohl positive als auch negative Effekte mit sich.");
