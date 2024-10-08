@@ -61,10 +61,6 @@ public class ModEnLangProvider extends LanguageProvider {
         add("key.categories.vibranium", "Vibranium");
         add("key.vibranium.toggle_outline", "Toggle Outline");
 
-        //Enchantments
-        add("enchantment.vibranium.universal_breaker", "Universal Breaker");
-        add("enchantment.vibranium.universal_breaker.desc", "Enables the removal of all blocks in the area, regardless of the tool requirements.");
-
         //JEI
         add("jei.vibranium.heart_shaped_herb.desc",
                 "The Heart-Shaped Herb can be found at Ruined Portals. Be cautious, though consuming it comes with both beneficial and harmful effects.");

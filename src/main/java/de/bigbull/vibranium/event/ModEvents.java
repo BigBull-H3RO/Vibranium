@@ -16,7 +16,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -41,7 +40,7 @@ public class ModEvents {
         Level level = event.getPlayer().level();
         BlockState middleBlockState = event.getLevel().getBlockState(event.getPos());
 
-        if (mainHandItem.getItem() instanceof VibraniumMaceItem Item && player instanceof ServerPlayer serverPlayer) {
+        if (mainHandItem.getItem() instanceof VibraniumMaceItem && player instanceof ServerPlayer serverPlayer) {
             if (!player.isShiftKeyDown()) {
                 BlockPos initialBlockPos = event.getPos();
                 TagKey<Block> requiredTool = getRequiredToolForBlock(middleBlockState);
