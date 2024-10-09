@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.event;
+package de.bigbull.vibranium.event.client;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import de.bigbull.vibranium.Vibranium;

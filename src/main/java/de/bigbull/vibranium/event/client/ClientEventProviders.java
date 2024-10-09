@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.event;
+package de.bigbull.vibranium.event.client;
 
 import de.bigbull.vibranium.entity.client.ModModelLayers;
 import de.bigbull.vibranium.entity.client.VibraGolemModel;

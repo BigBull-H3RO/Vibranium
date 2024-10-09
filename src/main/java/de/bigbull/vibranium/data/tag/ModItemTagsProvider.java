@@ -6,6 +6,7 @@ import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -111,6 +112,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.VANISHING_ENCHANTABLE)
                 .addTag(TagsInit.ToolTagsInit.VIBRANIUM_MACE_TAG);
         tag(ItemTags.DURABILITY_ENCHANTABLE)
+                .addTag(TagsInit.ToolTagsInit.VIBRANIUM_MACE_TAG);
+        tag(ItemTags.MACE_ENCHANTABLE)
                 .addTag(TagsInit.ToolTagsInit.VIBRANIUM_MACE_TAG);
     }
 }

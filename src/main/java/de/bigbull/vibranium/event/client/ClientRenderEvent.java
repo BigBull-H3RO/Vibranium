@@ -3,7 +3,6 @@ package de.bigbull.vibranium.event.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import de.bigbull.vibranium.config.VibraniumConfigValues;
-import de.bigbull.vibranium.event.ClientKeyBindings;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
