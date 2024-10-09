@@ -4,7 +4,6 @@ import de.bigbull.vibranium.Vibranium;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -40,7 +39,7 @@ public class CreativeTabInit {
                             new EnchantmentInstance(
                                     Minecraft.getInstance().level.registryAccess()
                                             .registryOrThrow(Registries.ENCHANTMENT)
-                                            .getHolder(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "universal_breaker"))
+                                            .getHolder(EnchantmentInit.UNIVERSAL_BREAKER.getId())
                                             .orElseThrow(), 1
                             )
                     )

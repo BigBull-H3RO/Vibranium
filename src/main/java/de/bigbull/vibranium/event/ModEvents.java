@@ -2,12 +2,10 @@ package de.bigbull.vibranium.event;
 
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.config.VibraniumConfigValues;
+import de.bigbull.vibranium.init.EnchantmentInit;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
@@ -55,18 +53,9 @@ public class ModEvents {
                     List<BlockPos> affectedPositions = VibraniumMaceItem.getBlocksToBeDestroyed(1, initialBlockPos, serverPlayer);
                     affectedPositions.remove(initialBlockPos);
 
-                    ResourceLocation universalBreakerId = ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "universal_breaker");
-                    Holder<Enchantment> universalBreakerEnchantment = level.registryAccess()
-                            .registryOrThrow(Registries.ENCHANTMENT)
-                            .getHolder(ResourceKey.create(Registries.ENCHANTMENT, universalBreakerId))
-                            .orElse(null);
-
-                    boolean hasUniversalBreaker = false;
-
-                    if (universalBreakerEnchantment != null) {
-                        int enchantmentLevel = mainHandItem.getEnchantmentLevel(universalBreakerEnchantment);
-                        hasUniversalBreaker = enchantmentLevel > 0;
-                    }
+                    Holder<Enchantment> universalBreakerEnchantmentHolder = EnchantmentInit.UNIVERSAL_BREAKER;
+                    int enchantmentLevel = mainHandItem.getEnchantmentLevel(universalBreakerEnchantmentHolder);
+                    boolean hasUniversalBreaker = enchantmentLevel > 0;
 
                     for (BlockPos pos : affectedPositions) {
                         BlockState targetBlockState = level.getBlockState(pos);
