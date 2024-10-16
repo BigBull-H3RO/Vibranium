@@ -119,10 +119,10 @@ public class ItemInit {
                             .build())
                     .stacksTo(16)
                     .rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR = ITEMS.register("vibranium_enhanced_herb_elixir",
+    public static final DeferredItem<Item> SOUL_HERB_ELIXIR = ITEMS.register("soul_herb_elixir",
             () -> new HSHPotionItem(new Item.Properties().stacksTo(1),3600, 0));
-    public static final DeferredItem<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED = ITEMS.register("vibranium_enhanced_herb_elixir_extended",
+    public static final DeferredItem<Item> SOUL_HERB_ELIXIR_EXTENDED = ITEMS.register("soul_herb_elixir_extended",
             () -> new HSHPotionItem(new Item.Properties().stacksTo(1),9600, 0));
-    public static final DeferredItem<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED = ITEMS.register("vibranium_enhanced_herb_elixir_enhanced",
+    public static final DeferredItem<Item> SOUL_HERB_ELIXIR_ENHANCED = ITEMS.register("soul_herb_elixir_enhanced",
             () -> new HSHPotionItem(new Item.Properties().stacksTo(1),1800, 1));
 }

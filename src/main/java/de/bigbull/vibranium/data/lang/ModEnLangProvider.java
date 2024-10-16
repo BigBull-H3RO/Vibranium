@@ -26,6 +26,21 @@ public class ModEnLangProvider extends LanguageProvider {
         addBlock(BlockInit.Vibranium_Block, "Vibranium Block");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_DIRT, "Enriched Vibranium Dirt");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_FARMLAND, "Enriched Vibranium Farmland");
+        addBlock(BlockInit.SOULWOOD_LOG, "Soulwood Log");
+        addBlock(BlockInit.SOULWOOD_SAPLING, "Soul Sapling");
+        addBlock(BlockInit.SOULWOOD_WOOD, "Soulwood Wood");
+        addBlock(BlockInit.STRIPPED_SOULWOOD_LOG, "Stripped Soulwood Log");
+        addBlock(BlockInit.STRIPPED_SOULWOOD_WOOD, "Stripped Soulwood Wood");
+        addBlock(BlockInit.SOULWOOD_PLANKS, "Soulwood Planks");
+        addBlock(BlockInit.SOULWOOD_LEAVES, "Soul Leaves");
+        addBlock(BlockInit.SOULWOOD_SLAB, "Soulwood Slab");
+        addBlock(BlockInit.SOULWOOD_STAIRS, "Soulwood Stairs");
+        addBlock(BlockInit.SOULWOOD_FENCE, "Soulwood Fence");
+        addBlock(BlockInit.SOULWOOD_FENCE_GATE, "Soulwood Gate");
+        addBlock(BlockInit.SOULWOOD_DOOR, "Soulwood Door");
+        addBlock(BlockInit.SOULWOOD_TRAPDOOR, "Soulwood Trapdoor");
+        addBlock(BlockInit.SOULWOOD_PRESSURE_PLATE, "Soulwood Plate");
+        addBlock(BlockInit.SOULWOOD_BUTTON, "Soulwood Button");
 
         //Tools
         addItem(ItemInit.VIBRANIUM_SWORD, "Vibranium Sword");
@@ -52,9 +67,9 @@ public class ModEnLangProvider extends LanguageProvider {
         add(ItemInit.VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Add Vibranium Ingot");
 
         //Potion
-        addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR, "Vibranium Enriched Herb Elixir");
-        addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED, "Vibranium Enriched Herb Elixir");
-        addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED, "Vibranium Enriched Herb Elixir");
+        addItem(ItemInit.SOUL_HERB_ELIXIR, "Soul Herb Elixir");
+        addItem(ItemInit.SOUL_HERB_ELIXIR_EXTENDED, "Soul Herb Elixir");
+        addItem(ItemInit.SOUL_HERB_ELIXIR_ENHANCED, "Soul Herb Elixir");
         add("effect.vibranium.kinetic_redistribution", "Kinetic Redistribution");
 
         //KeyBinding

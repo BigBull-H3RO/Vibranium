@@ -41,17 +41,17 @@ public class JEIPluginVibranium implements IModPlugin {
                 createBrewingRecipe(factory,
                         TagsInit.ItemTagsInit.HEART_SHAPED_HERB_TAG,
                         PotionContents.createItemStack(Items.POTION, Potions.AWKWARD),
-                        new ItemStack(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR.get()),
+                        new ItemStack(ItemInit.SOUL_HERB_ELIXIR.get()),
                         ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium_herb_elixir_brewing")),
                 createBrewingRecipe(factory,
                         Tags.Items.DUSTS_REDSTONE,
-                        new ItemStack(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR.get()),
-                        new ItemStack(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED.get()),
+                        new ItemStack(ItemInit.SOUL_HERB_ELIXIR.get()),
+                        new ItemStack(ItemInit.SOUL_HERB_ELIXIR_EXTENDED.get()),
                         ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium_extended_brewing")),
                 createBrewingRecipe(factory,
                         Tags.Items.DUSTS_GLOWSTONE,
-                        new ItemStack(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR.get()),
-                        new ItemStack(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED.get()),
+                        new ItemStack(ItemInit.SOUL_HERB_ELIXIR.get()),
+                        new ItemStack(ItemInit.SOUL_HERB_ELIXIR_ENHANCED.get()),
                         ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium_enhanced_brewing"))
         ));
 

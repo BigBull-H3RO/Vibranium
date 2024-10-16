@@ -6,6 +6,7 @@ import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -21,6 +22,30 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        //Blocks
+        tag(TagsInit.BlockTagsInit.BLOCK_OF_RAW_VIBRANIUM_TAG).add(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
+        tag(TagsInit.BlockTagsInit.DEEPSLATE_VIBRANIUM_ORE_TAG).add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get());
+        tag(TagsInit.BlockTagsInit.VIBRANIUM_BLOCK_TAG).add(BlockInit.Vibranium_Block.get());
+        tag(TagsInit.BlockTagsInit.HEART_SHAPED_HERB_BUSH_TAG).add(BlockInit.HEART_SHAPED_HERB_BUSH.get());
+        tag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG).add(BlockInit.ENRICHED_VIBRANIUM_DIRT.get());
+        tag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_FARMLAND_TAG).add(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_LOG_TAG).add(BlockInit.SOULWOOD_LOG.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_SAPLING_TAG).add(BlockInit.SOULWOOD_SAPLING.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_WOOD_TAG).add(BlockInit.SOULWOOD_WOOD.get());
+        tag(TagsInit.BlockTagsInit.STRIPPED_SOULWOOD_LOG_TAG).add(BlockInit.STRIPPED_SOULWOOD_LOG.get());
+        tag(TagsInit.BlockTagsInit.STRIPPED_SOULWOOD_WOOD_TAG).add(BlockInit.STRIPPED_SOULWOOD_WOOD.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_PLANKS_TAG).add(BlockInit.SOULWOOD_PLANKS.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_LEAVES_TAG).add(BlockInit.SOULWOOD_LEAVES.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_STAIRS_TAG).add(BlockInit.SOULWOOD_STAIRS.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_SLAB_TAG).add(BlockInit.SOULWOOD_SLAB.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_FENCE_TAG).add(BlockInit.SOULWOOD_FENCE.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_FENCE_GATE_TAG).add(BlockInit.SOULWOOD_FENCE_GATE.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_DOOR_TAG).add(BlockInit.SOULWOOD_DOOR.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_TRAPDOOR_TAG).add(BlockInit.SOULWOOD_TRAPDOOR.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_PRESSURE_PLATE_TAG).add(BlockInit.SOULWOOD_PRESSURE_PLATE.get());
+        tag(TagsInit.BlockTagsInit.SOULWOOD_BUTTON_TAG).add(BlockInit.SOULWOOD_BUTTON.get());
+
+        //Tags
         tag(TagsInit.BlockTagsInit.NEEDS_VIBRANIUM_TOOL);
         tag(TagsInit.BlockTagsInit.INCORRECT_FOR_VIBRANIUM_TOOL);
         tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).addTag(TagsInit.BlockTagsInit.NEEDS_VIBRANIUM_TOOL);
@@ -29,6 +54,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.INCORRECT_FOR_IRON_TOOL).addTag(Tags.Blocks.NEEDS_NETHERITE_TOOL).addTag(TagsInit.BlockTagsInit.NEEDS_VIBRANIUM_TOOL);
         tag(BlockTags.INCORRECT_FOR_STONE_TOOL).addTag(Tags.Blocks.NEEDS_NETHERITE_TOOL).addTag(TagsInit.BlockTagsInit.NEEDS_VIBRANIUM_TOOL);
         tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).addTag(Tags.Blocks.NEEDS_NETHERITE_TOOL).addTag(TagsInit.BlockTagsInit.NEEDS_VIBRANIUM_TOOL);
+
+        tag(TagsInit.BlockTagsInit.SOULWOOD_LOGS)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_LOG_TAG)
+                .addTag(TagsInit.BlockTagsInit.STRIPPED_SOULWOOD_LOG_TAG)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_WOOD_TAG)
+                .addTag(TagsInit.BlockTagsInit.STRIPPED_SOULWOOD_WOOD_TAG);
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addTag(TagsInit.BlockTagsInit.BLOCK_OF_RAW_VIBRANIUM_TAG)
@@ -48,21 +79,38 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_FARMLAND_TAG)
                 .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG);
 
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_LOG_TAG)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_WOOD_TAG)
+                .addTag(TagsInit.BlockTagsInit.STRIPPED_SOULWOOD_LOG_TAG)
+                .addTag(TagsInit.BlockTagsInit.STRIPPED_SOULWOOD_WOOD_TAG)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_PLANKS_TAG)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_STAIRS_TAG)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_SLAB_TAG)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_FENCE_TAG)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_FENCE_GATE_TAG)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_DOOR_TAG)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_TRAPDOOR_TAG)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_BUTTON_TAG)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_PRESSURE_PLATE_TAG);
+
         tag(BlockTags.BIG_DRIPLEAF_PLACEABLE)
                 .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG)
                 .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_FARMLAND_TAG);
 
-        tag(BlockTags.BEACON_BASE_BLOCKS)
-                .addTag(TagsInit.BlockTagsInit.VIBRANIUM_BLOCK_TAG);
-
-        tag(BlockTags.DIRT)
-                .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG);
-
-        //Blocks
-        tag(TagsInit.BlockTagsInit.BLOCK_OF_RAW_VIBRANIUM_TAG).add(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
-        tag(TagsInit.BlockTagsInit.DEEPSLATE_VIBRANIUM_ORE_TAG).add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get());
-        tag(TagsInit.BlockTagsInit.VIBRANIUM_BLOCK_TAG).add(BlockInit.Vibranium_Block.get());
-        tag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG).add(BlockInit.ENRICHED_VIBRANIUM_DIRT.get());
-        tag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_FARMLAND_TAG).add(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get());
+        tag(BlockTags.BEACON_BASE_BLOCKS).addTag(TagsInit.BlockTagsInit.VIBRANIUM_BLOCK_TAG);
+        tag(BlockTags.DIRT).addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG);
+        tag(BlockTags.PLANKS).addTag(TagsInit.BlockTagsInit.SOULWOOD_PLANKS_TAG);
+        tag(BlockTags.SAPLINGS).addTag(TagsInit.BlockTagsInit.SOULWOOD_SAPLING_TAG);
+        tag(BlockTags.LOGS).addTag(TagsInit.BlockTagsInit.SOULWOOD_LOG_TAG);
+        tag(BlockTags.LEAVES).addTag(TagsInit.BlockTagsInit.SOULWOOD_LEAVES_TAG);
+        tag(BlockTags.FENCES).addTag(TagsInit.BlockTagsInit.SOULWOOD_FENCE_TAG);
+        tag(BlockTags.FENCE_GATES).addTag(TagsInit.BlockTagsInit.SOULWOOD_FENCE_GATE_TAG);
+        tag(BlockTags.DOORS).addTag(TagsInit.BlockTagsInit.SOULWOOD_DOOR_TAG);
+        tag(BlockTags.TRAPDOORS).addTag(TagsInit.BlockTagsInit.SOULWOOD_TRAPDOOR_TAG);
+        tag(BlockTags.BUTTONS).addTag(TagsInit.BlockTagsInit.SOULWOOD_BUTTON_TAG);
+        tag(BlockTags.PRESSURE_PLATES).addTag(TagsInit.BlockTagsInit.SOULWOOD_PRESSURE_PLATE_TAG);
+        tag(BlockTags.STAIRS).addTag(TagsInit.BlockTagsInit.SOULWOOD_STAIRS_TAG);
+        tag(BlockTags.SLABS).addTag(TagsInit.BlockTagsInit.SOULWOOD_SLAB_TAG);
     }
 }

@@ -47,19 +47,19 @@ public class CustomBrewingRecipe implements IBrewingRecipe {
                     return contents.is(Potions.AWKWARD);
                 },
                 TagsInit.ItemTagsInit.HEART_SHAPED_HERB_TAG,
-                ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR
+                ItemInit.SOUL_HERB_ELIXIR
         ));
 
         builder.addRecipe(new CustomBrewingRecipe(
-                input -> input.getItem() == ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR.get(),
+                input -> input.getItem() == ItemInit.SOUL_HERB_ELIXIR.get(),
                 Tags.Items.DUSTS_REDSTONE,
-                ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED
+                ItemInit.SOUL_HERB_ELIXIR_EXTENDED
         ));
 
         builder.addRecipe(new CustomBrewingRecipe(
-                input -> input.getItem() == ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR.get(),
+                input -> input.getItem() == ItemInit.SOUL_HERB_ELIXIR.get(),
                 Tags.Items.DUSTS_GLOWSTONE,
-                ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED
+                ItemInit.SOUL_HERB_ELIXIR_ENHANCED
         ));
     }
 

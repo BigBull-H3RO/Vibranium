@@ -27,6 +27,21 @@ public class ModDeLangProvider extends LanguageProvider {
         addBlock(BlockInit.Vibranium_Block, "Vibranium Block");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_DIRT, "Angereicherte Vibranium Erde");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_FARMLAND, "Angereichertes Vibranium Ackerland");
+        addBlock(BlockInit.SOULWOOD_LOG, "Seelenholz Stamm");
+        addBlock(BlockInit.SOULWOOD_SAPLING, "Seelenholz Setzling");
+        addBlock(BlockInit.SOULWOOD_WOOD, "Seelenholz");
+        addBlock(BlockInit.STRIPPED_SOULWOOD_LOG, "Abgezogener Seelenholz Stamm");
+        addBlock(BlockInit.STRIPPED_SOULWOOD_WOOD, "Abgezogenes Seelenholz");
+        addBlock(BlockInit.SOULWOOD_PLANKS, "Seelenholz Planken");
+        addBlock(BlockInit.SOULWOOD_LEAVES, "Seelenholz Blätter");
+        addBlock(BlockInit.SOULWOOD_SLAB, "Seelenholz Platte");
+        addBlock(BlockInit.SOULWOOD_STAIRS, "Seelenholz Treppe");
+        addBlock(BlockInit.SOULWOOD_FENCE, "Seelenholz Zaun");
+        addBlock(BlockInit.SOULWOOD_FENCE_GATE, "Seelenholz Zauntor");
+        addBlock(BlockInit.SOULWOOD_DOOR, "Seelenholz Tür");
+        addBlock(BlockInit.SOULWOOD_TRAPDOOR, "Seelenholz Falltür");
+        addBlock(BlockInit.SOULWOOD_PRESSURE_PLATE, "Seelenholz Druckplatte");
+        addBlock(BlockInit.SOULWOOD_BUTTON, "Seelenholz Knopf");
 
         //Tools
         addItem(ItemInit.VIBRANIUM_SWORD, "Vibranium Schwert");
@@ -53,9 +68,9 @@ public class ModDeLangProvider extends LanguageProvider {
         add(ItemInit.VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Vibranium Barren hinzufügen");
 
         //Potion
-        addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR, "Vibranium Angereichertes Kraut Elixier");
-        addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED, "Vibranium Angereichertes Kraut Elixier");
-        addItem(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED, "Vibranium Angereichertes Kraut Elixier");
+        addItem(ItemInit.SOUL_HERB_ELIXIR, "Vibranium Angereichertes Kraut Elixier");
+        addItem(ItemInit.SOUL_HERB_ELIXIR_EXTENDED, "Vibranium Angereichertes Kraut Elixier");
+        addItem(ItemInit.SOUL_HERB_ELIXIR_ENHANCED, "Vibranium Angereichertes Kraut Elixier");
         add("effect.vibranium.kinetic_redistribution", "Kinetische Umverteilung");
 
         //KeyBinding

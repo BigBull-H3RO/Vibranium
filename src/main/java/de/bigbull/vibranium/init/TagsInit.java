@@ -43,12 +43,30 @@ public class TagsInit {
         public static final TagKey<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED_TAG = ItemTags.create(createGenericItemsLocation("vibranium_enriched_herb_elixir_extended"));
         public static final TagKey<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED_TAG = ItemTags.create(createGenericItemsLocation("vibranium_enriched_herb_elixir_enhanced"));
 
-        //Blocks
+        //Blocks1
         public static final TagKey<Item> BLOCK_OF_RAW_VIBRANIUM_TAG = ItemTags.create(createBlockLocation("block_of_raw_vibranium"));
         public static final TagKey<Item> DEEPSLATE_VIBRANIUM_ORE_TAG = ItemTags.create(createOreLocation("deepslate_vibranium_ore"));
         public static final TagKey<Item> VIBRANIUM_BLOCK_TAG = ItemTags.create(createBlockLocation("vibranium_block"));
         public static final TagKey<Item> ENRICHED_VIBRANIUM_DIRT_TAG = ItemTags.create(createBlockLocation("enriched_vibranium_dirt"));
         public static final TagKey<Item> ENRICHED_VIBRANIUM_FARMLAND_TAG = ItemTags.create(createBlockLocation("enriched_vibranium_farmland"));
+        public static final TagKey<Item> SOULWOOD_LOG_TAG = ItemTags.create(createBlockLocation("soulwood_log"));
+        public static final TagKey<Item> SOULWOOD_SAPLING_TAG = ItemTags.create(createBlockLocation("soulwood_sapling"));
+        public static final TagKey<Item> SOULWOOD_WOOD_TAG = ItemTags.create(createBlockLocation("soulwood_wood"));
+        public static final TagKey<Item> STRIPPED_SOULWOOD_LOG_TAG = ItemTags.create(createBlockLocation("stripped_soulwood_log"));
+        public static final TagKey<Item> STRIPPED_SOULWOOD_WOOD_TAG = ItemTags.create(createBlockLocation("stripped_soulwood_wood"));
+        public static final TagKey<Item> SOULWOOD_PLANKS_TAG = ItemTags.create(createBlockLocation("soulwood_planks"));
+        public static final TagKey<Item> SOULWOOD_LEAVES_TAG = ItemTags.create(createBlockLocation("soul_leaves"));
+        public static final TagKey<Item> SOULWOOD_STAIRS_TAG = ItemTags.create(createBlockLocation("soulwood_stairs"));
+        public static final TagKey<Item> SOULWOOD_FENCE_TAG = ItemTags.create(createBlockLocation("soulwood_fence"));
+        public static final TagKey<Item> SOULWOOD_FENCE_GATE_TAG = ItemTags.create(createBlockLocation("soulwood_fence_gate"));
+        public static final TagKey<Item> SOULWOOD_TRAPDOOR_TAG = ItemTags.create(createBlockLocation("soulwood_trapdoor"));
+        public static final TagKey<Item> SOULWOOD_PRESSURE_PLATE_TAG = ItemTags.create(createBlockLocation("soulwood_pressure_plate"));
+        public static final TagKey<Item> SOULWOOD_BUTTON_TAG = ItemTags.create(createBlockLocation("soulwood_button"));
+        public static final TagKey<Item> SOULWOOD_SLAB_TAG = ItemTags.create(createBlockLocation("soulwood_slab"));
+        public static final TagKey<Item> SOULWOOD_DOOR_TAG = ItemTags.create(createBlockLocation("soulwood_door"));
+
+        //Custom Tags
+        public static final TagKey<Item> SOULWOOD_LOGS = ItemTags.create(createGenericItemsLocation("soul_logs"));
     }
 
     public static class ToolTagsInit {
@@ -65,10 +83,28 @@ public class TagsInit {
         public static final TagKey<Block> BLOCK_OF_RAW_VIBRANIUM_TAG = BlockTags.create(createBlockLocation("block_of_raw_vibranium"));
         public static final TagKey<Block> DEEPSLATE_VIBRANIUM_ORE_TAG = BlockTags.create(createOreLocation("deepslate_vibranium_ore"));
         public static final TagKey<Block> VIBRANIUM_BLOCK_TAG = BlockTags.create(createBlockLocation("vibranium_block"));
+        public static final TagKey<Block> HEART_SHAPED_HERB_BUSH_TAG = BlockTags.create(createBlockLocation("heart_shaped_herb_bush"));
         public static final TagKey<Block> ENRICHED_VIBRANIUM_DIRT_TAG = BlockTags.create(createBlockLocation("enriched_vibranium_dirt"));
         public static final TagKey<Block> ENRICHED_VIBRANIUM_FARMLAND_TAG = BlockTags.create(createBlockLocation("enriched_vibranium_farmland"));
+        public static final TagKey<Block> SOULWOOD_LOG_TAG = BlockTags.create(createBlockLocation("soulwood_log"));
+        public static final TagKey<Block> SOULWOOD_SAPLING_TAG = BlockTags.create(createBlockLocation("soulwood_sapling"));
+        public static final TagKey<Block> SOULWOOD_WOOD_TAG = BlockTags.create(createBlockLocation("soulwood_wood"));
+        public static final TagKey<Block> STRIPPED_SOULWOOD_LOG_TAG = BlockTags.create(createBlockLocation("stripped_soulwood_log"));
+        public static final TagKey<Block> STRIPPED_SOULWOOD_WOOD_TAG = BlockTags.create(createBlockLocation("stripped_soulwood_wood"));
+        public static final TagKey<Block> SOULWOOD_PLANKS_TAG = BlockTags.create(createBlockLocation("soulwood_planks"));
+        public static final TagKey<Block> SOULWOOD_LEAVES_TAG = BlockTags.create(createBlockLocation("soul_leaves"));
+        public static final TagKey<Block> SOULWOOD_STAIRS_TAG = BlockTags.create(createBlockLocation("soulwood_stairs"));
+        public static final TagKey<Block> SOULWOOD_FENCE_TAG = BlockTags.create(createBlockLocation("soulwood_fence"));
+        public static final TagKey<Block> SOULWOOD_FENCE_GATE_TAG = BlockTags.create(createBlockLocation("soulwood_fence_gate"));
+        public static final TagKey<Block> SOULWOOD_TRAPDOOR_TAG = BlockTags.create(createBlockLocation("soulwood_trapdoor"));
+        public static final TagKey<Block> SOULWOOD_PRESSURE_PLATE_TAG = BlockTags.create(createBlockLocation("soulwood_pressure_plate"));
+        public static final TagKey<Block> SOULWOOD_BUTTON_TAG = BlockTags.create(createBlockLocation("soulwood_button"));
+        public static final TagKey<Block> SOULWOOD_SLAB_TAG = BlockTags.create(createBlockLocation("soulwood_slab"));
+        public static final TagKey<Block> SOULWOOD_DOOR_TAG = BlockTags.create(createBlockLocation("soulwood_door"));
 
+        //Custom Tags
         public static final TagKey<Block> INCORRECT_FOR_VIBRANIUM_TOOL = BlockTags.create(createBlockLocation("incorrect_for_vibranium_tool"));
         public static final TagKey<Block> NEEDS_VIBRANIUM_TOOL = BlockTags.create(createBlockLocation("needs_vibranium_tool"));
+        public static final TagKey<Block> SOULWOOD_LOGS = BlockTags.create(createBlockLocation("soul_logs"));
     }
 }

@@ -1,11 +1,15 @@
 package de.bigbull.vibranium.data.texture;
 
+import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.Vibranium;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 public class ModItemStateProvider extends ItemModelProvider {
@@ -40,9 +44,24 @@ public class ModItemStateProvider extends ItemModelProvider {
 
         //Addvance Items
         itemGenerated(ItemInit.HEART_SHAPED_HERB);
-        itemMutliGenerated(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR, "vibranium_enriched_herb_elixir");
-        itemMutliGenerated(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED, "vibranium_enriched_herb_elixir");
-        itemMutliGenerated(ItemInit.VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED, "vibranium_enriched_herb_elixir");
+        itemMutliGenerated(ItemInit.SOUL_HERB_ELIXIR, ItemInit.SOUL_HERB_ELIXIR);
+        itemMutliGenerated(ItemInit.SOUL_HERB_ELIXIR_EXTENDED, ItemInit.SOUL_HERB_ELIXIR);
+        itemMutliGenerated(ItemInit.SOUL_HERB_ELIXIR_ENHANCED, ItemInit.SOUL_HERB_ELIXIR);
+
+        //Tree
+        saplingItem(BlockInit.SOULWOOD_SAPLING);
+
+        //Blocks
+        buttonItem(BlockInit.SOULWOOD_BUTTON, BlockInit.SOULWOOD_PLANKS);
+        fenceItem(BlockInit.SOULWOOD_FENCE, BlockInit.SOULWOOD_PLANKS);
+
+        basicItem(BlockInit.SOULWOOD_DOOR.asItem());
+    }
+
+    private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {
+        return withExistingParent(item.getId().getPath(),
+                ResourceLocation.withDefaultNamespace("item/generated")).texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "block/" + item.getId().getPath()));
     }
 
     private void itemGenerated(DeferredItem item) {
@@ -50,13 +69,21 @@ public class ModItemStateProvider extends ItemModelProvider {
                 ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/" + item.getId().getPath()));
     }
 
-    private void itemMutliGenerated(DeferredItem item, String textureName) {
-        singleTexture(
-                item.getId().getPath(),
-                ResourceLocation.withDefaultNamespace("item/generated"),
-                "layer0",
-                ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + textureName)
-        );
+    private void itemMutliGenerated(DeferredItem item, DeferredItem baseItem) {
+        withExistingParent(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + baseItem.getId().getPath()));
+    }
+
+    private void buttonItem(DeferredBlock<?> block, DeferredBlock<?> baseBlock) {
+        withExistingParent(block.getId().getPath(), mcLoc("block/button_inventory"))
+                .texture("texture", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,
+                        "block/" + baseBlock.getId().getPath()));
+    }
+
+    private void fenceItem(DeferredBlock<?> block, DeferredBlock<?> baseBlock) {
+        withExistingParent(block.getId().getPath(), mcLoc("block/fence_inventory"))
+                .texture("texture", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,
+                        "block/" + baseBlock.getId().getPath()));
     }
 
     private void itemHandheld(DeferredItem item) {

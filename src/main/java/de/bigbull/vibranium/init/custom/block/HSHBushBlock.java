@@ -3,7 +3,9 @@ package de.bigbull.vibranium.init.custom.block;
 import com.mojang.serialization.MapCodec;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
+import de.bigbull.vibranium.init.ParticleInit;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -80,6 +82,27 @@ public class HSHBushBlock extends BushBlock implements BonemealableBlock {
             if (random.nextInt(5) == 0) {
                 world.setBlock(pos, state.setValue(AGE, age + 1), 2);
                 world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(state));
+            }
+        }
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
+        if (state.getValue(HSHBushBlock.AGE) == 3) {
+            if (random.nextInt(20) == 0) {
+                double offsetX = random.nextDouble() * 0.2 - 0.08;
+                double offsetY = random.nextDouble() * 0.2 - 0.05;
+                double offsetZ = random.nextDouble() * 0.2 - 0.08;
+
+                double particleX = pos.getX() + 0.5 + offsetX;
+                double particleY = pos.getY() + 0.45 + offsetY;
+                double particleZ = pos.getZ() + 0.5 + offsetZ;
+
+                world.addParticle(
+                        ParticleInit.DRIPPING_VIBRANIUM.get(),
+                        particleX, particleY, particleZ,
+                        0.0, 0.0, 0.0
+                );
             }
         }
     }

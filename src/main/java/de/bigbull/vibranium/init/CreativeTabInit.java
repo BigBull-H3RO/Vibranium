@@ -1,11 +1,9 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.Vibranium;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -33,17 +31,6 @@ public class CreativeTabInit {
                     .map((block) -> block.get().asItem())
                     .filter(addedItems::add)
                     .forEach(output::accept);
-
-            output.accept(
-                    EnchantedBookItem.createForEnchantment(
-                            new EnchantmentInstance(
-                                    Minecraft.getInstance().level.registryAccess()
-                                            .registryOrThrow(Registries.ENCHANTMENT)
-                                            .getHolder(EnchantmentInit.UNIVERSAL_BREAKER.getId())
-                                            .orElseThrow(), 1
-                            )
-                    )
-            );
         });
         builder.icon(() -> new ItemStack(ItemInit.VIBRANIUM_MACE.get()));
         builder.title(Component.translatable(MAIN_TAB_ONE_TITLE));

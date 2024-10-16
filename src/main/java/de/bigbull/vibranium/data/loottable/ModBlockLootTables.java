@@ -35,7 +35,26 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected void generate() {
         this.dropSelf(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
         this.dropSelf(BlockInit.Vibranium_Block.get());
+        this.dropSelf(BlockInit.SOULWOOD_LOG.get());
+        this.dropSelf(BlockInit.SOULWOOD_SAPLING.get());
+        this.dropSelf(BlockInit.SOULWOOD_WOOD.get());
+        this.dropSelf(BlockInit.STRIPPED_SOULWOOD_LOG.get());
+        this.dropSelf(BlockInit.STRIPPED_SOULWOOD_WOOD.get());
+        this.dropSelf(BlockInit.SOULWOOD_PLANKS.get());
+        this.dropSelf(BlockInit.SOULWOOD_STAIRS.get());
+        this.dropSelf(BlockInit.SOULWOOD_FENCE.get());
+        this.dropSelf(BlockInit.SOULWOOD_FENCE_GATE.get());
+        this.dropSelf(BlockInit.SOULWOOD_TRAPDOOR.get());
+        this.dropSelf(BlockInit.SOULWOOD_PRESSURE_PLATE.get());
+        this.dropSelf(BlockInit.SOULWOOD_BUTTON.get());
 
+
+        this.add(BlockInit.SOULWOOD_SLAB.get(), block -> createSlabItemTable(
+                BlockInit.SOULWOOD_SLAB.get()));
+        this.add(BlockInit.SOULWOOD_DOOR.get(), block -> createDoorTable(
+                BlockInit.SOULWOOD_DOOR.get()));
+        this.add(BlockInit.SOULWOOD_LEAVES.get(), block -> createLeavesDrops(
+                block, BlockInit.SOULWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         this.add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get(), block -> createSingleItemTableWithSilkTouch(
                 block, ItemInit.RAW_VIBRANIUM.get()));
 
