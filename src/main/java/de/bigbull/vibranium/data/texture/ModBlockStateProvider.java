@@ -26,6 +26,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         normalBlock(BlockInit.Vibranium_Block.get());
         normalBlock(BlockInit.ENRICHED_VIBRANIUM_DIRT.get());
         normalBlock(BlockInit.SOULWOOD_PLANKS.get());
+        normalBlock(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get());
+        normalBlock(BlockInit.BUDDING_VIBRANIUM_CRYSTAL.get());
 
         //Special Blocks
         farmlandBlock(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get());

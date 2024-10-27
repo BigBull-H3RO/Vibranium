@@ -10,13 +10,17 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.GeodeBlockSettings;
+import net.minecraft.world.level.levelgen.GeodeCrackSettings;
+import net.minecraft.world.level.levelgen.GeodeLayerSettings;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -27,27 +31,18 @@ import java.util.List;
 public class ModConfiguredFeatures {
     protected static ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_VIBRANIUM_ORE = createKey("overworld_vibranium_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SOUL_TREE = createKey("enriched_vibranium_tree");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_SOUL_TREE = createKey("fancy_enriched_vibranium_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> VIBRANIUM_STRUCTURE = createKey("vibranium_structure");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> VIBRANIUM_STRUCTURE2 = createKey("vibranium_structure2");
 
-//    public static TreeConfiguration.TreeConfigurationBuilder createEnrichedVibraniumTree() {
-//        return new TreeConfiguration.TreeConfigurationBuilder(
-//                SimpleStateProvider.simple(BlockInit.ENRICHED_VIBRANIUM_LOG.get().defaultBlockState()),
-//                new StraightTrunkPlacer(4, 2, 0),
-//                SimpleStateProvider.simple(BlockInit.ENRICHED_VIBRANIUM_LEAVES.get().defaultBlockState()),
-//                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-//                new TwoLayersFeatureSize(1, 0, 1)
-//        );
-//    }
-//
-//    public static TreeConfiguration.TreeConfigurationBuilder createFancyEnrichedVibraniumTree() {
-//        return new TreeConfiguration.TreeConfigurationBuilder(
-//                SimpleStateProvider.simple(BlockInit.ENRICHED_VIBRANIUM_LOG.get().defaultBlockState()),
-//                new StraightTrunkPlacer(6, 3, 0),
-//                SimpleStateProvider.simple(BlockInit.ENRICHED_VIBRANIUM_LEAVES.get().defaultBlockState()),
-//                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-//                new TwoLayersFeatureSize(1, 0, 1)
-//        );
-//    }
+    public static TreeConfiguration.TreeConfigurationBuilder soulTree() {
+        return new TreeConfiguration.TreeConfigurationBuilder(
+                SimpleStateProvider.simple(BlockInit.SOULWOOD_LOG.get().defaultBlockState()),
+                new StraightTrunkPlacer(4, 2, 0),
+                SimpleStateProvider.simple(BlockInit.SOULWOOD_LEAVES.get().defaultBlockState()),
+                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+                new TwoLayersFeatureSize(1, 0, 1)
+        );
+    }
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplacable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -59,8 +54,43 @@ public class ModConfiguredFeatures {
 
         register(context, OVERWORLD_VIBRANIUM_ORE, Feature.ORE, new OreConfiguration(VibraniumOre, 4));
 
-//        FeatureUtils.register(context, ENRICHED_VIBRANIUM_TREE, FeatureInit.ENRICHED_VIBRANIUM_TREE.get(), createEnrichedVibraniumTree().build());
-//        FeatureUtils.register(context, FANCY_ENRICHED_VIBRANIUM_TREE, FeatureInit.ENRICHED_VIBRANIUM_TREE.get(), createFancyEnrichedVibraniumTree().build());
+        FeatureUtils.register(context, SOUL_TREE, FeatureInit.SOUL_TREE.get(), soulTree().build());
+        context.register(VIBRANIUM_STRUCTURE, new ConfiguredFeature<>(FeatureInit.VIBRANIUM_STRUCTURE.get(), NoneFeatureConfiguration.INSTANCE));
+
+        FeatureUtils.register(
+                context,
+                VIBRANIUM_STRUCTURE2,
+                FeatureInit.VIBRANIUM_STRUCTURE2.get(),
+                new GeodeConfiguration(
+                        new GeodeBlockSettings(
+                                BlockStateProvider.simple(Blocks.AIR),
+                                BlockStateProvider.simple(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get()),
+                                BlockStateProvider.simple(BlockInit.BUDDING_VIBRANIUM_CRYSTAL.get()),
+                                BlockStateProvider.simple(Blocks.CALCITE),
+                                BlockStateProvider.simple(Blocks.SMOOTH_BASALT),
+                                List.of(
+                                        BlockInit.SMALL_VIBRANIUM_BUD.get().defaultBlockState(),
+                                        BlockInit.MEDIUM_VIBRANIUM_BUD.get().defaultBlockState(),
+                                        BlockInit.LARGE_VIBRANIUM_BUD.get().defaultBlockState(),
+                                        BlockInit.VIBRANIUM_CLUSTER.get().defaultBlockState()
+                                ),
+                                BlockTags.FEATURES_CANNOT_REPLACE,
+                                BlockTags.GEODE_INVALID_BLOCKS
+                        ),
+                        new GeodeLayerSettings(1.7, 2.2, 3.2, 4.2),
+                        new GeodeCrackSettings(0.95, 2.0, 2),
+                        0.35,
+                        0.083,
+                        true,
+                        UniformInt.of(4, 6),
+                        UniformInt.of(3, 4),
+                        UniformInt.of(1, 2),
+                        -16,
+                        16,
+                        0.05,
+                        1
+                )
+        );
     }
 
     private static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {

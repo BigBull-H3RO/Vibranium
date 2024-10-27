@@ -14,11 +14,11 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class CustomParticle extends TextureSheetParticle {
+public class CustomDripParticle extends TextureSheetParticle {
     private final Fluid type;
     protected boolean isGlowing;
 
-    protected CustomParticle(ClientLevel level, double x, double y, double z, Fluid type) {
+    protected CustomDripParticle(ClientLevel level, double x, double y, double z, Fluid type) {
         super(level, x, y, z);
         this.type = type;
         this.gravity = 0.06F;
@@ -83,7 +83,7 @@ public class CustomParticle extends TextureSheetParticle {
             double p_273440_,
             double p_272888_
     ) {
-        CustomParticle.DripHangParticle particle = new CustomParticle.DripHangParticle(
+        CustomDripParticle.DripHangParticle particle = new CustomDripParticle.DripHangParticle(
                 p_272664_, p_272879_, p_272592_, p_272967_, Fluids.EMPTY, ParticleInit.FALLING_VIBRANIUM.get()
         );
         particle.isGlowing = true;
@@ -103,7 +103,7 @@ public class CustomParticle extends TextureSheetParticle {
             double p_273257_,
             double p_273164_
     ) {
-        CustomParticle particle = new CustomParticle.FallAndLandParticle(
+        CustomDripParticle particle = new CustomDripParticle.FallAndLandParticle(
                 p_273478_, p_273621_, p_273279_, p_273227_, Fluids.EMPTY, ParticleInit.LANDING_VIBRANIUM.get()
         );
         particle.isGlowing = true;
@@ -122,7 +122,7 @@ public class CustomParticle extends TextureSheetParticle {
             double p_273472_,
             double p_273488_
     ) {
-        CustomParticle particle = new CustomParticle.DripLandParticle(p_273162_, p_273543_, p_273247_, p_272921_, Fluids.EMPTY);
+        CustomDripParticle particle = new CustomDripParticle.DripLandParticle(p_273162_, p_273543_, p_273247_, p_272921_, Fluids.EMPTY);
         particle.isGlowing = true;
         particle.lifetime = (int)(28.0 / (Math.random() * 0.8 + 0.2));
         particle.setColor(0.149F, 0.149F, 0.498F);
@@ -130,7 +130,7 @@ public class CustomParticle extends TextureSheetParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    static class DripHangParticle extends CustomParticle {
+    static class DripHangParticle extends CustomDripParticle {
         private final ParticleOptions fallingParticle;
 
         DripHangParticle(ClientLevel p_106085_, double p_106086_, double p_106087_, double p_106088_, Fluid p_106089_, ParticleOptions p_106090_) {
@@ -157,7 +157,7 @@ public class CustomParticle extends TextureSheetParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    static class FallAndLandParticle extends CustomParticle.FallingParticle {
+    static class FallAndLandParticle extends CustomDripParticle.FallingParticle {
         protected final ParticleOptions landParticle;
 
         FallAndLandParticle(ClientLevel p_106116_, double p_106117_, double p_106118_, double p_106119_, Fluid p_106120_, ParticleOptions p_106121_) {
@@ -175,7 +175,7 @@ public class CustomParticle extends TextureSheetParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    static class FallingParticle extends CustomParticle {
+    static class FallingParticle extends CustomDripParticle {
         FallingParticle(ClientLevel p_106132_, double p_106133_, double p_106134_, double p_106135_, Fluid p_106136_) {
             this(p_106132_, p_106133_, p_106134_, p_106135_, p_106136_, (int)(64.0 / (Math.random() * 0.8 + 0.2)));
         }
@@ -194,7 +194,7 @@ public class CustomParticle extends TextureSheetParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    static class DripLandParticle extends CustomParticle {
+    static class DripLandParticle extends CustomDripParticle {
         DripLandParticle(ClientLevel p_106102_, double p_106103_, double p_106104_, double p_106105_, Fluid p_106106_) {
             super(p_106102_, p_106103_, p_106104_, p_106105_, p_106106_);
             this.lifetime = (int)(16.0 / (Math.random() * 0.8 + 0.2));

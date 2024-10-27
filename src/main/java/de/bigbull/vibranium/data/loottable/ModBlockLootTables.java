@@ -7,15 +7,19 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -33,6 +37,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+
         this.dropSelf(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
         this.dropSelf(BlockInit.Vibranium_Block.get());
         this.dropSelf(BlockInit.SOULWOOD_LOG.get());
@@ -47,7 +53,12 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(BlockInit.SOULWOOD_TRAPDOOR.get());
         this.dropSelf(BlockInit.SOULWOOD_PRESSURE_PLATE.get());
         this.dropSelf(BlockInit.SOULWOOD_BUTTON.get());
+        this.dropSelf(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get());
 
+        this.add(BlockInit.BUDDING_VIBRANIUM_CRYSTAL.get(), noDrop());
+        this.dropWhenSilkTouch(BlockInit.SMALL_VIBRANIUM_BUD.get());
+        this.dropWhenSilkTouch(BlockInit.MEDIUM_VIBRANIUM_BUD.get());
+        this.dropWhenSilkTouch(BlockInit.LARGE_VIBRANIUM_BUD.get());
 
         this.add(BlockInit.SOULWOOD_SLAB.get(), block -> createSlabItemTable(
                 BlockInit.SOULWOOD_SLAB.get()));
@@ -131,6 +142,27 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                 )
                 )
         );
+
+        this.add(
+                BlockInit.VIBRANIUM_CLUSTER.get(),
+                block -> this.createSilkTouchDispatchTable(
+                        block,
+                        LootItem.lootTableItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get())
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
+                                .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
+                                .otherwise(
+                                        this.applyExplosionDecay(
+                                                block, LootItem.lootTableItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get())
+                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
+                                        )
+                                )
+                )
+        );
+        
+        this.dropWhenSilkTouch(BlockInit.SMALL_VIBRANIUM_BUD.get());
+        this.dropWhenSilkTouch(BlockInit.MEDIUM_VIBRANIUM_BUD.get());
+        this.dropWhenSilkTouch(BlockInit.LARGE_VIBRANIUM_BUD.get());
     }
 
     @Override

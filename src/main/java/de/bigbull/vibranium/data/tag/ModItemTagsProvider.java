@@ -42,6 +42,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(TagsInit.BlockTagsInit.SOULWOOD_TRAPDOOR_TAG, TagsInit.ItemTagsInit.SOULWOOD_TRAPDOOR_TAG);
         copy(TagsInit.BlockTagsInit.SOULWOOD_PRESSURE_PLATE_TAG, TagsInit.ItemTagsInit.SOULWOOD_PRESSURE_PLATE_TAG);
         copy(TagsInit.BlockTagsInit.SOULWOOD_BUTTON_TAG, TagsInit.ItemTagsInit.SOULWOOD_BUTTON_TAG);
+        copy(TagsInit.BlockTagsInit.VIBRANIUM_CRYSTAL_BLOCK_TAG, TagsInit.ItemTagsInit.VIBRANIUM_CRYSTAL_BLOCK_TAG);
+        copy(TagsInit.BlockTagsInit.BUDDING_VIRBANIUM_CRYSTAL_TAG, TagsInit.ItemTagsInit.BUDDING_VIRBANIUM_CRYSTAL_TAG);
+        copy(TagsInit.BlockTagsInit.LARGE_VIBRANIUM_BUD_TAG, TagsInit.ItemTagsInit.LARGE_VIBRANIUM_BUD_TAG);
+        copy(TagsInit.BlockTagsInit.MEDIUM_VIBRANIUM_BUD_TAG, TagsInit.ItemTagsInit.MEDIUM_VIBRANIUM_BUD_TAG);
+        copy(TagsInit.BlockTagsInit.SMALL_VIBRANIUM_BUD_TAG, TagsInit.ItemTagsInit.SMALL_VIBRANIUM_BUD_TAG);
 
         //Items
         tag(TagsInit.ItemTagsInit.RAW_VIBRANIUM_TAG).add(ItemInit.RAW_VIBRANIUM.get());
@@ -66,6 +71,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagsInit.ToolTagsInit.VIBRANIUM_SHOVEL_TAG).add(ItemInit.VIBRANIUM_SHOVEL.get());
         tag(TagsInit.ToolTagsInit.VIBRANIUM_HOE_TAG).add(ItemInit.VIBRANIUM_HOE.get());
         tag(TagsInit.ToolTagsInit.VIBRANIUM_SHIELD_TAG).add(ItemInit.VIBRANIUM_SHIELD.get());
+        tag(TagsInit.ItemTagsInit.VIBRANIUM_CRYSTAL_SHARD_TAG).add(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get());
 
         //Item Tags
         tag(ItemTags.FOOT_ARMOR)

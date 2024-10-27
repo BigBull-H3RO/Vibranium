@@ -42,8 +42,9 @@ public class TagsInit {
         public static final TagKey<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_TAG = ItemTags.create(createGenericItemsLocation("vibranium_enriched_herb_elixir"));
         public static final TagKey<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED_TAG = ItemTags.create(createGenericItemsLocation("vibranium_enriched_herb_elixir_extended"));
         public static final TagKey<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED_TAG = ItemTags.create(createGenericItemsLocation("vibranium_enriched_herb_elixir_enhanced"));
+        public static final TagKey<Item> VIBRANIUM_CRYSTAL_SHARD_TAG = ItemTags.create(createGenericItemsLocation("vibranium_crystal_shard"));
 
-        //Blocks1
+        //Blocks
         public static final TagKey<Item> BLOCK_OF_RAW_VIBRANIUM_TAG = ItemTags.create(createBlockLocation("block_of_raw_vibranium"));
         public static final TagKey<Item> DEEPSLATE_VIBRANIUM_ORE_TAG = ItemTags.create(createOreLocation("deepslate_vibranium_ore"));
         public static final TagKey<Item> VIBRANIUM_BLOCK_TAG = ItemTags.create(createBlockLocation("vibranium_block"));
@@ -64,6 +65,11 @@ public class TagsInit {
         public static final TagKey<Item> SOULWOOD_BUTTON_TAG = ItemTags.create(createBlockLocation("soulwood_button"));
         public static final TagKey<Item> SOULWOOD_SLAB_TAG = ItemTags.create(createBlockLocation("soulwood_slab"));
         public static final TagKey<Item> SOULWOOD_DOOR_TAG = ItemTags.create(createBlockLocation("soulwood_door"));
+        public static final TagKey<Item> VIBRANIUM_CRYSTAL_BLOCK_TAG = ItemTags.create(createBlockLocation("vibranium_crystal_block"));
+        public static final TagKey<Item> BUDDING_VIRBANIUM_CRYSTAL_TAG = ItemTags.create(createBlockLocation("budding_vibranium_crystal"));
+        public static final TagKey<Item> LARGE_VIBRANIUM_BUD_TAG = ItemTags.create(createBlockLocation("large_vibranium_bud"));
+        public static final TagKey<Item> MEDIUM_VIBRANIUM_BUD_TAG = ItemTags.create(createBlockLocation("medium_vibranium_bud"));
+        public static final TagKey<Item> SMALL_VIBRANIUM_BUD_TAG = ItemTags.create(createBlockLocation("small_vibranium_bud"));
 
         //Custom Tags
         public static final TagKey<Item> SOULWOOD_LOGS = ItemTags.create(createGenericItemsLocation("soul_logs"));
@@ -101,6 +107,11 @@ public class TagsInit {
         public static final TagKey<Block> SOULWOOD_BUTTON_TAG = BlockTags.create(createBlockLocation("soulwood_button"));
         public static final TagKey<Block> SOULWOOD_SLAB_TAG = BlockTags.create(createBlockLocation("soulwood_slab"));
         public static final TagKey<Block> SOULWOOD_DOOR_TAG = BlockTags.create(createBlockLocation("soulwood_door"));
+        public static final TagKey<Block> VIBRANIUM_CRYSTAL_BLOCK_TAG = BlockTags.create(createBlockLocation("vibranium_crystal_block"));
+        public static final TagKey<Block> BUDDING_VIRBANIUM_CRYSTAL_TAG = BlockTags.create(createBlockLocation("budding_vibranium_crystal"));
+        public static final TagKey<Block> LARGE_VIBRANIUM_BUD_TAG = BlockTags.create(createBlockLocation("large_vibranium_bud"));
+        public static final TagKey<Block> MEDIUM_VIBRANIUM_BUD_TAG = BlockTags.create(createBlockLocation("medium_vibranium_bud"));
+        public static final TagKey<Block> SMALL_VIBRANIUM_BUD_TAG = BlockTags.create(createBlockLocation("small_vibranium_bud"));
 
         //Custom Tags
         public static final TagKey<Block> INCORRECT_FOR_VIBRANIUM_TOOL = BlockTags.create(createBlockLocation("incorrect_for_vibranium_tool"));

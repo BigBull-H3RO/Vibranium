@@ -44,6 +44,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(TagsInit.BlockTagsInit.SOULWOOD_TRAPDOOR_TAG).add(BlockInit.SOULWOOD_TRAPDOOR.get());
         tag(TagsInit.BlockTagsInit.SOULWOOD_PRESSURE_PLATE_TAG).add(BlockInit.SOULWOOD_PRESSURE_PLATE.get());
         tag(TagsInit.BlockTagsInit.SOULWOOD_BUTTON_TAG).add(BlockInit.SOULWOOD_BUTTON.get());
+        tag(TagsInit.BlockTagsInit.VIBRANIUM_CRYSTAL_BLOCK_TAG).add(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get());
+        tag(TagsInit.BlockTagsInit.BUDDING_VIRBANIUM_CRYSTAL_TAG).add(BlockInit.BUDDING_VIBRANIUM_CRYSTAL.get());
+        tag(TagsInit.BlockTagsInit.LARGE_VIBRANIUM_BUD_TAG).add(BlockInit.LARGE_VIBRANIUM_BUD.get());
+        tag(TagsInit.BlockTagsInit.MEDIUM_VIBRANIUM_BUD_TAG).add(BlockInit.MEDIUM_VIBRANIUM_BUD.get());
+        tag(TagsInit.BlockTagsInit.SMALL_VIBRANIUM_BUD_TAG).add(BlockInit.SMALL_VIBRANIUM_BUD.get());
 
         //Tags
         tag(TagsInit.BlockTagsInit.NEEDS_VIBRANIUM_TOOL);
@@ -64,7 +69,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addTag(TagsInit.BlockTagsInit.BLOCK_OF_RAW_VIBRANIUM_TAG)
                 .addTag(TagsInit.BlockTagsInit.DEEPSLATE_VIBRANIUM_ORE_TAG)
-                .addTag(TagsInit.BlockTagsInit.VIBRANIUM_BLOCK_TAG);
+                .addTag(TagsInit.BlockTagsInit.VIBRANIUM_BLOCK_TAG)
+                .addTag(TagsInit.BlockTagsInit.VIBRANIUM_CRYSTAL_BLOCK_TAG)
+                .addTag(TagsInit.BlockTagsInit.BUDDING_VIRBANIUM_CRYSTAL_TAG)
+                .addTag(TagsInit.BlockTagsInit.LARGE_VIBRANIUM_BUD_TAG)
+                .addTag(TagsInit.BlockTagsInit.MEDIUM_VIBRANIUM_BUD_TAG)
+                .addTag(TagsInit.BlockTagsInit.SMALL_VIBRANIUM_BUD_TAG);
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG)
@@ -77,7 +87,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_FARMLAND_TAG)
-                .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG);
+                .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG)
+                .addTag(TagsInit.BlockTagsInit.SOULWOOD_LEAVES_TAG);
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .addTag(TagsInit.BlockTagsInit.SOULWOOD_LOG_TAG)
@@ -97,6 +108,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.BIG_DRIPLEAF_PLACEABLE)
                 .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG)
                 .addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_FARMLAND_TAG);
+
+        tag(BlockTags.CRYSTAL_SOUND_BLOCKS)
+                .addTag(TagsInit.BlockTagsInit.VIBRANIUM_CRYSTAL_BLOCK_TAG)
+                .addTag(TagsInit.BlockTagsInit.BUDDING_VIRBANIUM_CRYSTAL_TAG);
 
         tag(BlockTags.BEACON_BASE_BLOCKS).addTag(TagsInit.BlockTagsInit.VIBRANIUM_BLOCK_TAG);
         tag(BlockTags.DIRT).addTag(TagsInit.BlockTagsInit.ENRICHED_VIBRANIUM_DIRT_TAG);

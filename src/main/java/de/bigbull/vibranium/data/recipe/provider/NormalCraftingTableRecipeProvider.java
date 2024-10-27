@@ -168,5 +168,12 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .define('#', BlockInit.SOULWOOD_PLANKS)
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS.get()))
                 .save(this.recipeOutput, getModId("enriched_vibranium_pressure_plate"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockInit.VIBRANIUM_CRYSTAL_BLOCK, 1)
+                .pattern("##")
+                .pattern("##")
+                .define('#', ItemInit.VIBRANIUM_CRYSTAL_SHARD)
+                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_CRYSTAL_SHARD))
+                .save(this.recipeOutput, getModId("vibranium_crystal_block"));
     }
 }

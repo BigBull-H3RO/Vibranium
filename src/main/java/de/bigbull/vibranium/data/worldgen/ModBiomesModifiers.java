@@ -18,7 +18,8 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class ModBiomesModifiers {
     protected static ResourceKey<BiomeModifier> ADD_VIBRANIUM_ORE = createKey("add_vibranium_ore");
-    protected static ResourceKey<BiomeModifier> ADD_ENRICHED_VIBRANIUM = createKey("add_enriched_vibranium");
+    protected static ResourceKey<BiomeModifier> ADD_VIBRANIUM_STRUCTURE = createKey("add_vibranium_structure");
+    protected static ResourceKey<BiomeModifier> ADD_VIBRANIUM_STRUCTURE2 = createKey("add_vibranium_structure2");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -30,6 +31,22 @@ public class ModBiomesModifiers {
                         biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                         HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.VIBRANIUM_ORE)),
                         GenerationStep.Decoration.UNDERGROUND_ORES
+                )
+        );
+        context.register(
+                ADD_VIBRANIUM_STRUCTURE,
+                new BiomeModifiers.AddFeaturesBiomeModifier(
+                        biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.VIBRANIUM_STRUCTURE)),
+                        GenerationStep.Decoration.UNDERGROUND_STRUCTURES
+                )
+        );
+        context.register(
+                ADD_VIBRANIUM_STRUCTURE2,
+                new BiomeModifiers.AddFeaturesBiomeModifier(
+                        biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.VIBRANIUM_STRUCTURE2)),
+                        GenerationStep.Decoration.UNDERGROUND_STRUCTURES
                 )
         );
     }

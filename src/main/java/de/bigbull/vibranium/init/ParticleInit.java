@@ -13,4 +13,6 @@ public class ParticleInit {
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DRIPPING_VIBRANIUM = PARTICLES.register("dripping_vibranium", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FALLING_VIBRANIUM = PARTICLES.register("falling_vibranium", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> LANDING_VIBRANIUM = PARTICLES.register("landing_vibranium", () -> new SimpleParticleType(false));
+
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SOULWOOD_LEAVES = PARTICLES.register("soulwood_leaves", () -> new SimpleParticleType(false));
 }

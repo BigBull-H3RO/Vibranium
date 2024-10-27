@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "vibranium:block/small_vibranium_bud",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "vibranium:block/small_vibranium_bud",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "vibranium:block/small_vibranium_bud",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "vibranium:block/small_vibranium_bud",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "vibranium:block/small_vibranium_bud"
+    },
+    "facing=west": {
+      "model": "vibranium:block/small_vibranium_bud",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

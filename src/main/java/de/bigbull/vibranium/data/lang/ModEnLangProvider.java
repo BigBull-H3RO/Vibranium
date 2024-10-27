@@ -19,6 +19,7 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawn Egg");
         addItem(ItemInit.VIBRANIUM_CORE, "Vibranium Core");
         addItem(ItemInit.HEART_SHAPED_HERB, "Heart Shaped Herb");
+        addItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD, "Vibranium Crystal Shard");
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block of Raw Vibranium");
@@ -28,7 +29,7 @@ public class ModEnLangProvider extends LanguageProvider {
         addBlock(BlockInit.ENRICHED_VIBRANIUM_FARMLAND, "Enriched Vibranium Farmland");
         addBlock(BlockInit.SOULWOOD_LOG, "Soulwood Log");
         addBlock(BlockInit.SOULWOOD_SAPLING, "Soul Sapling");
-        addBlock(BlockInit.SOULWOOD_WOOD, "Soulwood Wood");
+        addBlock(BlockInit.SOULWOOD_WOOD, "Soulwood");
         addBlock(BlockInit.STRIPPED_SOULWOOD_LOG, "Stripped Soulwood Log");
         addBlock(BlockInit.STRIPPED_SOULWOOD_WOOD, "Stripped Soulwood Wood");
         addBlock(BlockInit.SOULWOOD_PLANKS, "Soulwood Planks");
@@ -41,6 +42,12 @@ public class ModEnLangProvider extends LanguageProvider {
         addBlock(BlockInit.SOULWOOD_TRAPDOOR, "Soulwood Trapdoor");
         addBlock(BlockInit.SOULWOOD_PRESSURE_PLATE, "Soulwood Plate");
         addBlock(BlockInit.SOULWOOD_BUTTON, "Soulwood Button");
+        addBlock(BlockInit.VIBRANIUM_CRYSTAL_BLOCK, "Crystal Block of Vibranium");
+        addBlock(BlockInit.BUDDING_VIBRANIUM_CRYSTAL, "Budding Crystal-Vibranium");
+        addBlock(BlockInit.VIBRANIUM_CLUSTER, "Crystal-Vibranium Cluster");
+        addBlock(BlockInit.SMALL_VIBRANIUM_BUD, "Small Crystal Vibranium Bud");
+        addBlock(BlockInit.MEDIUM_VIBRANIUM_BUD, "Medium Crystal Vibranium Bud");
+        addBlock(BlockInit.LARGE_VIBRANIUM_BUD, "Large Crystal Vibranium Bud");
 
         //Tools
         addItem(ItemInit.VIBRANIUM_SWORD, "Vibranium Sword");

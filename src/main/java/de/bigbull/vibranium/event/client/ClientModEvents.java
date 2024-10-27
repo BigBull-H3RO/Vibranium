@@ -4,7 +4,8 @@ import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.entity.MobEnities;
 import de.bigbull.vibranium.entity.client.VibraGolemRenderer;
 import de.bigbull.vibranium.init.ParticleInit;
-import de.bigbull.vibranium.init.custom.CustomParticle;
+import de.bigbull.vibranium.init.custom.CustomDripParticle;
+import de.bigbull.vibranium.init.custom.CustomLeavesParticle;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -21,8 +22,9 @@ public class ClientModEvents {
 
     @SubscribeEvent
     public static void onRegisterParticles(RegisterParticleProvidersEvent event) {
-        event.registerSprite(ParticleInit.DRIPPING_VIBRANIUM.get(), CustomParticle::createVibraniumHangParticle);
-        event.registerSprite(ParticleInit.FALLING_VIBRANIUM.get(), CustomParticle::createVibraniumFallParticle);
-        event.registerSprite(ParticleInit.LANDING_VIBRANIUM.get(), CustomParticle::createVibraniumLandParticle);
+        event.registerSprite(ParticleInit.DRIPPING_VIBRANIUM.get(), CustomDripParticle::createVibraniumHangParticle);
+        event.registerSprite(ParticleInit.FALLING_VIBRANIUM.get(), CustomDripParticle::createVibraniumFallParticle);
+        event.registerSprite(ParticleInit.LANDING_VIBRANIUM.get(), CustomDripParticle::createVibraniumLandParticle);
+        event.registerSpriteSet(ParticleInit.SOULWOOD_LEAVES.get(), CustomLeavesParticle.Provider::new);
     }
 }

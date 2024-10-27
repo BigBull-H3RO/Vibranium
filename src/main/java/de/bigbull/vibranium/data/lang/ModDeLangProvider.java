@@ -20,6 +20,7 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawnei");
         addItem(ItemInit.VIBRANIUM_CORE, "Vibranium Kern");
         addItem(ItemInit.HEART_SHAPED_HERB, "Herzformiges Kraut");
+        addItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD, "Vibranium Kristall Splitter");
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block aus rohem Vibranium");
@@ -42,6 +43,12 @@ public class ModDeLangProvider extends LanguageProvider {
         addBlock(BlockInit.SOULWOOD_TRAPDOOR, "Seelenholz Falltür");
         addBlock(BlockInit.SOULWOOD_PRESSURE_PLATE, "Seelenholz Druckplatte");
         addBlock(BlockInit.SOULWOOD_BUTTON, "Seelenholz Knopf");
+        addBlock(BlockInit.VIBRANIUM_CRYSTAL_BLOCK, "Kristallblock aus Vibranium");
+        addBlock(BlockInit.BUDDING_VIBRANIUM_CRYSTAL, "Kristall-Vibranium Knospenblock");
+        addBlock(BlockInit.VIBRANIUM_CLUSTER, "Kristall-Vibraniumhaufen");
+        addBlock(BlockInit.SMALL_VIBRANIUM_BUD, "Kleine Kristall-Vibraniumknospe");
+        addBlock(BlockInit.MEDIUM_VIBRANIUM_BUD, "Mittlere Kristall-Vibraniumknospe");
+        addBlock(BlockInit.LARGE_VIBRANIUM_BUD, "Große Kristall-Vibraniumknospe");
 
         //Tools
         addItem(ItemInit.VIBRANIUM_SWORD, "Vibranium Schwert");

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "vibranium:block/small_vibranium_bud"
+  },
+  "render_type": "cutout"
+}

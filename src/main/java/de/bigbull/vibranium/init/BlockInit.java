@@ -1,12 +1,12 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.init.custom.block.EVDirtBlock;
-import de.bigbull.vibranium.init.custom.block.EVFarmlandBlock;
-import de.bigbull.vibranium.init.custom.block.EVTree;
-import de.bigbull.vibranium.init.custom.block.HSHBushBlock;
-import de.bigbull.vibranium.init.custom.block.tree.VibraniumLeavesBlock;
+import de.bigbull.vibranium.init.custom.block.*;
+import de.bigbull.vibranium.init.custom.block.tree.EVTree;
+import de.bigbull.vibranium.init.custom.block.tree.SWLeavesBlock;
 import de.bigbull.vibranium.init.custom.block.tree.VibraniumRotatedPillarBlock;
+import de.bigbull.vibranium.init.custom.block.vibraniumcrystal.BuddingVibraniumBlock;
+import de.bigbull.vibranium.init.custom.block.vibraniumcrystal.VibraniumClusterBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -56,14 +56,16 @@ public class BlockInit {
             new EVDirtBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.DIRT)
                     .strength(0.8F)
-                    .sound(SoundType.GRAVEL)));
+                    .sound(SoundType.GRAVEL)
+                    .requiresCorrectToolForDrops()));
 
     public static final DeferredBlock<Block> ENRICHED_VIBRANIUM_FARMLAND = registerBlock("enriched_vibranium_farmland", () ->
             new EVFarmlandBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.DIRT)
                     .randomTicks()
                     .strength(0.6F)
-                    .sound(SoundType.GRAVEL)));
+                    .sound(SoundType.GRAVEL)
+                    .requiresCorrectToolForDrops()));
 
     public static final DeferredBlock<Block> SOULWOOD_LOG = registerBlock("soulwood_log", () ->
             new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG).strength(3.0F)));
@@ -78,7 +80,7 @@ public class BlockInit {
             new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD).strength(3.0F)));
 
     public static final DeferredBlock<Block> SOULWOOD_LEAVES = registerBlock("soulwood_leaves", () ->
-            new VibraniumLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
+            new SWLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).noOcclusion()));
 
     public static final DeferredBlock<Block> SOULWOOD_SAPLING = registerBlock("soulwood_sapling", () ->
             new SaplingBlock(EVTree.SOUL_TREE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
@@ -109,6 +111,62 @@ public class BlockInit {
 
     public static final DeferredBlock<TrapDoorBlock> SOULWOOD_TRAPDOOR = registerBlock("soulwood_trapdoor", () ->
             new TrapDoorBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR).strength(3.0F).sound(SoundType.CHERRY_WOOD)));
+
+    public static final DeferredBlock<Block> VIBRANIUM_CRYSTAL_BLOCK = registerBlock("vibranium_crystal_block",
+            () -> new AmethystBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_CYAN)
+                            .strength(1.5F)
+                            .sound(SoundType.AMETHYST)
+                            .requiresCorrectToolForDrops()));
+
+    public static final DeferredBlock<Block> BUDDING_VIBRANIUM_CRYSTAL = registerBlock("budding_vibranium_crystal",
+            () -> new BuddingVibraniumBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_CYAN)
+                            .randomTicks()
+                            .strength(5f)
+                            .sound(SoundType.AMETHYST)
+                            .requiresCorrectToolForDrops()
+                            .pushReaction(PushReaction.DESTROY)
+            ));
+
+    public static final DeferredBlock<Block> VIBRANIUM_CLUSTER = registerBlock("vibranium_cluster",
+            () -> new VibraniumClusterBlock(
+                    7.0F, 3.0F,
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_CYAN)
+                            .forceSolidOn()
+                            .noOcclusion()
+                            .sound(SoundType.AMETHYST_CLUSTER)
+                            .strength(5f)
+                            .lightLevel((state) -> 6)
+                            .pushReaction(PushReaction.DESTROY)
+            ));
+
+    public static final DeferredBlock<Block> LARGE_VIBRANIUM_BUD = registerBlock("large_vibranium_bud",
+            () -> new VibraniumClusterBlock(
+                    5.0F, 3.0F,
+                    BlockBehaviour.Properties.ofFullCopy(VIBRANIUM_CLUSTER.get())
+                            .sound(SoundType.MEDIUM_AMETHYST_BUD)
+                            .lightLevel((state) -> 5)
+            ));
+
+    public static final DeferredBlock<Block> MEDIUM_VIBRANIUM_BUD = registerBlock("medium_vibranium_bud",
+            () -> new VibraniumClusterBlock(
+                    4.0F, 3.0F,
+                    BlockBehaviour.Properties.ofFullCopy(VIBRANIUM_CLUSTER.get())
+                            .sound(SoundType.LARGE_AMETHYST_BUD)
+                            .lightLevel((state) -> 3)
+            ));
+
+    public static final DeferredBlock<Block> SMALL_VIBRANIUM_BUD = registerBlock("small_vibranium_bud",
+            () -> new VibraniumClusterBlock(
+                    3.0F, 4.0F,
+                    BlockBehaviour.Properties.ofFullCopy(VIBRANIUM_CLUSTER.get())
+                            .sound(SoundType.SMALL_AMETHYST_BUD)
+                            .lightLevel((state) -> 2)
+            ));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

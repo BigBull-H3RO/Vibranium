@@ -125,4 +125,7 @@ public class ItemInit {
             () -> new HSHPotionItem(new Item.Properties().stacksTo(1),9600, 0));
     public static final DeferredItem<Item> SOUL_HERB_ELIXIR_ENHANCED = ITEMS.register("soul_herb_elixir_enhanced",
             () -> new HSHPotionItem(new Item.Properties().stacksTo(1),1800, 1));
+
+    public static final DeferredItem<Item> VIBRANIUM_CRYSTAL_SHARD = ITEMS.register("vibranium_crystal_shard",
+            () -> new Item(new Item.Properties().fireResistant().stacksTo(64)));
 }
