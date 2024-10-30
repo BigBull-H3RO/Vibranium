@@ -10,6 +10,10 @@ public class VibraniumConfig {
     public static final ModConfigSpec.IntValue MAX_HEIGHT;
     public static final ModConfigSpec.IntValue MIN_HEIGHT;
 
+    public static final ModConfigSpec.IntValue GEODES_RARITY;
+    public static final ModConfigSpec.IntValue GEODES_MAX_HEIGHT;
+    public static final ModConfigSpec.IntValue GEODES_MIN_HEIGHT;
+
     public static final ModConfigSpec.DoubleValue OUTLINE_RED;
     public static final ModConfigSpec.DoubleValue OUTLINE_GREEN;
     public static final ModConfigSpec.DoubleValue OUTLINE_BLUE;
@@ -25,6 +29,15 @@ public class VibraniumConfig {
                 .defineInRange("MaxHeight [Default: -10]", -10, -64, 320);
         MIN_HEIGHT = BUILDER.comment("The minimum height Vibranium ore should spawn")
                 .defineInRange("MinHeight [Default: -64]", -64, -64, 320);
+        BUILDER.pop();
+
+        BUILDER.push("Vibranium Geode Generation Configurations");
+        GEODES_RARITY = BUILDER.comment("How often should a Vibranium geode spawn")
+                .defineInRange("Rarity [Default: 120]", 120, 1, 10000);
+        GEODES_MAX_HEIGHT = BUILDER.comment("The maximum height Vibranium geodes should spawn")
+                .defineInRange("MaxHeight [Default: 15]", 15, -64, 320);
+        GEODES_MIN_HEIGHT = BUILDER.comment("The minimum height Vibranium geodes should spawn")
+                .defineInRange("MinHeight [Default: -45]", -45, -64, 320);
         BUILDER.pop();
 
         BUILDER.push("Vibranium Mace Configurations");

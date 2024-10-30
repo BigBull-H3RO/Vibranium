@@ -38,6 +38,7 @@ public class TagsInit {
         public static final TagKey<Item> VIBRANIUM_BOOTS_TAG = ItemTags.create(createGenericItemsLocation("vibranium_boots"));
         public static final TagKey<Item> VIBRANIUM_INGOT_TAG = ItemTags.create(createGenericItemsLocation("vibranium_ingot"));
         public static final TagKey<Item> RAW_VIBRANIUM_TAG = ItemTags.create(createRawItemsLocation("raw_vibranium"));
+        public static final TagKey<Item> VIBRANIUM_NUGGET_TAG = ItemTags.create(createGenericItemsLocation("vibranium_nugget"));
         public static final TagKey<Item> HEART_SHAPED_HERB_TAG = ItemTags.create(createGenericItemsLocation("heart_shaped_herb"));
         public static final TagKey<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_TAG = ItemTags.create(createGenericItemsLocation("vibranium_enriched_herb_elixir"));
         public static final TagKey<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED_TAG = ItemTags.create(createGenericItemsLocation("vibranium_enriched_herb_elixir_extended"));

@@ -1,7 +1,8 @@
-package de.bigbull.vibranium.data.worldgen.ore;
+package de.bigbull.vibranium.data.worldgen;
 
 import de.bigbull.vibranium.config.VibraniumConfigValues;
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.data.worldgen.ore.ModOrePlacement;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -11,23 +12,26 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
+import org.w3c.dom.ranges.Range;
 
 import java.util.List;
 
 public class ModPlacedFeatures {
     public static ResourceKey<PlacedFeature> VIBRANIUM_ORE = createKey("vibranium_ore");
     public static ResourceKey<PlacedFeature> VIBRANIUM_STRUCTURE = createKey("vibranium_structure");
-    public static ResourceKey<PlacedFeature> VIBRANIUM_STRUCTURE2 = createKey("vibranium_structure2");
 
     private static final int VEINS_PER_CHUNK = VibraniumConfigValues.VEINS_PER_CHUNK;
     private static final int MAX_HEIGHT = VibraniumConfigValues.MAX_HEIGHT;
     private static final int MIN_HEIGHT = VibraniumConfigValues.MIN_HEIGHT;
 
+    private static final int GEODES_RARITY = VibraniumConfigValues.GEODES_RARITY;
+    private static final int GEODES_MAX_HEIGHT = VibraniumConfigValues.GEODES_MAX_HEIGHT;
+    private static final int GEODES_MIN_HEIGHT = VibraniumConfigValues.GEODES_MIN_HEIGHT;
+
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         Holder<ConfiguredFeature<?, ?>> vibraniumOreFeature = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_VIBRANIUM_ORE);
         Holder<ConfiguredFeature<?, ?>> vibraniumStructureFeature = configuredFeatures.getOrThrow(ModConfiguredFeatures.VIBRANIUM_STRUCTURE);
-        Holder<ConfiguredFeature<?, ?>> vibraniumStructure2Feature = configuredFeatures.getOrThrow(ModConfiguredFeatures.VIBRANIUM_STRUCTURE2);
 
         register(context, VIBRANIUM_ORE, vibraniumOreFeature,
                 ModOrePlacement.commonOrePlacements(VEINS_PER_CHUNK, HeightRangePlacement.uniform(
@@ -35,12 +39,8 @@ public class ModPlacedFeatures {
                 )
         );
         register(context, VIBRANIUM_STRUCTURE, vibraniumStructureFeature,
-                List.of(RarityFilter.onAverageOnceEvery(80), // Rarity kann angepasst werden
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(20), VerticalAnchor.absolute(50)) // Tiefe unter der Erde
-                ));
-        register(context, VIBRANIUM_STRUCTURE2, vibraniumStructure2Feature,
-                List.of(RarityFilter.onAverageOnceEvery(50),
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-40), VerticalAnchor.absolute(30)) // Tiefe unter der Erde
+                List.of(RarityFilter.onAverageOnceEvery(GEODES_RARITY),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(GEODES_MIN_HEIGHT), VerticalAnchor.absolute(GEODES_MAX_HEIGHT))
                 ));
     }
 

@@ -48,7 +48,6 @@ public class EVD_Handler {
                 if (!player.isCreative()) {
                     heldItem.shrink(1);
                 }
-                // Sound abspielen
                 level.playSound(null, pos, SoundEvents.MUD_HIT, SoundSource.BLOCKS, 1.0F, 1.0F);
 
                 event.setCancellationResult(InteractionResult.SUCCESS);

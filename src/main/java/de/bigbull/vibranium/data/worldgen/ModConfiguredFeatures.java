@@ -1,16 +1,21 @@
-package de.bigbull.vibranium.data.worldgen.ore;
+package de.bigbull.vibranium.data.worldgen;
 
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.FeatureInit;
+import de.bigbull.vibranium.init.custom.SoulTreeTrunkPlacer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.util.valueproviders.WeightedListInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GeodeBlockSettings;
 import net.minecraft.world.level.levelgen.GeodeCrackSettings;
@@ -20,8 +25,8 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.CherryFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -30,16 +35,71 @@ import java.util.List;
 
 public class ModConfiguredFeatures {
     protected static ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_VIBRANIUM_ORE = createKey("overworld_vibranium_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SOUL_TREE = createKey("enriched_vibranium_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SOUL_TREE = createKey("soul_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SOUL_TREE_SMALL = createKey("soul_tree_small");
     public static final ResourceKey<ConfiguredFeature<?, ?>> VIBRANIUM_STRUCTURE = createKey("vibranium_structure");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> VIBRANIUM_STRUCTURE2 = createKey("vibranium_structure2");
 
     public static TreeConfiguration.TreeConfigurationBuilder soulTree() {
         return new TreeConfiguration.TreeConfigurationBuilder(
-                SimpleStateProvider.simple(BlockInit.SOULWOOD_LOG.get().defaultBlockState()),
-                new StraightTrunkPlacer(4, 2, 0),
-                SimpleStateProvider.simple(BlockInit.SOULWOOD_LEAVES.get().defaultBlockState()),
-                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+                BlockStateProvider.simple(BlockInit.SOULWOOD_LOG.get().defaultBlockState()),
+                new SoulTreeTrunkPlacer(
+                        6,
+                        4,
+                        1,
+                        new WeightedListInt(
+                                SimpleWeightedRandomList.<IntProvider>builder()
+                                        .add(ConstantInt.of(1), 1)
+                                        .add(ConstantInt.of(2), 1)
+                                        .add(ConstantInt.of(3), 1)
+                                        .add(ConstantInt.of(4), 1)
+                                        .build()
+                        ),
+                        UniformInt.of(2, 5),
+                        UniformInt.of(-4, -1),
+                        UniformInt.of(-2, 2)
+                ),
+                BlockStateProvider.simple(BlockInit.SOULWOOD_LEAVES.get().defaultBlockState()),
+                new CherryFoliagePlacer(
+                        ConstantInt.of(4),
+                        ConstantInt.of(0),
+                        ConstantInt.of(5),
+                        0.25F,
+                        0.5F,
+                        0.16666667F,
+                        0.33333334F
+                ),
+                new TwoLayersFeatureSize(1, 0, 2)
+        ).ignoreVines();
+    }
+
+    public static TreeConfiguration.TreeConfigurationBuilder soulTreeSmall() {
+        return createStraightBlobTree(
+                BlockInit.SOULWOOD_LOG.get(),
+                BlockInit.SOULWOOD_LEAVES.get(),
+                5,
+                2,
+                0,
+                3
+        ).ignoreVines();
+    }
+
+    private static TreeConfiguration.TreeConfigurationBuilder createStraightBlobTree(
+            Block logBlock,
+            Block leavesBlock,
+            int baseHeight,
+            int foliageRadius,
+            int foliageOffset,
+            int foliageHeight
+    ) {
+        return new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(logBlock.defaultBlockState()),
+                new StraightTrunkPlacer(baseHeight, 0, 0),
+                BlockStateProvider.simple(leavesBlock.defaultBlockState()),
+                new BlobFoliagePlacer(
+                        ConstantInt.of(foliageRadius),
+                        ConstantInt.of(foliageOffset),
+                        foliageHeight
+                ),
                 new TwoLayersFeatureSize(1, 0, 1)
         );
     }
@@ -55,12 +115,11 @@ public class ModConfiguredFeatures {
         register(context, OVERWORLD_VIBRANIUM_ORE, Feature.ORE, new OreConfiguration(VibraniumOre, 4));
 
         FeatureUtils.register(context, SOUL_TREE, FeatureInit.SOUL_TREE.get(), soulTree().build());
-        context.register(VIBRANIUM_STRUCTURE, new ConfiguredFeature<>(FeatureInit.VIBRANIUM_STRUCTURE.get(), NoneFeatureConfiguration.INSTANCE));
-
+        FeatureUtils.register(context, SOUL_TREE_SMALL, FeatureInit.SOUL_TREE_SMALL.get(), soulTreeSmall().build());
         FeatureUtils.register(
                 context,
-                VIBRANIUM_STRUCTURE2,
-                FeatureInit.VIBRANIUM_STRUCTURE2.get(),
+                VIBRANIUM_STRUCTURE,
+                FeatureInit.VIBRANIUM_STRUCTURE.get(),
                 new GeodeConfiguration(
                         new GeodeBlockSettings(
                                 BlockStateProvider.simple(Blocks.AIR),
@@ -77,16 +136,16 @@ public class ModConfiguredFeatures {
                                 BlockTags.FEATURES_CANNOT_REPLACE,
                                 BlockTags.GEODE_INVALID_BLOCKS
                         ),
-                        new GeodeLayerSettings(1.7, 2.2, 3.2, 4.2),
-                        new GeodeCrackSettings(0.95, 2.0, 2),
+                        new GeodeLayerSettings(2.5, 3.0, 4.0, 5.0) ,
+                        new GeodeCrackSettings(0.75, 2.0, 2),
                         0.35,
                         0.083,
                         true,
-                        UniformInt.of(4, 6),
-                        UniformInt.of(3, 4),
+                        UniformInt.of(7, 9),
+                        UniformInt.of(5, 6),
                         UniformInt.of(1, 2),
-                        -16,
-                        16,
+                        -20,
+                        20,
                         0.05,
                         1
                 )

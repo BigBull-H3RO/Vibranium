@@ -13,6 +13,10 @@ public class VibraniumConfigValues {
     public static int MAX_HEIGHT = CONFIG_FILE ? VibraniumConfig.MAX_HEIGHT.get() : VibraniumConfig.MAX_HEIGHT.getDefault();
     public static int MIN_HEIGHT = CONFIG_FILE ? VibraniumConfig.MIN_HEIGHT.get() : VibraniumConfig.MIN_HEIGHT.getDefault();
 
+    public static int GEODES_RARITY = CONFIG_FILE ? VibraniumConfig.GEODES_RARITY.get() : VibraniumConfig.GEODES_RARITY.getDefault();
+    public static int GEODES_MAX_HEIGHT = CONFIG_FILE ? VibraniumConfig.GEODES_MAX_HEIGHT.get() : VibraniumConfig.GEODES_MAX_HEIGHT.getDefault();
+    public static int GEODES_MIN_HEIGHT = CONFIG_FILE ? VibraniumConfig.GEODES_MIN_HEIGHT.get() : VibraniumConfig.GEODES_MIN_HEIGHT.getDefault();
+
     public static double OUTLINE_RED = CONFIG_FILE ? VibraniumConfig.OUTLINE_RED.get() : VibraniumConfig.OUTLINE_RED.getDefault();
     public static double OUTLINE_GREEN = CONFIG_FILE ? VibraniumConfig.OUTLINE_GREEN.get() : VibraniumConfig.OUTLINE_GREEN.getDefault();
     public static double OUTLINE_BLUE = CONFIG_FILE ? VibraniumConfig.OUTLINE_BLUE.get() : VibraniumConfig.OUTLINE_BLUE.getDefault();

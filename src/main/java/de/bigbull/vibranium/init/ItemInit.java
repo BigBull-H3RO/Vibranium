@@ -34,6 +34,8 @@ public class ItemInit {
             () -> new Item(new Item.Properties().fireResistant()));
     public static final DeferredItem<Item> VIBRANIUM_INGOT = ITEMS.register("vibranium_ingot",
             () -> new Item(new Item.Properties().fireResistant()));
+    public static final DeferredItem<Item> VIBRANIUM_NUGGET = ITEMS.register("vibranium_nugget",
+            () -> new Item(new Item.Properties().fireResistant()));
     public static final DeferredItem<Item> VIBRANIUM_CORE = ITEMS.register("vibranium_core",
             () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredItem<SmithingTemplateItem> VIBRANIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("vibranium_upgrade_smithing_template",

@@ -30,6 +30,11 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM.get()))
                 .save(this.recipeOutput, getModId("raw_vibranium_from_bock_of_raw_vibranium"));
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_NUGGET.get(), 9)
+                .requires(Ingredient.of(ItemInit.VIBRANIUM_INGOT), 1)
+                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT.get()))
+                .save(this.recipeOutput, getModId("vibranium_nugget"));
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT.get(), 9)
                 .requires(Ingredient.of(BlockInit.Vibranium_Block), 1)
                 .group("vibranium_ingot")

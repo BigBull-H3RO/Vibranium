@@ -15,6 +15,7 @@ public class ModEnLangProvider extends LanguageProvider {
         //Items
         addItem(ItemInit.RAW_VIBRANIUM, "Raw Vibranium");
         addItem(ItemInit.VIBRANIUM_INGOT, "Vibranium Ingot");
+        addItem(ItemInit.VIBRANIUM_NUGGET, "Vibranium Nugget");
         addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Smithing Template");
         addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawn Egg");
         addItem(ItemInit.VIBRANIUM_CORE, "Vibranium Core");

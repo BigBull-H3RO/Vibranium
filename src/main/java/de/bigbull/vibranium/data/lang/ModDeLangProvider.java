@@ -16,6 +16,7 @@ public class ModDeLangProvider extends LanguageProvider {
         //Items
         addItem(ItemInit.RAW_VIBRANIUM, "Rohes Vibranium");
         addItem(ItemInit.VIBRANIUM_INGOT, "Vibranium Barren");
+        addItem(ItemInit.VIBRANIUM_NUGGET, "Vibranium Klumpen");
         addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Schmiedevorlage");
         addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawnei");
         addItem(ItemInit.VIBRANIUM_CORE, "Vibranium Kern");

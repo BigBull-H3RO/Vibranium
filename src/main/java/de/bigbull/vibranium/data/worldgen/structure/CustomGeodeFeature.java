@@ -1,9 +1,11 @@
-package de.bigbull.vibranium.data.worldgen.feature;
+package de.bigbull.vibranium.data.worldgen.structure;
 
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import de.bigbull.vibranium.data.worldgen.ModConfiguredFeatures;
 import de.bigbull.vibranium.init.BlockInit;
+import de.bigbull.vibranium.init.custom.block.HSHBushBlock;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,10 +21,11 @@ import net.minecraft.world.level.levelgen.*;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.minecraft.world.level.material.FluidState;
 
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class CustomGeodeFeature extends Feature<GeodeConfiguration>  {
@@ -56,6 +59,8 @@ public class CustomGeodeFeature extends Feature<GeodeConfiguration>  {
         double d5 = 1.0 / Math.sqrt(geodecracksettings.baseCrackSize + randomsource.nextDouble() / 2.0 + (k > 3 ? d0 : 0.0));
         boolean flag = (double)randomsource.nextFloat() < geodecracksettings.generateCrackChance;
         int l = 0;
+
+        TreeMap<Integer, List<BlockPos>> innerLayerPositionsByY = new TreeMap<>();
 
         for (int i1 = 0; i1 < k; i1++) {
             int j1 = geodeconfiguration.outerWallDistance.sample(randomsource);
@@ -97,10 +102,6 @@ public class CustomGeodeFeature extends Feature<GeodeConfiguration>  {
         List<BlockPos> list2 = Lists.newArrayList();
         Predicate<BlockState> predicate = isReplaceable(geodeconfiguration.geodeBlockSettings.cannotReplace);
 
-        // Bestimme den Mittelpunkt und den inneren Radius der Geode
-        int innerRadius = (int) geodeconfiguration.geodeLayerSettings.innerLayer;
-        int targetBottomY = blockpos.getY() - innerRadius;
-
         for (BlockPos blockpos3 : BlockPos.betweenClosed(blockpos.offset(i, i, i), blockpos.offset(j, j, j))) {
             double d8 = normalnoise.getValue((double)blockpos3.getX(), (double)blockpos3.getY(), (double)blockpos3.getZ()) * geodeconfiguration.noiseMultiplier;
             double d6 = 0.0;
@@ -128,15 +129,19 @@ public class CustomGeodeFeature extends Feature<GeodeConfiguration>  {
                 } else if (d6 >= d1) {
                     this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.fillingProvider.getState(randomsource, blockpos3), predicate);
                 } else if (d6 >= d2) {
-                    boolean flag1 = (double)randomsource.nextFloat() < geodeconfiguration.useAlternateLayer0Chance;
-                    if (flag1) {
-                        this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.alternateInnerLayerProvider.getState(randomsource, blockpos3), predicate);
-                    } else {
-                        this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.innerLayerProvider.getState(randomsource, blockpos3), predicate);
+                    boolean flag1 = randomsource.nextFloat() < geodeconfiguration.useAlternateLayer0Chance;
+                    BlockState innerLayerState = flag1
+                            ? geodeblocksettings.alternateInnerLayerProvider.getState(randomsource, blockpos3)
+                            : geodeblocksettings.innerLayerProvider.getState(randomsource, blockpos3);
+                    this.safeSetBlock(worldgenlevel, blockpos3, innerLayerState, predicate);
+
+                    if (innerLayerState.is(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get())) {
+                        int y = blockpos3.getY();
+                        innerLayerPositionsByY.computeIfAbsent(y, key -> new ArrayList<>()).add(blockpos3.immutable());
                     }
 
                     if ((!geodeconfiguration.placementsRequireLayer0Alternate || flag1)
-                            && (double)randomsource.nextFloat() < geodeconfiguration.usePotentialPlacementsChance) {
+                            && randomsource.nextFloat() < geodeconfiguration.usePotentialPlacementsChance) {
                         list2.add(blockpos3.immutable());
                     }
                 } else if (d6 >= d3) {
@@ -145,18 +150,77 @@ public class CustomGeodeFeature extends Feature<GeodeConfiguration>  {
                     this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.outerLayerProvider.getState(randomsource, blockpos3), predicate);
                 }
             }
+        }
 
-            BlockState blockState = worldgenlevel.getBlockState(blockpos3);
+        List<BlockPos> enrichedDirtPositions = new ArrayList<>();
 
-            if (blockpos3.getY() == d2) {
-                if (!blockState.is(Blocks.AIR) && (blockState.is(BlockInit.VIBRANIUM_CRYSTAL_BLOCK) || blockState.is(BlockInit.BUDDING_VIBRANIUM_CRYSTAL))) {
-                    if (randomsource.nextFloat() < 0.35) {
-                        this.safeSetBlock(worldgenlevel, blockpos3, BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState(), predicate);
+        for (Integer y : innerLayerPositionsByY.keySet()) {
+            List<BlockPos> positionsAtY = innerLayerPositionsByY.get(y);
+            List<BlockPos> validPositions = new ArrayList<>();
+
+            for (BlockPos pos : positionsAtY) {
+                BlockPos abovePos = pos.above();
+                BlockState aboveState = worldgenlevel.getBlockState(abovePos);
+                if (aboveState.isAir()) {
+                    validPositions.add(pos);
+                }
+            }
+
+            if (!validPositions.isEmpty()) {
+                int maxLevels = 3;
+                for (int offsetY = 0; offsetY < maxLevels; offsetY++) {
+                    int currentY = y + offsetY;
+                    List<BlockPos> positionsAtCurrentY = innerLayerPositionsByY.get(currentY);
+
+                    if (positionsAtCurrentY != null) {
+                        double replacementChance = 0.3 - (offsetY * 0.05);
+
+                        if (replacementChance < 0) {
+                            replacementChance = 0;
+                        }
+
+                        for (BlockPos pos : positionsAtCurrentY) {
+                            BlockState currentState = worldgenlevel.getBlockState(pos);
+                            if (currentState.is(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get())) {
+                                double randomValue = randomsource.nextDouble();
+                                if (randomValue < replacementChance) {
+                                    this.safeSetBlock(worldgenlevel, pos, BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState(), predicate);
+                                    enrichedDirtPositions.add(pos.immutable());
+                                }
+                            }
+                        }
                     }
+                }
+                break;
+            }
+        }
+
+        if (!enrichedDirtPositions.isEmpty()) {
+            int treesToPlace = Mth.nextInt(randomsource, 1, 4);
+            Collections.shuffle(enrichedDirtPositions, new Random(randomsource.nextLong()));
+            List<BlockPos> treePositions = enrichedDirtPositions.subList(0, Math.min(treesToPlace, enrichedDirtPositions.size()));
+
+            for (BlockPos treePos : treePositions) {
+                BlockPos treePositionAbove = treePos.above();
+
+                if (isSpaceAvailableForTree(worldgenlevel, treePositionAbove, 5)) {
+                    placeSoulTree(worldgenlevel, treePositionAbove, randomsource, context);
                 }
             }
         }
 
+        for (BlockPos dirtPos : enrichedDirtPositions) {
+            if (randomsource.nextDouble() < 0.2) {
+                BlockPos bushPositionAbove = dirtPos.above();
+
+                if (worldgenlevel.isEmptyBlock(bushPositionAbove)) {
+                    int randomAge = randomsource.nextInt(4);
+
+                    BlockState bushState = BlockInit.HEART_SHAPED_HERB_BUSH.get().defaultBlockState().setValue(HSHBushBlock.AGE, randomAge);
+                    worldgenlevel.setBlock(bushPositionAbove, bushState, 3);
+                }
+            }
+        }
 
         List<BlockState> list3 = geodeblocksettings.innerPlacements;
 
@@ -181,8 +245,35 @@ public class CustomGeodeFeature extends Feature<GeodeConfiguration>  {
             }
         }
 
-
-
         return true;
+    }
+
+    private boolean isSpaceAvailableForTree(WorldGenLevel world, BlockPos pos, int treeHeight) {
+        for (int yOffset = 0; yOffset < treeHeight; yOffset++) {
+            BlockPos checkPos = pos.above(yOffset);
+            if (!world.isEmptyBlock(checkPos)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void placeSoulTree(WorldGenLevel worldgenlevel, BlockPos soulTreePos, RandomSource randomsource, FeaturePlaceContext<GeodeConfiguration> context) {
+        TreeConfiguration soulTreeConfig;
+        if (randomsource.nextFloat() < 0.4F) {
+            soulTreeConfig = ModConfiguredFeatures.soulTree().build();
+        } else {
+            soulTreeConfig = ModConfiguredFeatures.soulTreeSmall().build();
+        }
+        Feature.TREE.place(
+                new FeaturePlaceContext<>(
+                        Optional.empty(),
+                        worldgenlevel,
+                        context.chunkGenerator(),
+                        randomsource,
+                        soulTreePos,
+                        soulTreeConfig
+                )
+        );
     }
 }
