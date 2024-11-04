@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.data.worldgen;
 
-import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.FeatureInit;
 import de.bigbull.vibranium.init.custom.SoulTreeTrunkPlacer;
 import net.minecraft.core.registries.Registries;
@@ -15,19 +15,21 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.util.valueproviders.WeightedListInt;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GeodeBlockSettings;
 import net.minecraft.world.level.levelgen.GeodeCrackSettings;
 import net.minecraft.world.level.levelgen.GeodeLayerSettings;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.CherryFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
@@ -73,35 +75,13 @@ public class ModConfiguredFeatures {
     }
 
     public static TreeConfiguration.TreeConfigurationBuilder soulTreeSmall() {
-        return createStraightBlobTree(
-                BlockInit.SOULWOOD_LOG.get(),
-                BlockInit.SOULWOOD_LEAVES.get(),
-                5,
-                2,
-                0,
-                3
-        ).ignoreVines();
-    }
-
-    private static TreeConfiguration.TreeConfigurationBuilder createStraightBlobTree(
-            Block logBlock,
-            Block leavesBlock,
-            int baseHeight,
-            int foliageRadius,
-            int foliageOffset,
-            int foliageHeight
-    ) {
         return new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(logBlock.defaultBlockState()),
-                new StraightTrunkPlacer(baseHeight, 0, 0),
-                BlockStateProvider.simple(leavesBlock.defaultBlockState()),
-                new BlobFoliagePlacer(
-                        ConstantInt.of(foliageRadius),
-                        ConstantInt.of(foliageOffset),
-                        foliageHeight
-                ),
-                new TwoLayersFeatureSize(1, 0, 1)
-        );
+                BlockStateProvider.simple(BlockInit.SOULWOOD_LOG.get()),
+                new ForkingTrunkPlacer(5, 2, 2),
+                BlockStateProvider.simple(BlockInit.SOULWOOD_LEAVES.get()),
+                new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
+                new TwoLayersFeatureSize(1, 0, 2)
+        ).ignoreVines();
     }
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {

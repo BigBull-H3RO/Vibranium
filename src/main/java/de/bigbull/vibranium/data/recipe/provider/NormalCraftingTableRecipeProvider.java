@@ -41,6 +41,12 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM.get()))
                 .save(this.recipeOutput, getModId("vibranium_ingot_from_vibranium_block"));
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT.get(), 1)
+                .requires(Ingredient.of(BlockInit.Vibranium_Block), 9)
+                .group("vibranium_ingot")
+                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM.get()))
+                .save(this.recipeOutput, getModId("vibranium_ingot_from_vibranium_nugget"));
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockInit.BLOCK_OF_RAW_VIBRANIUM.get(), 1)
                 .requires(Ingredient.of(ItemInit.RAW_VIBRANIUM), 9)
                 .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM.get()))
@@ -98,8 +104,9 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT.get()))
                 .save(this.recipeOutput, getModId("vibranium_shield"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_PLANKS, 1)
-                .requires(Ingredient.of(TagsInit.ItemTagsInit.SOULWOOD_LOGS), 4)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_PLANKS, 4)
+                .requires(Ingredient.of(TagsInit.ItemTagsInit.SOULWOOD_LOGS), 1)
+                .group("planks")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_LOG.get()))
                 .save(this.recipeOutput, getModId("enriched_vibranium_log"));
 
@@ -107,6 +114,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("##")
                 .pattern("##")
                 .define('#', BlockInit.SOULWOOD_LOG)
+                .group("wood")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_LOG.get()))
                 .save(this.recipeOutput, getModId("enriched_vibranium_wood"));
 
@@ -114,6 +122,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("##")
                 .pattern("##")
                 .define('#', BlockInit.STRIPPED_SOULWOOD_LOG)
+                .group("wood")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_LOG.get()))
                 .save(this.recipeOutput, getModId("stripped_enriched_vibranium_log"));
 
@@ -122,12 +131,14 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("## ")
                 .pattern("###")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
+                .group("stairs")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS.get()))
                 .save(this.recipeOutput, getModId("enriched_vibranium_stairs"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_SLAB, 6)
                 .pattern("###")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
+                .group("slab")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS.get()))
                 .save(this.recipeOutput, getModId("enriched_vibranium_slab"));
 
@@ -136,6 +147,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("#W#")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
                 .define('W', Items.STICK)
+                .group("fence")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS.get()))
                 .save(this.recipeOutput, getModId("enriched_vibranium_fence"));
 
@@ -144,6 +156,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("#W#")
                 .define('W', BlockInit.SOULWOOD_PLANKS)
                 .define('#', Items.STICK)
+                .group("fence_gate")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS.get()))
                 .save(this.recipeOutput, getModId("enriched_vibranium_fence_gate"));
 
@@ -152,6 +165,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("##")
                 .pattern("##")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
+                .group("door")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS.get()))
                 .save(this.recipeOutput, getModId("enriched_vibranium_door"));
 
@@ -159,18 +173,21 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("###")
                 .pattern("###")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
+                .group("trapdoor")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS.get()))
                 .save(this.recipeOutput, getModId("enriched_vibranium_trapdoor"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_BUTTON, 1)
                 .pattern("#")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
+                .group("button")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS.get()))
                 .save(this.recipeOutput, getModId("enriched_vibranium_button"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_PRESSURE_PLATE, 1)
                 .pattern("##")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
+                .group("pressure_plate")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS.get()))
                 .save(this.recipeOutput, getModId("enriched_vibranium_pressure_plate"));
 

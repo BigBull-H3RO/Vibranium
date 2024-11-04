@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.event;
 
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.config.VibraniumConfigValues;
+import de.bigbull.vibranium.config.ConfigValues;
 import de.bigbull.vibranium.init.EnchantmentInit;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import net.minecraft.core.BlockPos;
@@ -64,7 +64,7 @@ public class ModEvents {
                                 (!middleBlockNeedsAdvancedTool && !targetBlockState.is(BlockTags.NEEDS_DIAMOND_TOOL) && !targetBlockState.is(Tags.Blocks.NEEDS_NETHERITE_TOOL) && isValidBlockForTool(targetBlockState, requiredTool)))) {
                             HARVESTED_BLOCKS.add(pos);
 
-                            if (VibraniumConfigValues.USE_FAST_MODE) {
+                            if (ConfigValues.USE_FAST_MODE) {
                                 serverPlayer.gameMode.destroyBlock(pos);
                             } else {
                                 level.destroyBlock(pos, false);

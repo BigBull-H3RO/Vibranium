@@ -72,7 +72,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(BlockInit.ENRICHED_VIBRANIUM_DIRT.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(ItemInit.RAW_VIBRANIUM.get()))
+                        .add(
+                                LootItem.lootTableItem(ItemInit.RAW_VIBRANIUM.get())
+                                        .when(LootItemRandomChanceCondition.randomChance(0.15f))
+                                        .otherwise(
+                                                LootItem.lootTableItem(ItemInit.VIBRANIUM_NUGGET.get())
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f)))
+                                        )
+                        )
                         .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.HOES)))
                 )
                 .withPool(LootPool.lootPool()
@@ -96,7 +103,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(ItemInit.RAW_VIBRANIUM.get()))
+                        .add(
+                                LootItem.lootTableItem(ItemInit.RAW_VIBRANIUM.get())
+                                        .when(LootItemRandomChanceCondition.randomChance(0.15f))
+                                        .otherwise(
+                                                LootItem.lootTableItem(ItemInit.VIBRANIUM_NUGGET.get())
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f)))
+                                        )
+                        )
                         .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.HOES)))
                 )
                 .withPool(LootPool.lootPool()

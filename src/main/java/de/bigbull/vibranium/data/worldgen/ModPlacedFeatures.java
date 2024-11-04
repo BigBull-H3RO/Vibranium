@@ -1,6 +1,6 @@
 package de.bigbull.vibranium.data.worldgen;
 
-import de.bigbull.vibranium.config.VibraniumConfigValues;
+import de.bigbull.vibranium.config.ConfigValues;
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.data.worldgen.ore.ModOrePlacement;
 import net.minecraft.core.Holder;
@@ -12,7 +12,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
-import org.w3c.dom.ranges.Range;
 
 import java.util.List;
 
@@ -20,13 +19,13 @@ public class ModPlacedFeatures {
     public static ResourceKey<PlacedFeature> VIBRANIUM_ORE = createKey("vibranium_ore");
     public static ResourceKey<PlacedFeature> VIBRANIUM_STRUCTURE = createKey("vibranium_structure");
 
-    private static final int VEINS_PER_CHUNK = VibraniumConfigValues.VEINS_PER_CHUNK;
-    private static final int MAX_HEIGHT = VibraniumConfigValues.MAX_HEIGHT;
-    private static final int MIN_HEIGHT = VibraniumConfigValues.MIN_HEIGHT;
+    private static final int VEINS_PER_CHUNK = ConfigValues.VEINS_PER_CHUNK;
+    private static final int MAX_HEIGHT = ConfigValues.MAX_HEIGHT;
+    private static final int MIN_HEIGHT = ConfigValues.MIN_HEIGHT;
 
-    private static final int GEODES_RARITY = VibraniumConfigValues.GEODES_RARITY;
-    private static final int GEODES_MAX_HEIGHT = VibraniumConfigValues.GEODES_MAX_HEIGHT;
-    private static final int GEODES_MIN_HEIGHT = VibraniumConfigValues.GEODES_MIN_HEIGHT;
+    private static final int GEODES_RARITY = ConfigValues.GEODES_RARITY;
+    private static final int GEODES_MAX_HEIGHT = ConfigValues.GEODES_MAX_HEIGHT;
+    private static final int GEODES_MIN_HEIGHT = ConfigValues.GEODES_MIN_HEIGHT;
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);

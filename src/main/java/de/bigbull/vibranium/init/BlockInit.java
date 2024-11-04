@@ -1,9 +1,12 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.init.custom.block.*;
+import de.bigbull.vibranium.init.custom.block.EVDirtBlock;
+import de.bigbull.vibranium.init.custom.block.EVFarmlandBlock;
+import de.bigbull.vibranium.init.custom.block.HSHBushBlock;
 import de.bigbull.vibranium.init.custom.block.tree.EVTree;
 import de.bigbull.vibranium.init.custom.block.tree.SWLeavesBlock;
+import de.bigbull.vibranium.init.custom.block.tree.SoulTreeSaplingBlock;
 import de.bigbull.vibranium.init.custom.block.tree.VibraniumRotatedPillarBlock;
 import de.bigbull.vibranium.init.custom.block.vibraniumcrystal.BuddingVibraniumBlock;
 import de.bigbull.vibranium.init.custom.block.vibraniumcrystal.VibraniumClusterBlock;
@@ -83,7 +86,7 @@ public class BlockInit {
             new SWLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).noOcclusion()));
 
     public static final DeferredBlock<Block> SOULWOOD_SAPLING = registerBlock("soulwood_sapling", () ->
-            new SaplingBlock(EVTree.SOUL_TREE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+            new SoulTreeSaplingBlock(EVTree.SOUL_TREE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
 
     public static final DeferredBlock<Block> SOULWOOD_PLANKS = registerBlock("soulwood_planks", () ->
             new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).strength(3.0F).sound(SoundType.CHERRY_WOOD)));

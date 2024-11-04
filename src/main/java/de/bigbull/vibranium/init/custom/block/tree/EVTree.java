@@ -8,7 +8,7 @@ import java.util.Optional;
 public class EVTree {
     public static final TreeGrower SOUL_TREE = new TreeGrower(
             "vibranium:soul_tree",
-            0.3F,
+            0.2F,
             Optional.empty(),
             Optional.empty(),
             Optional.of(ModConfiguredFeatures.SOUL_TREE),
