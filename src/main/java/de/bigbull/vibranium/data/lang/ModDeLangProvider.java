@@ -101,6 +101,9 @@ public class ModDeLangProvider extends LanguageProvider {
         add("jei.vibranium.enriched_vibranium_farmland.desc",
                 "Die mysteriöse Energie im Angereicherten Vibranium-Ackerland scheint das Pflanzenwachstum zu beschleunigen. Du kannst das Rohvibranium mit einer Hacke aus dem Ackerland zurückgewinnen.");
 
+        //Trim Materials
+        add("trim_material.vibranium", "Vibranium Material");
+
         //Vibranium Mace
         add("item.vibranium_mace.tooltip", "Kann 3x3 Blöcke abbauen");
 

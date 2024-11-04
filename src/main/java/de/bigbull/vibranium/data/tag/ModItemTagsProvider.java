@@ -93,6 +93,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .addTag(TagsInit.ItemTagsInit.VIBRANIUM_CHESTPLATE_TAG)
                 .addTag(TagsInit.ItemTagsInit.VIBRANIUM_HELMET_TAG);
 
+        tag(ItemTags.TRIM_MATERIALS)
+                .addTag(TagsInit.ItemTagsInit.VIBRANIUM_CRYSTAL_SHARD_TAG);
+
         tag(ItemTags.BEACON_PAYMENT_ITEMS)
                 .addTag(TagsInit.ItemTagsInit.VIBRANIUM_INGOT_TAG);
 

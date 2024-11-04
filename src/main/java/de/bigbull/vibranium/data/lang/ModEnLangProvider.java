@@ -100,6 +100,9 @@ public class ModEnLangProvider extends LanguageProvider {
         add("jei.vibranium.enriched_vibranium_farmland.desc",
                 "The mysterious energy within Enriched Vibranium Farmland seems to accelerate the growth of plants. You can retrieve the Raw Vibranium from the farmland using a hoe.");
 
+        //Trim Materials
+        add("trim_material.vibranium", "Vibranium Material");
+
         //Entities
 //        add("entity.vibra_golem.vibra_golem", "Vibra Golem");
 

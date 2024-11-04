@@ -5,7 +5,6 @@ import net.neoforged.neoforge.common.SimpleTier;
 
 
 public class MaterialsInit {
-
     public static final SimpleTier VIBRANIUM = new SimpleTier(
             TagsInit.BlockTagsInit.INCORRECT_FOR_VIBRANIUM_TOOL,
             2512,

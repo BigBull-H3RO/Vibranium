@@ -1,6 +1,9 @@
 package de.bigbull.vibranium.data;
 
+import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.data.entries.DatapackProvider;
 import de.bigbull.vibranium.data.lang.ModDeLangProvider;
+import de.bigbull.vibranium.data.lang.ModEnLangProvider;
 import de.bigbull.vibranium.data.loot.ModGlobalLootModifiersProvider;
 import de.bigbull.vibranium.data.loottable.ModLootTables;
 import de.bigbull.vibranium.data.recipe.MainModRecipeProvider;
@@ -9,8 +12,6 @@ import de.bigbull.vibranium.data.tag.ModItemTagsProvider;
 import de.bigbull.vibranium.data.texture.ModBlockStateProvider;
 import de.bigbull.vibranium.data.texture.ModItemStateProvider;
 import de.bigbull.vibranium.data.worldgen.ModWorldGenProvider;
-import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.data.lang.ModEnLangProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -32,6 +33,7 @@ public class DataGenerators {
             generator.addProvider(true, modBlockTagsProvider);
             generator.addProvider(true, new ModItemTagsProvider(output, event.getLookupProvider(), modBlockTagsProvider, existingFileHelper));
             generator.addProvider(true, new ModLootTables(output, event.getLookupProvider()));
+            generator.addProvider(true, new DatapackProvider(output, event.getLookupProvider()));
             generator.addProvider(true, new ModWorldGenProvider(output, event.getLookupProvider()));
             generator.addProvider(true, new ModGlobalLootModifiersProvider(output, event.getLookupProvider()));
             generator.addProvider(true, new MainModRecipeProvider(generator, event.getLookupProvider()));
