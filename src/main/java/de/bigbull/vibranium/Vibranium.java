@@ -1,7 +1,8 @@
 package de.bigbull.vibranium;
 
 import com.mojang.logging.LogUtils;
-import de.bigbull.vibranium.config.VibraniumConfig;
+import de.bigbull.vibranium.config.ClientConfig;
+import de.bigbull.vibranium.config.ServerConfig;
 import de.bigbull.vibranium.data.DataGenerators;
 import de.bigbull.vibranium.data.loot.ModLootModifiers;
 import de.bigbull.vibranium.entity.MobEnities;
@@ -42,7 +43,8 @@ public class Vibranium {
         modEventBus.addListener(DataGenerators::gatherData);
         modEventBus.addListener(ClientModEvents::onRegisterParticles);
 
-        modContainer.registerConfig(ModConfig.Type.COMMON, VibraniumConfig.SPEC, "vibranium.toml");
+        modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.CLIENT_SPEC, "vibranium-client.toml");
+        modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SERVER_SPEC, "vibranium-server.toml");
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
