@@ -261,24 +261,22 @@ public class CustomGeodeFeature extends Feature<GeodeConfiguration>  {
         }
 
         if (!enrichedDirtPositions.isEmpty()) {
-            int treesToPlace = Mth.nextInt(random, 1, 4);
+            int treesToPlace = Mth.nextInt(random, 2, 5);
             Collections.shuffle(enrichedDirtPositions, new Random(random.nextLong()));
             List<BlockPos> treePositions = enrichedDirtPositions.subList(0, Math.min(treesToPlace, enrichedDirtPositions.size()));
 
             for (BlockPos treePos : treePositions) {
                 BlockPos treePositionAbove = treePos.above();
 
-                if (isSpaceAvailableForTree(world, treePositionAbove, 4)) {
+                if (isSpaceAvailableForTree(world, treePositionAbove, 3)) {
                     placeSoulTree(world, treePositionAbove, random, context);
                 }
             }
-        }
 
-        for (BlockPos dirtPos : enrichedDirtPositions) {
-            if (random.nextDouble() < 0.2) {
+            for (BlockPos dirtPos : enrichedDirtPositions) {
                 BlockPos bushPositionAbove = dirtPos.above();
 
-                if (world.isEmptyBlock(bushPositionAbove)) {
+                if (world.isEmptyBlock(bushPositionAbove) && random.nextDouble() < 0.2) {
                     int randomAge = random.nextInt(4);
 
                     BlockState bushState = BlockInit.HEART_SHAPED_HERB_BUSH.get().defaultBlockState().setValue(HSHBushBlock.AGE, randomAge);

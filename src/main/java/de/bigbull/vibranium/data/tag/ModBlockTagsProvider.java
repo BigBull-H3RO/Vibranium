@@ -1,17 +1,16 @@
 package de.bigbull.vibranium.data.tag;
 
+import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.TagsInit;
-import de.bigbull.vibranium.Vibranium;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.Tags.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
-import net.neoforged.neoforge.common.Tags.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 

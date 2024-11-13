@@ -102,7 +102,8 @@ public class ModDeLangProvider extends LanguageProvider {
                 "Die mysteriöse Energie im Angereicherten Vibranium-Ackerland scheint das Pflanzenwachstum zu beschleunigen. Du kannst das Rohvibranium mit einer Hacke aus dem Ackerland zurückgewinnen.");
 
         //Trim Materials
-        add("trim_material.vibranium", "Vibranium Material");
+        add("trim_material.vibranium.vibranium", "Vibranium Material");
+
 
         //Vibranium Mace
         add("item.vibranium_mace.tooltip", "Kann 3x3 Blöcke abbauen");

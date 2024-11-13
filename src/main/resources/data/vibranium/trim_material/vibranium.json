@@ -1,0 +1,9 @@
+{
+  "asset_name": "vibranium",
+  "description": {
+    "color": "#00005C",
+    "translate": "trim_material.vibranium.vibranium"
+  },
+  "ingredient": "vibranium:vibranium_crystal_shard",
+  "item_model_index": 0.9
+}

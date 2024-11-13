@@ -26,7 +26,7 @@ public class ServerConfig {
 
         SERVER_BUILDER.push("Vibranium Geode Generation Configurations");
         GEODES_RARITY = SERVER_BUILDER.comment("How often should a Vibranium geode spawn")
-                .defineInRange("Rarity [Default: 140]", 140, 1, 10000);
+                .defineInRange("Rarity [Default: 140]", 120, 1, 10000);
         GEODES_MAX_HEIGHT = SERVER_BUILDER.comment("The maximum height Vibranium geodes should spawn")
                 .defineInRange("MaxHeight [Default: 15]", 15, -64, 320);
         GEODES_MIN_HEIGHT = SERVER_BUILDER.comment("The minimum height Vibranium geodes should spawn")

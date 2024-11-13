@@ -150,5 +150,21 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .addTag(TagsInit.ItemTagsInit.STRIPPED_SOULWOOD_LOG_TAG)
                 .addTag(TagsInit.ItemTagsInit.SOULWOOD_WOOD_TAG)
                 .addTag(TagsInit.ItemTagsInit.STRIPPED_SOULWOOD_WOOD_TAG);
+
+        tag(ItemTags.NON_FLAMMABLE_WOOD)
+                .addTag(TagsInit.ItemTagsInit.SOULWOOD_LOG_TAG)
+                .addTag(TagsInit.ItemTagsInit.STRIPPED_SOULWOOD_LOG_TAG)
+                .addTag(TagsInit.ItemTagsInit.STRIPPED_SOULWOOD_WOOD_TAG)
+                .addTag(TagsInit.ItemTagsInit.SOULWOOD_WOOD_TAG)
+                .addTag(TagsInit.ItemTagsInit.SOULWOOD_PLANKS_TAG)
+                .addTag(TagsInit.ItemTagsInit.SOULWOOD_STAIRS_TAG)
+                .addTag(TagsInit.ItemTagsInit.SOULWOOD_SLAB_TAG)
+                .addTag(TagsInit.ItemTagsInit.SOULWOOD_FENCE_TAG)
+                .addTag(TagsInit.ItemTagsInit.SOULWOOD_FENCE_GATE_TAG)
+                .addTag(TagsInit.ItemTagsInit.SOULWOOD_PRESSURE_PLATE_TAG)
+                .addTag(TagsInit.ItemTagsInit.SOULWOOD_DOOR_TAG)
+                .addTag(TagsInit.ItemTagsInit.SOULWOOD_TRAPDOOR_TAG)
+                .addTag(TagsInit.ItemTagsInit.SOULWOOD_BUTTON_TAG)
+                .addTag(TagsInit.ItemTagsInit.SOULWOOD_SAPLING_TAG);
     }
 }
