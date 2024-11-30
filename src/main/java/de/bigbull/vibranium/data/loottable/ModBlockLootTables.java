@@ -1,8 +1,8 @@
 package de.bigbull.vibranium.data.loottable;
 
+import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
-import de.bigbull.vibranium.Vibranium;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
@@ -11,6 +11,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
@@ -21,7 +22,10 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.*;
+import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -38,9 +42,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     @Override
     protected void generate() {
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        HolderLookup.RegistryLookup<Item> itemRegistryLookup = this.registries.lookupOrThrow(Registries.ITEM);
 
         this.dropSelf(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
-        this.dropSelf(BlockInit.Vibranium_Block.get());
+        this.dropSelf(BlockInit.VIBRANIUM_BLOCK.get());
         this.dropSelf(BlockInit.SOULWOOD_LOG.get());
         this.dropSelf(BlockInit.SOULWOOD_SAPLING.get());
         this.dropSelf(BlockInit.SOULWOOD_WOOD.get());
@@ -80,17 +85,17 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f)))
                                         )
                         )
-                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.HOES)))
+                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.HOES)))
                 )
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(Blocks.DIRT))
-                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.HOES)))
+                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.HOES)))
                 )
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(Blocks.DIRT))
-                        .when(InvertedLootItemCondition.invert(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.HOES))))
+                        .when(InvertedLootItemCondition.invert(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.HOES))))
                         .when(this.doesNotHaveSilkTouch())
                 )
                 .withPool(LootPool.lootPool()
@@ -111,17 +116,17 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f)))
                                         )
                         )
-                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.HOES)))
+                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.HOES)))
                 )
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(Blocks.DIRT))
-                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.HOES)))
+                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.HOES)))
                 )
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(Blocks.DIRT))
-                        .when(InvertedLootItemCondition.invert(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.HOES))))
+                        .when(InvertedLootItemCondition.invert(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.HOES))))
                         .when(this.doesNotHaveSilkTouch())
                 )
                 .withPool(LootPool.lootPool()
@@ -164,7 +169,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                         LootItem.lootTableItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get())
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
                                 .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
-                                .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
+                                .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.CLUSTER_MAX_HARVESTABLES)))
                                 .otherwise(
                                         this.applyExplosionDecay(
                                                 block, LootItem.lootTableItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get())

@@ -56,10 +56,20 @@ public class ShieldRenderer extends BlockEntityWithoutLevelRenderer {
             material = flag ? ModelPredicateProvider.LOCATION_VIBRANIUM_SHIELD_BASE : ModelPredicateProvider.LOCATION_VIBRANIUM_SHIELD_BASE_NOPATTERN;
         }
 
-        VertexConsumer $$28 = material.sprite().wrap(ItemRenderer.getFoilBufferDirect(multiBufferSource, this.shieldModel.renderType(material.atlasLocation()), true, stack.hasFoil()));
+        VertexConsumer $$28 = material.sprite().wrap(ItemRenderer.getFoilBuffer(multiBufferSource, this.shieldModel.renderType(material.atlasLocation()), true, stack.hasFoil()));
         this.shieldModel.handle().render(poseStack, $$28, light, overlay);
         if (flag) {
-            BannerRenderer.renderPatterns(poseStack, multiBufferSource, light, overlay, this.shieldModel.plate(), material, false, (DyeColor) Objects.requireNonNullElse(dyecolor, DyeColor.WHITE), bannerpatternlayers, stack.hasFoil());
+            BannerRenderer.renderPatterns(
+                    poseStack,
+                    multiBufferSource,
+                    light,
+                    overlay,
+                    this.shieldModel.plate(),
+                    material,
+                    false,
+                    (DyeColor) Objects.requireNonNullElse(dyecolor, DyeColor.WHITE),
+                    bannerpatternlayers
+            );
         } else {
             this.shieldModel.plate().render(poseStack, $$28, light, overlay);
         }

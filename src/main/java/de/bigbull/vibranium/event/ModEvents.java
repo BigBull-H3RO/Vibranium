@@ -94,7 +94,7 @@ public class ModEvents {
     }
 
     public static boolean isValidBlockForTool(BlockState state, TagKey<Block> requiredTool) {
-        return state.isSolidRender(null, BlockPos.ZERO) &&
+        return state.isSolidRender() &&
                 state.is(requiredTool) &&
                 state.getBlock() != Blocks.AIR;
     }

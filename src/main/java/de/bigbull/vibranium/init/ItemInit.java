@@ -1,19 +1,15 @@
 package de.bigbull.vibranium.init;
 
-import de.bigbull.vibranium.entity.MobEnities;
-import de.bigbull.vibranium.init.custom.item.HSHPotionItem;
-import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.init.custom.item.WolfArmorItem;
+import de.bigbull.vibranium.init.custom.item.HSHPotionItems;
+import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.neoforged.neoforge.common.DeferredSpawnEggItem;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -30,104 +26,98 @@ public class ItemInit {
     public static final Component VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable("item.vibraniumupgrademod.vibranium_upgrade_smithing_template.additions_slot_description").withStyle(ChatFormatting.WHITE);
 
     //Items
-    public static final DeferredItem<Item> RAW_VIBRANIUM = ITEMS.register("raw_vibranium",
-            () -> new Item(new Item.Properties().fireResistant()));
-    public static final DeferredItem<Item> VIBRANIUM_INGOT = ITEMS.register("vibranium_ingot",
-            () -> new Item(new Item.Properties().fireResistant()));
-    public static final DeferredItem<Item> VIBRANIUM_NUGGET = ITEMS.register("vibranium_nugget",
-            () -> new Item(new Item.Properties().fireResistant()));
-    public static final DeferredItem<Item> VIBRANIUM_CORE = ITEMS.register("vibranium_core",
-            () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredItem<SmithingTemplateItem> VIBRANIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("vibranium_upgrade_smithing_template",
-            () -> new SmithingTemplateItem(
+    public static final DeferredItem<Item> RAW_VIBRANIUM = ITEMS.registerItem("raw_vibranium", properties -> new Item(properties.fireResistant()));
+    public static final DeferredItem<Item> VIBRANIUM_INGOT = ITEMS.registerItem("vibranium_ingot", properties -> new Item(properties.fireResistant()));
+    public static final DeferredItem<Item> VIBRANIUM_NUGGET = ITEMS.registerItem("vibranium_nugget",
+            properties -> new Item(properties.fireResistant()));
+    public static final DeferredItem<Item> VIBRANIUM_CORE = ITEMS.registerItem("vibranium_core",
+            properties -> new Item(properties.fireResistant().rarity(Rarity.RARE)));
+    public static final DeferredItem<SmithingTemplateItem> VIBRANIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.registerItem("vibranium_upgrade_smithing_template", properties ->
+            new SmithingTemplateItem(
                     VIBRANIUM_UPGRADE_APPLIES_TO,
                     VIBRANIUM_UPGRADE_INGREDIENTS,
-                    VIBRANIUM_UPGRADE,
                     VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION,
                     VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
-                    List.of(ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_armor_slot_helmet"),
-                            ResourceLocation.fromNamespaceAndPath("minecraft","item/empty_slot_sword"),
+                    List.of(
+                            ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_armor_slot_helmet"),
+                            ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_slot_sword"),
                             ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_armor_slot_chestplate"),
-                            ResourceLocation.fromNamespaceAndPath("minecraft","item/empty_slot_pickaxe"),
-                            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/empty_slot_wolf_armor"),
-                            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/empty_slot_horse_armor"),
+                            ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_slot_pickaxe"),
+                            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/empty_slot_wolf_armor"),
+                            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/empty_slot_horse_armor"),
                             ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_armor_slot_leggings"),
-                            ResourceLocation.fromNamespaceAndPath("minecraft","item/empty_slot_axe"),
+                            ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_slot_axe"),
                             ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_armor_slot_boots"),
-                            ResourceLocation.fromNamespaceAndPath("minecraft","item/empty_slot_hoe"),
-                            ResourceLocation.fromNamespaceAndPath("minecraft","item/empty_slot_shovel")),
-                    List.of(ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_slot_ingot"))
+                            ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_slot_hoe"),
+                            ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_slot_shovel")
+                    ),
+                    List.of(
+                            ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_slot_ingot")
+                    ),
+                    properties.fireResistant().rarity(Rarity.UNCOMMON)
             ));
-    public static final DeferredItem<DeferredSpawnEggItem> VIBRA_GOLEM_SPAWN_EGG = ITEMS.register("vibra_golem_entity_spawn_egg",
-            () -> new DeferredSpawnEggItem(MobEnities.VIBRAGOLEM, 0x28272B, 0x020250, new Item.Properties().stacksTo(16)));
+
+//    public static final DeferredItem<SpawnEggItem> VIBRA_GOLEM_SPAWN_EGG = ITEMS.register("vibra_golem_entity_spawn_egg",
+//            () -> new SpawnEggItem(MobEnities.VIBRAGOLEM, 0x28272B, 0x020250, new Item.Properties().stacksTo(16)));
 
     //Armor
-    public static final DeferredItem<ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots",
-            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorItem.Type.BOOTS,
-                    new Item.Properties().fireResistant().stacksTo(1).durability(650)));
-    public static final DeferredItem<ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings",
-            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().fireResistant().stacksTo(1).durability(700)));
-    public static final DeferredItem<ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.register("vibranium_chestplate",
-            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().fireResistant().stacksTo(1).durability(750)));
-    public static final DeferredItem<ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet",
-            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorItem.Type.HELMET,
-                    new Item.Properties().fireResistant().stacksTo(1).durability(550)));
-    public static final DeferredItem<Item> VIBRANIUM_WOLF_ARMOR = ITEMS.register("vibranium_wolf_armor",
-            () -> new WolfArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, AnimalArmorItem.BodyType.CANINE, false,
-                    new Item.Properties().fireResistant().stacksTo(1).durability(120)));
-    public static final DeferredItem<Item> VIBRANIUM_HORSE_ARMOR = ITEMS.register("vibranium_horse_armor",
-            () -> new AnimalArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, AnimalArmorItem.BodyType.EQUESTRIAN, false,
-                    new Item.Properties().fireResistant().stacksTo(1).durability(100)));
+    public static final DeferredItem<ArmorItem> VIBRANIUM_BOOTS = ITEMS.registerItem("vibranium_boots",
+            properties -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorType.BOOTS,
+                    properties.fireResistant().stacksTo(1)));
+    public static final DeferredItem<ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.registerItem("vibranium_leggings",
+            properties -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorType.LEGGINGS,
+                    properties.fireResistant().stacksTo(1)));
+    public static final DeferredItem<ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.registerItem("vibranium_chestplate",
+            properties -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorType.CHESTPLATE,
+                    properties.fireResistant().stacksTo(1)));
+    public static final DeferredItem<ArmorItem> VIBRANIUM_HELMET = ITEMS.registerItem("vibranium_helmet",
+            properties -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorType.HELMET,
+                    properties.fireResistant().stacksTo(1)));
+
+    public static final DeferredItem<AnimalArmorItem> VIBRANIUM_WOLF_ARMOR = ITEMS.registerItem("vibranium_wolf_armor",
+            properties -> new AnimalArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL_WOLF, AnimalArmorItem.BodyType.CANINE,
+                    properties.fireResistant().stacksTo(1)));
+    public static final DeferredItem<AnimalArmorItem> VIBRANIUM_HORSE_ARMOR = ITEMS.registerItem("vibranium_horse_armor",
+            properties -> new AnimalArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, AnimalArmorItem.BodyType.EQUESTRIAN,
+                    properties.fireResistant().stacksTo(1)));
 
     //Tools
-    public static final DeferredItem<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword", () ->
-            new SwordItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(SwordItem.createAttributes(
-                    MaterialsInit.VIBRANIUM, 3.0f, -2.2f))));
-    public static final DeferredItem<PickaxeItem> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe", () ->
-            new PickaxeItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(PickaxeItem.createAttributes(
-                    MaterialsInit.VIBRANIUM, 0.0f, -2.8f))));
-    public static final DeferredItem<AxeItem> VIBRANIUM_AXE = ITEMS.register("vibranium_axe", () ->
-            new AxeItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(AxeItem.createAttributes(
-                    MaterialsInit.VIBRANIUM, 5.0f, -3.0f))));
-    public static final DeferredItem<ShovelItem> VIBRANIUM_SHOVEL = ITEMS.register("vibranium_shovel", () ->
-            new ShovelItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(ShovelItem.createAttributes(
-                    MaterialsInit.VIBRANIUM, 0.5f, -3.0f))));
-    public static final DeferredItem<HoeItem> VIBRANIUM_HOE = ITEMS.register("vibranium_hoe", () ->
-            new HoeItem(MaterialsInit.VIBRANIUM, new Item.Properties().fireResistant().attributes(HoeItem.createAttributes(
-                    MaterialsInit.VIBRANIUM, -5.0f, 0.0f))));
+    public static final DeferredItem<SwordItem> VIBRANIUM_SWORD = ITEMS.registerItem("vibranium_sword", properties ->
+            new SwordItem(MaterialsInit.VIBRANIUM, 3.0f, -2.2f, properties.fireResistant()));
+    public static final DeferredItem<PickaxeItem> VIBRANIUM_PICKAXE = ITEMS.registerItem("vibranium_pickaxe", properties ->
+            new PickaxeItem(MaterialsInit.VIBRANIUM, 0.0f, -2.8f, properties.fireResistant()));
+    public static final DeferredItem<AxeItem> VIBRANIUM_AXE = ITEMS.registerItem("vibranium_axe", properties ->
+            new AxeItem(MaterialsInit.VIBRANIUM, 5.0f, -3.0f, properties.fireResistant()));
+    public static final DeferredItem<ShovelItem> VIBRANIUM_SHOVEL = ITEMS.registerItem("vibranium_shovel", properties ->
+            new ShovelItem(MaterialsInit.VIBRANIUM, 0.5f, -3.0f, properties.fireResistant()));
+    public static final DeferredItem<HoeItem> VIBRANIUM_HOE = ITEMS.registerItem("vibranium_hoe", properties ->
+            new HoeItem(MaterialsInit.VIBRANIUM, -5.0f, 0.0f, properties.fireResistant()));
 
     //Advanced Items
-    public static final DeferredItem<VibraniumMaceItem> VIBRANIUM_MACE = ITEMS.register("vibranium_mace", () ->
-            new VibraniumMaceItem(MaterialsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE,
-                    new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(VibraniumMaceItem.createAttributes(
-                            MaterialsInit.VIBRANIUM, 0.5f, -3.0f))));
-    public static final DeferredItem<Item> VIBRANIUM_SHIELD = ITEMS.register("vibranium_shield",
-            () -> new ShieldItem(new Item.Properties().fireResistant().stacksTo(1).durability(1024)));
-    public static final DeferredItem<Item> HEART_SHAPED_HERB = ITEMS.register("heart_shaped_herb",
-            () -> new ItemNameBlockItem(BlockInit.HEART_SHAPED_HERB_BUSH.get(), new Item.Properties()
-                    .food(new FoodProperties.Builder()
-                            .nutrition(5)
-                            .saturationModifier(0.5F)
-                            .alwaysEdible()
-                            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 400, 0, true, false), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 400, 0, true, false), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.DARKNESS, 200, 0, true, false), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 400, 0, true, false), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 0, true, false), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.POISON, 200, 0, true, false), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 250, 0, true, false), 1.0F)
-                            .build())
-                    .stacksTo(16)
-                    .rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> SOUL_HERB_ELIXIR = ITEMS.register("soul_herb_elixir",
-            () -> new HSHPotionItem(new Item.Properties().stacksTo(1),3600, 0));
-    public static final DeferredItem<Item> SOUL_HERB_ELIXIR_EXTENDED = ITEMS.register("soul_herb_elixir_extended",
-            () -> new HSHPotionItem(new Item.Properties().stacksTo(1),9600, 0));
-    public static final DeferredItem<Item> SOUL_HERB_ELIXIR_ENHANCED = ITEMS.register("soul_herb_elixir_enhanced",
-            () -> new HSHPotionItem(new Item.Properties().stacksTo(1),1800, 1));
+    public static final DeferredItem<VibraniumMaceItem> VIBRANIUM_MACE = ITEMS.registerItem("vibranium_mace", properties ->
+            new VibraniumMaceItem(MaterialsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE, 6.0f, -3.0f,
+                    properties.fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredItem<Item> VIBRANIUM_SHIELD = ITEMS.registerItem("vibranium_shield",
+            properties ->  new ShieldItem(properties.fireResistant().stacksTo(1).durability(1024)));
+    public static final DeferredItem<BlockItem> HEART_SHAPED_HERB = ITEMS.registerSimpleBlockItem("heart_shaped_herb", BlockInit.HEART_SHAPED_HERB_BUSH,
+            new Item.Properties()
+                    .food(FoodPropertiesInit.HEART_SHAPED_HERB, FoodPropertiesInit.HEART_SHAPED_HERB_EFFECT)
+                    .rarity(Rarity.RARE)
+                    .stacksTo(16));
+    public static final DeferredItem<Item> SOUL_HERB_ELIXIR = ITEMS.registerItem("soul_herb_elixir",
+            properties ->  new HSHPotionItems(properties
+                    .rarity(Rarity.RARE)
+                    .component(DataComponents.CONSUMABLE, HSHPotionItems.SOUL_HERB_ELIXIR), 3600, 0));
+    public static final DeferredItem<Item> SOUL_HERB_ELIXIR_EXTENDED = ITEMS.registerItem("soul_herb_elixir_extended",
+            properties ->  new HSHPotionItems(properties
+                    .rarity(Rarity.RARE)
+                    .component(DataComponents.CONSUMABLE, HSHPotionItems.SOUL_HERB_ELIXIR_EXTENDED), 9600, 0));
+    public static final DeferredItem<Item> SOUL_HERB_ELIXIR_ENHANCED = ITEMS.registerItem("soul_herb_elixir_enhanced",
+            properties ->  new HSHPotionItems(properties
+                    .rarity(Rarity.RARE)
+                    .component(DataComponents.CONSUMABLE, HSHPotionItems.SOUL_HERB_ELIXIR_ENHANCED), 1800, 1));
 
-    public static final DeferredItem<Item> VIBRANIUM_CRYSTAL_SHARD = ITEMS.register("vibranium_crystal_shard",
-            () -> new Item(new Item.Properties().fireResistant().stacksTo(64)));
+    public static final DeferredItem<Item> VIBRANIUM_CRYSTAL_SHARD = ITEMS.registerItem("vibranium_crystal_shard",
+            properties ->  new Item(properties.fireResistant().stacksTo(64)));
+
 }

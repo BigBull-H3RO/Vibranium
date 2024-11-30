@@ -27,7 +27,7 @@ public class HSHEffect extends MobEffect {
     }
 
     @Override
-    public void onMobHurt(LivingEntity entity, int amplifier, DamageSource source, float damage) {
+    public void onMobHurt(ServerLevel level, LivingEntity entity, int amplifier, DamageSource source, float damage) {
         if (entity instanceof Player player) {
             accumulateDamage(player, damage);
 

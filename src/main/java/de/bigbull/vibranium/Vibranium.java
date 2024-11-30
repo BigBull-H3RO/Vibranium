@@ -5,8 +5,6 @@ import de.bigbull.vibranium.config.ClientConfig;
 import de.bigbull.vibranium.config.ServerConfig;
 import de.bigbull.vibranium.data.DataGenerators;
 import de.bigbull.vibranium.data.loot.ModLootModifiers;
-import de.bigbull.vibranium.entity.MobEnities;
-import de.bigbull.vibranium.event.VibraGolemEvent;
 import de.bigbull.vibranium.event.client.ClientModEvents;
 import de.bigbull.vibranium.init.*;
 import net.neoforged.bus.api.IEventBus;
@@ -26,12 +24,11 @@ public class Vibranium {
 
     public Vibranium(IEventBus modEventBus, ModContainer modContainer) {
         NeoForge.EVENT_BUS.register(this);
-        NeoForge.EVENT_BUS.register(VibraGolemEvent.class);
+//        NeoForge.EVENT_BUS.register(VibraGolemEvent.class);
 
-        ArmorMaterialsInit.MATERIAL.register(modEventBus);
         ItemInit.ITEMS.register(modEventBus);
         BlockInit.BLOCKS.register(modEventBus);
-        MobEnities.ENTITIES.register(modEventBus);
+//        MobEnities.ENTITIES.register(modEventBus);
         CreativeTabInit.CREATIVE_MODE_TABS.register(modEventBus);
         ModLootModifiers.LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
         EffectInit.EFFECTS.register(modEventBus);

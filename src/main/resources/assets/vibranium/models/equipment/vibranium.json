@@ -1,0 +1,28 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "vibranium:vibranium"
+      }
+    ],
+    "wolf_body": [
+      {
+        "texture": "vibranium:vibranium"
+      },
+      {
+        "dyeable": {},
+        "texture": "minecraft:armadillo_scute_overlay"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "vibranium:vibranium_layer_1"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "vibranium:vibranium_layer_2"
+      }
+    ]
+  }
+}

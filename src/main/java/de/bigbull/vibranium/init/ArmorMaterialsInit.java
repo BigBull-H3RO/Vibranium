@@ -2,31 +2,29 @@ package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.Vibranium;
 import net.minecraft.Util;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
 
 import java.util.EnumMap;
-import java.util.List;
 
 public class ArmorMaterialsInit {
-
-    public static DeferredRegister<ArmorMaterial> MATERIAL = DeferredRegister.create(BuiltInRegistries.ARMOR_MATERIAL, Vibranium.MODID);
-
-    public static final Holder<ArmorMaterial> VIBRANIUM_MATERIAL = MATERIAL.register("vibranium", () -> new ArmorMaterial(
-            Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.BOOTS, 3);
-                map.put(ArmorItem.Type.LEGGINGS, 6);
-                map.put(ArmorItem.Type.CHESTPLATE, 8);
-                map.put(ArmorItem.Type.HELMET, 3);
-                map.put(ArmorItem.Type.BODY, 16);
+    public static final ArmorMaterial VIBRANIUM_MATERIAL = new ArmorMaterial(42,
+            Util.make(new EnumMap<>(ArmorType.class), map -> {
+                map.put(ArmorType.BOOTS, 3);
+                map.put(ArmorType.LEGGINGS, 6);
+                map.put(ArmorType.CHESTPLATE, 8);
+                map.put(ArmorType.HELMET, 3);
+                map.put(ArmorType.BODY, 16);
             }),
-            18, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ItemInit.VIBRANIUM_INGOT),
-            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium"))), 4,  0.2f));
-}
+            20, SoundEvents.ARMOR_EQUIP_NETHERITE, 4, 0.2f, TagsInit.Items.VIBRANIUM_REPAIR,
+            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium"));
 
+    public static final ArmorMaterial VIBRANIUM_MATERIAL_WOLF = new ArmorMaterial(16,
+            Util.make(new EnumMap<>(ArmorType.class), map -> {
+                map.put(ArmorType.BODY, 16);
+            }),
+            15, SoundEvents.ARMOR_EQUIP_WOLF, 3, 0.1f, TagsInit.Items.VIBRANIUM_REPAIR,
+            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium"));
+}

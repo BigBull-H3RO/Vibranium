@@ -17,7 +17,7 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_INGOT, "Vibranium Ingot");
         addItem(ItemInit.VIBRANIUM_NUGGET, "Vibranium Nugget");
         addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Smithing Template");
-        addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawn Egg");
+//        addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawn Egg");
         addItem(ItemInit.VIBRANIUM_CORE, "Vibranium Core");
         addItem(ItemInit.HEART_SHAPED_HERB, "Heart Shaped Herb");
         addItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD, "Vibranium Crystal Shard");
@@ -25,7 +25,7 @@ public class ModEnLangProvider extends LanguageProvider {
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block of Raw Vibranium");
         addBlock(BlockInit.DEPPSLATE_VIBRANIUM_ORE, "Deepslate Vibranium Ore");
-        addBlock(BlockInit.Vibranium_Block, "Vibranium Block");
+        addBlock(BlockInit.VIBRANIUM_BLOCK, "Vibranium Block");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_DIRT, "Enriched Vibranium Dirt");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_FARMLAND, "Enriched Vibranium Farmland");
         addBlock(BlockInit.SOULWOOD_LOG, "Soulwood Log");
@@ -44,8 +44,8 @@ public class ModEnLangProvider extends LanguageProvider {
         addBlock(BlockInit.SOULWOOD_PRESSURE_PLATE, "Soulwood Plate");
         addBlock(BlockInit.SOULWOOD_BUTTON, "Soulwood Button");
         addBlock(BlockInit.VIBRANIUM_CRYSTAL_BLOCK, "Crystal Block of Vibranium");
-        addBlock(BlockInit.BUDDING_VIBRANIUM_CRYSTAL, "Budding Crystal-Vibranium");
-        addBlock(BlockInit.VIBRANIUM_CLUSTER, "Crystal-Vibranium Cluster");
+        addBlock(BlockInit.BUDDING_VIBRANIUM_CRYSTAL, "Budding Crystal Vibranium");
+        addBlock(BlockInit.VIBRANIUM_CLUSTER, "Vibranium Cluster");
         addBlock(BlockInit.SMALL_VIBRANIUM_BUD, "Small Crystal Vibranium Bud");
         addBlock(BlockInit.MEDIUM_VIBRANIUM_BUD, "Medium Crystal Vibranium Bud");
         addBlock(BlockInit.LARGE_VIBRANIUM_BUD, "Large Crystal Vibranium Bud");

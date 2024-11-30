@@ -1,5 +1,6 @@
 package de.bigbull.vibranium.init.custom.block.vibraniumcrystal;
 
+import com.mojang.serialization.MapCodec;
 import de.bigbull.vibranium.init.BlockInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,8 +15,14 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
 
 public class BuddingVibraniumBlock extends AmethystBlock {
+    public static final MapCodec<BuddingVibraniumBlock> CODEC = simpleCodec(BuddingVibraniumBlock::new);
     public static final Direction[] DIRECTIONS = Direction.values();
     private static final int GROWTH_CHANCE = 5;
+
+    @Override
+    public MapCodec<BuddingVibraniumBlock> codec() {
+        return CODEC;
+    }
 
     public BuddingVibraniumBlock(BlockBehaviour.Properties properties) {
         super(properties);
@@ -27,22 +34,21 @@ public class BuddingVibraniumBlock extends AmethystBlock {
             Direction direction = DIRECTIONS[random.nextInt(DIRECTIONS.length)];
             BlockPos adjacentPos = pos.relative(direction);
             BlockState adjacentState = level.getBlockState(adjacentPos);
-            Block newBlock = null;
-
+            Block block = null;
             if (canClusterGrowAtState(adjacentState)) {
-                newBlock = BlockInit.SMALL_VIBRANIUM_BUD.get();
+                block = BlockInit.SMALL_VIBRANIUM_BUD.get();
             } else if (adjacentState.is(BlockInit.SMALL_VIBRANIUM_BUD.get()) && adjacentState.getValue(BlockStateProperties.FACING) == direction) {
-                newBlock = BlockInit.MEDIUM_VIBRANIUM_BUD.get();
+                block = BlockInit.MEDIUM_VIBRANIUM_BUD.get();
             } else if (adjacentState.is(BlockInit.MEDIUM_VIBRANIUM_BUD.get()) && adjacentState.getValue(BlockStateProperties.FACING) == direction) {
-                newBlock = BlockInit.LARGE_VIBRANIUM_BUD.get();
+                block = BlockInit.LARGE_VIBRANIUM_BUD.get();
             } else if (adjacentState.is(BlockInit.LARGE_VIBRANIUM_BUD.get()) && adjacentState.getValue(BlockStateProperties.FACING) == direction) {
-                newBlock = BlockInit.VIBRANIUM_CLUSTER.get();
+                block = BlockInit.VIBRANIUM_CLUSTER.get();
             }
 
-            if (newBlock != null) {
-                BlockState newState = newBlock.defaultBlockState()
+            if (block != null) {
+                BlockState newState = block.defaultBlockState()
                         .setValue(BlockStateProperties.FACING, direction)
-                        .setValue(BlockStateProperties.WATERLOGGED, adjacentState.getFluidState().getType() == Fluids.WATER);
+                        .setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(state.getFluidState().getType() == Fluids.WATER));
                 level.setBlockAndUpdate(adjacentPos, newState);
             }
         }

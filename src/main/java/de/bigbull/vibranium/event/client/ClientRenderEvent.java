@@ -2,13 +2,15 @@ package de.bigbull.vibranium.event.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.config.ConfigValues;
 import de.bigbull.vibranium.init.ItemInit;
-import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
+import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.ShapeRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -45,7 +47,12 @@ public class ClientRenderEvent {
             BlockState blockState = mc.level.getBlockState(hitPos);
 
             if (!mc.player.isShiftKeyDown() && isValidBlock(blockState)) {
-                render3x3Outline(event.getPoseStack(), hitPos);
+                render3x3Outline(
+                        event.getPoseStack(),
+                        event.getMultiBufferSource(),
+                        event.getCamera(),
+                        hitPos
+                );
                 event.setCanceled(true);
             }
         }
@@ -57,12 +64,12 @@ public class ClientRenderEvent {
 
     private static boolean isValidBlock(BlockState state) {
         Block block = state.getBlock();
-        return !state.isAir() && block.defaultBlockState().isSolidRender(Minecraft.getInstance().level, BlockPos.ZERO);
+        return !state.isAir() && block.defaultBlockState().isSolidRender();
     }
 
-    private static void render3x3Outline(PoseStack poseStack, BlockPos center) {
+    private static void render3x3Outline(PoseStack poseStack, MultiBufferSource bufferSource, Camera camera, BlockPos center) {
         Minecraft mc = Minecraft.getInstance();
-        Vec3 camPos = mc.gameRenderer.getMainCamera().getPosition();
+        Vec3 camPos = camera.getPosition();
 
         poseStack.pushPose();
         poseStack.translate(-camPos.x, -camPos.y, -camPos.z);
@@ -73,22 +80,26 @@ public class ClientRenderEvent {
             BlockState state = mc.level.getBlockState(pos);
             if (isValidBlock(state)) {
                 AABB box = state.getShape(mc.level, pos).bounds().move(pos);
-                renderBlockOutline(poseStack, box);
+                renderBlockOutline(poseStack, bufferSource, box);
             }
         }
         poseStack.popPose();
     }
 
-    private static void renderBlockOutline(PoseStack poseStack, AABB boundingBox) {
-        RenderType renderType = RenderType.lines();
-        VertexConsumer builder = Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(renderType);
+    private static void renderBlockOutline(PoseStack poseStack, MultiBufferSource bufferSource, AABB boundingBox) {
+        VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.lines());
 
         float red = (float) ConfigValues.OUTLINE_RED;
         float green = (float) ConfigValues.OUTLINE_GREEN;
         float blue = (float) ConfigValues.OUTLINE_BLUE;
         float alpha = (float) ConfigValues.OUTLINE_ALPHA;
 
-        LevelRenderer.renderLineBox(poseStack, builder, boundingBox.minX, boundingBox.minY, boundingBox.minZ, boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ, red, green, blue, alpha);
-        Minecraft.getInstance().renderBuffers().bufferSource().endBatch(renderType);
+        ShapeRenderer.renderLineBox(
+                poseStack,
+                vertexConsumer,
+                boundingBox.minX, boundingBox.minY, boundingBox.minZ,
+                boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ,
+                red, green, blue, alpha
+        );
     }
 }

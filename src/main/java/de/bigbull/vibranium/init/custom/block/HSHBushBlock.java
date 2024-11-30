@@ -5,7 +5,6 @@ import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.ParticleInit;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -117,7 +116,7 @@ public class HSHBushBlock extends BushBlock implements BonemealableBlock {
             popResource(level, pos, drop);
             level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, state));
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return level.isClientSide ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;
         } else {
             return InteractionResult.PASS;
         }

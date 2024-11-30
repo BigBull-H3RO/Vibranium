@@ -38,7 +38,7 @@ public class DataGenerators {
             generator.addProvider(true, new ModLootTables(output, lookupProvider));
             generator.addProvider(true, new ModWorldGenProvider(output, lookupProvider));
             generator.addProvider(true, new ModGlobalLootModifiersProvider(output, lookupProvider));
-            generator.addProvider(true, new MainModRecipeProvider(generator, lookupProvider));
+            generator.addProvider(true, new MainModRecipeProvider.Runner(output, lookupProvider));
 
         } catch (RuntimeException e) {
             Vibranium.logger.error("Failed to generate data", e);

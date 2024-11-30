@@ -34,8 +34,8 @@ public class ModItemStateProvider extends ItemModelProvider {
         registerTrimModels(ItemInit.VIBRANIUM_HELMET);
 
         //Animal Armors
-        itemGenerated(ItemInit.VIBRANIUM_WOLF_ARMOR);
         itemGenerated(ItemInit.VIBRANIUM_HORSE_ARMOR);
+        itemGenerated(ItemInit.VIBRANIUM_WOLF_ARMOR);
 
         //Tools
         itemHandheld(ItemInit.VIBRANIUM_SWORD);
@@ -56,7 +56,6 @@ public class ModItemStateProvider extends ItemModelProvider {
         //Blocks
         buttonItem(BlockInit.SOULWOOD_BUTTON, BlockInit.SOULWOOD_PLANKS);
         fenceItem(BlockInit.SOULWOOD_FENCE, BlockInit.SOULWOOD_PLANKS);
-
         basicItem(BlockInit.SOULWOOD_DOOR.asItem());
     }
 
