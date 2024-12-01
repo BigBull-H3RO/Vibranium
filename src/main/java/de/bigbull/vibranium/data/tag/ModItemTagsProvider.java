@@ -118,5 +118,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.DYEABLE)
                 .add(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
+
+        tag(TagsInit.Items.SOUL_HERB_MIXTURE_TAG)
+                .add(ItemInit.SOUL_HERB_MIXTURE.get());
     }
 }

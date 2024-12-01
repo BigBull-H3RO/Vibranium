@@ -30,8 +30,11 @@ public class ItemInit {
     public static final DeferredItem<Item> VIBRANIUM_INGOT = ITEMS.registerItem("vibranium_ingot", properties -> new Item(properties.fireResistant()));
     public static final DeferredItem<Item> VIBRANIUM_NUGGET = ITEMS.registerItem("vibranium_nugget",
             properties -> new Item(properties.fireResistant()));
+    public static final DeferredItem<Item> VIBRANIUM_PLATE = ITEMS.registerItem("vibranium_plate",
+            properties -> new Item(properties.fireResistant()));
+
     public static final DeferredItem<Item> VIBRANIUM_CORE = ITEMS.registerItem("vibranium_core",
-            properties -> new Item(properties.fireResistant().rarity(Rarity.RARE)));
+            properties -> new Item(properties.fireResistant().rarity(Rarity.RARE).stacksTo(1)));
     public static final DeferredItem<SmithingTemplateItem> VIBRANIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.registerItem("vibranium_upgrade_smithing_template", properties ->
             new SmithingTemplateItem(
                     VIBRANIUM_UPGRADE_APPLIES_TO,
@@ -104,6 +107,9 @@ public class ItemInit {
                     .food(FoodPropertiesInit.HEART_SHAPED_HERB, FoodPropertiesInit.HEART_SHAPED_HERB_EFFECT)
                     .rarity(Rarity.RARE)
                     .stacksTo(16));
+    public static final DeferredItem<Item> SOUL_HERB_MIXTURE = ITEMS.registerItem("soul_herb_mixture",
+            properties ->  new Item(properties.stacksTo(16)));
+
     public static final DeferredItem<Item> SOUL_HERB_ELIXIR = ITEMS.registerItem("soul_herb_elixir",
             properties ->  new HSHPotionItems(properties
                     .rarity(Rarity.RARE)

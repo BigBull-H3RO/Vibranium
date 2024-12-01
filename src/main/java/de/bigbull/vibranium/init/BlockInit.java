@@ -153,7 +153,7 @@ public class BlockInit {
                     .pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<ButtonBlock> SOULWOOD_BUTTON = registerBlock("soulwood_button",
-            properties -> new ButtonBlock(BlockSetType.CHERRY, 20, properties
+            properties -> new ButtonBlock(BlockSetType.CHERRY, 30, properties
                     .noCollission().strength(0.8F).pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<FenceBlock> SOULWOOD_FENCE = registerBlock("soulwood_fence",

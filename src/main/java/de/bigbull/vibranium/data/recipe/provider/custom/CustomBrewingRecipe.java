@@ -46,7 +46,7 @@ public class CustomBrewingRecipe implements IBrewingRecipe {
                     }
                     return contents.is(Potions.AWKWARD);
                 },
-                TagsInit.Items.HEART_SHAPED_HERB_TAG,
+                TagsInit.Items.SOUL_HERB_MIXTURE_TAG,
                 ItemInit.SOUL_HERB_ELIXIR
         ));
 

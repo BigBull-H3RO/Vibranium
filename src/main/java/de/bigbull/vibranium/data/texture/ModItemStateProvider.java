@@ -23,9 +23,11 @@ public class ModItemStateProvider extends ItemModelProvider {
         itemGenerated(ItemInit.RAW_VIBRANIUM);
         itemGenerated(ItemInit.VIBRANIUM_INGOT);
         itemGenerated(ItemInit.VIBRANIUM_NUGGET);
+        itemGenerated(ItemInit.VIBRANIUM_PLATE);
         itemGenerated(ItemInit.VIBRANIUM_CORE);
         itemGenerated(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE);
         itemGenerated(ItemInit.VIBRANIUM_CRYSTAL_SHARD);
+        itemGenerated(ItemInit.SOUL_HERB_MIXTURE);
 
         //Armors
         registerTrimModels(ItemInit.VIBRANIUM_BOOTS);

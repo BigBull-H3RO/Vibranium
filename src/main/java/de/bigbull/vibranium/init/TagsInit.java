@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.Block;
 
 public class TagsInit {
     public static class Items {
-        public static final TagKey<Item> HEART_SHAPED_HERB_TAG = createItemTag("heart_shaped_herb");
+        public static final TagKey<Item> SOUL_HERB_MIXTURE_TAG = createItemTag("soul_herb_mixture");
         public static final TagKey<Item> SOULWOOD_LOGS = createItemTag("soulwood_logs");
         public static final TagKey<Item> VIBRANIUM_REPAIR = createItemTag("vibranium_repair");
     }
