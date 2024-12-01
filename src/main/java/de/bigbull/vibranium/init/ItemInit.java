@@ -95,13 +95,13 @@ public class ItemInit {
             new ShovelItem(MaterialsInit.VIBRANIUM, 0.5f, -3.0f, properties.fireResistant()));
     public static final DeferredItem<HoeItem> VIBRANIUM_HOE = ITEMS.registerItem("vibranium_hoe", properties ->
             new HoeItem(MaterialsInit.VIBRANIUM, -5.0f, 0.0f, properties.fireResistant()));
-
-    //Advanced Items
     public static final DeferredItem<VibraniumMaceItem> VIBRANIUM_MACE = ITEMS.registerItem("vibranium_mace", properties ->
-            new VibraniumMaceItem(MaterialsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE, 6.0f, -3.0f,
+            new VibraniumMaceItem(MaterialsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE, 2.0f, -3.2f,
                     properties.fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredItem<Item> VIBRANIUM_SHIELD = ITEMS.registerItem("vibranium_shield",
             properties ->  new ShieldItem(properties.fireResistant().stacksTo(1).durability(1024)));
+
+    //Advanced Items
     public static final DeferredItem<BlockItem> HEART_SHAPED_HERB = ITEMS.registerSimpleBlockItem("heart_shaped_herb", BlockInit.HEART_SHAPED_HERB_BUSH,
             new Item.Properties()
                     .food(FoodPropertiesInit.HEART_SHAPED_HERB, FoodPropertiesInit.HEART_SHAPED_HERB_EFFECT)

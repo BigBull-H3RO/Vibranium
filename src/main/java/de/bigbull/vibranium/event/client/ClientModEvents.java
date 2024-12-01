@@ -2,8 +2,8 @@ package de.bigbull.vibranium.event.client;
 
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.ParticleInit;
-import de.bigbull.vibranium.init.custom.CustomDripParticle;
-import de.bigbull.vibranium.init.custom.CustomLeavesParticle;
+import de.bigbull.vibranium.init.custom.particle.CustomDripParticle;
+import de.bigbull.vibranium.init.custom.particle.CustomLeavesParticle;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

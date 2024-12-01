@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.init.custom;
+package de.bigbull.vibranium.init.custom.particle;
 
 import de.bigbull.vibranium.init.ParticleInit;
 import net.minecraft.client.multiplayer.ClientLevel;

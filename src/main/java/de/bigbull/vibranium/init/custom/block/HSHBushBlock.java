@@ -42,7 +42,7 @@ public class HSHBushBlock extends BushBlock implements BonemealableBlock {
     @Override
     public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
         BlockState soil = worldIn.getBlockState(pos.below());
-        return soil.is(BlockInit.ENRICHED_VIBRANIUM_DIRT.get()) || state.is(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get());
+        return soil.is(BlockInit.ENRICHED_VIBRANIUM_DIRT.get()) || soil.is(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get());
     }
 
     @Override
@@ -78,7 +78,7 @@ public class HSHBushBlock extends BushBlock implements BonemealableBlock {
     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         int age = state.getValue(AGE);
         if (age < 3 && world.getRawBrightness(pos.above(), 0) >= 9) {
-            if (random.nextInt(5) == 0) {
+            if (random.nextInt(40) == 0) {
                 world.setBlock(pos, state.setValue(AGE, age + 1), 2);
                 world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(state));
             }

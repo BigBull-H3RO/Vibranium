@@ -25,6 +25,6 @@ public class ArmorMaterialsInit {
             Util.make(new EnumMap<>(ArmorType.class), map -> {
                 map.put(ArmorType.BODY, 16);
             }),
-            15, SoundEvents.ARMOR_EQUIP_WOLF, 3, 0.1f, TagsInit.Items.VIBRANIUM_REPAIR,
+            15, SoundEvents.ARMOR_EQUIP_WOLF, 2, 0.0f, TagsInit.Items.VIBRANIUM_REPAIR,
             ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium"));
 }
