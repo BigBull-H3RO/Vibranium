@@ -1,8 +1,8 @@
 package de.bigbull.vibranium.data.texture;
 
+import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
-import de.bigbull.vibranium.Vibranium;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -56,8 +56,8 @@ public class ModItemStateProvider extends ItemModelProvider {
         saplingItem(BlockInit.SOULWOOD_SAPLING);
 
         //Blocks
-        buttonItem(BlockInit.SOULWOOD_BUTTON, BlockInit.SOULWOOD_PLANKS);
-        fenceItem(BlockInit.SOULWOOD_FENCE, BlockInit.SOULWOOD_PLANKS);
+//        buttonItem(BlockInit.SOULWOOD_BUTTON, BlockInit.SOULWOOD_PLANKS);
+//        fenceItem(BlockInit.SOULWOOD_FENCE, BlockInit.SOULWOOD_PLANKS);
         basicItem(BlockInit.SOULWOOD_DOOR.asItem());
     }
 
@@ -68,7 +68,7 @@ public class ModItemStateProvider extends ItemModelProvider {
     }
 
     private void itemGenerated(DeferredItem item) {
-        singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"),"layer0",
+        singleTexture(item.getId().getPath(), mcLoc("item/generated"),"layer0",
                 ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/" + item.getId().getPath()));
     }
 

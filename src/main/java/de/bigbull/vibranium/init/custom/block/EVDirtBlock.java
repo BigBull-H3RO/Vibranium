@@ -1,18 +1,21 @@
 package de.bigbull.vibranium.init.custom.block;
 
 import de.bigbull.vibranium.init.BlockInit;
+import de.bigbull.vibranium.init.custom.test.EVDirtBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 
 import javax.annotation.Nullable;
 
-public class EVDirtBlock extends Block {
+public class EVDirtBlock extends Block implements EntityBlock {
     public EVDirtBlock(Properties properties) {
         super(properties);
     }
@@ -28,5 +31,10 @@ public class EVDirtBlock extends Block {
             }
         }
         return null;
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new EVDirtBlockEntity(pos, state);
     }
 }

@@ -11,6 +11,7 @@ public class CustomLeavesParticle extends TextureSheetParticle {
     private float rotSpeed;
     private final float particleRandom;
     private final float spinAcceleration;
+    protected boolean isGlowing;
 
     protected CustomLeavesParticle(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
         super(level, x, y, z);
@@ -24,6 +25,7 @@ public class CustomLeavesParticle extends TextureSheetParticle {
         this.quadSize = f;
         this.setSize(f, f);
         this.friction = 1.0F;
+        this.isGlowing = true;
     }
 
     @Override
@@ -75,5 +77,10 @@ public class CustomLeavesParticle extends TextureSheetParticle {
         public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
             return new CustomLeavesParticle(level, x, y, z, this.spriteSet);
         }
+    }
+
+    @Override
+    protected int getLightColor(float p_107249_) {
+        return this.isGlowing ? 240 : super.getLightColor(p_107249_);
     }
 }

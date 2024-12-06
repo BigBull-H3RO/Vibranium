@@ -8,8 +8,10 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -99,7 +101,12 @@ public class ItemInit {
             new VibraniumMaceItem(MaterialsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE, 2.0f, -3.2f,
                     properties.fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredItem<Item> VIBRANIUM_SHIELD = ITEMS.registerItem("vibranium_shield",
-            properties ->  new ShieldItem(properties.fireResistant().stacksTo(1).durability(1024)));
+            properties ->  new ShieldItem(properties.fireResistant()
+                    .stacksTo(1)
+                    .durability(1024)
+                    .component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
+                    .repairable(TagsInit.Items.VIBRANIUM_REPAIR)
+                    .equippableUnswappable(EquipmentSlot.OFFHAND)));
 
     //Advanced Items
     public static final DeferredItem<BlockItem> HEART_SHAPED_HERB = ITEMS.registerSimpleBlockItem("heart_shaped_herb", BlockInit.HEART_SHAPED_HERB_BUSH,

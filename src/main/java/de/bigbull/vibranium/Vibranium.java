@@ -7,6 +7,7 @@ import de.bigbull.vibranium.data.DataGenerators;
 import de.bigbull.vibranium.data.loot.ModLootModifiers;
 import de.bigbull.vibranium.event.client.ClientModEvents;
 import de.bigbull.vibranium.init.*;
+import de.bigbull.vibranium.init.custom.test.BlockEntityInit;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -35,9 +36,10 @@ public class Vibranium {
         FeatureInit.FEATURES.register(modEventBus);
         FeatureInit.TRUNK_PLACER_TYPES.register(modEventBus);
         ParticleInit.PARTICLES.register(modEventBus);
+        BlockEntityInit.BLOCK_ENTITY_TYPES.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(DataGenerators::gatherData);
+        modEventBus.addListener(DataGenerators::gatherDataClient);
         modEventBus.addListener(ClientModEvents::onRegisterParticles);
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.CLIENT_SPEC, "vibranium-client.toml");

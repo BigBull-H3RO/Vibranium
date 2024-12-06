@@ -21,13 +21,13 @@ import java.util.concurrent.CompletableFuture;
 
 public class DataGenerators {
 
-    public static void gatherData(GatherDataEvent event) {
-        try {
-            DataGenerator generator = event.getGenerator();
-            PackOutput output = generator.getPackOutput();
-            ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-            CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+    public static void gatherDataClient(GatherDataEvent.Client event) {
+        DataGenerator generator = event.getGenerator();
+        PackOutput output = generator.getPackOutput();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
+        try {
             generator.addProvider(true, new ModEnLangProvider(output));
             generator.addProvider(true, new ModDeLangProvider(output));
             generator.addProvider(true, new ModItemStateProvider(output, existingFileHelper));
@@ -39,7 +39,6 @@ public class DataGenerators {
             generator.addProvider(true, new ModWorldGenProvider(output, lookupProvider));
             generator.addProvider(true, new ModGlobalLootModifiersProvider(output, lookupProvider));
             generator.addProvider(true, new MainModRecipeProvider.Runner(output, lookupProvider));
-
         } catch (RuntimeException e) {
             Vibranium.logger.error("Failed to generate data", e);
         }

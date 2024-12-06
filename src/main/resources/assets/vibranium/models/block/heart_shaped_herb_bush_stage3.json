@@ -1,7 +1,8 @@
 {
-  "parent": "block/cross",
+  "parent": "block/cross_emissive",
   "textures": {
-    "cross": "vibranium:block/heart_shaped_herb_bush_stage3"
+    "cross": "vibranium:block/heart_shaped_herb_bush_stage3",
+    "cross_emissive": "vibranium:block/emissive/heart_shaped_herb_bush_stage3_emissive"
   },
   "render_type": "cutout"
 }

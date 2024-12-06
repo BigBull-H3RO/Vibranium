@@ -61,7 +61,7 @@ public class BlockInit {
                     .sound(SoundType.SWEET_BERRY_BUSH)
                     .pushReaction(PushReaction.DESTROY)));
 
-    public static final DeferredBlock<Block> ENRICHED_VIBRANIUM_DIRT = registerBlock("enriched_vibranium_dirt",
+    public static final DeferredBlock<EVDirtBlock> ENRICHED_VIBRANIUM_DIRT = registerBlock("enriched_vibranium_dirt",
             properties -> new EVDirtBlock(properties
                     .mapColor(MapColor.DIRT)
                     .strength(0.6F)
