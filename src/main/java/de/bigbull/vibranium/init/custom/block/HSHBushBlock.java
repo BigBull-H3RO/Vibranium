@@ -128,17 +128,14 @@ public class HSHBushBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     public boolean isValidBonemealTarget(LevelReader world, BlockPos pos, BlockState state) {
-        return state.getValue(AGE) < 3;
+        return false;
     }
 
     @Override
     public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state) {
-        return true;
+        return false;
     }
 
     @Override
-    public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
-        int age = Math.min(3, state.getValue(AGE) + 1);
-        world.setBlock(pos, state.setValue(AGE, age), 2);
-    }
+    public void performBonemeal(ServerLevel p_220874_, RandomSource p_220875_, BlockPos p_220876_, BlockState p_220877_) {}
 }

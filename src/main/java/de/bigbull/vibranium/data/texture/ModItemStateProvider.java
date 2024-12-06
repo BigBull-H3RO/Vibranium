@@ -30,10 +30,10 @@ public class ModItemStateProvider extends ItemModelProvider {
         itemGenerated(ItemInit.SOUL_HERB_MIXTURE);
 
         //Armors
-        registerTrimModels(ItemInit.VIBRANIUM_BOOTS);
-        registerTrimModels(ItemInit.VIBRANIUM_LEGGINGS);
-        registerTrimModels(ItemInit.VIBRANIUM_CHESTPLATE);
-        registerTrimModels(ItemInit.VIBRANIUM_HELMET);
+        itemGenerated(ItemInit.VIBRANIUM_BOOTS);
+        itemGenerated(ItemInit.VIBRANIUM_LEGGINGS);
+        itemGenerated(ItemInit.VIBRANIUM_CHESTPLATE);
+        itemGenerated(ItemInit.VIBRANIUM_HELMET);
 
         //Animal Armors
         itemGenerated(ItemInit.VIBRANIUM_HORSE_ARMOR);
@@ -56,8 +56,6 @@ public class ModItemStateProvider extends ItemModelProvider {
         saplingItem(BlockInit.SOULWOOD_SAPLING);
 
         //Blocks
-//        buttonItem(BlockInit.SOULWOOD_BUTTON, BlockInit.SOULWOOD_PLANKS);
-//        fenceItem(BlockInit.SOULWOOD_FENCE, BlockInit.SOULWOOD_PLANKS);
         basicItem(BlockInit.SOULWOOD_DOOR.asItem());
     }
 
@@ -77,67 +75,7 @@ public class ModItemStateProvider extends ItemModelProvider {
                 .texture("layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + baseItem.getId().getPath()));
     }
 
-    private void buttonItem(DeferredBlock<?> block, DeferredBlock<?> baseBlock) {
-        withExistingParent(block.getId().getPath(), mcLoc("block/button_inventory"))
-                .texture("texture", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,
-                        "block/" + baseBlock.getId().getPath()));
-    }
-
-    private void fenceItem(DeferredBlock<?> block, DeferredBlock<?> baseBlock) {
-        withExistingParent(block.getId().getPath(), mcLoc("block/fence_inventory"))
-                .texture("texture", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,
-                        "block/" + baseBlock.getId().getPath()));
-    }
-
     private void itemHandheld(DeferredItem item) {
         singleTexture(item.getId().getPath(), ResourceLocation.withDefaultNamespace("item/handheld"),"layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID,"item/" + item.getId().getPath()));
-    }
-
-    private void registerTrimModels(DeferredItem item) {
-        String basePath = item.getId().getPath();
-
-        getBuilder(basePath)
-                .parent(getExistingFile(ResourceLocation.withDefaultNamespace("item/generated")))
-                .override()
-                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.1f)
-                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_quartz_trim")))
-                .end()
-                .override()
-                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.2f)
-                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_iron_trim")))
-                .end()
-                .override()
-                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.3f)
-                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_netherite_darker_trim")))
-                .end()
-                .override()
-                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.4f)
-                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_redstone_trim")))
-                .end()
-                .override()
-                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.5f)
-                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_copper_trim")))
-                .end()
-                .override()
-                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.6f)
-                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_gold_trim")))
-                .end()
-                .override()
-                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.7f)
-                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_emerald_trim")))
-                .end()
-                .override()
-                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.8f)
-                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_diamond_trim")))
-                .end()
-                .override()
-                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 0.9f)
-                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_lapis_trim")))
-                .end()
-                .override()
-                .predicate(ResourceLocation.withDefaultNamespace("trim_type"), 1.0f)
-                .model(getExistingFile(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath + "_amethyst_trim")))
-                .end()
-                .texture("layer0", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "item/" + basePath));
     }
 }

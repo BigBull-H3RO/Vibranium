@@ -24,17 +24,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         normalBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
         normalBlock((BlockInit.DEPPSLATE_VIBRANIUM_ORE.get()));
         normalBlock(BlockInit.VIBRANIUM_BLOCK.get());
-        //normalBlock(BlockInit.ENRICHED_VIBRANIUM_DIRT.get());
         normalBlock(BlockInit.SOULWOOD_PLANKS.get());
         normalBlock(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get());
         normalBlock(BlockInit.BUDDING_VIBRANIUM_CRYSTAL.get());
 
         //Special Blocks
-        //farmlandBlock(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get());
         saplingBlock(BlockInit.SOULWOOD_SAPLING.get());
-        //leavesBlock(BlockInit.SOULWOOD_LEAVES.get());
-        //logBlock((RotatedPillarBlock) BlockInit.SOULWOOD_LOG.get());
-        //axisBlock(((RotatedPillarBlock) BlockInit.SOULWOOD_WOOD.get()), blockTexture(BlockInit.SOULWOOD_LOG.get()), blockTexture(BlockInit.SOULWOOD_LOG.get()));
         axisBlock(((RotatedPillarBlock) BlockInit.STRIPPED_SOULWOOD_LOG.get()), blockTexture(BlockInit.STRIPPED_SOULWOOD_LOG.get()),
                 ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "block/stripped_soulwood_log_top"));
         axisBlock(((RotatedPillarBlock) BlockInit.STRIPPED_SOULWOOD_WOOD.get()), blockTexture(BlockInit.STRIPPED_SOULWOOD_LOG.get()),
