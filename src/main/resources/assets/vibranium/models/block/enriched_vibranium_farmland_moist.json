@@ -1,0 +1,42 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "block/block",
+  "textures": {
+    "particle": "vibranium:block/enriched_vibranium_dirt",
+    "dirt": "vibranium:block/enriched_vibranium_dirt",
+    "dirt_emissive": "vibranium:block/emissive/enriched_vibranium_dirt_emissive",
+    "top": "vibranium:block/enriched_vibranium_farmland_moist",
+    "top_emissive": "vibranium:block/emissive/enriched_vibranium_farmland_emissive"
+  },
+  "elements": [
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 15, 16 ],
+      "shade": true,
+      "faces": {
+        "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#dirt", "cullface": "down" },
+        "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#top" },
+        "north": { "uv": [ 0, 1, 16, 16 ], "texture": "#dirt", "cullface": "north" },
+        "south": { "uv": [ 0, 1, 16, 16 ], "texture": "#dirt", "cullface": "south" },
+        "west":  { "uv": [ 0, 1, 16, 16 ], "texture": "#dirt", "cullface": "west" },
+        "east":  { "uv": [ 0, 1, 16, 16 ], "texture": "#dirt", "cullface": "east" }
+      }
+    },
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 15, 16 ],
+      "shade": false,
+      "faces": {
+        "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#dirt_emissive" },
+        "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#top_emissive" },
+        "north": { "uv": [ 0, 1, 16, 16 ], "texture": "#dirt_emissive" },
+        "south": { "uv": [ 0, 1, 16, 16 ], "texture": "#dirt_emissive" },
+        "west":  { "uv": [ 0, 1, 16, 16 ], "texture": "#dirt_emissive" },
+        "east":  { "uv": [ 0, 1, 16, 16 ], "texture": "#dirt_emissive" }
+      },
+      "neoforge_data": {
+        "block_light": 10
+      }
+    }
+  ]
+}

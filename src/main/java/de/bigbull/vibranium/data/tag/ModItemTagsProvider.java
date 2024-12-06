@@ -166,5 +166,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .addTag(TagsInit.ItemTagsInit.SOULWOOD_TRAPDOOR_TAG)
                 .addTag(TagsInit.ItemTagsInit.SOULWOOD_BUTTON_TAG)
                 .addTag(TagsInit.ItemTagsInit.SOULWOOD_SAPLING_TAG);
+
+        tag(ItemTags.DYEABLE)
+                .add(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
+
+        tag(TagsInit.ItemTagsInit.SOUL_HERB_MIXTURE_TAG)
+                .add(ItemInit.SOUL_HERB_MIXTURE.get());
     }
 }

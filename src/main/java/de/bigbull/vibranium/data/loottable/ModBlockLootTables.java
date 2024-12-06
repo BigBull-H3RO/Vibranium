@@ -40,7 +40,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
 
         this.dropSelf(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
-        this.dropSelf(BlockInit.Vibranium_Block.get());
+        this.dropSelf(BlockInit.VIBRANIUM_BLOCK.get());
         this.dropSelf(BlockInit.SOULWOOD_LOG.get());
         this.dropSelf(BlockInit.SOULWOOD_SAPLING.get());
         this.dropSelf(BlockInit.SOULWOOD_WOOD.get());

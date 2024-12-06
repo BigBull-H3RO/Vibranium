@@ -40,7 +40,7 @@ public class BlockInit {
                     .sound(SoundType.DEEPSLATE)
                     .requiresCorrectToolForDrops()));
 
-    public static final DeferredBlock<Block> Vibranium_Block = registerBlock("vibranium_block", () ->
+    public static final DeferredBlock<Block> VIBRANIUM_BLOCK = registerBlock("vibranium_block", () ->
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_BLUE)
                     .strength(50.0F, 1200.0F)
@@ -101,7 +101,7 @@ public class BlockInit {
             new PressurePlateBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE).strength(3.0F).sound(SoundType.CHERRY_WOOD)));
 
     public static final DeferredBlock<ButtonBlock> SOULWOOD_BUTTON = registerBlock("soulwood_button", () ->
-            new ButtonBlock(BlockSetType.CHERRY, 20, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON).strength(0.5F).sound(SoundType.CHERRY_WOOD)));
+            new ButtonBlock(BlockSetType.CHERRY, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON).strength(0.5F).sound(SoundType.CHERRY_WOOD)));
 
     public static final DeferredBlock<FenceBlock> SOULWOOD_FENCE = registerBlock("soulwood_fence", () ->
             new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE).strength(3.0F).sound(SoundType.CHERRY_WOOD)));

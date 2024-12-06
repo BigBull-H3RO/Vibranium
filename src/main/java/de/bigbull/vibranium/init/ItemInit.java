@@ -38,6 +38,9 @@ public class ItemInit {
             () -> new Item(new Item.Properties().fireResistant()));
     public static final DeferredItem<Item> VIBRANIUM_CORE = ITEMS.register("vibranium_core",
             () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredItem<Item> VIBRANIUM_PLATE = ITEMS.register("vibranium_plate",
+            () -> new Item(new Item.Properties().fireResistant()));
+
     public static final DeferredItem<SmithingTemplateItem> VIBRANIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("vibranium_upgrade_smithing_template",
             () -> new SmithingTemplateItem(
                     VIBRANIUM_UPGRADE_APPLIES_TO,
@@ -121,6 +124,9 @@ public class ItemInit {
                             .build())
                     .stacksTo(16)
                     .rarity(Rarity.RARE)));
+    public static final DeferredItem<Item> SOUL_HERB_MIXTURE = ITEMS.register("soul_herb_mixture",
+            () -> new Item(new Item.Properties().stacksTo(16)));
+
     public static final DeferredItem<Item> SOUL_HERB_ELIXIR = ITEMS.register("soul_herb_elixir",
             () -> new HSHPotionItem(new Item.Properties().stacksTo(1),3600, 0));
     public static final DeferredItem<Item> SOUL_HERB_ELIXIR_EXTENDED = ITEMS.register("soul_herb_elixir_extended",

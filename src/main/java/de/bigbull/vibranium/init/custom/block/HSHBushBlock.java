@@ -79,7 +79,7 @@ public class HSHBushBlock extends BushBlock implements BonemealableBlock {
     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         int age = state.getValue(AGE);
         if (age < 3 && world.getRawBrightness(pos.above(), 0) >= 9) {
-            if (random.nextInt(5) == 0) {
+            if (random.nextInt(40) == 0) {
                 world.setBlock(pos, state.setValue(AGE, age + 1), 2);
                 world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(state));
             }
@@ -130,17 +130,14 @@ public class HSHBushBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     public boolean isValidBonemealTarget(LevelReader world, BlockPos pos, BlockState state) {
-        return state.getValue(AGE) < 3;
+        return false;
     }
 
     @Override
     public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state) {
-        return true;
+        return false;
     }
 
     @Override
-    public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
-        int age = Math.min(3, state.getValue(AGE) + 1);
-        world.setBlock(pos, state.setValue(AGE, age), 2);
-    }
+    public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {}
 }

@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.init.custom;
+package de.bigbull.vibranium.init.custom.particle;
 
 import de.bigbull.vibranium.init.ParticleInit;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -7,6 +7,10 @@ import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -170,6 +174,9 @@ public class CustomDripParticle extends TextureSheetParticle {
             if (this.onGround) {
                 this.remove();
                 this.level.addParticle(this.landParticle, this.x, this.y, this.z, 0.0, 0.0, 0.0);
+                SoundEvent soundevent = SoundEvents.POINTED_DRIPSTONE_DRIP_WATER;
+                float f = Mth.randomBetween(this.random, 0.3F, 1.0F);
+                this.level.playLocalSound(this.x, this.y, this.z, soundevent, SoundSource.BLOCKS, f, 0.8F, false);
             }
         }
     }

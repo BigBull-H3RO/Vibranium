@@ -44,6 +44,7 @@ public class TagsInit {
         public static final TagKey<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_EXTENDED_TAG = ItemTags.create(createGenericItemsLocation("vibranium_enriched_herb_elixir_extended"));
         public static final TagKey<Item> VIBRANIUM_ENRICHED_HERB_ELIXIR_ENHANCED_TAG = ItemTags.create(createGenericItemsLocation("vibranium_enriched_herb_elixir_enhanced"));
         public static final TagKey<Item> VIBRANIUM_CRYSTAL_SHARD_TAG = ItemTags.create(createGenericItemsLocation("vibranium_crystal_shard"));
+        public static final TagKey<Item> SOUL_HERB_MIXTURE_TAG = ItemTags.create(createGenericItemsLocation("soul_herb_mixture"));
 
         //Blocks
         public static final TagKey<Item> BLOCK_OF_RAW_VIBRANIUM_TAG = ItemTags.create(createBlockLocation("block_of_raw_vibranium"));

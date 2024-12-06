@@ -17,16 +17,18 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.RAW_VIBRANIUM, "Rohes Vibranium");
         addItem(ItemInit.VIBRANIUM_INGOT, "Vibranium Barren");
         addItem(ItemInit.VIBRANIUM_NUGGET, "Vibranium Klumpen");
+        addItem(ItemInit.VIBRANIUM_PLATE, "Vibranium Platte");
         addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Schmiedevorlage");
         addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawnei");
         addItem(ItemInit.VIBRANIUM_CORE, "Vibranium Kern");
         addItem(ItemInit.HEART_SHAPED_HERB, "Herzformiges Kraut");
+        addItem(ItemInit.SOUL_HERB_MIXTURE, "Seelenkraut Mischung");
         addItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD, "Vibranium Kristall Splitter");
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block aus rohem Vibranium");
         addBlock(BlockInit.DEPPSLATE_VIBRANIUM_ORE, "Tiefenschiefer Vibraniumerz");
-        addBlock(BlockInit.Vibranium_Block, "Vibranium Block");
+        addBlock(BlockInit.VIBRANIUM_BLOCK, "Vibranium Block");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_DIRT, "Angereicherte Vibranium Erde");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_FARMLAND, "Angereichertes Vibranium Ackerland");
         addBlock(BlockInit.SOULWOOD_LOG, "Seelenholz Stamm");
