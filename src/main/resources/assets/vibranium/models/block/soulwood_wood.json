@@ -1,0 +1,40 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "block/block",
+  "textures": {
+    "particle": "vibranium:block/soulwood_log",
+    "end": "vibranium:block/soulwood_log",
+    "end_emissive": "vibranium:block/emissive/soulwood_log_emissive",
+    "side": "vibranium:block/soulwood_log",
+    "side_emissive": "vibranium:block/emissive/soulwood_log_emissive"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "shade": true,
+      "faces": {
+        "down": { "texture": "#end", "cullface": "down" },
+        "up": { "texture": "#end", "cullface": "up" },
+        "north": { "texture": "#side", "cullface": "north" },
+        "south": { "texture": "#side", "cullface": "south" },
+        "west": { "texture": "#side", "cullface": "west" },
+        "east": { "texture": "#side", "cullface": "east" }
+      }
+    },
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "shade": false,
+      "light_emission": 10,
+      "faces": {
+        "down": { "texture": "#end_emissive"},
+        "up": { "texture": "#end_emissive"},
+        "north": { "texture": "#side_emissive" },
+        "south": { "texture": "#side_emissive" },
+        "west": { "texture": "#side_emissive" },
+        "east": { "texture": "#side_emissive" }
+      }
+    }
+  ]
+}
