@@ -114,7 +114,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("##")
                 .pattern("##")
                 .define('#', BlockInit.SOULWOOD_LOG)
-                .group("wood")
+                .group("bark")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_LOG))
                 .save(this.recipeOutput, getModId("enriched_vibranium_wood"));
 
@@ -122,7 +122,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("##")
                 .pattern("##")
                 .define('#', BlockInit.STRIPPED_SOULWOOD_LOG)
-                .group("wood")
+                .group("bark")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_LOG))
                 .save(this.recipeOutput, getModId("stripped_enriched_vibranium_log"));
 
@@ -131,62 +131,62 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("## ")
                 .pattern("###")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
-                .group("stairs")
+                .group("wooden_stairs")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
                 .save(this.recipeOutput, getModId("enriched_vibranium_stairs"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_SLAB, 6)
                 .pattern("###")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
-                .group("slab")
+                .group("wooden_slab")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
                 .save(this.recipeOutput, getModId("enriched_vibranium_slab"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_FENCE, 3)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockInit.SOULWOOD_FENCE, 3)
                 .pattern("#W#")
                 .pattern("#W#")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
                 .define('W', Items.STICK)
-                .group("fence")
+                .group("wooden_fence")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
                 .save(this.recipeOutput, getModId("enriched_vibranium_fence"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_FENCE_GATE, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, BlockInit.SOULWOOD_FENCE_GATE, 1)
                 .pattern("#W#")
                 .pattern("#W#")
                 .define('W', BlockInit.SOULWOOD_PLANKS)
                 .define('#', Items.STICK)
-                .group("fence_gate")
+                .group("wooden_fence_gate")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
                 .save(this.recipeOutput, getModId("enriched_vibranium_fence_gate"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_DOOR, 3)
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, BlockInit.SOULWOOD_DOOR, 3)
                 .pattern("##")
                 .pattern("##")
                 .pattern("##")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
-                .group("door")
+                .group("wooden_door")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
                 .save(this.recipeOutput, getModId("enriched_vibranium_door"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_TRAPDOOR, 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, BlockInit.SOULWOOD_TRAPDOOR, 2)
                 .pattern("###")
                 .pattern("###")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
-                .group("trapdoor")
+                .group("wooden_trapdoor")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
                 .save(this.recipeOutput, getModId("enriched_vibranium_trapdoor"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_BUTTON, 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, BlockInit.SOULWOOD_BUTTON, 1)
                 .requires(BlockInit.SOULWOOD_PLANKS, 1)
-                .group("button")
+                .group("wooden_button")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
                 .save(this.recipeOutput, getModId("enriched_vibranium_button"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_PRESSURE_PLATE, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, BlockInit.SOULWOOD_PRESSURE_PLATE, 1)
                 .pattern("##")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
-                .group("pressure_plate")
+                .group("wooden_pressure_plate")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
                 .save(this.recipeOutput, getModId("enriched_vibranium_pressure_plate"));
 
