@@ -133,4 +133,17 @@ public class ItemInit {
     public static final DeferredItem<Item> VIBRANIUM_CRYSTAL_SHARD = ITEMS.registerItem("vibranium_crystal_shard",
             properties ->  new Item(properties.fireResistant().stacksTo(64)));
 
+    public static final DeferredItem<Item> SOULWOOD_SIGN = ITEMS.registerItem("soulwood_sign",
+            properties ->  new SignItem(BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get(),
+                    properties.stacksTo(16)));
+
+    public static final DeferredItem<Item> SOULWOOD_HANGING_SIGN = ITEMS.registerItem("soulwood_hanging_sign",
+            properties ->  new HangingSignItem(BlockInit.SOULWOOD_HANGING_SIGN.get(), BlockInit.SOULWOOD_WALL_HANGING_SIGN.get(),
+                    properties.stacksTo(16)));
+
+    public static final DeferredItem<Item> SOULWOOD_BOAT = ITEMS.registerItem("soulwood_boat",
+            properties ->  new BoatItem(TypesInit.SOULWOOD_BOAT.get(), properties.stacksTo(1)));
+
+    public static final DeferredItem<Item> SOULWOOD_CHEST_BOAT = ITEMS.registerItem("soulwood_chest_boat",
+            properties ->  new BoatItem(TypesInit.SOULWOOD_CHEST_BOAT.get(), properties.stacksTo(1)));
 }

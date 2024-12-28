@@ -24,6 +24,10 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.HEART_SHAPED_HERB, "Herzformiges Kraut");
         addItem(ItemInit.SOUL_HERB_MIXTURE, "Seelenkraut Mischung");
         addItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD, "Vibranium Kristall Splitter");
+        addItem(ItemInit.SOULWOOD_SIGN, "Seelenholz Schild");
+        addItem(ItemInit.SOULWOOD_HANGING_SIGN, "Seelenholz Hängeschild");
+        addItem(ItemInit.SOULWOOD_BOAT, "Seelenholz Boot");
+        addItem(ItemInit.SOULWOOD_CHEST_BOAT, "Seelenholz Boot mit Truhe");
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block aus rohem Vibranium");

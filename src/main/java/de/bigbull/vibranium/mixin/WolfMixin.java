@@ -14,9 +14,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Wolf.class)
 public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
@@ -24,8 +21,8 @@ public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
         super(entityType, level);
     }
 
-    @Inject(method = "actuallyHurt", at = @At("HEAD"))
-    protected void actuallyHurt(ServerLevel serverLevel, DamageSource damageSource, float v, CallbackInfo ci) {
+    @Override
+    protected void actuallyHurt(ServerLevel serverLevel, DamageSource damageSource, float v) {
         if (!this.canArmorAbsorb(damageSource)) {
             super.actuallyHurt(serverLevel, damageSource, v);
         } else {
@@ -37,6 +34,19 @@ public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
                 this.playSound(SoundEvents.WOLF_ARMOR_CRACK);
                 serverLevel.sendParticles(
                         new ItemParticleOption(ParticleTypes.ITEM, ItemInit.VIBRANIUM_INGOT.get().getDefaultInstance()),
+                        this.getX(),
+                        this.getY() + 1.0,
+                        this.getZ(),
+                        20,
+                        0.2,
+                        0.1,
+                        0.2,
+                        0.1
+                );
+            } else if ((Crackiness.WOLF_ARMOR.byDamage(i, j) != Crackiness.WOLF_ARMOR.byDamage(this.getBodyArmorItem()) && this.getBodyArmorItem().is(Items.WOLF_ARMOR))) {
+                this.playSound(SoundEvents.WOLF_ARMOR_CRACK);
+                serverLevel.sendParticles(
+                        new ItemParticleOption(ParticleTypes.ITEM, Items.ARMADILLO_SCUTE.getDefaultInstance()),
                         this.getX(),
                         this.getY() + 1.0,
                         this.getZ(),

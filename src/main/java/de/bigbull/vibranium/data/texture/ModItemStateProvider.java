@@ -54,9 +54,11 @@ public class ModItemStateProvider extends ItemModelProvider {
 
         //Tree
         saplingItem(BlockInit.SOULWOOD_SAPLING);
-
-        //Blocks
         basicItem(BlockInit.SOULWOOD_DOOR.asItem());
+        itemGenerated(ItemInit.SOULWOOD_SIGN);
+        itemGenerated(ItemInit.SOULWOOD_HANGING_SIGN);
+        itemGenerated(ItemInit.SOULWOOD_BOAT);
+        itemGenerated(ItemInit.SOULWOOD_CHEST_BOAT);
     }
 
     private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {

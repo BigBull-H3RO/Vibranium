@@ -35,10 +35,14 @@ public class Vibranium {
         FeatureInit.FEATURES.register(modEventBus);
         FeatureInit.TRUNK_PLACER_TYPES.register(modEventBus);
         ParticleInit.PARTICLES.register(modEventBus);
+        TypesInit.ENTITY_TYPES.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(DataGenerators::gatherDataClient);
         modEventBus.addListener(ClientModEvents::onRegisterParticles);
+        modEventBus.addListener(ClientModEvents::onRegisterSpecialModelRenderers);
+        modEventBus.addListener(ClientModEvents::clientSetup);
+        modEventBus.addListener(ClientModEvents::addBlockEntityTypes);
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.CLIENT_SPEC, "vibranium-client.toml");
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SERVER_SPEC, "vibranium-server.toml");
