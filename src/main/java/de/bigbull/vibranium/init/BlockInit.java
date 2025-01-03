@@ -1,6 +1,8 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.init.custom.entity.SWHangingSignBlockEntity;
+import de.bigbull.vibranium.init.custom.entity.SWSignBlockEntity;
 import de.bigbull.vibranium.init.custom.block.EVDirtBlock;
 import de.bigbull.vibranium.init.custom.block.EVFarmlandBlock;
 import de.bigbull.vibranium.init.custom.block.HSHBushBlock;
@@ -10,10 +12,13 @@ import de.bigbull.vibranium.init.custom.block.tree.SoulTreeSaplingBlock;
 import de.bigbull.vibranium.init.custom.block.tree.VibraniumRotatedPillarBlock;
 import de.bigbull.vibranium.init.custom.block.vibraniumcrystal.BuddingVibraniumBlock;
 import de.bigbull.vibranium.init.custom.block.vibraniumcrystal.VibraniumClusterBlock;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
@@ -114,6 +119,54 @@ public class BlockInit {
 
     public static final DeferredBlock<TrapDoorBlock> SOULWOOD_TRAPDOOR = registerBlock("soulwood_trapdoor", () ->
             new TrapDoorBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR).strength(3.0F).sound(SoundType.CHERRY_WOOD)));
+
+    public static final DeferredBlock<StandingSignBlock> SOULWOOD_SIGN = BLOCKS.register("soulwood_sign",
+            () -> new StandingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.TERRACOTTA_BLUE)
+                    .strength(1.0F)
+                    .noCollission()
+                    .requiresCorrectToolForDrops()){
+            @Override
+            public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+                return new SWSignBlockEntity(pPos, pState);
+            }
+    });
+
+    public static final DeferredBlock<WallSignBlock> SOULWOOD_WALL_SIGN = BLOCKS.register("soulwood_wall_sign",
+            () -> new WallSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.TERRACOTTA_BLUE)
+                    .strength(1.0F)
+                    .noCollission()
+                    .requiresCorrectToolForDrops()){
+            @Override
+            public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new SWSignBlockEntity(pPos, pState);
+            }
+    });
+
+    public static final DeferredBlock<CeilingHangingSignBlock> SOULWOOD_HANGING_SIGN = BLOCKS.register("soulwood_hanging_sign",
+            () -> new CeilingHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.TERRACOTTA_BLUE)
+                    .strength(1.0F)
+                    .noCollission()
+                    .requiresCorrectToolForDrops()) {
+            @Override
+            public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+                return new SWHangingSignBlockEntity(pPos, pState);
+            }
+    });
+
+    public static final DeferredBlock<WallHangingSignBlock> SOULWOOD_WALL_HANGING_SIGN = BLOCKS.register("soulwood_wall_hanging_sign",
+            () -> new WallHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.TERRACOTTA_BLUE)
+                    .strength(1.0F)
+                    .noCollission()
+                    .requiresCorrectToolForDrops()) {
+            @Override
+            public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+                return new SWHangingSignBlockEntity(pPos, pState);
+            }
+    });
 
     public static final DeferredBlock<Block> VIBRANIUM_CRYSTAL_BLOCK = registerBlock("vibranium_crystal_block",
             () -> new AmethystBlock(

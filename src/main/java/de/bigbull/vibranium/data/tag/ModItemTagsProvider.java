@@ -120,6 +120,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.DURABILITY_ENCHANTABLE)
                 .addTag(TagsInit.ToolTagsInit.VIBRANIUM_SHIELD_TAG);
 
+        tag(ItemTags.WEAPON_ENCHANTABLE).addTag(ItemTags.SHARP_WEAPON_ENCHANTABLE)
+                .add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).addTag(ItemTags.SWORD_ENCHANTABLE)
+                .add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.BREAKS_DECORATED_POTS)
+                .add(ItemInit.VIBRANIUM_MACE.get());
         tag(ItemTags.MINING_ENCHANTABLE)
                 .addTag(TagsInit.ToolTagsInit.VIBRANIUM_MACE_TAG);
         tag(ItemTags.MINING_LOOT_ENCHANTABLE)
@@ -172,5 +178,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(TagsInit.ItemTagsInit.SOUL_HERB_MIXTURE_TAG)
                 .add(ItemInit.SOUL_HERB_MIXTURE.get());
+
+        tag(ItemTags.BOATS)
+                .add(ItemInit.SOULWOOD_BOAT.get());
+        tag(ItemTags.CHEST_BOATS)
+                .add(ItemInit.SOULWOOD_CHEST_BOAT.get());
     }
 }

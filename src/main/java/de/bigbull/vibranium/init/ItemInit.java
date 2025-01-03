@@ -2,6 +2,7 @@ package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.entity.MobEnities;
 import de.bigbull.vibranium.init.custom.item.HSHPotionItem;
+import de.bigbull.vibranium.init.custom.item.SoulwoodBoatItem;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.custom.item.WolfArmorItem;
@@ -136,4 +137,17 @@ public class ItemInit {
 
     public static final DeferredItem<Item> VIBRANIUM_CRYSTAL_SHARD = ITEMS.register("vibranium_crystal_shard",
             () -> new Item(new Item.Properties().fireResistant().stacksTo(64)));
+
+    public static final DeferredItem<Item> SOULWOOD_SIGN = ITEMS.register("soulwood_sign",
+            () ->  new SignItem(new Item.Properties().stacksTo(16), BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get()));
+
+    public static final DeferredItem<Item> SOULWOOD_HANGING_SIGN = ITEMS.register("soulwood_hanging_sign",
+            () ->  new HangingSignItem(BlockInit.SOULWOOD_HANGING_SIGN.get(), BlockInit.SOULWOOD_WALL_HANGING_SIGN.get(),
+                    new Item.Properties().stacksTo(16)));
+
+    public static final DeferredItem<Item> SOULWOOD_BOAT = ITEMS.register("soulwood_boat",
+            () ->  new SoulwoodBoatItem(false, new Item.Properties().stacksTo(1), TypesInit.SOULWOOD_WOODTYPE));
+
+    public static final DeferredItem<Item> SOULWOOD_CHEST_BOAT = ITEMS.register("soulwood_chest_boat",
+            () ->  new SoulwoodBoatItem(true, new Item.Properties().stacksTo(1), TypesInit.SOULWOOD_WOODTYPE));
 }

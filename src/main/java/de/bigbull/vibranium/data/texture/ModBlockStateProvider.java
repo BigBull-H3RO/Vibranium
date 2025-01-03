@@ -56,6 +56,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(BlockInit.SOULWOOD_PRESSURE_PLATE.get());
         blockItem(BlockInit.SOULWOOD_SLAB.get());
         blockItem(BlockInit.SOULWOOD_TRAPDOOR.get(), "_bottom");
+
+        signBlock(BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get(), blockTexture(BlockInit.SOULWOOD_PLANKS.get()));
+        hangingSignBlock(BlockInit.SOULWOOD_HANGING_SIGN.get(), BlockInit.SOULWOOD_WALL_HANGING_SIGN.get(), blockTexture(BlockInit.SOULWOOD_PLANKS.get()));
     }
 
     private void normalBlock(Block block) {

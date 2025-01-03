@@ -13,6 +13,7 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -206,5 +207,43 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .define('G', Items.GHAST_TEAR)
                 .unlockedBy("has_item", has(ItemInit.HEART_SHAPED_HERB))
                 .save(this.recipeOutput, getModId("soul_herb_mixture"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemInit.SOULWOOD_SIGN, 3)
+                .pattern("###")
+                .pattern("###")
+                .pattern(" X ")
+                .define('#', BlockInit.SOULWOOD_PLANKS)
+                .define('X', Items.STICK)
+                .group("wooden_sign")
+                .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
+                .save(this.recipeOutput, "soulwood_sign");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemInit.SOULWOOD_HANGING_SIGN, 6)
+                .pattern("X X")
+                .pattern("###")
+                .pattern("###")
+                .define('#', BlockInit.STRIPPED_SOULWOOD_LOG)
+                .define('X', Items.CHAIN)
+                .group("hanging_sign")
+                .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
+                .save(this.recipeOutput, "soulwood_hanging_sign");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, ItemInit.SOULWOOD_BOAT, 1)
+                .pattern("# #")
+                .pattern("###")
+                .define('#', BlockInit.SOULWOOD_PLANKS)
+                .group("boat")
+                .unlockedBy("in_water", insideOf(Blocks.WATER))
+                .save(this.recipeOutput, "soulwood_boat");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, ItemInit.SOULWOOD_CHEST_BOAT, 1)
+                .pattern("# #")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', BlockInit.SOULWOOD_PLANKS)
+                .define('C', Items.CHEST)
+                .group("chest_boat")
+                .unlockedBy("has_boat", this.has(ItemTags.BOATS))
+                .save(this.recipeOutput, "soulwood_chest_boat");
     }
 }

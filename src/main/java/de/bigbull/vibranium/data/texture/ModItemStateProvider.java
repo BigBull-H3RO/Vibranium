@@ -28,6 +28,10 @@ public class ModItemStateProvider extends ItemModelProvider {
         itemGenerated(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE);
         itemGenerated(ItemInit.VIBRANIUM_CRYSTAL_SHARD);
         itemGenerated(ItemInit.SOUL_HERB_MIXTURE);
+        itemGenerated(ItemInit.SOULWOOD_SIGN);
+        itemGenerated(ItemInit.SOULWOOD_HANGING_SIGN);
+        itemGenerated(ItemInit.SOULWOOD_BOAT);
+        itemGenerated(ItemInit.SOULWOOD_CHEST_BOAT);
 
         //Armors
         registerTrimModels(ItemInit.VIBRANIUM_BOOTS);
@@ -58,7 +62,6 @@ public class ModItemStateProvider extends ItemModelProvider {
         //Blocks
         buttonItem(BlockInit.SOULWOOD_BUTTON, BlockInit.SOULWOOD_PLANKS);
         fenceItem(BlockInit.SOULWOOD_FENCE, BlockInit.SOULWOOD_PLANKS);
-
         basicItem(BlockInit.SOULWOOD_DOOR.asItem());
     }
 
