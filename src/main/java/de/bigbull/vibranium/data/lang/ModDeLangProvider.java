@@ -56,6 +56,7 @@ public class ModDeLangProvider extends LanguageProvider {
         addBlock(BlockInit.SMALL_VIBRANIUM_BUD, "Kleine Kristall-Vibraniumknospe");
         addBlock(BlockInit.MEDIUM_VIBRANIUM_BUD, "Mittlere Kristall-Vibraniumknospe");
         addBlock(BlockInit.LARGE_VIBRANIUM_BUD, "Große Kristall-Vibraniumknospe");
+        addBlock(BlockInit.POTTED_SOULWOOD_SAPLING, "Eingetopfter Seelenholz Setzling");
 
         //Tools
         addItem(ItemInit.VIBRANIUM_SWORD, "Vibranium Schwert");

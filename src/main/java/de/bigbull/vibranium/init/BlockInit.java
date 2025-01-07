@@ -13,6 +13,9 @@ import de.bigbull.vibranium.init.custom.block.tree.VibraniumRotatedPillarBlock;
 import de.bigbull.vibranium.init.custom.block.vibraniumcrystal.BuddingVibraniumBlock;
 import de.bigbull.vibranium.init.custom.block.vibraniumcrystal.VibraniumClusterBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -52,7 +55,7 @@ public class BlockInit {
                     .sound(SoundType.NETHERITE_BLOCK)
                     .requiresCorrectToolForDrops()));
 
-    public static final DeferredBlock<Block> HEART_SHAPED_HERB_BUSH = registerBlock("heart_shaped_herb_bush", () ->
+    public static final DeferredBlock<Block> HEART_SHAPED_HERB_BUSH = BLOCKS.register("heart_shaped_herb_bush", () ->
             new HSHBushBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.PLANT)
                     .randomTicks()
@@ -124,8 +127,7 @@ public class BlockInit {
             () -> new StandingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.TERRACOTTA_BLUE)
                     .strength(1.0F)
-                    .noCollission()
-                    .requiresCorrectToolForDrops()){
+                    .noCollission()){
             @Override
             public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
                 return new SWSignBlockEntity(pPos, pState);
@@ -136,8 +138,7 @@ public class BlockInit {
             () -> new WallSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.TERRACOTTA_BLUE)
                     .strength(1.0F)
-                    .noCollission()
-                    .requiresCorrectToolForDrops()){
+                    .noCollission()){
             @Override
             public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
             return new SWSignBlockEntity(pPos, pState);
@@ -148,8 +149,7 @@ public class BlockInit {
             () -> new CeilingHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.TERRACOTTA_BLUE)
                     .strength(1.0F)
-                    .noCollission()
-                    .requiresCorrectToolForDrops()) {
+                    .noCollission()) {
             @Override
             public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
                 return new SWHangingSignBlockEntity(pPos, pState);
@@ -160,13 +160,16 @@ public class BlockInit {
             () -> new WallHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.TERRACOTTA_BLUE)
                     .strength(1.0F)
-                    .noCollission()
-                    .requiresCorrectToolForDrops()) {
+                    .noCollission()) {
             @Override
             public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
                 return new SWHangingSignBlockEntity(pPos, pState);
             }
     });
+
+    public static final DeferredBlock<FlowerPotBlock> POTTED_SOULWOOD_SAPLING = BLOCKS.register("potted_soulwood_sapling",
+            () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SOULWOOD_SAPLING,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_OAK_SAPLING)));
 
     public static final DeferredBlock<Block> VIBRANIUM_CRYSTAL_BLOCK = registerBlock("vibranium_crystal_block",
             () -> new AmethystBlock(
@@ -231,8 +234,6 @@ public class BlockInit {
     }
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
-        if (!name.equals("heart_shaped_herb_bush")) {
-            ItemInit.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
-        }
+        ItemInit.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 }

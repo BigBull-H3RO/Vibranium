@@ -26,7 +26,7 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.SOULWOOD_SIGN, "Soulwood Sign");
         addItem(ItemInit.SOULWOOD_HANGING_SIGN, "Soulwood Hanging Sign");
         addItem(ItemInit.SOULWOOD_BOAT, "Soulwood Boat");
-        addItem(ItemInit.SOULWOOD_CHEST_BOAT, "Soulwood Boat with Chest");
+        addItem(ItemInit.SOULWOOD_CHEST_BOAT, "Soulwood Boat with Chest");;
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block of Raw Vibranium");
@@ -55,6 +55,7 @@ public class ModEnLangProvider extends LanguageProvider {
         addBlock(BlockInit.SMALL_VIBRANIUM_BUD, "Small Crystal Vibranium Bud");
         addBlock(BlockInit.MEDIUM_VIBRANIUM_BUD, "Medium Crystal Vibranium Bud");
         addBlock(BlockInit.LARGE_VIBRANIUM_BUD, "Large Crystal Vibranium Bud");
+        addBlock(BlockInit.POTTED_SOULWOOD_SAPLING, "Potted Soulwood Sapling");
 
         //Tools
         addItem(ItemInit.VIBRANIUM_SWORD, "Vibranium Sword");

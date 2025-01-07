@@ -75,6 +75,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(BlockInit.SOULWOOD_WALL_SIGN.get(), createSingleItemTable(BlockInit.SOULWOOD_SIGN.get().asItem()));
         this.add(BlockInit.SOULWOOD_HANGING_SIGN.get(), createSingleItemTable(BlockInit.SOULWOOD_HANGING_SIGN.get().asItem()));
         this.add(BlockInit.SOULWOOD_WALL_HANGING_SIGN.get(), createSingleItemTable(BlockInit.SOULWOOD_HANGING_SIGN.get().asItem()));
+        this.dropPottedContents(BlockInit.POTTED_SOULWOOD_SAPLING.get());
 
         this.add(BlockInit.ENRICHED_VIBRANIUM_DIRT.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool()
