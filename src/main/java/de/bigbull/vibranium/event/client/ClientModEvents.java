@@ -25,9 +25,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 
-@EventBusSubscriber(modid = Vibranium.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientModEvents {
-    @SubscribeEvent
     public static void onclientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             Sheets.addWoodType(TypesInit.SOULWOOD_WOODTYPE);
@@ -40,7 +38,6 @@ public class ClientModEvents {
         EntityRenderers.register(MobEnities.VIBRAGOLEM.get(), VibraGolemRenderer::new);
     }
 
-    @SubscribeEvent
     public static void onRegisterParticles(RegisterParticleProvidersEvent event) {
         event.registerSprite(ParticleInit.DRIPPING_VIBRANIUM.get(), CustomDripParticle::createVibraniumHangParticle);
         event.registerSprite(ParticleInit.FALLING_VIBRANIUM.get(), CustomDripParticle::createVibraniumFallParticle);
@@ -48,7 +45,6 @@ public class ClientModEvents {
         event.registerSpriteSet(ParticleInit.SOULWOOD_LEAVES.get(), CustomLeavesParticle.Provider::new);
     }
 
-    @SubscribeEvent
     public static void registerLayers(final EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModelLayersInit.SOULWOOD_BOAT, BoatModel::createBodyModel);
         event.registerLayerDefinition(ModelLayersInit.SOULWOOD_CHEST_BOAT, ChestBoatModel::createBodyModel);
