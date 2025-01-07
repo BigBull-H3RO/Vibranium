@@ -9,12 +9,14 @@ import de.bigbull.vibranium.event.client.ClientModEvents;
 import de.bigbull.vibranium.init.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
@@ -41,10 +43,15 @@ public class Vibranium {
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(DataGenerators::gatherDataClient);
-        modEventBus.addListener(ClientModEvents::onRegisterParticles);
-        modEventBus.addListener(ClientModEvents::onRegisterSpecialModelRenderers);
-        modEventBus.addListener(ClientModEvents::clientSetup);
-        modEventBus.addListener(ClientModEvents::addBlockEntityTypes);
+
+        if (FMLLoader.getDist() == Dist.CLIENT) {
+            modEventBus.addListener(ClientModEvents::onRegisterParticles);
+            modEventBus.addListener(ClientModEvents::onRegisterSpecialModelRenderers);
+            modEventBus.addListener(ClientModEvents::clientSetup);
+            modEventBus.addListener(ClientModEvents::addBlockEntityTypes);
+            modEventBus.addListener(ClientModEvents::onRegisterRenderers);
+            modEventBus.addListener(ClientModEvents::onRegisterLayerDefinitions);
+        }
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.CLIENT_SPEC, "vibranium-client.toml");
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SERVER_SPEC, "vibranium-server.toml");
