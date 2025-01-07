@@ -28,6 +28,7 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.SOULWOOD_HANGING_SIGN, "Seelenholz Hängeschild");
         addItem(ItemInit.SOULWOOD_BOAT, "Seelenholz Boot");
         addItem(ItemInit.SOULWOOD_CHEST_BOAT, "Seelenholz Boot mit Truhe");
+        add("entity.vibranium.soulwood_chest_boat", "Seelenholz Boot mit Truhe");
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block aus rohem Vibranium");

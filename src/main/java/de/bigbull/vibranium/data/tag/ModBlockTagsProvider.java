@@ -97,10 +97,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.PRESSURE_PLATES).add(BlockInit.SOULWOOD_PRESSURE_PLATE.get());
         tag(BlockTags.STAIRS).add(BlockInit.SOULWOOD_STAIRS.get());
         tag(BlockTags.SLABS).add(BlockInit.SOULWOOD_SLAB.get());
-
         tag(BlockTags.STANDING_SIGNS).add(BlockInit.SOULWOOD_SIGN.get());
         tag(BlockTags.WALL_SIGNS).add(BlockInit.SOULWOOD_WALL_SIGN.get());
         tag(BlockTags.CEILING_HANGING_SIGNS).add(BlockInit.SOULWOOD_HANGING_SIGN.get());
         tag(BlockTags.WALL_HANGING_SIGNS).add(BlockInit.SOULWOOD_WALL_HANGING_SIGN.get());
+        tag(BlockTags.FLOWER_POTS).add(BlockInit.POTTED_SOULWOOD_SAPLING.get());
     }
 }

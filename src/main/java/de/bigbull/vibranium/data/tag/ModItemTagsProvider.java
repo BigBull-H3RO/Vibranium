@@ -117,7 +117,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(BlockInit.SOULWOOD_DOOR.asItem())
                 .add(BlockInit.SOULWOOD_TRAPDOOR.asItem())
                 .add(BlockInit.SOULWOOD_BUTTON.asItem())
-                .add(BlockInit.SOULWOOD_SAPLING.asItem());
+                .add(BlockInit.SOULWOOD_SAPLING.asItem())
+                .add(BlockInit.SOULWOOD_SIGN.asItem())
+                .add(BlockInit.SOULWOOD_HANGING_SIGN.asItem());
 
         tag(TagsInit.Items.VIBRANIUM_REPAIR)
                 .add(ItemInit.VIBRANIUM_INGOT.get());

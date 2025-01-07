@@ -78,34 +78,34 @@ public class BlockInit {
             properties -> new VibraniumRotatedPillarBlock(properties
                     .mapColor(p_152624_ -> p_152624_.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.WOOD : MapColor.PODZOL)
                     .instrument(NoteBlockInstrument.BASS)
-                    .strength(3.0F)
+                    .strength(2.0F)
                     .sound(SoundType.CHERRY_WOOD)));
 
     public static final DeferredBlock<Block> SOULWOOD_WOOD = registerBlock("soulwood_wood",
             properties -> new VibraniumRotatedPillarBlock(properties
                     .mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS)
-                    .strength(3.0F)
+                    .strength(2.0F)
                     .sound(SoundType.CHERRY_WOOD)));
 
     public static final DeferredBlock<Block> STRIPPED_SOULWOOD_LOG = registerBlock("stripped_soulwood_log",
             properties -> new VibraniumRotatedPillarBlock(properties
                     .mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS)
-                    .strength(3.0F)
+                    .strength(2.0F)
                     .sound(SoundType.CHERRY_WOOD)));
 
     public static final DeferredBlock<Block> STRIPPED_SOULWOOD_WOOD = registerBlock("stripped_soulwood_wood",
             properties -> new VibraniumRotatedPillarBlock(properties
                     .mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS)
-                    .strength(3.0F)
+                    .strength(2.0F)
                     .sound(SoundType.CHERRY_WOOD)));
 
     public static final DeferredBlock<Block> SOULWOOD_LEAVES = registerBlock("soulwood_leaves",
             properties -> new SWLeavesBlock(properties
                     .mapColor(MapColor.PLANT)
-                    .strength(0.4F)
+                    .strength(0.2F)
                     .randomTicks()
                     .sound(SoundType.GRASS)
                     .noOcclusion()
@@ -121,14 +121,14 @@ public class BlockInit {
                     .noCollission()
                     .randomTicks()
                     .instabreak()
-                    .sound(SoundType.GRASS)
+                    .sound(SoundType.CHERRY_SAPLING)
                     .pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> SOULWOOD_PLANKS = registerBlock("soulwood_planks",
             properties -> new VibraniumRotatedPillarBlock(properties
                     .mapColor(MapColor.TERRACOTTA_BLUE)
                     .instrument(NoteBlockInstrument.BASS)
-                    .strength(3.0F, 4.0F)
+                    .strength(2.0F, 3.0F)
                     .sound(SoundType.CHERRY_WOOD)));
 
     public static final DeferredBlock<StairBlock> SOULWOOD_STAIRS = registerBlock("soulwood_stairs",
@@ -138,7 +138,7 @@ public class BlockInit {
             properties -> new SlabBlock(properties
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .instrument(NoteBlockInstrument.BASS)
-                    .strength(2.5F, 3.5F)
+                    .strength(2.0F, 3.0F)
                     .sound(SoundType.CHERRY_WOOD)));
 
     public static final DeferredBlock<PressurePlateBlock> SOULWOOD_PRESSURE_PLATE = registerBlock("soulwood_pressure_plate",
@@ -159,20 +159,20 @@ public class BlockInit {
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .forceSolidOn()
                     .instrument(NoteBlockInstrument.BASS)
-                    .strength(2.5F, 3.5F)));
+                    .strength(2.0F, 3.0F)));
 
     public static final DeferredBlock<FenceGateBlock> SOULWOOD_FENCE_GATE = registerBlock("soulwood_fence_gate",
             properties -> new FenceGateBlock(TypesInit.SOULWOOD_WOODTYPE, properties
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .forceSolidOn()
                     .instrument(NoteBlockInstrument.BASS)
-                    .strength(2.5F, 3.5F)));
+                    .strength(2.0F, 3.0F)));
 
     public static final DeferredBlock<DoorBlock> SOULWOOD_DOOR = registerBlock("soulwood_door",
             properties -> new DoorBlock(TypesInit.SOULWOOD_BLOCKSETTYPE, properties
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .instrument(NoteBlockInstrument.BASS)
-                    .strength(3.5F)
+                    .strength(3.0F)
                     .noOcclusion()
                     .pushReaction(PushReaction.DESTROY)));
 
@@ -188,33 +188,37 @@ public class BlockInit {
             () -> new StandingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "soulwood_sign")))
                     .mapColor(MapColor.TERRACOTTA_BLUE)
+                    .forceSolidOn()
                     .strength(1.0F)
-                    .noCollission()
-                    .requiresCorrectToolForDrops()));
+                    .noCollission()));
 
     public static final DeferredBlock<WallSignBlock> SOULWOOD_WALL_SIGN = BLOCKS.register("soulwood_wall_sign",
             () -> new WallSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "soulwood_wall_sign")))
                     .mapColor(MapColor.TERRACOTTA_BLUE)
+                    .forceSolidOn()
                     .strength(1.0F)
-                    .noCollission()
-                    .requiresCorrectToolForDrops()));
+                    .noCollission()));
 
     public static final DeferredBlock<CeilingHangingSignBlock> SOULWOOD_HANGING_SIGN = BLOCKS.register("soulwood_hanging_sign",
             () -> new CeilingHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "soulwood_hanging_sign")))
                     .mapColor(MapColor.TERRACOTTA_BLUE)
+                    .forceSolidOn()
                     .strength(1.0F)
-                    .noCollission()
-                    .requiresCorrectToolForDrops()));
+                    .noCollission()));
 
     public static final DeferredBlock<WallHangingSignBlock> SOULWOOD_WALL_HANGING_SIGN = BLOCKS.register("soulwood_wall_hanging_sign",
             () -> new WallHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "soulwood_wall_hanging_sign")))
                     .mapColor(MapColor.TERRACOTTA_BLUE)
+                    .forceSolidOn()
                     .strength(1.0F)
-                    .noCollission()
-                    .requiresCorrectToolForDrops()));
+                    .noCollission()));
+
+    public static final DeferredBlock<FlowerPotBlock> POTTED_SOULWOOD_SAPLING = BLOCKS.register("potted_soulwood_sapling",
+            () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SOULWOOD_SAPLING, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_OAK_SAPLING)
+                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "potted_soulwood_sapling")))));
 
     public static final DeferredBlock<Block> VIBRANIUM_CRYSTAL_BLOCK = registerBlock("vibranium_crystal_block",
             properties ->  new AmethystBlock(properties

@@ -27,6 +27,7 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.SOULWOOD_HANGING_SIGN, "Soulwood Hanging Sign");
         addItem(ItemInit.SOULWOOD_BOAT, "Soulwood Boat");
         addItem(ItemInit.SOULWOOD_CHEST_BOAT, "Soulwood Boat with Chest");
+        add("entity.vibranium.soulwood_chest_boat", "Soulwood Boat with Chest");
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block of Raw Vibranium");

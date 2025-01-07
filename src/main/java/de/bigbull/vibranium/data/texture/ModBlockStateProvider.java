@@ -44,6 +44,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         doorBlockWithRenderType(BlockInit.SOULWOOD_DOOR.get(), modLoc("block/soulwood_door_bottom"), modLoc("block/soulwood_door_top"), "cutout");
         trapdoorBlockWithRenderType(BlockInit.SOULWOOD_TRAPDOOR.get(), modLoc("block/soulwood_trapdoor"), true, "cutout");
 
+        simpleBlock(BlockInit.POTTED_SOULWOOD_SAPLING.get(), models().withExistingParent(BlockInit.POTTED_SOULWOOD_SAPLING.getId().getPath(), mcLoc("flower_pot_cross"))
+                .texture("plant", blockTexture(BlockInit.SOULWOOD_SAPLING.get())).renderType("cutout"));
+
         //Item Blocks
         blockItem(BlockInit.SOULWOOD_LOG.get());
         blockItem(BlockInit.SOULWOOD_WOOD.get());

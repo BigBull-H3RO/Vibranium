@@ -229,12 +229,9 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .unlockedBy("in_water", insideOf(Blocks.WATER))
                 .save(this.output, "soulwood_boat");
 
-        shaped(RecipeCategory.TRANSPORTATION, ItemInit.SOULWOOD_CHEST_BOAT, 1)
-                .pattern("# #")
-                .pattern("#C#")
-                .pattern("###")
-                .define('#', BlockInit.SOULWOOD_PLANKS)
-                .define('C', Items.CHEST)
+        shapeless(RecipeCategory.TRANSPORTATION, ItemInit.SOULWOOD_CHEST_BOAT, 1)
+                .requires(Items.CHEST)
+                .requires(ItemInit.SOULWOOD_BOAT)
                 .group("chest_boat")
                 .unlockedBy("has_boat", this.has(ItemTags.BOATS))
                 .save(this.output, "soulwood_chest_boat");

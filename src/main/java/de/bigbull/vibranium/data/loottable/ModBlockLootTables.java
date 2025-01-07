@@ -59,7 +59,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(BlockInit.SOULWOOD_PRESSURE_PLATE.get());
         this.dropSelf(BlockInit.SOULWOOD_BUTTON.get());
         this.dropSelf(BlockInit.SOULWOOD_SIGN.get());
-        this.dropSelf(BlockInit.SOULWOOD_HANGING_SIGN.get());;
+        this.dropSelf(BlockInit.SOULWOOD_HANGING_SIGN.get());
         this.dropSelf(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get());
 
         this.add(BlockInit.BUDDING_VIBRANIUM_CRYSTAL.get(), noDrop());
@@ -79,6 +79,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(BlockInit.SOULWOOD_WALL_SIGN.get(), createSingleItemTable(BlockInit.SOULWOOD_SIGN.get().asItem()));
         this.add(BlockInit.SOULWOOD_HANGING_SIGN.get(), createSingleItemTable(BlockInit.SOULWOOD_HANGING_SIGN.get().asItem()));
         this.add(BlockInit.SOULWOOD_WALL_HANGING_SIGN.get(), createSingleItemTable(BlockInit.SOULWOOD_HANGING_SIGN.get().asItem()));
+        this.dropPottedContents(BlockInit.POTTED_SOULWOOD_SAPLING.get());
 
         this.add(BlockInit.ENRICHED_VIBRANIUM_DIRT.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool()
