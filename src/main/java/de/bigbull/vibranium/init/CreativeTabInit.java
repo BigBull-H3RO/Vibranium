@@ -46,6 +46,7 @@ public class CreativeTabInit {
             output.accept(ItemInit.SOULWOOD_HANGING_SIGN);
             output.accept(ItemInit.SOULWOOD_BOAT);
             output.accept(ItemInit.SOULWOOD_CHEST_BOAT);
+            output.accept(ItemInit.VIBRA_GOLEM_SPAWN_EGG);
 
             output.accept(BlockInit.BLOCK_OF_RAW_VIBRANIUM);
             output.accept(BlockInit.DEPPSLATE_VIBRANIUM_ORE);

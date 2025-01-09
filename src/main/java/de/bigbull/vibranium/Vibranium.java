@@ -5,6 +5,7 @@ import de.bigbull.vibranium.config.ClientConfig;
 import de.bigbull.vibranium.config.ServerConfig;
 import de.bigbull.vibranium.data.DataGenerators;
 import de.bigbull.vibranium.data.loot.ModLootModifiers;
+import de.bigbull.vibranium.event.VibraGolemEvent;
 import de.bigbull.vibranium.event.client.ClientModEvents;
 import de.bigbull.vibranium.init.*;
 import net.minecraft.world.level.block.Blocks;
@@ -28,18 +29,17 @@ public class Vibranium {
 
     public Vibranium(IEventBus modEventBus, ModContainer modContainer) {
         NeoForge.EVENT_BUS.register(this);
-//        NeoForge.EVENT_BUS.register(VibraGolemEvent.class);
+        NeoForge.EVENT_BUS.register(VibraGolemEvent.class);
 
         ItemInit.ITEMS.register(modEventBus);
         BlockInit.BLOCKS.register(modEventBus);
-//        MobEnities.ENTITIES.register(modEventBus);
         CreativeTabInit.CREATIVE_MODE_TABS.register(modEventBus);
         ModLootModifiers.LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
         EffectInit.EFFECTS.register(modEventBus);
         FeatureInit.FEATURES.register(modEventBus);
         FeatureInit.TRUNK_PLACER_TYPES.register(modEventBus);
         ParticleInit.PARTICLES.register(modEventBus);
-        TypesInit.ENTITY_TYPES.register(modEventBus);
+        Entitiesinit.ENTITY_TYPES.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(DataGenerators::gatherDataClient);

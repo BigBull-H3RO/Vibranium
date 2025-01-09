@@ -21,67 +21,47 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(ItemTags.FOOT_ARMOR)
-                .add(ItemInit.VIBRANIUM_BOOTS.get());
-
-        tag(ItemTags.LEG_ARMOR)
-                .add(ItemInit.VIBRANIUM_LEGGINGS.get());
-
-        tag(ItemTags.CHEST_ARMOR)
-                .add(ItemInit.VIBRANIUM_CHESTPLATE.get());
-
-        tag(ItemTags.HEAD_ARMOR)
-                .add(ItemInit.VIBRANIUM_HELMET.get());
-
+        tag(ItemTags.FOOT_ARMOR).add(ItemInit.VIBRANIUM_BOOTS.get());
+        tag(ItemTags.LEG_ARMOR).add(ItemInit.VIBRANIUM_LEGGINGS.get());
+        tag(ItemTags.CHEST_ARMOR).add(ItemInit.VIBRANIUM_CHESTPLATE.get());
+        tag(ItemTags.HEAD_ARMOR).add(ItemInit.VIBRANIUM_HELMET.get());
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(ItemInit.VIBRANIUM_BOOTS.get())
                 .add(ItemInit.VIBRANIUM_LEGGINGS.get())
                 .add(ItemInit.VIBRANIUM_CHESTPLATE.get())
                 .add(ItemInit.VIBRANIUM_HELMET.get());
 
-        tag(ItemTags.TRIM_MATERIALS)
-                .add(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get());
-
-        tag(ItemTags.BEACON_PAYMENT_ITEMS)
-                .add(ItemInit.VIBRANIUM_INGOT.get());
-
-        tag(ItemTags.SWORDS)
-                .add(ItemInit.VIBRANIUM_SWORD.get());
-
+        tag(ItemTags.SWORDS).add(ItemInit.VIBRANIUM_SWORD.get());
         tag(ItemTags.PICKAXES)
                 .add(ItemInit.VIBRANIUM_PICKAXE.get())
                 .add(ItemInit.VIBRANIUM_MACE.get());
-
         tag(ItemTags.AXES)
                 .add(ItemInit.VIBRANIUM_AXE.get())
                 .add(ItemInit.VIBRANIUM_MACE.get());
-
         tag(ItemTags.SHOVELS)
                 .add(ItemInit.VIBRANIUM_SHOVEL.get())
                 .add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.HOES).add(ItemInit.VIBRANIUM_HOE.get());
 
-        tag(ItemTags.HOES)
-                .add(ItemInit.VIBRANIUM_HOE.get());
-
-        tag(ItemTags.DURABILITY_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_SHIELD.get());
-
+        tag(ItemTags.DURABILITY_ENCHANTABLE).add(ItemInit.VIBRANIUM_SHIELD.get());
         tag(ItemTags.WEAPON_ENCHANTABLE).addTag(ItemTags.SHARP_WEAPON_ENCHANTABLE)
                 .add(ItemInit.VIBRANIUM_MACE.get());
         tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).addTag(ItemTags.SWORD_ENCHANTABLE)
                 .add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.BREAKS_DECORATED_POTS)
-                .add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.MINING_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.MINING_LOOT_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.VANISHING_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.DURABILITY_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.MACE_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.BREAKS_DECORATED_POTS).add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.MINING_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.VANISHING_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.DURABILITY_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.MACE_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
+
+        tag(ItemTags.TRIM_MATERIALS).add(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get());
+        tag(ItemTags.BEACON_PAYMENT_ITEMS).add(ItemInit.VIBRANIUM_INGOT.get());
+        tag(TagsInit.Items.VIBRANIUM_REPAIR).add(ItemInit.VIBRANIUM_INGOT.get());
+        tag(ItemTags.DYEABLE).add(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
+        tag(TagsInit.Items.SOUL_HERB_MIXTURE_TAG).add(ItemInit.SOUL_HERB_MIXTURE.get());
+        tag(ItemTags.BOATS).add(ItemInit.SOULWOOD_BOAT.get());
+        tag(ItemTags.CHEST_BOATS).add(ItemInit.SOULWOOD_CHEST_BOAT.get());
 
         //Block Tags
         tag(ItemTags.PLANKS).add(BlockInit.SOULWOOD_PLANKS.asItem());
@@ -120,19 +100,5 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(BlockInit.SOULWOOD_SAPLING.asItem())
                 .add(BlockInit.SOULWOOD_SIGN.asItem())
                 .add(BlockInit.SOULWOOD_HANGING_SIGN.asItem());
-
-        tag(TagsInit.Items.VIBRANIUM_REPAIR)
-                .add(ItemInit.VIBRANIUM_INGOT.get());
-
-        tag(ItemTags.DYEABLE)
-                .add(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
-
-        tag(TagsInit.Items.SOUL_HERB_MIXTURE_TAG)
-                .add(ItemInit.SOUL_HERB_MIXTURE.get());
-
-        tag(ItemTags.BOATS)
-                .add(ItemInit.SOULWOOD_BOAT.get());
-        tag(ItemTags.CHEST_BOATS)
-                .add(ItemInit.SOULWOOD_CHEST_BOAT.get());
     }
 }

@@ -7,4 +7,5 @@ import net.minecraft.resources.ResourceLocation;
 public class ModelLayersInit {
     public static final ModelLayerLocation SOULWOOD_BOAT = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "boat/soulwood"), "main");
     public static final ModelLayerLocation SOULWOOD_CHEST_BOAT = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "chest_boat/soulwood"), "main");
+    public static final ModelLayerLocation VIBRAGOLEM_LAYER = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibra_golem"), "main");
 }

@@ -1,16 +1,15 @@
 package de.bigbull.vibranium.event.client;
 
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.init.BlockInit;
-import de.bigbull.vibranium.init.ModelLayersInit;
-import de.bigbull.vibranium.init.ParticleInit;
-import de.bigbull.vibranium.init.TypesInit;
+import de.bigbull.vibranium.entity.client.VibraGolemRenderer;
+import de.bigbull.vibranium.init.*;
 import de.bigbull.vibranium.init.custom.item.shield.ShieldRenderer;
 import de.bigbull.vibranium.init.custom.particle.CustomDripParticle;
 import de.bigbull.vibranium.init.custom.particle.CustomLeavesParticle;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.BoatRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -20,10 +19,7 @@ import net.neoforged.neoforge.client.event.RegisterSpecialModelRendererEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 
 public class ClientModEvents {
-//    @SubscribeEvent
-//    public static void onclientSetup(FMLClientSetupEvent event) {
-//        EntityRenderers.register(MobEnities.VIBRAGOLEM.get(), VibraGolemRenderer::new);
-//    }
+
 
     public static void onRegisterParticles(RegisterParticleProvidersEvent event) {
         event.registerSprite(ParticleInit.DRIPPING_VIBRANIUM.get(), CustomDripParticle::createVibraniumHangParticle);
@@ -40,6 +36,8 @@ public class ClientModEvents {
         event.enqueueWork(() -> {
             Sheets.addWoodType(TypesInit.SOULWOOD_WOODTYPE);
         });
+
+        EntityRenderers.register(Entitiesinit.VIBRAGOLEM.get(), VibraGolemRenderer::new);
     }
 
     public static void addBlockEntityTypes(BlockEntityTypeAddBlocksEvent event) {
@@ -51,9 +49,9 @@ public class ClientModEvents {
     }
 
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(TypesInit.SOULWOOD_BOAT.get(),
+        event.registerEntityRenderer(Entitiesinit.SOULWOOD_BOAT.get(),
                 context -> new BoatRenderer(context, ModelLayersInit.SOULWOOD_BOAT));
-        event.registerEntityRenderer(TypesInit.SOULWOOD_CHEST_BOAT.get(),
+        event.registerEntityRenderer(Entitiesinit.SOULWOOD_CHEST_BOAT.get(),
                 context -> new BoatRenderer(context, ModelLayersInit.SOULWOOD_CHEST_BOAT));
     }
 

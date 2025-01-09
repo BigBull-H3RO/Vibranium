@@ -62,8 +62,8 @@ public class ItemInit {
                     properties.fireResistant().rarity(Rarity.UNCOMMON)
             ));
 
-//    public static final DeferredItem<SpawnEggItem> VIBRA_GOLEM_SPAWN_EGG = ITEMS.register("vibra_golem_entity_spawn_egg",
-//            () -> new SpawnEggItem(MobEnities.VIBRAGOLEM, 0x28272B, 0x020250, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<SpawnEggItem> VIBRA_GOLEM_SPAWN_EGG = ITEMS.registerItem("vibra_golem_spawn_egg",
+            properties -> new SpawnEggItem(Entitiesinit.VIBRAGOLEM.get(), properties));
 
     //Armor
     public static final DeferredItem<ArmorItem> VIBRANIUM_BOOTS = ITEMS.registerItem("vibranium_boots",
@@ -142,8 +142,8 @@ public class ItemInit {
                     properties.stacksTo(16)));
 
     public static final DeferredItem<Item> SOULWOOD_BOAT = ITEMS.registerItem("soulwood_boat",
-            properties ->  new BoatItem(TypesInit.SOULWOOD_BOAT.get(), properties.stacksTo(1)));
+            properties ->  new BoatItem(Entitiesinit.SOULWOOD_BOAT.get(), properties.stacksTo(1)));
 
     public static final DeferredItem<Item> SOULWOOD_CHEST_BOAT = ITEMS.registerItem("soulwood_chest_boat",
-            properties ->  new BoatItem(TypesInit.SOULWOOD_CHEST_BOAT.get(), properties.stacksTo(1)));
+            properties ->  new BoatItem(Entitiesinit.SOULWOOD_CHEST_BOAT.get(), properties.stacksTo(1)));
 }
