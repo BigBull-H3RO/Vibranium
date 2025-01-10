@@ -1,101 +1,69 @@
 package de.bigbull.vibranium.event;
 
-import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.config.ConfigValues;
-import de.bigbull.vibranium.init.EnchantmentInit;
-import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.event.level.BlockEvent;
+import com.mojang.blaze3d.platform.InputConstants;
+import de.bigbull.vibranium.entity.client.ModModelLayers;
+import de.bigbull.vibranium.entity.client.VibraGolemModel;
+import de.bigbull.vibranium.entity.client.VibraGolemRenderer;
+import de.bigbull.vibranium.entity.VibraGolemEntity;
+import de.bigbull.vibranium.init.*;
+import de.bigbull.vibranium.init.custom.particle.CustomDripParticle;
+import de.bigbull.vibranium.init.custom.particle.CustomLeavesParticle;
+import de.bigbull.vibranium.init.custom.renderer.SoulwoodBoatRenderer;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.ChestBoatModel;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
+import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import org.lwjgl.glfw.GLFW;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-@EventBusSubscriber(modid = Vibranium.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ModEvents {
-    private static final Set<BlockPos> HARVESTED_BLOCKS = new HashSet<>();
+    public static KeyMapping toggleOutlineKey;
 
-    @SubscribeEvent
-    public static void onHammerUsage(BlockEvent.BreakEvent event) {
-        Player player = event.getPlayer();
-        ItemStack mainHandItem = player.getMainHandItem();
-        Level level = event.getPlayer().level();
-        BlockState middleBlockState = event.getLevel().getBlockState(event.getPos());
+    public static void onclientSetup(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            Sheets.addWoodType(TypesInit.SOULWOOD_WOODTYPE);
+        });
 
-        if (mainHandItem.getItem() instanceof VibraniumMaceItem && player instanceof ServerPlayer serverPlayer) {
-            if (!player.isShiftKeyDown()) {
-                BlockPos initialBlockPos = event.getPos();
-                TagKey<Block> requiredTool = getRequiredToolForBlock(middleBlockState);
-
-                if (requiredTool != null && isValidBlockForTool(middleBlockState, requiredTool)) {
-                    boolean middleBlockNeedsAdvancedTool = middleBlockState.is(BlockTags.NEEDS_DIAMOND_TOOL) || middleBlockState.is(Tags.Blocks.NEEDS_NETHERITE_TOOL);
-
-                    if (HARVESTED_BLOCKS.contains(initialBlockPos)) {
-                        return;
-                    }
-
-                    List<BlockPos> affectedPositions = VibraniumMaceItem.getBlocksToBeDestroyed(1, initialBlockPos, serverPlayer);
-                    affectedPositions.remove(initialBlockPos);
-
-                    Holder<Enchantment> universalBreakerEnchantmentHolder = EnchantmentInit.UNIVERSAL_BREAKER;
-                    int enchantmentLevel = mainHandItem.getEnchantmentLevel(universalBreakerEnchantmentHolder);
-                    boolean hasUniversalBreaker = enchantmentLevel > 0;
-
-                    for (BlockPos pos : affectedPositions) {
-                        BlockState targetBlockState = level.getBlockState(pos);
-
-                        if (hasUniversalBreaker || ((middleBlockNeedsAdvancedTool && isValidBlockForTool(targetBlockState, requiredTool)) ||
-                                (!middleBlockNeedsAdvancedTool && !targetBlockState.is(BlockTags.NEEDS_DIAMOND_TOOL) && !targetBlockState.is(Tags.Blocks.NEEDS_NETHERITE_TOOL) && isValidBlockForTool(targetBlockState, requiredTool)))) {
-                            HARVESTED_BLOCKS.add(pos);
-
-                            if (ConfigValues.USE_FAST_MODE) {
-                                serverPlayer.gameMode.destroyBlock(pos);
-                            } else {
-                                level.destroyBlock(pos, false);
-                                Block.getDrops(targetBlockState, (ServerLevel) level, pos, null, player, mainHandItem)
-                                        .forEach(drop -> Block.popResource(level, pos, drop));
-                                mainHandItem.hurtAndBreak(1, serverPlayer, EquipmentSlot.MAINHAND);
-                            }
-                            HARVESTED_BLOCKS.remove(pos);
-                        }
-                    }
-                }
-            }
-        }
+        BlockEntityRenderers.register(EntitiesInit.SOULWOOD_SIGN.get(), SignRenderer::new);
+        BlockEntityRenderers.register(EntitiesInit.SOULWOOD_HANGING_SIGN.get(), HangingSignRenderer::new);
+        EntityRenderers.register(EntitiesInit.SOULWOOD_BOAT.get(), (context) -> new SoulwoodBoatRenderer(context, false));
+        EntityRenderers.register(EntitiesInit.SOULWOOD_CHEST_BOAT.get(), (context) -> new SoulwoodBoatRenderer(context, true));
+        EntityRenderers.register(EntitiesInit.VIBRA_GOLEM.get(), VibraGolemRenderer::new);
     }
 
-    private static TagKey<Block> getRequiredToolForBlock(BlockState state) {
-        if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
-            return BlockTags.MINEABLE_WITH_PICKAXE;
-        }
-        if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
-            return BlockTags.MINEABLE_WITH_SHOVEL;
-        }
-        if (state.is(BlockTags.MINEABLE_WITH_AXE)) {
-            return BlockTags.MINEABLE_WITH_AXE;
-        }
-        return null;
+    public static void onRegisterParticles(RegisterParticleProvidersEvent event) {
+        event.registerSprite(ParticleInit.DRIPPING_VIBRANIUM.get(), CustomDripParticle::createVibraniumHangParticle);
+        event.registerSprite(ParticleInit.FALLING_VIBRANIUM.get(), CustomDripParticle::createVibraniumFallParticle);
+        event.registerSprite(ParticleInit.LANDING_VIBRANIUM.get(), CustomDripParticle::createVibraniumLandParticle);
+        event.registerSpriteSet(ParticleInit.SOULWOOD_LEAVES.get(), CustomLeavesParticle.Provider::new);
     }
 
-    public static boolean isValidBlockForTool(BlockState state, TagKey<Block> requiredTool) {
-        return state.isSolidRender(null, BlockPos.ZERO) &&
-                state.is(requiredTool) &&
-                state.getBlock() != Blocks.AIR;
+    public static void registerLayers(final EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(ModelLayersInit.SOULWOOD_BOAT, BoatModel::createBodyModel);
+        event.registerLayerDefinition(ModelLayersInit.SOULWOOD_CHEST_BOAT, ChestBoatModel::createBodyModel);
+        event.registerLayerDefinition(ModModelLayers.VIBRAGOLEM_LAYER, VibraGolemModel::createBodyLayer);
+    }
+
+    public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
+        event.put(EntitiesInit.VIBRA_GOLEM.get(), VibraGolemEntity.setAttributes().build());
+    }
+
+    public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
+        toggleOutlineKey = new KeyMapping(
+                "key.vibranium.toggle_outline",
+                InputConstants.Type.KEYSYM,
+                GLFW.GLFW_KEY_O,
+                "key.categories.vibranium"
+        );
+
+        event.register(toggleOutlineKey);
     }
 }

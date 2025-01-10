@@ -7,7 +7,6 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -37,7 +36,7 @@ public class CustomBrewingRecipe implements IBrewingRecipe {
         var builder = event.getBuilder();
         builder.addRecipe(new CustomBrewingRecipe(
                 input -> {
-                    if (input.getItem() != Items.POTION) {
+                    if (input.getItem() != net.minecraft.world.item.Items.POTION) {
                         return false;
                     }
                     PotionContents contents = input.get(DataComponents.POTION_CONTENTS);
@@ -46,7 +45,7 @@ public class CustomBrewingRecipe implements IBrewingRecipe {
                     }
                     return contents.is(Potions.AWKWARD);
                 },
-                TagsInit.ItemTagsInit.HEART_SHAPED_HERB_TAG,
+                TagsInit.Items.SOUL_HERB_MIXTURE_TAG,
                 ItemInit.SOUL_HERB_ELIXIR
         ));
 

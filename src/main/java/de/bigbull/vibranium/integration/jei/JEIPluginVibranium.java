@@ -39,7 +39,7 @@ public class JEIPluginVibranium implements IModPlugin {
         IVanillaRecipeFactory factory = registration.getVanillaRecipeFactory();
         registration.addRecipes(RecipeTypes.BREWING, List.of(
                 createBrewingRecipe(factory,
-                        TagsInit.ItemTagsInit.HEART_SHAPED_HERB_TAG,
+                        TagsInit.Items.SOUL_HERB_MIXTURE_TAG,
                         PotionContents.createItemStack(Items.POTION, Potions.AWKWARD),
                         new ItemStack(ItemInit.SOUL_HERB_ELIXIR.get()),
                         ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium_herb_elixir_brewing")),

@@ -1,6 +1,6 @@
 package de.bigbull.vibranium.entity.ai;
 
-import de.bigbull.vibranium.entity.custom.VibraGolemEntity;
+import de.bigbull.vibranium.entity.VibraGolemEntity;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;

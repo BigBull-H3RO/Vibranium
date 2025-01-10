@@ -1,6 +1,6 @@
 //Alpha Version it's not finished yet
 
-package de.bigbull.vibranium.entity.custom;
+package de.bigbull.vibranium.entity;
 
 import de.bigbull.vibranium.entity.ai.DefensiveGoal;
 import de.bigbull.vibranium.entity.ai.PushGoal;

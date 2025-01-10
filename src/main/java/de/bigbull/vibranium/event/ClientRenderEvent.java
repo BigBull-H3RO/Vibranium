@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.event.client;
+package de.bigbull.vibranium.event;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -32,7 +32,7 @@ public class ClientRenderEvent {
         Minecraft mc = Minecraft.getInstance();
         ItemStack mainHandItem = mc.player.getMainHandItem();
 
-        if (ClientKeyBindings.toggleOutlineKey.consumeClick()) {
+        if (ModEvents.toggleOutlineKey.consumeClick()) {
             isOutlineEnabled = !isOutlineEnabled;
         }
 

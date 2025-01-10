@@ -11,7 +11,6 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 
@@ -60,8 +59,8 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT, 1)
                 .requires(Ingredient.of(ItemInit.VIBRANIUM_PLATE), 4)
-                .requires(Ingredient.of(Items.NETHERITE_SCRAP), 1)
-                .requires(Ingredient.of(Items.DIAMOND), 4)
+                .requires(Ingredient.of(net.minecraft.world.item.Items.NETHERITE_SCRAP), 1)
+                .requires(Ingredient.of(net.minecraft.world.item.Items.DIAMOND), 4)
                 .group("vibranium_ingot")
                 .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM))
                 .save(this.recipeOutput, getModId("vibranium_ingot"));
@@ -70,7 +69,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("#T#")
                 .pattern("#V#")
                 .pattern("###")
-                .define('#', Items.DIAMOND)
+                .define('#', net.minecraft.world.item.Items.DIAMOND)
                 .define('V', ItemInit.VIBRANIUM_INGOT)
                 .define('T', ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE)
                 .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
@@ -80,7 +79,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern(" V ")
                 .pattern("VEV")
                 .pattern(" V ")
-                .define('E', Items.EMERALD_BLOCK)
+                .define('E', net.minecraft.world.item.Items.EMERALD_BLOCK)
                 .define('V', ItemInit.VIBRANIUM_INGOT)
                 .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
                 .save(this.recipeOutput, getModId("vibranium_core"));
@@ -89,7 +88,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern(" C ")
                 .pattern("VMV")
                 .pattern(" C ")
-                .define('M', Items.MACE)
+                .define('M', net.minecraft.world.item.Items.MACE)
                 .define('C', ItemInit.VIBRANIUM_CORE)
                 .define('V', BlockInit.VIBRANIUM_BLOCK)
                 .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
@@ -99,14 +98,14 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("WVW")
                 .pattern("WHW")
                 .pattern(" W ")
-                .define('H', Items.HEAVY_CORE)
+                .define('H', net.minecraft.world.item.Items.HEAVY_CORE)
                 .define('W', ItemTags.PLANKS)
                 .define('V', ItemInit.VIBRANIUM_INGOT)
                 .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
                 .save(this.recipeOutput, getModId("vibranium_shield"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockInit.SOULWOOD_PLANKS, 4)
-                .requires(Ingredient.of(TagsInit.ItemTagsInit.SOULWOOD_LOGS), 1)
+                .requires(Ingredient.of(TagsInit.Items.SOULWOOD_LOGS), 1)
                 .group("planks")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_LOG))
                 .save(this.recipeOutput, getModId("enriched_vibranium_log"));
@@ -147,7 +146,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("#W#")
                 .pattern("#W#")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
-                .define('W', Items.STICK)
+                .define('W', net.minecraft.world.item.Items.STICK)
                 .group("wooden_fence")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
                 .save(this.recipeOutput, getModId("enriched_vibranium_fence"));
@@ -156,7 +155,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("#W#")
                 .pattern("#W#")
                 .define('W', BlockInit.SOULWOOD_PLANKS)
-                .define('#', Items.STICK)
+                .define('#', net.minecraft.world.item.Items.STICK)
                 .group("wooden_fence_gate")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
                 .save(this.recipeOutput, getModId("enriched_vibranium_fence_gate"));
@@ -202,9 +201,9 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("#F ")
                 .pattern("GC ")
                 .define('#', ItemInit.HEART_SHAPED_HERB)
-                .define('F', Items.FERMENTED_SPIDER_EYE)
-                .define('C', Items.GOLDEN_CARROT)
-                .define('G', Items.GHAST_TEAR)
+                .define('F', net.minecraft.world.item.Items.FERMENTED_SPIDER_EYE)
+                .define('C', net.minecraft.world.item.Items.GOLDEN_CARROT)
+                .define('G', net.minecraft.world.item.Items.GHAST_TEAR)
                 .unlockedBy("has_item", has(ItemInit.HEART_SHAPED_HERB))
                 .save(this.recipeOutput, getModId("soul_herb_mixture"));
 
@@ -213,7 +212,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("###")
                 .pattern(" X ")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
-                .define('X', Items.STICK)
+                .define('X', net.minecraft.world.item.Items.STICK)
                 .group("wooden_sign")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
                 .save(this.recipeOutput, "soulwood_sign");
@@ -223,7 +222,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("###")
                 .pattern("###")
                 .define('#', BlockInit.STRIPPED_SOULWOOD_LOG)
-                .define('X', Items.CHAIN)
+                .define('X', net.minecraft.world.item.Items.CHAIN)
                 .group("hanging_sign")
                 .unlockedBy("has_item", has(BlockInit.SOULWOOD_PLANKS))
                 .save(this.recipeOutput, "soulwood_hanging_sign");
@@ -241,7 +240,7 @@ public class NormalCraftingTableRecipeProvider extends MainModRecipeProvider {
                 .pattern("#C#")
                 .pattern("###")
                 .define('#', BlockInit.SOULWOOD_PLANKS)
-                .define('C', Items.CHEST)
+                .define('C', net.minecraft.world.item.Items.CHEST)
                 .group("chest_boat")
                 .unlockedBy("has_boat", this.has(ItemTags.BOATS))
                 .save(this.recipeOutput, "soulwood_chest_boat");

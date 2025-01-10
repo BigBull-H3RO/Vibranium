@@ -3,7 +3,7 @@ package de.bigbull.vibranium.entity.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import de.bigbull.vibranium.entity.animations.ModAnimationDefinitions;
-import de.bigbull.vibranium.entity.custom.VibraGolemEntity;
+import de.bigbull.vibranium.entity.VibraGolemEntity;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;

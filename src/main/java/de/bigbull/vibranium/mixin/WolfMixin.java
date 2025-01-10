@@ -17,6 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -25,7 +26,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Wolf.class)
@@ -41,8 +41,8 @@ public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
         super(entityType, level);
     }
 
-    @Inject(method = "actuallyHurt", at = @At(value = "HEAD"))
-    public void actuallyHurt(DamageSource source, float p_330695_, CallbackInfo cir) {
+    @Override
+    public void actuallyHurt(DamageSource source, float p_330695_) {
         if (!this.canArmorAbsorb(source)) {
             super.actuallyHurt(source, p_330695_);
         } else {
@@ -52,9 +52,21 @@ public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
             itemstack.hurtAndBreak(Mth.ceil(p_330695_), this, EquipmentSlot.BODY);
             if (Crackiness.WOLF_ARMOR.byDamage(i, j) != Crackiness.WOLF_ARMOR.byDamage(this.getBodyArmorItem())) {
                 this.playSound(SoundEvents.WOLF_ARMOR_CRACK);
-                if (this.level() instanceof ServerLevel serverlevel && this.getBodyArmorItem().getItem() instanceof WolfArmorItem) {
+                if (this.level() instanceof ServerLevel serverlevel && this.getBodyArmorItem().is(ItemInit.VIBRANIUM_WOLF_ARMOR)) {
                     serverlevel.sendParticles(
                             new ItemParticleOption(ParticleTypes.ITEM, ItemInit.VIBRANIUM_INGOT.get().getDefaultInstance()),
+                            this.getX(),
+                            this.getY() + 1.0,
+                            this.getZ(),
+                            20,
+                            0.2,
+                            0.1,
+                            0.2,
+                            0.1
+                    );
+                } else if (this.level() instanceof ServerLevel serverlevel && this.getBodyArmorItem().is(Items.WOLF_ARMOR)) {
+                    serverlevel.sendParticles(
+                            new ItemParticleOption(ParticleTypes.ITEM, Items.ARMADILLO_SCUTE.getDefaultInstance()),
                             this.getX(),
                             this.getY() + 1.0,
                             this.getZ(),

@@ -1,6 +1,7 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.entity.VibraGolemEntity;
 import de.bigbull.vibranium.init.custom.entity.SWHangingSignBlockEntity;
 import de.bigbull.vibranium.init.custom.entity.SWSignBlockEntity;
 import de.bigbull.vibranium.init.custom.entity.SWBoatEntity;
@@ -13,9 +14,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-
-import java.util.function.Supplier;
-
 public class EntitiesInit {
 
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(Registries.ENTITY_TYPE, Vibranium.MODID);
@@ -26,4 +24,8 @@ public class EntitiesInit {
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SWSignBlockEntity>> SOULWOOD_SIGN = BLOCK_ENTITIES.register("soulwood_sign", () -> BlockEntityType.Builder.of(SWSignBlockEntity::new, BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SWHangingSignBlockEntity>> SOULWOOD_HANGING_SIGN = BLOCK_ENTITIES.register("soulwood_hanging_sign", () -> BlockEntityType.Builder.of(SWHangingSignBlockEntity::new, BlockInit.SOULWOOD_HANGING_SIGN.get(), BlockInit.SOULWOOD_WALL_HANGING_SIGN.get()).build(null));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<VibraGolemEntity>> VIBRA_GOLEM = ENTITY_TYPES.register("vibra_golem",
+            () -> EntityType.Builder.of(VibraGolemEntity::new, MobCategory.CREATURE).sized(1.5F, 3.8F)
+                    .clientTrackingRange(10).build("vibra_golem"));
 }

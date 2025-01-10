@@ -1,9 +1,10 @@
-package de.bigbull.vibranium.init.custom.item.shield;
+package de.bigbull.vibranium.init.custom.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.ItemInit;
+import de.bigbull.vibranium.init.custom.item.shield.ModelPredicateProvider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;

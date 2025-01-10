@@ -1,6 +1,5 @@
 package de.bigbull.vibranium.init;
 
-import de.bigbull.vibranium.entity.MobEnities;
 import de.bigbull.vibranium.init.custom.item.HSHPotionItem;
 import de.bigbull.vibranium.init.custom.item.SoulwoodBoatItem;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
@@ -63,7 +62,7 @@ public class ItemInit {
                     List.of(ResourceLocation.fromNamespaceAndPath("minecraft", "item/empty_slot_ingot"))
             ));
     public static final DeferredItem<DeferredSpawnEggItem> VIBRA_GOLEM_SPAWN_EGG = ITEMS.register("vibra_golem_entity_spawn_egg",
-            () -> new DeferredSpawnEggItem(MobEnities.VIBRAGOLEM, 0x28272B, 0x020250, new Item.Properties().stacksTo(16)));
+            () -> new DeferredSpawnEggItem(EntitiesInit.VIBRA_GOLEM, 0x28272B, 0x020250, new Item.Properties().stacksTo(16)));
 
     //Armor
     public static final DeferredItem<ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots",

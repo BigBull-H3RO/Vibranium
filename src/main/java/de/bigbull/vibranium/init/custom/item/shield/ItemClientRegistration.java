@@ -2,6 +2,7 @@ package de.bigbull.vibranium.init.custom.item.shield;
 
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.ItemInit;
+import de.bigbull.vibranium.init.custom.renderer.ShieldRenderer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;

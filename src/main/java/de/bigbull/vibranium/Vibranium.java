@@ -5,9 +5,7 @@ import de.bigbull.vibranium.config.ClientConfig;
 import de.bigbull.vibranium.config.ServerConfig;
 import de.bigbull.vibranium.data.DataGenerators;
 import de.bigbull.vibranium.data.loot.ModLootModifiers;
-import de.bigbull.vibranium.entity.MobEnities;
-import de.bigbull.vibranium.event.VibraGolemEvent;
-import de.bigbull.vibranium.event.client.ClientModEvents;
+import de.bigbull.vibranium.event.ModEvents;
 import de.bigbull.vibranium.init.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -30,12 +28,10 @@ public class Vibranium {
 
     public Vibranium(IEventBus modEventBus, ModContainer modContainer) {
         NeoForge.EVENT_BUS.register(this);
-        NeoForge.EVENT_BUS.register(VibraGolemEvent.class);
 
         ArmorMaterialsInit.MATERIAL.register(modEventBus);
         ItemInit.ITEMS.register(modEventBus);
         BlockInit.BLOCKS.register(modEventBus);
-        MobEnities.ENTITIES.register(modEventBus);
         CreativeTabInit.CREATIVE_MODE_TABS.register(modEventBus);
         ModLootModifiers.LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
         EffectInit.EFFECTS.register(modEventBus);
@@ -49,9 +45,11 @@ public class Vibranium {
         modEventBus.addListener(DataGenerators::gatherData);
 
         if (FMLLoader.getDist() == Dist.CLIENT) {
-            modEventBus.addListener(ClientModEvents::onRegisterParticles);
-            modEventBus.addListener(ClientModEvents::onclientSetup);
-            modEventBus.addListener(ClientModEvents::registerLayers);
+            modEventBus.addListener(ModEvents::onRegisterParticles);
+            modEventBus.addListener(ModEvents::onclientSetup);
+            modEventBus.addListener(ModEvents::registerLayers);
+            modEventBus.addListener(ModEvents::registerEntityAttributes);
+            modEventBus.addListener(ModEvents::registerKeyMappings);
         }
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.CLIENT_SPEC, "vibranium-client.toml");
