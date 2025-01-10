@@ -1,6 +1,6 @@
 package de.bigbull.vibranium.entity.ai;
 
-import de.bigbull.vibranium.entity.custom.VibraGolemEntity;
+import de.bigbull.vibranium.entity.VibraGolemEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.item.ItemEntity;

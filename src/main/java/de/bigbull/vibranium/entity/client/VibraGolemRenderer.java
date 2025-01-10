@@ -2,7 +2,7 @@ package de.bigbull.vibranium.entity.client;
 
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.entity.client.Crackniess.VibraGolemCrackinessLayer;
-import de.bigbull.vibranium.entity.custom.VibraGolemEntity;
+import de.bigbull.vibranium.entity.VibraGolemEntity;
 import de.bigbull.vibranium.init.ModelLayersInit;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;

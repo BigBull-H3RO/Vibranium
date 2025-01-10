@@ -1,6 +1,6 @@
 //Alpha Version it's not finished yet
 
-package de.bigbull.vibranium.entity.custom;
+package de.bigbull.vibranium.entity;
 
 import de.bigbull.vibranium.entity.ai.DefensiveGoal;
 import de.bigbull.vibranium.entity.ai.PushGoal;
@@ -170,7 +170,6 @@ public class VibraGolemEntity extends TamableAnimal {
         builder.define(DEFENSIVE_MODE, false);
         builder.define(DEFENSIVE_POSITION, BlockPos.ZERO);
     }
-
 
     @Override
     public boolean doHurtTarget(ServerLevel level, Entity entity) {

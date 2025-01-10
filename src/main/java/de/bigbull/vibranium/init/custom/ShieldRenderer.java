@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.init.custom.item.shield;
+package de.bigbull.vibranium.init.custom;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

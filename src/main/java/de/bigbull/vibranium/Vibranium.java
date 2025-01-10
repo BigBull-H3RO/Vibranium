@@ -5,8 +5,7 @@ import de.bigbull.vibranium.config.ClientConfig;
 import de.bigbull.vibranium.config.ServerConfig;
 import de.bigbull.vibranium.data.DataGenerators;
 import de.bigbull.vibranium.data.loot.ModLootModifiers;
-import de.bigbull.vibranium.event.VibraGolemEvent;
-import de.bigbull.vibranium.event.client.ClientModEvents;
+import de.bigbull.vibranium.event.ModEvents;
 import de.bigbull.vibranium.init.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -29,7 +28,6 @@ public class Vibranium {
 
     public Vibranium(IEventBus modEventBus, ModContainer modContainer) {
         NeoForge.EVENT_BUS.register(this);
-        NeoForge.EVENT_BUS.register(VibraGolemEvent.class);
 
         ItemInit.ITEMS.register(modEventBus);
         BlockInit.BLOCKS.register(modEventBus);
@@ -45,12 +43,14 @@ public class Vibranium {
         modEventBus.addListener(DataGenerators::gatherDataClient);
 
         if (FMLLoader.getDist() == Dist.CLIENT) {
-            modEventBus.addListener(ClientModEvents::onRegisterParticles);
-            modEventBus.addListener(ClientModEvents::onRegisterSpecialModelRenderers);
-            modEventBus.addListener(ClientModEvents::clientSetup);
-            modEventBus.addListener(ClientModEvents::addBlockEntityTypes);
-            modEventBus.addListener(ClientModEvents::onRegisterRenderers);
-            modEventBus.addListener(ClientModEvents::onRegisterLayerDefinitions);
+            modEventBus.addListener(ModEvents::onRegisterParticles);
+            modEventBus.addListener(ModEvents::onRegisterSpecialModelRenderers);
+            modEventBus.addListener(ModEvents::clientSetup);
+            modEventBus.addListener(ModEvents::addBlockEntityTypes);
+            modEventBus.addListener(ModEvents::onRegisterRenderers);
+            modEventBus.addListener(ModEvents::onRegisterLayerDefinitions);
+            modEventBus.addListener(ModEvents::registerEntityAttributes);
+            modEventBus.addListener(ModEvents::registerKeyMappings);
         }
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.CLIENT_SPEC, "vibranium-client.toml");

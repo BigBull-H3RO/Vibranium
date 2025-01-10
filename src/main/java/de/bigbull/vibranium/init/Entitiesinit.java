@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.entity.custom.VibraGolemEntity;
+import de.bigbull.vibranium.entity.VibraGolemEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
