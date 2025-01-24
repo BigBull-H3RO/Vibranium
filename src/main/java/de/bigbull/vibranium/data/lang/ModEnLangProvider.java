@@ -2,6 +2,7 @@ package de.bigbull.vibranium.data.lang;
 
 import de.bigbull.vibranium.init.*;
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.init.custom.item.VibraniumUpgradeTemplate;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -75,11 +76,11 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_HORSE_ARMOR, "Vibranium Horse Armor");
 
         //SmifhingTemplate
-        add(ItemInit.VIBRANIUM_UPGRADE_APPLIES_TO.getString(), "Diamond Equipment");
-        add(ItemInit.VIBRANIUM_UPGRADE_INGREDIENTS.getString(), "Vibranium Ingot");
-        add(ItemInit.VIBRANIUM_UPGRADE.getString(), "Vibranium Upgrade");
-        add(ItemInit.VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION.getString(), "Add diamond armor, weapon, or tool");
-        add(ItemInit.VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Add Vibranium Ingot");
+        add(VibraniumUpgradeTemplate.VIBRANIUM_UPGRADE_APPLIES_TO.getString(), "Netherite Equipment");
+        add(VibraniumUpgradeTemplate.VIBRANIUM_UPGRADE_INGREDIENTS.getString(), "Vibranium Ingot");
+        add(VibraniumUpgradeTemplate.VIBRANIUM_UPGRADE.getString(), "Vibranium Upgrade");
+        add(VibraniumUpgradeTemplate.VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION.getString(), "Add netherite armor, weapon, or tool");
+        add(VibraniumUpgradeTemplate.VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Add Vibranium Ingot");
 
         //Potion
         addItem(ItemInit.SOUL_HERB_ELIXIR, "Soul Herb Elixir");

@@ -79,49 +79,49 @@ public class BlockInit {
                     .requiresCorrectToolForDrops()));
 
     public static final DeferredBlock<Block> SOULWOOD_LOG = registerBlock("soulwood_log", () ->
-            new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG).strength(3.0F)));
+            new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_LOG)));
 
     public static final DeferredBlock<Block> SOULWOOD_WOOD = registerBlock("soulwood_wood", () ->
-            new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).strength(3.0F)));
+            new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_WOOD)));
 
     public static final DeferredBlock<Block> STRIPPED_SOULWOOD_LOG = registerBlock("stripped_soulwood_log", () ->
-            new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG).strength(3.0F)));
+            new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_CHERRY_LOG)));
 
     public static final DeferredBlock<Block> STRIPPED_SOULWOOD_WOOD = registerBlock("stripped_soulwood_wood", () ->
-            new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD).strength(3.0F)));
+            new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_CHERRY_WOOD)));
 
     public static final DeferredBlock<Block> SOULWOOD_LEAVES = registerBlock("soulwood_leaves", () ->
-            new SWLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).noOcclusion()));
+            new SWLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_LEAVES).noOcclusion()));
 
     public static final DeferredBlock<Block> SOULWOOD_SAPLING = registerBlock("soulwood_sapling", () ->
-            new SoulTreeSaplingBlock(EVTree.SOUL_TREE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+            new SoulTreeSaplingBlock(EVTree.SOUL_TREE, BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SAPLING)));
 
     public static final DeferredBlock<Block> SOULWOOD_PLANKS = registerBlock("soulwood_planks", () ->
-            new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).strength(3.0F).sound(SoundType.CHERRY_WOOD)));
+            new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)));
 
     public static final DeferredBlock<StairBlock> SOULWOOD_STAIRS = registerBlock("soulwood_stairs", () ->
-            new StairBlock(SOULWOOD_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).strength(2.5F).sound(SoundType.CHERRY_WOOD)));
+            new StairBlock(SOULWOOD_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_STAIRS)));
 
     public static final DeferredBlock<SlabBlock> SOULWOOD_SLAB = registerBlock("soulwood_slab", () ->
-            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB).strength(2.0F, 3.0F).sound(SoundType.CHERRY_WOOD)));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SLAB)));
 
     public static final DeferredBlock<PressurePlateBlock> SOULWOOD_PRESSURE_PLATE = registerBlock("soulwood_pressure_plate", () ->
-            new PressurePlateBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE).strength(3.0F).sound(SoundType.CHERRY_WOOD)));
+            new PressurePlateBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PRESSURE_PLATE)));
 
     public static final DeferredBlock<ButtonBlock> SOULWOOD_BUTTON = registerBlock("soulwood_button", () ->
-            new ButtonBlock(BlockSetType.CHERRY, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON).strength(0.5F).sound(SoundType.CHERRY_WOOD)));
+            new ButtonBlock(BlockSetType.CHERRY, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_BUTTON)));
 
     public static final DeferredBlock<FenceBlock> SOULWOOD_FENCE = registerBlock("soulwood_fence", () ->
-            new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE).strength(3.0F).sound(SoundType.CHERRY_WOOD)));
+            new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_FENCE)));
 
     public static final DeferredBlock<FenceGateBlock> SOULWOOD_FENCE_GATE = registerBlock("soulwood_fence_gate", () ->
-            new FenceGateBlock(WoodType.CHERRY, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).strength(3.0F).sound(SoundType.CHERRY_WOOD)));
+            new FenceGateBlock(WoodType.CHERRY, BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_FENCE_GATE)));
 
     public static final DeferredBlock<DoorBlock> SOULWOOD_DOOR = registerBlock("soulwood_door", () ->
-            new DoorBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR).strength(3.0F).sound(SoundType.CHERRY_WOOD)));
+            new DoorBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_DOOR)));
 
     public static final DeferredBlock<TrapDoorBlock> SOULWOOD_TRAPDOOR = registerBlock("soulwood_trapdoor", () ->
-            new TrapDoorBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR).strength(3.0F).sound(SoundType.CHERRY_WOOD)));
+            new TrapDoorBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_TRAPDOOR)));
 
     public static final DeferredBlock<StandingSignBlock> SOULWOOD_SIGN = BLOCKS.register("soulwood_sign",
             () -> new StandingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
