@@ -11,6 +11,8 @@ import de.bigbull.vibranium.init.custom.particle.CustomDripParticle;
 import de.bigbull.vibranium.init.custom.particle.CustomLeavesParticle;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -31,9 +33,19 @@ public class ModEvents {
     public static void clientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             Sheets.addWoodType(TypesInit.SOULWOOD_WOODTYPE);
-        });
 
-        EntityRenderers.register(Entitiesinit.VIBRAGOLEM.get(), VibraGolemRenderer::new);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.SOULWOOD_DOOR.get(), RenderType.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.SOULWOOD_TRAPDOOR.get(), RenderType.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.SOULWOOD_SAPLING.get(), RenderType.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.VIBRANIUM_CLUSTER.get(), RenderType.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.SMALL_VIBRANIUM_BUD.get(), RenderType.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.MEDIUM_VIBRANIUM_BUD.get(), RenderType.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.LARGE_VIBRANIUM_BUD.get(), RenderType.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.ENRICHED_VIBRANIUM_DIRT.get(), RenderType.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.POTTED_SOULWOOD_SAPLING.get(), RenderType.CUTOUT);
+
+            EntityRenderers.register(Entitiesinit.VIBRAGOLEM.get(), VibraGolemRenderer::new);
+        });
     }
 
     public static void onRegisterParticles(RegisterParticleProvidersEvent event) {

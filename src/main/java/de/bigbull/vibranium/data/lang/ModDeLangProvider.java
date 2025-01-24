@@ -4,6 +4,7 @@ import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.CreativeTabInit;
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.init.custom.item.VibraniumUpgradeTemplate;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -18,7 +19,7 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_INGOT, "Vibranium Barren");
         addItem(ItemInit.VIBRANIUM_NUGGET, "Vibranium Klumpen");
         addItem(ItemInit.VIBRANIUM_PLATE, "Vibranium Platte");
-        addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Schmiedevorlage");
+        addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Vibraniumaufwertung");
         addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawnei");
         addItem(ItemInit.VIBRANIUM_CORE, "Vibranium Kern");
         addItem(ItemInit.HEART_SHAPED_HERB, "Herzformiges Kraut");
@@ -76,11 +77,10 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_HORSE_ARMOR, "Vibranium Pferderüstung");
 
         //SmifhingTemplate
-        add(ItemInit.VIBRANIUM_UPGRADE_APPLIES_TO.getString(), "Diamantausrüstung");
-        add(ItemInit.VIBRANIUM_UPGRADE_INGREDIENTS.getString(), "Vibranium Barren");
-        add(ItemInit.VIBRANIUM_UPGRADE.getString(), "Vibranium Aufrüstung");
-        add(ItemInit.VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION.getString(), "Diamantrüstung, -waffe oder -werkzeug hinzufügen");
-        add(ItemInit.VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Vibranium Barren hinzufügen");
+        add(VibraniumUpgradeTemplate.VIBRANIUM_UPGRADE_APPLIES_TO.getString(), "Netheriteausrüstung");
+        add(VibraniumUpgradeTemplate.VIBRANIUM_UPGRADE_INGREDIENTS.getString(), "Vibraniumbarren");
+        add(VibraniumUpgradeTemplate.VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION.getString(), "Rüstungsteil, Werkzeuge oder Schwert aus Netherit hinzufügen");
+        add(VibraniumUpgradeTemplate.VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Vibraniumbarren hinzufügen");
 
         //Potion
         addItem(ItemInit.SOUL_HERB_ELIXIR, "Vibranium Angereichertes Kraut Elixier");
@@ -110,7 +110,6 @@ public class ModDeLangProvider extends LanguageProvider {
 
         //Trim Materials
         add("trim_material.vibranium.vibranium", "Vibranium Material");
-
 
         //Vibranium Mace
         add("item.vibranium_mace.tooltip", "Kann 3x3 Blöcke abbauen");
