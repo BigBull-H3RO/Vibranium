@@ -17,6 +17,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.network.chat.Component;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
@@ -26,6 +27,9 @@ import org.lwjgl.glfw.GLFW;
 
 public class ModEvents {
     public static KeyMapping toggleOutlineKey;
+
+    public static final Component TOGGLE_OUTLINE = Component.translatable("key.vibranium.toggle_outline");
+    public static final Component KEY_CATEGORIES = Component.translatable("key.categories.vibranium");
 
     public static void onclientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {

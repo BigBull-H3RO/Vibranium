@@ -1,9 +1,11 @@
 package de.bigbull.vibranium.data.lang;
 
+import de.bigbull.vibranium.event.ModEvents;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.CreativeTabInit;
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import de.bigbull.vibranium.init.custom.item.VibraniumUpgradeTemplate;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -90,8 +92,8 @@ public class ModDeLangProvider extends LanguageProvider {
         add("effect.vibranium.kinetic_redistribution", "Kinetische Umverteilung");
 
         //KeyBinding
-        add("key.categories.vibranium", "Vibranium");
-        add("key.vibranium.toggle_outline", "Umrahmung umschalten");
+        add(ModEvents.KEY_CATEGORIES.getString(), "Vibranium");
+        add(ModEvents.TOGGLE_OUTLINE.getString(), "Umrahmung umschalten");
 
         //Enchantments
         add("enchantment.vibranium.universal_breaker", "Universeller Brecher");
@@ -114,7 +116,7 @@ public class ModDeLangProvider extends LanguageProvider {
 
 
         //Vibranium Mace
-        add("item.vibranium_mace.tooltip", "Kann 3x3 Blöcke abbauen");
+        add(VibraniumMaceItem.TOOLTIP.getString(), "Kann 3x3 Blöcke abbauen");
 
         //others
         add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Vibranium");

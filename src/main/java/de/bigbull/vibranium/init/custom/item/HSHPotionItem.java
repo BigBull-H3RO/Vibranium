@@ -40,10 +40,10 @@ public class HSHPotionItem extends Item {
             level.playSound(null, entity.blockPosition(), SoundEvents.GENERIC_DRINK, entity.getSoundSource(), 1.0F, 1.0F);
 
             entity.addEffect(new MobEffectInstance(EffectInit.KINETIC_REDISTRIBUTION, effectDuration, effectAmplifier));
-            entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, effectDuration, effectAmplifier, false, false));
-            entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, effectDuration, effectAmplifier, false, false));
-            entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, effectDuration, effectAmplifier, false, false));
-            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, effectDuration, effectAmplifier, false, false));
+            entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, effectDuration/4, effectAmplifier, false, false));
+            entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, effectDuration/4, effectAmplifier, false, false));
+            entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, effectDuration/4, effectAmplifier, false, false));
+            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, effectDuration/4, effectAmplifier, false, false));
         }
         stack.shrink(1);
         return stack;
