@@ -33,10 +33,10 @@ public class HSHPotionItems extends Item {
             .onConsume(new ApplyStatusEffectsConsumeEffect(
                     List.of(
                             new MobEffectInstance(EffectInit.KINETIC_REDISTRIBUTION, 3600, 0),
-                            new MobEffectInstance(MobEffects.REGENERATION, 3600, 0, false, false),
-                            new MobEffectInstance(MobEffects.ABSORPTION, 3600, 0, false, false),
-                            new MobEffectInstance(MobEffects.DAMAGE_BOOST, 3600, 0, false, false),
-                            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 3600, 0, false, false)
+                            new MobEffectInstance(MobEffects.REGENERATION, 900, 0, false, false),
+                            new MobEffectInstance(MobEffects.ABSORPTION, 900, 0, false, false),
+                            new MobEffectInstance(MobEffects.DAMAGE_BOOST, 900, 0, false, false),
+                            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 900, 0, false, false)
                     ),
                     1.0F
             ))
@@ -50,10 +50,10 @@ public class HSHPotionItems extends Item {
             .onConsume(new ApplyStatusEffectsConsumeEffect(
                     List.of(
                             new MobEffectInstance(EffectInit.KINETIC_REDISTRIBUTION, 9600, 0),
-                            new MobEffectInstance(MobEffects.REGENERATION, 9600, 0, false, false),
-                            new MobEffectInstance(MobEffects.ABSORPTION, 9600, 0, false, false),
-                            new MobEffectInstance(MobEffects.DAMAGE_BOOST, 9600, 0, false, false),
-                            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 9600, 0, false, false)
+                            new MobEffectInstance(MobEffects.REGENERATION, 2400, 0, false, false),
+                            new MobEffectInstance(MobEffects.ABSORPTION, 2400, 0, false, false),
+                            new MobEffectInstance(MobEffects.DAMAGE_BOOST, 2400, 0, false, false),
+                            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2400, 0, false, false)
                     ),
                     1.0F
             ))
@@ -67,10 +67,10 @@ public class HSHPotionItems extends Item {
             .onConsume(new ApplyStatusEffectsConsumeEffect(
                     List.of(
                             new MobEffectInstance(EffectInit.KINETIC_REDISTRIBUTION, 1800, 1),
-                            new MobEffectInstance(MobEffects.REGENERATION, 1800, 1, false, false),
-                            new MobEffectInstance(MobEffects.ABSORPTION, 1800, 1, false, false),
-                            new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1800, 1, false, false),
-                            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1800, 1, false, false)
+                            new MobEffectInstance(MobEffects.REGENERATION, 450, 1, false, false),
+                            new MobEffectInstance(MobEffects.ABSORPTION, 450, 1, false, false),
+                            new MobEffectInstance(MobEffects.DAMAGE_BOOST, 450, 1, false, false),
+                            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 450, 1, false, false)
                     ),
                     1.0F
             ))

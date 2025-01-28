@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -29,6 +30,9 @@ import org.lwjgl.glfw.GLFW;
 
 public class ModEvents {
     public static KeyMapping toggleOutlineKey;
+
+    public static final Component TOGGLE_OUTLINE = Component.translatable("key.vibranium.toggle_outline");
+    public static final Component KEY_CATEGORIES = Component.translatable("key.categories.vibranium");
 
     public static void clientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
@@ -86,10 +90,10 @@ public class ModEvents {
 
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
         toggleOutlineKey = new KeyMapping(
-                "key.vibranium.toggle_outline",
+                String.valueOf(TOGGLE_OUTLINE),
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_O,
-                "key.categories.vibranium"
+                String.valueOf(KEY_CATEGORIES)
         );
 
         event.register(toggleOutlineKey);

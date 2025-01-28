@@ -1,9 +1,11 @@
 package de.bigbull.vibranium.data.lang;
 
+import de.bigbull.vibranium.event.ModEvents;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.CreativeTabInit;
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import de.bigbull.vibranium.init.custom.item.VibraniumUpgradeTemplate;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -15,13 +17,13 @@ public class ModDeLangProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         //Items
-        addItem(ItemInit.RAW_VIBRANIUM, "Rohes Vibranium");
-        addItem(ItemInit.VIBRANIUM_INGOT, "Vibranium Barren");
-        addItem(ItemInit.VIBRANIUM_NUGGET, "Vibranium Klumpen");
-        addItem(ItemInit.VIBRANIUM_PLATE, "Vibranium Platte");
+        addItem(ItemInit.RAW_VIBRANIUM, "Rohvibranium");
+        addItem(ItemInit.VIBRANIUM_INGOT, "Vibraniumbarren");
+        addItem(ItemInit.VIBRANIUM_NUGGET, "Vibraniumklumpen");
+        addItem(ItemInit.VIBRANIUM_PLATE, "Vibraniumplatte");
         addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Vibraniumaufwertung");
         addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawnei");
-        addItem(ItemInit.VIBRANIUM_CORE, "Vibranium Kern");
+        addItem(ItemInit.VIBRANIUM_CORE, "Vibraniumkern");
         addItem(ItemInit.HEART_SHAPED_HERB, "Herzformiges Kraut");
         addItem(ItemInit.SOUL_HERB_MIXTURE, "Seelenkraut Mischung");
         addItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD, "Vibranium Kristall Splitter");
@@ -89,8 +91,8 @@ public class ModDeLangProvider extends LanguageProvider {
         add("effect.vibranium.kinetic_redistribution", "Kinetische Umverteilung");
 
         //KeyBinding
-        add("key.categories.vibranium", "Vibranium");
-        add("key.vibranium.toggle_outline", "Umrahmung umschalten");
+        add(ModEvents.KEY_CATEGORIES.getString(), "Vibranium");
+        add(ModEvents.TOGGLE_OUTLINE.getString(), "Umrahmung umschalten");
 
         //Enchantments
         add("enchantment.vibranium.universal_breaker", "Universeller Brecher");
@@ -112,7 +114,7 @@ public class ModDeLangProvider extends LanguageProvider {
         add("trim_material.vibranium.vibranium", "Vibranium Material");
 
         //Vibranium Mace
-        add("item.vibranium_mace.tooltip", "Kann 3x3 Blöcke abbauen");
+        add(VibraniumMaceItem.TOOLTIP.getString(), "Kann 3x3 Blöcke abbauen");
 
         //others
         add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Vibranium");

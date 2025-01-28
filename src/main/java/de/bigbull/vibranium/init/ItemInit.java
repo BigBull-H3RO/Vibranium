@@ -123,8 +123,8 @@ public class ItemInit {
                     .equippableUnswappable(EquipmentSlot.OFFHAND)));
 
     //Advanced Items
-    public static final DeferredItem<BlockItem> HEART_SHAPED_HERB = ITEMS.registerSimpleBlockItem("heart_shaped_herb", BlockInit.HEART_SHAPED_HERB_BUSH,
-            new Item.Properties()
+    public static final DeferredItem<BlockItem> HEART_SHAPED_HERB = ITEMS.registerSimpleBlockItem("heart_shaped_herb",
+            BlockInit.HEART_SHAPED_HERB_BUSH, new Item.Properties()
                     .food(FoodPropertiesInit.HEART_SHAPED_HERB, FoodPropertiesInit.HEART_SHAPED_HERB_EFFECT)
                     .rarity(Rarity.RARE)
                     .stacksTo(16));
@@ -132,16 +132,19 @@ public class ItemInit {
     public static final DeferredItem<Item> SOUL_HERB_ELIXIR = ITEMS.registerItem("soul_herb_elixir",
             properties ->  new HSHPotionItems(properties
                     .rarity(Rarity.RARE)
+                    .stacksTo(1)
                     .component(DataComponents.CONSUMABLE, HSHPotionItems.SOUL_HERB_ELIXIR), 3600, 0));
 
     public static final DeferredItem<Item> SOUL_HERB_ELIXIR_EXTENDED = ITEMS.registerItem("soul_herb_elixir_extended",
             properties ->  new HSHPotionItems(properties
                     .rarity(Rarity.RARE)
+                    .stacksTo(1)
                     .component(DataComponents.CONSUMABLE, HSHPotionItems.SOUL_HERB_ELIXIR_EXTENDED), 9600, 0));
 
     public static final DeferredItem<Item> SOUL_HERB_ELIXIR_ENHANCED = ITEMS.registerItem("soul_herb_elixir_enhanced",
             properties ->  new HSHPotionItems(properties
                     .rarity(Rarity.RARE)
+                    .stacksTo(1)
                     .component(DataComponents.CONSUMABLE, HSHPotionItems.SOUL_HERB_ELIXIR_ENHANCED), 1800, 1));
 
     public static final DeferredItem<Item> SOULWOOD_SIGN = ITEMS.registerItem("soulwood_sign",

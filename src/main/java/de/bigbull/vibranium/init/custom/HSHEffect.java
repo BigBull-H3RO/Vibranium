@@ -8,6 +8,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 
@@ -16,10 +17,10 @@ import java.util.List;
 import java.util.Map;
 
 public class HSHEffect extends MobEffect {
-    private static final float DAMAGE_THRESHOLD = 10.0F;
     private final Map<Player, Float> damageTracker = new HashMap<>();
-    private static final float BASE_PUSH_DAMAGE = 5.0F;
-    private static final double BASE_PUSH_RADIUS = 5.0F;
+    private static final float DAMAGE_THRESHOLD = 10.0F;
+    private static final float BASE_PUSH_DAMAGE = 4.0F;
+    private static final double BASE_PUSH_RADIUS = 2.5F;
     private static final double BASE_PUSH_STRENGTH = 1.5;
 
     public HSHEffect(MobEffectCategory category, int color) {
@@ -29,7 +30,19 @@ public class HSHEffect extends MobEffect {
     @Override
     public void onMobHurt(ServerLevel level, LivingEntity entity, int amplifier, DamageSource source, float damage) {
         if (entity instanceof Player player) {
-            accumulateDamage(player, damage);
+            if (player.isDeadOrDying()) {
+                damageTracker.remove(player);
+                return;
+            }
+
+            if (!(source.getEntity() instanceof LivingEntity)) {
+                return;
+            }
+
+            float baseDamage = (float) player.getAttribute(Attributes.ATTACK_DAMAGE).getValue();
+            float adjustedDamage = Math.max(damage, baseDamage / 2);
+
+            accumulateDamage(player, adjustedDamage);
 
             if (damageTracker.getOrDefault(player, 0.0F) >= DAMAGE_THRESHOLD) {
                 double pushStrength = BASE_PUSH_STRENGTH + amplifier * 0.5;
@@ -37,7 +50,6 @@ public class HSHEffect extends MobEffect {
                 float pushDamage = (float) (BASE_PUSH_DAMAGE + amplifier * 2.0);
 
                 applyPushEffect(player, pushStrength, pushRadius, pushDamage);
-
                 damageTracker.put(player, 0.0F);
             }
         }
@@ -51,7 +63,6 @@ public class HSHEffect extends MobEffect {
 
     private void applyPushEffect(Player player, double strength, double radius, float damage) {
         int particleCount = 120;
-        double particleRadius = 3.0;
 
         List<LivingEntity> entities = player.level().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(radius));
 
@@ -63,14 +74,17 @@ public class HSHEffect extends MobEffect {
             entity.hurtMarked = true;
 
             DamageSource pushDamageSource = player.damageSources().playerAttack(player);
-            entity.hurt(pushDamageSource, damage);
+
+            if (entity.level() instanceof ServerLevel serverLevel) {
+                entity.hurtServer(serverLevel, pushDamageSource, damage);
+            }
         }
 
         if (player.level() instanceof ServerLevel serverLevel) {
             for (int i = 0; i < particleCount; i++) {
                 double angleOffset = (2 * Math.PI / particleCount) * i;
-                double xParticleOffset = particleRadius * Math.cos(angleOffset);
-                double zParticleOffset = particleRadius * Math.sin(angleOffset);
+                double xParticleOffset = radius * Math.cos(angleOffset);
+                double zParticleOffset = radius * Math.sin(angleOffset);
                 serverLevel.sendParticles(ParticleTypes.CLOUD, player.getX() + xParticleOffset, player.getY() - 0.1, player.getZ() + zParticleOffset, 1, 0.0, 0.05, 0.0, 0.05);
             }
         }

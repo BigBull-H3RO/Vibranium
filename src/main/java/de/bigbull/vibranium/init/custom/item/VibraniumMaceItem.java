@@ -38,6 +38,8 @@ public class VibraniumMaceItem extends DiggerItem {
     private final ToolMaterial material;
     private float lastCalculatedDamage = 0.0F;
 
+    public static final Component TOOLTIP = Component.translatable("item.vibranium_mace.tooltip").withStyle(ChatFormatting.GRAY);
+
     public VibraniumMaceItem(ToolMaterial material, TagKey<Block> tag, float attackDamage, float attackSpeed, Properties properties) {
         super(material, BlockTags.MINEABLE_WITH_PICKAXE, attackDamage, attackSpeed, properties);
         this.material = material;
@@ -172,7 +174,7 @@ public class VibraniumMaceItem extends DiggerItem {
 
                         if (lastCalculatedDamage > 0.0F) {
                             float pushDamage = lastCalculatedDamage / 6.0F;
-                            target.hurt(level.damageSources().mace(entity), pushDamage);
+                            target.hurtServer((ServerLevel) level, level.damageSources().mace(entity), pushDamage);
                         }
 
                         if (target instanceof ServerPlayer serverplayer) {
@@ -252,6 +254,6 @@ public class VibraniumMaceItem extends DiggerItem {
 
     @Override
     public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
-        list.add(Component.translatable("item.vibranium_mace.tooltip").withStyle(ChatFormatting.GRAY));
+        list.add(TOOLTIP);
     }
 }
