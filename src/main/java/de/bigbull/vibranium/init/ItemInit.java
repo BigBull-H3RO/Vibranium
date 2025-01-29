@@ -132,20 +132,17 @@ public class ItemInit {
     public static final DeferredItem<Item> SOUL_HERB_ELIXIR = ITEMS.registerItem("soul_herb_elixir",
             properties ->  new HSHPotionItems(properties
                     .rarity(Rarity.RARE)
-                    .stacksTo(1)
-                    .component(DataComponents.CONSUMABLE, HSHPotionItems.SOUL_HERB_ELIXIR), 3600, 0));
+                    .stacksTo(1), 3600, 0));
 
     public static final DeferredItem<Item> SOUL_HERB_ELIXIR_EXTENDED = ITEMS.registerItem("soul_herb_elixir_extended",
             properties ->  new HSHPotionItems(properties
                     .rarity(Rarity.RARE)
-                    .stacksTo(1)
-                    .component(DataComponents.CONSUMABLE, HSHPotionItems.SOUL_HERB_ELIXIR_EXTENDED), 9600, 0));
+                    .stacksTo(1), 9600, 0));
 
     public static final DeferredItem<Item> SOUL_HERB_ELIXIR_ENHANCED = ITEMS.registerItem("soul_herb_elixir_enhanced",
-            properties ->  new HSHPotionItems(properties
+            properties -> new HSHPotionItems(properties
                     .rarity(Rarity.RARE)
-                    .stacksTo(1)
-                    .component(DataComponents.CONSUMABLE, HSHPotionItems.SOUL_HERB_ELIXIR_ENHANCED), 1800, 1));
+                    .stacksTo(1), 1800, 1));
 
     public static final DeferredItem<Item> SOULWOOD_SIGN = ITEMS.registerItem("soulwood_sign",
             properties ->  new SignItem(BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get(), properties
