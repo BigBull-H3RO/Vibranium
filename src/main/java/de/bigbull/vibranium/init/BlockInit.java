@@ -50,9 +50,8 @@ public class BlockInit {
                     .sound(SoundType.NETHERITE_BLOCK)
                     .requiresCorrectToolForDrops()));
 
-    public static final DeferredBlock<Block> HEART_SHAPED_HERB_BUSH = BLOCKS.register("heart_shaped_herb_bush",
-            () -> new HSHBushBlock(BlockBehaviour.Properties.of()
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "heart_shaped_herb_bush")))
+    public static final DeferredBlock<Block> HEART_SHAPED_HERB_BUSH = BLOCKS.registerBlock("heart_shaped_herb_bush",
+            properties -> new HSHBushBlock(properties
                     .mapColor(MapColor.PLANT)
                     .randomTicks()
                     .noCollission()
@@ -76,7 +75,7 @@ public class BlockInit {
 
     public static final DeferredBlock<Block> SOULWOOD_LOG = registerBlock("soulwood_log",
             properties -> new VibraniumRotatedPillarBlock(properties
-                    .mapColor(p_152624_ -> p_152624_.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.WOOD : MapColor.PODZOL)
+                    .mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.WOOD : MapColor.PODZOL)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F)
                     .sound(SoundType.CHERRY_WOOD)));
@@ -191,101 +190,95 @@ public class BlockInit {
                     .noOcclusion()
                     .isValidSpawn(Blocks::never)));
 
-    public static final DeferredBlock<StandingSignBlock> SOULWOOD_SIGN = BLOCKS.register("soulwood_sign",
-            () -> new StandingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "soulwood_sign")))
+    public static final DeferredBlock<StandingSignBlock> SOULWOOD_SIGN = BLOCKS.registerBlock("soulwood_sign",
+            properties -> new StandingSignBlock(TypesInit.SOULWOOD_WOODTYPE, properties
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .forceSolidOn()
                     .strength(1.0F)
                     .noCollission()));
 
-    public static final DeferredBlock<WallSignBlock> SOULWOOD_WALL_SIGN = BLOCKS.register("soulwood_wall_sign",
-            () -> new WallSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "soulwood_wall_sign")))
+    public static final DeferredBlock<WallSignBlock> SOULWOOD_WALL_SIGN = BLOCKS.registerBlock("soulwood_wall_sign",
+            properties -> new WallSignBlock(TypesInit.SOULWOOD_WOODTYPE, properties
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .forceSolidOn()
                     .strength(1.0F)
                     .noCollission()));
 
-    public static final DeferredBlock<CeilingHangingSignBlock> SOULWOOD_HANGING_SIGN = BLOCKS.register("soulwood_hanging_sign",
-            () -> new CeilingHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "soulwood_hanging_sign")))
+    public static final DeferredBlock<CeilingHangingSignBlock> SOULWOOD_HANGING_SIGN = BLOCKS.registerBlock("soulwood_hanging_sign",
+            properties -> new CeilingHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, properties
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .forceSolidOn()
                     .strength(1.0F)
                     .noCollission()));
 
-    public static final DeferredBlock<WallHangingSignBlock> SOULWOOD_WALL_HANGING_SIGN = BLOCKS.register("soulwood_wall_hanging_sign",
-            () -> new WallHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "soulwood_wall_hanging_sign")))
+    public static final DeferredBlock<WallHangingSignBlock> SOULWOOD_WALL_HANGING_SIGN = BLOCKS.registerBlock("soulwood_wall_hanging_sign",
+            properties -> new WallHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, properties
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .forceSolidOn()
                     .strength(1.0F)
                     .noCollission()));
 
-    public static final DeferredBlock<FlowerPotBlock> POTTED_SOULWOOD_SAPLING = BLOCKS.register("potted_soulwood_sapling",
-            () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SOULWOOD_SAPLING, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_OAK_SAPLING)
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "potted_soulwood_sapling")))));
+    public static final DeferredBlock<FlowerPotBlock> POTTED_SOULWOOD_SAPLING = BLOCKS.registerBlock("potted_soulwood_sapling",
+            properties -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SOULWOOD_SAPLING, properties
+                    .instabreak()
+                    .noOcclusion()
+                    .pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> VIBRANIUM_CRYSTAL_BLOCK = registerBlock("vibranium_crystal_block",
             properties ->  new AmethystBlock(properties
-                            .mapColor(MapColor.COLOR_CYAN)
-                            .strength(1.5F)
-                            .sound(SoundType.AMETHYST)
-                            .requiresCorrectToolForDrops()));
+                    .mapColor(MapColor.COLOR_CYAN)
+                    .strength(1.5F)
+                    .sound(SoundType.AMETHYST)
+                    .requiresCorrectToolForDrops()));
 
     public static final DeferredBlock<Block> BUDDING_VIBRANIUM_CRYSTAL = registerBlock("budding_vibranium_crystal",
             properties ->  new BuddingVibraniumBlock(properties
-                            .mapColor(MapColor.COLOR_CYAN)
-                            .randomTicks()
-                            .strength(5f)
-                            .sound(SoundType.AMETHYST)
-                            .requiresCorrectToolForDrops()
-                            .pushReaction(PushReaction.DESTROY)));
+                    .mapColor(MapColor.COLOR_CYAN)
+                    .randomTicks()
+                    .strength(5f)
+                    .sound(SoundType.AMETHYST)
+                    .requiresCorrectToolForDrops()
+                    .pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> VIBRANIUM_CLUSTER = registerBlock("vibranium_cluster",
-            properties ->  new VibraniumClusterBlock(
-                    7.0F, 3.0F, properties
-                            .mapColor(MapColor.COLOR_CYAN)
-                            .forceSolidOn()
-                            .noOcclusion()
-                            .sound(SoundType.AMETHYST_CLUSTER)
-                            .strength(5f)
-                            .lightLevel(state -> 8)
-                            .pushReaction(PushReaction.DESTROY)));
+            properties ->  new VibraniumClusterBlock(7.0F, 3.0F, properties
+                    .mapColor(MapColor.COLOR_CYAN)
+                    .forceSolidOn()
+                    .noOcclusion()
+                    .sound(SoundType.AMETHYST_CLUSTER)
+                    .strength(5f)
+                    .lightLevel(state -> 8)
+                    .pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> LARGE_VIBRANIUM_BUD = registerBlock("large_vibranium_bud",
-            properties ->  new VibraniumClusterBlock(
-                    5.0F, 3.0F, properties
-                            .mapColor(MapColor.COLOR_PURPLE)
-                            .forceSolidOn()
-                            .noOcclusion()
-                            .sound(SoundType.LARGE_AMETHYST_BUD)
-                            .strength(1.5F)
-                            .lightLevel(state -> 6)
-                            .pushReaction(PushReaction.DESTROY)));
+            properties ->  new VibraniumClusterBlock(5.0F, 3.0F, properties
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .forceSolidOn()
+                    .noOcclusion()
+                    .sound(SoundType.LARGE_AMETHYST_BUD)
+                    .strength(1.5F)
+                    .lightLevel(state -> 6)
+                    .pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> MEDIUM_VIBRANIUM_BUD = registerBlock("medium_vibranium_bud",
-            properties ->  new VibraniumClusterBlock(
-                    4.0F, 3.0F, properties
-                            .mapColor(MapColor.COLOR_PURPLE)
-                            .forceSolidOn()
-                            .noOcclusion()
-                            .sound(SoundType.MEDIUM_AMETHYST_BUD)
-                            .strength(1.5F)
-                            .lightLevel(state -> 4)
-                            .pushReaction(PushReaction.DESTROY)));
+            properties ->  new VibraniumClusterBlock(4.0F, 3.0F, properties
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .forceSolidOn()
+                    .noOcclusion()
+                    .sound(SoundType.MEDIUM_AMETHYST_BUD)
+                    .strength(1.5F)
+                    .lightLevel(state -> 4)
+                    .pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> SMALL_VIBRANIUM_BUD = registerBlock("small_vibranium_bud",
-            properties ->  new VibraniumClusterBlock(
-                    3.0F, 4.0F, properties
-                            .mapColor(MapColor.COLOR_PURPLE)
-                            .forceSolidOn()
-                            .noOcclusion()
-                            .sound(SoundType.SMALL_AMETHYST_BUD)
-                            .strength(1.5F)
-                            .lightLevel(state -> 2)
-                            .pushReaction(PushReaction.DESTROY)));
+            properties ->  new VibraniumClusterBlock(3.0F, 4.0F, properties
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .forceSolidOn()
+                    .noOcclusion()
+                    .sound(SoundType.SMALL_AMETHYST_BUD)
+                    .strength(1.5F)
+                    .lightLevel(state -> 2)
+                    .pushReaction(PushReaction.DESTROY)));
 
     private static <B extends Block> DeferredBlock<B> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends B> func) {
         DeferredBlock<B> toReturn = BLOCKS.registerBlock(name, func);
