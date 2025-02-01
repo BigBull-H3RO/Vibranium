@@ -5,7 +5,7 @@ import de.bigbull.vibranium.data.lang.ModDeLangProvider;
 import de.bigbull.vibranium.data.lang.ModEnLangProvider;
 import de.bigbull.vibranium.data.loot.ModGlobalLootModifiersProvider;
 import de.bigbull.vibranium.data.loottable.ModLootTables;
-import de.bigbull.vibranium.data.recipe.MainModRecipeProvider;
+import de.bigbull.vibranium.data.recipe.ModRecipeProvider;
 import de.bigbull.vibranium.data.tag.ModBlockTagsProvider;
 import de.bigbull.vibranium.data.tag.ModItemTagsProvider;
 import de.bigbull.vibranium.data.texture.ModModelProvider;
@@ -33,7 +33,7 @@ public class DataGenerators {
             generator.addProvider(true, new ModModelProvider(output));
             generator.addProvider(true, new ModWorldGenProvider(output, lookupProvider));
             generator.addProvider(true, new ModGlobalLootModifiersProvider(output, lookupProvider));
-            generator.addProvider(true, new MainModRecipeProvider.Runner(output, lookupProvider));
+            generator.addProvider(true, new ModRecipeProvider.Runner(output, lookupProvider));
         } catch (RuntimeException e) {
             Vibranium.logger.error("Failed to generate data", e);
         }

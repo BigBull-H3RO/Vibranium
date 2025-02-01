@@ -1,6 +1,7 @@
 package de.bigbull.vibranium.data.texture;
 
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.init.BlockFamilyInit;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -9,7 +10,6 @@ import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -27,6 +27,8 @@ public class ModModelProvider extends ModelProvider {
 
     @Override
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
+        //Block Models
+        blockModels.familyWithExistingFullBlock(BlockFamilyInit.SOULWOOD_FAMILY.getBaseBlock()).generateFor(BlockFamilyInit.SOULWOOD_FAMILY);
         blockModels.createTrivialCube(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
         blockModels.createTrivialCube(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get());
         blockModels.createTrivialCube(BlockInit.VIBRANIUM_BLOCK.get());
@@ -41,20 +43,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createAmethystCluster(BlockInit.MEDIUM_VIBRANIUM_BUD.get());
         blockModels.createAmethystCluster(BlockInit.LARGE_VIBRANIUM_BUD.get());
 
-        BlockFamily SOULWOOD_FAMILY = new BlockFamily.Builder(BlockInit.SOULWOOD_PLANKS.get())
-                .button(BlockInit.SOULWOOD_BUTTON.get())
-                .fence(BlockInit.SOULWOOD_FENCE.get())
-                .fenceGate(BlockInit.SOULWOOD_FENCE_GATE.get())
-                .pressurePlate(BlockInit.SOULWOOD_PRESSURE_PLATE.get())
-                .sign(BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get())
-                .slab(BlockInit.SOULWOOD_SLAB.get())
-                .stairs(BlockInit.SOULWOOD_STAIRS.get())
-                .door(BlockInit.SOULWOOD_DOOR.get())
-                .trapdoor(BlockInit.SOULWOOD_TRAPDOOR.get())
-                .getFamily();
-
-        blockModels.familyWithExistingFullBlock(SOULWOOD_FAMILY.getBaseBlock()).generateFor(SOULWOOD_FAMILY);
-
+        //Item Models
         itemModels.generateFlatItem(ItemInit.RAW_VIBRANIUM.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_INGOT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_NUGGET.get(), ModelTemplates.FLAT_ITEM);

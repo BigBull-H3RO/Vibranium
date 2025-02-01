@@ -13,6 +13,7 @@ public class TagsInit {
         public static final TagKey<Item> SOUL_HERB_MIXTURE_TAG = createItemTag("soul_herb_mixture");
         public static final TagKey<Item> SOULWOOD_LOGS = createItemTag("soulwood_logs");
         public static final TagKey<Item> VIBRANIUM_REPAIR = createItemTag("vibranium_repair");
+        public static final TagKey<Item> VIBRANIUM_TOOL_MATERIALS = createItemTag("vibranium_tool_materials");
     }
 
     public static class Blocks {

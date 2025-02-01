@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.data.recipe.provider.custom;
+package de.bigbull.vibranium.data.recipe.custom;
 
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.ItemInit;

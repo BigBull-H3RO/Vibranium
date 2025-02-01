@@ -12,8 +12,4 @@ public class ModOrePlacement {
     public static List<PlacementModifier> commonOrePlacements(int count, PlacementModifier placementModifier) {
         return orePlacements(CountPlacement.of(count), placementModifier);
     }
-
-    public static List<PlacementModifier> rareOrePlacements(int count, PlacementModifier placementModifier) {
-        return orePlacements(RarityFilter.onAverageOnceEvery(count), placementModifier);
-    }
 }

@@ -55,6 +55,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.TRIM_MATERIALS).add(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get());
         tag(ItemTags.BEACON_PAYMENT_ITEMS).add(ItemInit.VIBRANIUM_INGOT.get());
         tag(TagsInit.Items.VIBRANIUM_REPAIR).add(ItemInit.VIBRANIUM_INGOT.get());
+        tag(TagsInit.Items.VIBRANIUM_TOOL_MATERIALS).add(ItemInit.VIBRANIUM_INGOT.get());
         tag(ItemTags.DYEABLE).add(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
         tag(TagsInit.Items.SOUL_HERB_MIXTURE_TAG).add(ItemInit.SOUL_HERB_MIXTURE.get());
         tag(ItemTags.BOATS).add(ItemInit.SOULWOOD_BOAT.get());
