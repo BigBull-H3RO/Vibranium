@@ -11,6 +11,19 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
+
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven { url 'https://modmaven.dev/' }
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven { url "https://maven.architectury.dev/" }
 }
 
 base {
@@ -49,6 +62,12 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
+
+    localRuntime "dev.architectury:architectury-neoforge:${architectury_version}"
+    localRuntime "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+
+    compileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}"
+    localRuntime  "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
 
 }
 

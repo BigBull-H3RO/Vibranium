@@ -45,7 +45,6 @@ public class ModEvents {
             ItemBlockRenderTypes.setRenderLayer(BlockInit.SMALL_VIBRANIUM_BUD.get(), RenderType.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(BlockInit.MEDIUM_VIBRANIUM_BUD.get(), RenderType.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(BlockInit.LARGE_VIBRANIUM_BUD.get(), RenderType.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(BlockInit.ENRICHED_VIBRANIUM_DIRT.get(), RenderType.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(BlockInit.POTTED_SOULWOOD_SAPLING.get(), RenderType.CUTOUT);
 
             EntityRenderers.register(Entitiesinit.VIBRAGOLEM.get(), VibraGolemRenderer::new);
