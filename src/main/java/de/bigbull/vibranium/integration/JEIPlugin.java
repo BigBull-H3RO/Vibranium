@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.integration.jei;
+package de.bigbull.vibranium.integration;
 
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.BlockInit;
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @JeiPlugin
-public class JEIPluginVibranium implements IModPlugin {
+public class JEIPlugin implements IModPlugin {
 
     public static final ResourceLocation PLUGIN_ID = ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "jei_plugin");
 

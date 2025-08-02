@@ -21,6 +21,9 @@ repositories {
         url = "https://modmaven.dev"
     }
 
+    maven { url "https://maven.shedaniel.me/" }
+    maven { url "https://maven.architectury.dev/" }
+
     mavenLocal()
     mavenCentral()
 }
@@ -67,6 +70,10 @@ dependencies {
 
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+
+    api "dev.architectury:architectury-neoforge:${architectury_version}"
+    api "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+    api  "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
 }
 
 tasks.withType(ProcessResources).configureEach {
