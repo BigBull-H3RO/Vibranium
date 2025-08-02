@@ -92,8 +92,8 @@ public class ModDeLangProvider extends LanguageProvider {
         add("effect.vibranium.kinetic_redistribution", "Kinetische Umverteilung");
 
         //KeyBinding
-        add(ModEvents.KEY_CATEGORIES.getString(), "Vibranium");
-        add(ModEvents.TOGGLE_OUTLINE.getString(), "Umrahmung umschalten");
+        add("key.categories.vibranium", "Vibranium");
+        add("key.vibranium.toggle_outline", "Umrahmung umschalten");
 
         //Enchantments
         add("enchantment.vibranium.universal_breaker", "Universeller Brecher");
@@ -114,11 +114,34 @@ public class ModDeLangProvider extends LanguageProvider {
         //Trim Materials
         add("trim_material.vibranium.vibranium", "Vibranium Material");
 
-
         //Vibranium Mace
-        add(VibraniumMaceItem.TOOLTIP.getString(), "Kann 3x3 Blöcke abbauen");
+        add("item.vibranium_mace.tooltip", "Kann 3x3 Blöcke abbauen");
 
         //others
         add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Vibranium");
+
+        // --- Config translations: Titles ---
+        add("vibranium.config.title.oreGen", "Vibranium-Erzgenerierung Einstellungen");
+        add("vibranium.config.title.geodeGen", "Vibranium-Geode Einstellungen");
+        add("vibranium.config.title.mace", "Vibranium-Mace Einstellungen");
+
+        // --- Config translations: Ore Generation ---
+        add("vibranium.config.veinsPerChunk", "Vibranium-Adern pro Chunk");
+        add("vibranium.config.maxHeight", "Maximale Höhe für Vibranium-Erz");
+        add("vibranium.config.minHeight", "Minimale Höhe für Vibranium-Erz");
+
+        // --- Config translations: Geode Generation ---
+        add("vibranium.config.geodesRarity", "Vibranium-Geode Seltenheit");
+        add("vibranium.config.geodesMaxHeight", "Maximale Höhe für Vibranium-Geoden");
+        add("vibranium.config.geodesMinHeight", "Minimale Höhe für Vibranium-Geoden");
+
+        // --- Config translations: Mace ---
+        add("vibranium.config.useFastMode", "Schneller Modus für Mace");
+
+        // --- Config translations: Outline (Client) ---
+        add("vibranium.config.outlineRed", "Rot-Anteil der Umrandung");
+        add("vibranium.config.outlineGreen", "Grün-Anteil der Umrandung");
+        add("vibranium.config.outlineBlue", "Blau-Anteil der Umrandung");
+        add("vibranium.config.outlineAlpha", "Transparenz der Umrandung");
     }
 }

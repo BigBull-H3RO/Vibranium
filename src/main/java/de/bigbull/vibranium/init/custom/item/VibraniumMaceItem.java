@@ -40,8 +40,6 @@ import java.util.function.Predicate;
 public class VibraniumMaceItem extends DiggerItem {
     private float lastCalculatedDamage = 0.0F;
 
-    public static final Component TOOLTIP = Component.translatable("item.vibranium_mace.tooltip").withStyle(ChatFormatting.GRAY);
-
     public VibraniumMaceItem(Tier tier, TagKey<Block> tag, Properties properties) {
         super(tier, BlockTags.MINEABLE_WITH_PICKAXE, properties);
     }
@@ -239,6 +237,6 @@ public class VibraniumMaceItem extends DiggerItem {
 
     @Override
     public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
-        list.add(TOOLTIP);
+        list.add(Component.translatable("item.vibranium_mace.tooltip").withStyle(ChatFormatting.GRAY));
     }
 }

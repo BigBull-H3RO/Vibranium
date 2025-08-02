@@ -3,6 +3,8 @@ package de.bigbull.vibranium.data;
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.data.lang.ModDeLangProvider;
 import de.bigbull.vibranium.data.lang.ModEnLangProvider;
+import de.bigbull.vibranium.data.lang.ModEsLangProvider;
+import de.bigbull.vibranium.data.lang.ModFrLangProvider;
 import de.bigbull.vibranium.data.loot.ModGlobalLootModifiersProvider;
 import de.bigbull.vibranium.data.loottable.ModLootTables;
 import de.bigbull.vibranium.data.recipe.MainModRecipeProvider;
@@ -20,7 +22,6 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import java.util.concurrent.CompletableFuture;
 
 public class DataGenerators {
-
     public static void gatherData(GatherDataEvent event) {
         try {
             DataGenerator generator = event.getGenerator();
@@ -30,6 +31,8 @@ public class DataGenerators {
 
             generator.addProvider(true, new ModEnLangProvider(output));
             generator.addProvider(true, new ModDeLangProvider(output));
+            generator.addProvider(true, new ModEsLangProvider(output));
+            generator.addProvider(true, new ModFrLangProvider(output));
             generator.addProvider(true, new ModItemStateProvider(output, existingFileHelper));
             generator.addProvider(true, new ModBlockStateProvider(output, existingFileHelper));
             ModBlockTagsProvider modBlockTagsProvider = new ModBlockTagsProvider(output, lookupProvider, existingFileHelper);

@@ -28,9 +28,6 @@ import org.lwjgl.glfw.GLFW;
 public class ModEvents {
     public static KeyMapping toggleOutlineKey;
 
-    public static final Component TOGGLE_OUTLINE = Component.translatable("key.vibranium.toggle_outline");
-    public static final Component KEY_CATEGORIES = Component.translatable("key.categories.vibranium");
-
     public static void onclientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             Sheets.addWoodType(TypesInit.SOULWOOD_WOODTYPE);
