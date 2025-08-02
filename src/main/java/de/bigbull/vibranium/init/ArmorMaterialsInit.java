@@ -15,7 +15,6 @@ import java.util.EnumMap;
 import java.util.List;
 
 public class ArmorMaterialsInit {
-
     public static DeferredRegister<ArmorMaterial> MATERIAL = DeferredRegister.create(BuiltInRegistries.ARMOR_MATERIAL, Vibranium.MODID);
 
     public static final Holder<ArmorMaterial> VIBRANIUM_MATERIAL = MATERIAL.register("vibranium", () -> new ArmorMaterial(
@@ -28,5 +27,16 @@ public class ArmorMaterialsInit {
             }),
             18, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ItemInit.VIBRANIUM_INGOT),
             List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium"))), 4,  0.2f));
+
+    public static final Holder<ArmorMaterial> VIBRANIUM_TURTLE_MATERIAL = MATERIAL.register("vibranium_turtle", () -> new ArmorMaterial(
+            Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+                map.put(ArmorItem.Type.BOOTS, 2);
+                map.put(ArmorItem.Type.LEGGINGS, 5);
+                map.put(ArmorItem.Type.CHESTPLATE, 6);
+                map.put(ArmorItem.Type.HELMET, 3);
+                map.put(ArmorItem.Type.BODY, 5);
+            }),
+            12, SoundEvents.ARMOR_EQUIP_TURTLE, () -> Ingredient.of(ItemInit.VIBRANIUM_INGOT),
+            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium_turtle"))), 2.0f, 0.0f));
 }
 

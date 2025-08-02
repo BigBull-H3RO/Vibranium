@@ -96,6 +96,13 @@ public class ItemInit {
                             .stacksTo(1)
                             .durability(100)));
 
+    public static final DeferredItem<Item> VIBRANIUM_TURTLE_HELMET = ITEMS.register("vibranium_turtle_helmet",
+            () -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_TURTLE_MATERIAL, ArmorItem.Type.HELMET,
+                    new Item.Properties()
+                            .fireResistant()
+                            .stacksTo(1)
+                            .durability(50)));
+
     //Tools
     public static final DeferredItem<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword", () ->
             new SwordItem(MaterialsInit.VIBRANIUM, new Item.Properties()

@@ -75,6 +75,7 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_LEGGINGS, "Vibranium Beinschützer");
         addItem(ItemInit.VIBRANIUM_CHESTPLATE, "Vibranium Brustplatte");
         addItem(ItemInit.VIBRANIUM_HELMET, "Vibranium Helm");
+        addItem(ItemInit.VIBRANIUM_TURTLE_HELMET, "Vibranium Schildkrötenhelm");
         addItem(ItemInit.VIBRANIUM_WOLF_ARMOR, "Vibranium Wolfsrüstung");
         addItem(ItemInit.VIBRANIUM_HORSE_ARMOR, "Vibranium Pferderüstung");
 

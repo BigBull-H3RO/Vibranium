@@ -28,6 +28,7 @@ public class CreativeTabInit {
             output.accept(ItemInit.VIBRANIUM_LEGGINGS);
             output.accept(ItemInit.VIBRANIUM_CHESTPLATE);
             output.accept(ItemInit.VIBRANIUM_HELMET);
+            output.accept(ItemInit.VIBRANIUM_TURTLE_HELMET);
             output.accept(ItemInit.VIBRANIUM_WOLF_ARMOR);
             output.accept(ItemInit.VIBRANIUM_HORSE_ARMOR);
             output.accept(ItemInit.VIBRANIUM_SWORD);

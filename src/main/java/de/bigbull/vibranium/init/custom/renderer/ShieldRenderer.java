@@ -27,7 +27,7 @@ import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 
 import java.util.Objects;
 
-@EventBusSubscriber(modid = Vibranium.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Vibranium.MODID, value = Dist.CLIENT)
 public class ShieldRenderer extends BlockEntityWithoutLevelRenderer {
 
     public static ShieldRenderer instance;

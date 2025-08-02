@@ -14,9 +14,12 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -25,6 +28,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -225,6 +229,8 @@ public class ModGameEvents {
                 }
             }
         }
+
+        vibraniumTurtleHelmetTick(player);
     }
 
     private static TagKey<Block> getRequiredToolForBlock(BlockState state) {
@@ -296,5 +302,12 @@ public class ModGameEvents {
         double strength = 1.25;
         Vec3 knockbackDirection = new Vec3(attacker.getX() - player.getX(), 0, attacker.getZ() - player.getZ()).normalize();
         attacker.push(knockbackDirection.x * strength, 0.5, knockbackDirection.z * strength);
+    }
+
+    private static void vibraniumTurtleHelmetTick(Player player) {
+        ItemStack itemstack = player.getItemBySlot(EquipmentSlot.HEAD);
+        if (itemstack.is(ItemInit.VIBRANIUM_TURTLE_HELMET) && !player.isEyeInFluid(FluidTags.WATER)) {
+            player.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 405, 0, false, false, true));
+        }
     }
 }

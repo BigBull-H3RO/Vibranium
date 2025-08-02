@@ -72,6 +72,7 @@ public class ModEsLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_LEGGINGS, "Pantalones de Vibranium");
         addItem(ItemInit.VIBRANIUM_CHESTPLATE, "Peto de Vibranium");
         addItem(ItemInit.VIBRANIUM_HELMET, "Casco de Vibranium");
+        addItem(ItemInit.VIBRANIUM_TURTLE_HELMET, "Casco de tortuga de Vibranium");
         addItem(ItemInit.VIBRANIUM_WOLF_ARMOR, "Armadura de lobo de Vibranium");
         addItem(ItemInit.VIBRANIUM_HORSE_ARMOR, "Armadura de caballo de Vibranium");
 

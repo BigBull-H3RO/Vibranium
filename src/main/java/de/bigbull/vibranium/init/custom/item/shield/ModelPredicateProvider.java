@@ -17,7 +17,7 @@ import org.jetbrains.annotations.ApiStatus;
 
 import java.util.Set;
 
-@EventBusSubscriber(modid = Vibranium.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Vibranium.MODID, value = Dist.CLIENT)
 public class ModelPredicateProvider {
 
     @SubscribeEvent

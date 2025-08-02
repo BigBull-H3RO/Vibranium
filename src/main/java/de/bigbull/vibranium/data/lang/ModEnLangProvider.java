@@ -74,6 +74,7 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_LEGGINGS, "Vibranium Leggings");
         addItem(ItemInit.VIBRANIUM_CHESTPLATE, "Vibranium Chestplate");
         addItem(ItemInit.VIBRANIUM_HELMET, "Vibranium Helmet");
+        addItem(ItemInit.VIBRANIUM_TURTLE_HELMET, "Vibranium Turtle Helmet");
         addItem(ItemInit.VIBRANIUM_WOLF_ARMOR, "Vibranium Wolf Armor");
         addItem(ItemInit.VIBRANIUM_HORSE_ARMOR, "Vibranium Horse Armor");
 

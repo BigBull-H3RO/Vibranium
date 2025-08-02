@@ -72,6 +72,7 @@ public class ModFrLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_LEGGINGS, "Jambières en vibranium");
         addItem(ItemInit.VIBRANIUM_CHESTPLATE, "Plastron en vibranium");
         addItem(ItemInit.VIBRANIUM_HELMET, "Casque en vibranium");
+        addItem(ItemInit.VIBRANIUM_TURTLE_HELMET, "Casque de tortue en vibranium");
         addItem(ItemInit.VIBRANIUM_WOLF_ARMOR, "Armure de loup en vibranium");
         addItem(ItemInit.VIBRANIUM_HORSE_ARMOR, "Armure de cheval en vibranium");
 

@@ -104,6 +104,15 @@ public class SmithingTableRecipeProvider extends MainModRecipeProvider {
                 .unlocks("has_item", has(ItemInit.VIBRANIUM_INGOT.get()))
                 .save(this.recipeOutput, getModId("vibranium_boots"));
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()),
+                        Ingredient.of(Items.TURTLE_HELMET),
+                        Ingredient.of(ItemInit.VIBRANIUM_INGOT.get()),
+                        RecipeCategory.TOOLS,
+                        ItemInit.VIBRANIUM_TURTLE_HELMET.get())
+                .unlocks("has_item", has(ItemInit.VIBRANIUM_INGOT.get()))
+                .save(this.recipeOutput, getModId("vibranium_turtle_helmet"));
+
         //Vibranium Wolf/Horse Armor
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()),
