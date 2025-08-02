@@ -2,7 +2,7 @@ package de.bigbull.vibranium.event;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import de.bigbull.vibranium.config.ConfigValues;
+import de.bigbull.vibranium.config.ClientConfig;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
@@ -83,10 +83,10 @@ public class ClientRenderEvent {
         RenderType renderType = RenderType.lines();
         VertexConsumer builder = Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(renderType);
 
-        float red = (float) ConfigValues.OUTLINE_RED;
-        float green = (float) ConfigValues.OUTLINE_GREEN;
-        float blue = (float) ConfigValues.OUTLINE_BLUE;
-        float alpha = (float) ConfigValues.OUTLINE_ALPHA;
+        float red = ClientConfig.OUTLINE_RED.get().floatValue();
+        float green = ClientConfig.OUTLINE_GREEN.get().floatValue();
+        float blue = ClientConfig.OUTLINE_BLUE.get().floatValue();
+        float alpha = ClientConfig.OUTLINE_ALPHA.get().floatValue();
 
         LevelRenderer.renderLineBox(poseStack, builder, boundingBox.minX, boundingBox.minY, boundingBox.minZ, boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ, red, green, blue, alpha);
         Minecraft.getInstance().renderBuffers().bufferSource().endBatch(renderType);

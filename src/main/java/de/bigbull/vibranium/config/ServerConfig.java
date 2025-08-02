@@ -14,6 +14,8 @@ public class ServerConfig {
     public static final ModConfigSpec.IntValue GEODES_MAX_HEIGHT;
     public static final ModConfigSpec.IntValue GEODES_MIN_HEIGHT;
 
+    public static final ModConfigSpec.BooleanValue USE_FAST_MODE;
+
     static {
         SERVER_BUILDER.push("Vibranium Ore Generation Configurations");
         VEINS_PER_CHUNK = SERVER_BUILDER.comment("How many veins of Vibranium ore should spawn per chunk")
@@ -32,6 +34,10 @@ public class ServerConfig {
         GEODES_MIN_HEIGHT = SERVER_BUILDER.comment("The minimum height Vibranium geodes should spawn")
                 .defineInRange("MinHeight [Default: -45]", -45, -64, 320);
         SERVER_BUILDER.pop();
+
+        SERVER_BUILDER.push("Vibranium Mace Configurations");
+        USE_FAST_MODE = SERVER_BUILDER.comment("Use fast block breaking mode [true = fast, false = detailed] Better performance, but less detail")
+                .define("FastMode", false);
 
         SERVER_SPEC = SERVER_BUILDER.build();
     }

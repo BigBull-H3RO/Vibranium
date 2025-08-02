@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.event;
 
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.config.ConfigValues;
+import de.bigbull.vibranium.config.ServerConfig;
 import de.bigbull.vibranium.entity.VibraGolemEntity;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.EnchantmentInit;
@@ -47,7 +47,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@EventBusSubscriber(modid = Vibranium.MODID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = Vibranium.MODID)
 public class ModGameEvents {
     private static final Set<BlockPos> HARVESTED_BLOCKS = new HashSet<>();
 
@@ -85,7 +85,7 @@ public class ModGameEvents {
                                 (!middleBlockNeedsAdvancedTool && !targetBlockState.is(BlockTags.NEEDS_DIAMOND_TOOL) && !targetBlockState.is(Tags.Blocks.NEEDS_NETHERITE_TOOL) && isValidBlockForTool(targetBlockState, requiredTool)))) {
                             HARVESTED_BLOCKS.add(pos);
 
-                            if (ConfigValues.USE_FAST_MODE) {
+                            if (ServerConfig.USE_FAST_MODE.get()) {
                                 serverPlayer.gameMode.destroyBlock(pos);
                             } else {
                                 level.destroyBlock(pos, false);
