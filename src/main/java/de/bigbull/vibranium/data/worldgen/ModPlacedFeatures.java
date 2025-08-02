@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.data.worldgen;
 
-import de.bigbull.vibranium.config.ConfigValues;
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.config.ServerConfig;
 import de.bigbull.vibranium.data.worldgen.ore.ModOrePlacement;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -12,35 +12,48 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class ModPlacedFeatures {
     public static ResourceKey<PlacedFeature> VIBRANIUM_ORE = createKey("vibranium_ore");
-    public static ResourceKey<PlacedFeature> VIBRANIUM_STRUCTURE = createKey("vibranium_structure");
+    public static ResourceKey<PlacedFeature> VIBRANIUM_GEODE = createKey("vibranium_geode");
 
-    private static final int VEINS_PER_CHUNK = ConfigValues.VEINS_PER_CHUNK;
-    private static final int MAX_HEIGHT = ConfigValues.MAX_HEIGHT;
-    private static final int MIN_HEIGHT = ConfigValues.MIN_HEIGHT;
+    private static final Supplier<Integer> VEINS_PER_CHUNK = () -> getConfigValue(ServerConfig.VEINS_PER_CHUNK, 3);
+    private static final Supplier<Integer> MAX_HEIGHT = () -> getConfigValue(ServerConfig.MAX_HEIGHT, -10);
+    private static final Supplier<Integer> MIN_HEIGHT = () -> getConfigValue(ServerConfig.MIN_HEIGHT, -64);
 
-    private static final int GEODES_RARITY = ConfigValues.GEODES_RARITY;
-    private static final int GEODES_MAX_HEIGHT = ConfigValues.GEODES_MAX_HEIGHT;
-    private static final int GEODES_MIN_HEIGHT = ConfigValues.GEODES_MIN_HEIGHT;
+    private static final Supplier<Integer> GEODES_RARITY = () -> getConfigValue(ServerConfig.GEODES_RARITY, 48);
+    private static final Supplier<Integer> GEODES_MAX_HEIGHT = () -> getConfigValue(ServerConfig.GEODES_MAX_HEIGHT, 30);
+    private static final Supplier<Integer> GEODES_MIN_HEIGHT = () -> getConfigValue(ServerConfig.GEODES_MIN_HEIGHT, 6);
+
+    private static <T> T getConfigValue(ModConfigSpec.ConfigValue<T> configValue, T defaultValue) {
+        try {
+            return configValue.get();
+        } catch (IllegalStateException e) {
+            return defaultValue;
+        }
+    }
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         Holder<ConfiguredFeature<?, ?>> vibraniumOreFeature = configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_VIBRANIUM_ORE);
-        Holder<ConfiguredFeature<?, ?>> vibraniumStructureFeature = configuredFeatures.getOrThrow(ModConfiguredFeatures.VIBRANIUM_STRUCTURE);
+        Holder<ConfiguredFeature<?, ?>> vibraniumGeodeFeature = configuredFeatures.getOrThrow(ModConfiguredFeatures.VIBRANIUM_GEODE);
 
         register(context, VIBRANIUM_ORE, vibraniumOreFeature,
-                ModOrePlacement.commonOrePlacements(VEINS_PER_CHUNK, HeightRangePlacement.uniform(
-                        VerticalAnchor.absolute(MIN_HEIGHT), VerticalAnchor.absolute(MAX_HEIGHT))
+                ModOrePlacement.commonOrePlacements(VEINS_PER_CHUNK.get(), HeightRangePlacement.uniform(
+                        VerticalAnchor.absolute(MIN_HEIGHT.get()), VerticalAnchor.absolute(MAX_HEIGHT.get()))
                 )
         );
-        register(context, VIBRANIUM_STRUCTURE, vibraniumStructureFeature,
-                List.of(RarityFilter.onAverageOnceEvery(GEODES_RARITY),
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(GEODES_MIN_HEIGHT), VerticalAnchor.absolute(GEODES_MAX_HEIGHT))
-                ));
+
+        register(context, VIBRANIUM_GEODE, vibraniumGeodeFeature,
+                List.of(RarityFilter.onAverageOnceEvery(GEODES_RARITY.get()),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(GEODES_MIN_HEIGHT.get()), VerticalAnchor.absolute(GEODES_MAX_HEIGHT.get())),
+                        BiomeFilter.biome())
+        );
     }
 
     private static ResourceKey<PlacedFeature> createKey(String name) {

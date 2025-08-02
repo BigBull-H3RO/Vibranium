@@ -17,7 +17,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class ModBiomesModifiers {
     protected static ResourceKey<BiomeModifier> ADD_VIBRANIUM_ORE = createKey("add_vibranium_ore");
-    protected static ResourceKey<BiomeModifier> ADD_VIBRANIUM_STRUCTURE = createKey("add_vibranium_structure");
+    protected static ResourceKey<BiomeModifier> ADD_VIBRANIUM_GEODE = createKey("add_vibranium_geode");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -32,10 +32,10 @@ public class ModBiomesModifiers {
                 )
         );
         context.register(
-                ADD_VIBRANIUM_STRUCTURE,
+                ADD_VIBRANIUM_GEODE,
                 new BiomeModifiers.AddFeaturesBiomeModifier(
                         biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.VIBRANIUM_STRUCTURE)),
+                        HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.VIBRANIUM_GEODE)),
                         GenerationStep.Decoration.UNDERGROUND_STRUCTURES
                 )
         );
