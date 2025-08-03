@@ -28,6 +28,17 @@ public class ArmorMaterialsInit {
             18, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(ItemInit.VIBRANIUM_INGOT),
             List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium"))), 4,  0.2f));
 
+    public static final Holder<ArmorMaterial> VIBRANIUM_WOLF_MATERIAL = MATERIAL.register("vibranium_wolf", () -> new ArmorMaterial(
+            Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+                map.put(ArmorItem.Type.BOOTS, 3);
+                map.put(ArmorItem.Type.LEGGINGS, 6);
+                map.put(ArmorItem.Type.CHESTPLATE, 8);
+                map.put(ArmorItem.Type.HELMET, 3);
+                map.put(ArmorItem.Type.BODY, 16);
+            }),
+            18, SoundEvents.ARMOR_EQUIP_WOLF, () -> Ingredient.of(ItemInit.VIBRANIUM_INGOT),
+            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium_wolf"))), 4,  0.2f));
+
     public static final Holder<ArmorMaterial> VIBRANIUM_TURTLE_MATERIAL = MATERIAL.register("vibranium_turtle", () -> new ArmorMaterial(
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.BOOTS, 2);

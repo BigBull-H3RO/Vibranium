@@ -83,7 +83,7 @@ public class ItemInit {
                             .durability(550)));
 
     public static final DeferredItem<Item> VIBRANIUM_WOLF_ARMOR = ITEMS.register("vibranium_wolf_armor",
-            () -> new WolfArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, AnimalArmorItem.BodyType.CANINE, false,
+            () -> new WolfArmorItem(ArmorMaterialsInit.VIBRANIUM_WOLF_MATERIAL, AnimalArmorItem.BodyType.CANINE, false,
                     new Item.Properties()
                             .fireResistant()
                             .stacksTo(1)
