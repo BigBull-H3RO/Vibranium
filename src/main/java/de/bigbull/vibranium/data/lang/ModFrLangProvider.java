@@ -119,19 +119,7 @@ public class ModFrLangProvider extends LanguageProvider {
         add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Vibranium");
 
         // --- Config translations: Titles ---
-        add("vibranium.config.title.oreGen", "Paramètres de génération de minerai de vibranium");
-        add("vibranium.config.title.geodeGen", "Paramètres des géodes de vibranium");
         add("vibranium.config.title.mace", "Paramètres de la masse de vibranium");
-
-        // --- Config translations: Ore Generation ---
-        add("vibranium.config.veinsPerChunk", "Veines de vibranium par fragment");
-        add("vibranium.config.maxHeight", "Hauteur maximale pour le minerai de vibranium");
-        add("vibranium.config.minHeight", "Hauteur minimale pour le minerai de vibranium");
-
-        // --- Config translations: Geode Generation ---
-        add("vibranium.config.geodesRarity", "Rareté des géodes de vibranium");
-        add("vibranium.config.geodesMaxHeight", "Hauteur maximale pour les géodes de vibranium");
-        add("vibranium.config.geodesMinHeight", "Hauteur minimale pour les géodes de vibranium");
 
         // --- Config translations: Mace ---
         add("vibranium.config.useFastMode", "Mode rapide pour la masse");

@@ -226,7 +226,7 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
             BlockPos above = dirtPos.above();
             if (!world.isEmptyBlock(above)) continue;
 
-            if (random.nextFloat() < 0.4F && hasEnoughSpaceForTree(world, above)) {
+            if (random.nextFloat() < 0.35F && hasEnoughSpaceForTree(world, above)) {
                 placeSoulTree(world, above, random, context);
             } else if (random.nextFloat() < 0.45F) {
                 world.setBlock(above, BlockInit.HEART_SHAPED_HERB_BUSH.get().defaultBlockState().setValue(HSHBushBlock.AGE, random.nextInt(4)), 2);
@@ -285,6 +285,8 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
             );
         } else if (random.nextFloat() < 0.3F) {
             worldgenlevel.setBlock(soulTreePos, BlockInit.HEART_SHAPED_HERB_BUSH.get().defaultBlockState().setValue(HSHBushBlock.AGE, random.nextInt(2)), 2);
+        } else if (random.nextFloat() < 0.1F) {
+            worldgenlevel.setBlock(soulTreePos, BlockInit.SOULWOOD_SAPLING.get().defaultBlockState(), 2);
         }
     }
 }

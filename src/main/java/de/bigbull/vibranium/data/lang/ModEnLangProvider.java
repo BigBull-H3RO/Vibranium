@@ -121,24 +121,12 @@ public class ModEnLangProvider extends LanguageProvider {
         add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Vibranium");
 
         // --- Config translations: Titles ---
-        add("vibranium.config.title.oreGen", "Vibranium Ore Generation Settings");
-        add("vibranium.config.title.geodeGen", "Vibranium Geode Settings");
         add("vibranium.config.title.mace", "Vibranium Mace Settings");
 
-// --- Config translations: Ore Generation ---
-        add("vibranium.config.veinsPerChunk", "Vibranium Veins per Chunk");
-        add("vibranium.config.maxHeight", "Maximum Height for Vibranium Ore");
-        add("vibranium.config.minHeight", "Minimum Height for Vibranium Ore");
-
-// --- Config translations: Geode Generation ---
-        add("vibranium.config.geodesRarity", "Vibranium Geode Rarity");
-        add("vibranium.config.geodesMaxHeight", "Maximum Height for Vibranium Geodes");
-        add("vibranium.config.geodesMinHeight", "Minimum Height for Vibranium Geodes");
-
-// --- Config translations: Mace ---
+        // --- Config translations: Mace ---
         add("vibranium.config.useFastMode", "Fast Mode for Mace");
 
-// --- Config translations: Outline (Client) ---
+        // --- Config translations: Outline (Client) ---
         add("vibranium.config.outlineRed", "Outline Red Component");
         add("vibranium.config.outlineGreen", "Outline Green Component");
         add("vibranium.config.outlineBlue", "Outline Blue Component");

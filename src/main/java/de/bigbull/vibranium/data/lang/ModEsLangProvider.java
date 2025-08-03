@@ -119,19 +119,7 @@ public class ModEsLangProvider extends LanguageProvider {
         add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Vibranium");
 
         // --- Config translations: Titles ---
-        add("vibranium.config.title.oreGen", "Configuración de generación de mena de Vibranium");
-        add("vibranium.config.title.geodeGen", "Configuración de geodas de Vibranium");
         add("vibranium.config.title.mace", "Configuración de la maza de Vibranium");
-
-        // --- Config translations: Ore Generation ---
-        add("vibranium.config.veinsPerChunk", "Vetas de Vibranium por fragmento");
-        add("vibranium.config.maxHeight", "Altura máxima para mena de Vibranium");
-        add("vibranium.config.minHeight", "Altura mínima para mena de Vibranium");
-
-        // --- Config translations: Geode Generation ---
-        add("vibranium.config.geodesRarity", "Rareza de geodas de Vibranium");
-        add("vibranium.config.geodesMaxHeight", "Altura máxima para geodas de Vibranium");
-        add("vibranium.config.geodesMinHeight", "Altura mínima para geodas de Vibranium");
 
         // --- Config translations: Mace ---
         add("vibranium.config.useFastMode", "Modo rápido para la maza");
