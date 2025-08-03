@@ -1,11 +1,9 @@
 package de.bigbull.vibranium.data.lang;
 
-import de.bigbull.vibranium.event.ModEvents;
-import de.bigbull.vibranium.init.BlockInit;
-import de.bigbull.vibranium.init.ItemInit;
-import de.bigbull.vibranium.init.CreativeTabInit;
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
+import de.bigbull.vibranium.init.BlockInit;
+import de.bigbull.vibranium.init.CreativeTabInit;
+import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.custom.item.VibraniumUpgradeTemplate;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -21,7 +19,7 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_INGOT, "Vibraniumbarren");
         addItem(ItemInit.VIBRANIUM_NUGGET, "Vibraniumklumpen");
         addItem(ItemInit.VIBRANIUM_PLATE, "Vibraniumplatte");
-        addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Vibraniumaufwertung");
+        addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Schmiedevorlage");
         addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawnei");
         addItem(ItemInit.VIBRANIUM_CORE, "Vibraniumkern");
         addItem(ItemInit.HEART_SHAPED_HERB, "Herzformiges Kraut");
@@ -31,7 +29,6 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.SOULWOOD_HANGING_SIGN, "Seelenholz Hängeschild");
         addItem(ItemInit.SOULWOOD_BOAT, "Seelenholz Boot");
         addItem(ItemInit.SOULWOOD_CHEST_BOAT, "Seelenholz Boot mit Truhe");
-        add("entity.vibranium.soulwood_chest_boat", "Seelenholz Boot mit Truhe");
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block aus rohem Vibranium");
@@ -55,11 +52,12 @@ public class ModDeLangProvider extends LanguageProvider {
         addBlock(BlockInit.SOULWOOD_PRESSURE_PLATE, "Seelenholz Druckplatte");
         addBlock(BlockInit.SOULWOOD_BUTTON, "Seelenholz Knopf");
         addBlock(BlockInit.VIBRANIUM_CRYSTAL_BLOCK, "Kristallblock aus Vibranium");
-        addBlock(BlockInit.BUDDING_VIBRANIUM_CRYSTAL, "Vibranium Knospenblock");
-        addBlock(BlockInit.VIBRANIUM_CLUSTER, "Vibraniumhaufen");
+        addBlock(BlockInit.BUDDING_VIBRANIUM_CRYSTAL, "Kristall-Vibranium Knospenblock");
+        addBlock(BlockInit.VIBRANIUM_CLUSTER, "Kristall-Vibraniumhaufen");
         addBlock(BlockInit.SMALL_VIBRANIUM_BUD, "Kleine Kristall-Vibraniumknospe");
         addBlock(BlockInit.MEDIUM_VIBRANIUM_BUD, "Mittlere Kristall-Vibraniumknospe");
         addBlock(BlockInit.LARGE_VIBRANIUM_BUD, "Große Kristall-Vibraniumknospe");
+        addBlock(BlockInit.POTTED_SOULWOOD_SAPLING, "Eingetopfter Seelenholz Setzling");
 
         //Tools
         addItem(ItemInit.VIBRANIUM_SWORD, "Vibranium Schwert");
@@ -75,6 +73,7 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_LEGGINGS, "Vibranium Beinschützer");
         addItem(ItemInit.VIBRANIUM_CHESTPLATE, "Vibranium Brustplatte");
         addItem(ItemInit.VIBRANIUM_HELMET, "Vibranium Helm");
+        addItem(ItemInit.VIBRANIUM_TURTLE_HELMET, "Vibranium Schildkrötenhelm");
         addItem(ItemInit.VIBRANIUM_WOLF_ARMOR, "Vibranium Wolfsrüstung");
         addItem(ItemInit.VIBRANIUM_HORSE_ARMOR, "Vibranium Pferderüstung");
 
@@ -91,8 +90,8 @@ public class ModDeLangProvider extends LanguageProvider {
         add("effect.vibranium.kinetic_redistribution", "Kinetische Umverteilung");
 
         //KeyBinding
-        add(ModEvents.KEY_CATEGORIES.getString(), "Vibranium");
-        add(ModEvents.TOGGLE_OUTLINE.getString(), "Umrahmung umschalten");
+        add("key.categories.vibranium", "Vibranium");
+        add("key.vibranium.toggle_outline", "Umrahmung umschalten");
 
         //Enchantments
         add("enchantment.vibranium.universal_breaker", "Universeller Brecher");
@@ -114,9 +113,21 @@ public class ModDeLangProvider extends LanguageProvider {
         add("trim_material.vibranium.vibranium", "Vibranium Material");
 
         //Vibranium Mace
-        add(VibraniumMaceItem.TOOLTIP.getString(), "Kann 3x3 Blöcke abbauen");
+        add("item.vibranium_mace.tooltip", "Kann 3x3 Blöcke abbauen");
 
         //others
         add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Vibranium");
+
+        // --- Config translations: Titles ---
+        add("vibranium.config.title.mace", "Vibranium-Mace Einstellungen");
+
+        // --- Config translations: Mace ---
+        add("vibranium.config.useFastMode", "Schneller Modus für Mace");
+
+        // --- Config translations: Outline (Client) ---
+        add("vibranium.config.outlineRed", "Rot-Anteil der Umrandung");
+        add("vibranium.config.outlineGreen", "Grün-Anteil der Umrandung");
+        add("vibranium.config.outlineBlue", "Blau-Anteil der Umrandung");
+        add("vibranium.config.outlineAlpha", "Transparenz der Umrandung");
     }
 }

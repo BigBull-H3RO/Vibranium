@@ -3,7 +3,7 @@ package de.bigbull.vibranium.event;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.config.ConfigValues;
+import de.bigbull.vibranium.config.ClientConfig;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import net.minecraft.client.Camera;
@@ -89,10 +89,10 @@ public class ClientRenderEvent {
     private static void renderBlockOutline(PoseStack poseStack, MultiBufferSource bufferSource, AABB boundingBox) {
         VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.lines());
 
-        float red = (float) ConfigValues.OUTLINE_RED;
-        float green = (float) ConfigValues.OUTLINE_GREEN;
-        float blue = (float) ConfigValues.OUTLINE_BLUE;
-        float alpha = (float) ConfigValues.OUTLINE_ALPHA;
+        float red = (float) ClientConfig.OUTLINE_RED.getAsDouble();
+        float green = (float) ClientConfig.OUTLINE_GREEN.getAsDouble();
+        float blue = (float) ClientConfig.OUTLINE_BLUE.getAsDouble();
+        float alpha = (float) ClientConfig.OUTLINE_ALPHA.getAsDouble();
 
         ShapeRenderer.renderLineBox(
                 poseStack,

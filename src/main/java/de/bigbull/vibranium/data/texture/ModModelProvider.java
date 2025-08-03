@@ -56,6 +56,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_LEGGINGS.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), "leggings", false);
         itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_CHESTPLATE.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), "chestplate", false);
         itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_HELMET.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), "helmet", false);
+        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_TURTLE_HELMET.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), "helmet", false);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateWolfArmor(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);

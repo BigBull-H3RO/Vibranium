@@ -39,7 +39,8 @@ public class ModConfiguredFeatures {
     protected static ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_VIBRANIUM_ORE = createKey("overworld_vibranium_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SOUL_TREE = createKey("soul_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SOUL_TREE_SMALL = createKey("soul_tree_small");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> VIBRANIUM_STRUCTURE = createKey("vibranium_structure");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SOUL_TREE_MINI = createKey("soul_tree_mini");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> VIBRANIUM_GEODE = createKey("vibranium_geode");
 
     public static TreeConfiguration.TreeConfigurationBuilder soulTree() {
         return new TreeConfiguration.TreeConfigurationBuilder(
@@ -84,6 +85,16 @@ public class ModConfiguredFeatures {
         ).ignoreVines();
     }
 
+    public static TreeConfiguration.TreeConfigurationBuilder soulTreeMini() {
+        return new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(BlockInit.SOULWOOD_LOG.get()),
+                new ForkingTrunkPlacer(3, 1, 0),
+                BlockStateProvider.simple(BlockInit.SOULWOOD_LEAVES.get()),
+                new AcaciaFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)),
+                new TwoLayersFeatureSize(1, 0, 1)
+        ).ignoreVines();
+    }
+
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplacable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplacable = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
@@ -92,51 +103,43 @@ public class ModConfiguredFeatures {
                 List.of(OreConfiguration.target(stoneReplacable, BlockInit.DEPPSLATE_VIBRANIUM_ORE.get().defaultBlockState()),
                         OreConfiguration.target(deepslateReplacable, BlockInit.DEPPSLATE_VIBRANIUM_ORE.get().defaultBlockState()));
 
-        register(context, OVERWORLD_VIBRANIUM_ORE, Feature.ORE, new OreConfiguration(VibraniumOre, 4));
+        FeatureUtils.register(context, OVERWORLD_VIBRANIUM_ORE, Feature.ORE, new OreConfiguration(VibraniumOre, 4));
+        FeatureUtils.register(context, VIBRANIUM_GEODE, FeatureInit.VIBRANIUM_GEODE.get(), new GeodeConfiguration(
+                new GeodeBlockSettings(
+                        BlockStateProvider.simple(Blocks.AIR),
+                        BlockStateProvider.simple(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get()),
+                        BlockStateProvider.simple(BlockInit.BUDDING_VIBRANIUM_CRYSTAL.get()),
+                        BlockStateProvider.simple(Blocks.CALCITE),
+                        BlockStateProvider.simple(Blocks.SMOOTH_BASALT),
+                        List.of(
+                                BlockInit.SMALL_VIBRANIUM_BUD.get().defaultBlockState(),
+                                BlockInit.MEDIUM_VIBRANIUM_BUD.get().defaultBlockState(),
+                                BlockInit.LARGE_VIBRANIUM_BUD.get().defaultBlockState(),
+                                BlockInit.VIBRANIUM_CLUSTER.get().defaultBlockState()
+                        ),
+                        BlockTags.FEATURES_CANNOT_REPLACE,
+                        BlockTags.GEODE_INVALID_BLOCKS
+                ),
+                new GeodeLayerSettings(1.7, 2.2, 3.2, 4.2),
+                new GeodeCrackSettings(0.5, 2.0, 2),
+                0.35,
+                0.083,
+                true,
+                UniformInt.of(5, 6),
+                UniformInt.of(4, 5),
+                UniformInt.of(1, 4),
+                -16,
+                16,
+                0.05,
+                1
+        ));
 
         FeatureUtils.register(context, SOUL_TREE, FeatureInit.SOUL_TREE.get(), soulTree().build());
         FeatureUtils.register(context, SOUL_TREE_SMALL, FeatureInit.SOUL_TREE_SMALL.get(), soulTreeSmall().build());
-        FeatureUtils.register(
-                context,
-                VIBRANIUM_STRUCTURE,
-                FeatureInit.VIBRANIUM_STRUCTURE.get(),
-                new GeodeConfiguration(
-                        new GeodeBlockSettings(
-                                BlockStateProvider.simple(Blocks.AIR),
-                                BlockStateProvider.simple(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get()),
-                                BlockStateProvider.simple(BlockInit.BUDDING_VIBRANIUM_CRYSTAL.get()),
-                                BlockStateProvider.simple(Blocks.CALCITE),
-                                BlockStateProvider.simple(Blocks.SMOOTH_BASALT),
-                                List.of(
-                                        BlockInit.SMALL_VIBRANIUM_BUD.get().defaultBlockState(),
-                                        BlockInit.MEDIUM_VIBRANIUM_BUD.get().defaultBlockState(),
-                                        BlockInit.LARGE_VIBRANIUM_BUD.get().defaultBlockState(),
-                                        BlockInit.VIBRANIUM_CLUSTER.get().defaultBlockState()
-                                ),
-                                BlockTags.FEATURES_CANNOT_REPLACE,
-                                BlockTags.GEODE_INVALID_BLOCKS
-                        ),
-                        new GeodeLayerSettings(2.5, 3.0, 4.0, 5.0) ,
-                        new GeodeCrackSettings(0.75, 2.0, 2),
-                        0.35,
-                        0.083,
-                        true,
-                        UniformInt.of(7, 9),
-                        UniformInt.of(5, 6),
-                        UniformInt.of(1, 2),
-                        -20,
-                        20,
-                        0.05,
-                        1
-                )
-        );
+        FeatureUtils.register(context, SOUL_TREE_MINI, FeatureInit.SOUL_TREE_MINI.get(), soulTreeMini().build());
     }
 
     private static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, name));
-    }
-
-    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC config) {
-        context.register(key, new ConfiguredFeature<>(feature, config));
     }
 }

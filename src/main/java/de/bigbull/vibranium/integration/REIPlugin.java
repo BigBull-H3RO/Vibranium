@@ -1,4 +1,4 @@
-package de.bigbull.vibranium.integration.jei;
+package de.bigbull.vibranium.integration;
 
 import de.bigbull.vibranium.init.ItemInit;
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
@@ -8,7 +8,7 @@ import me.shedaniel.rei.plugin.common.displays.brewing.DefaultBrewingDisplay;
 import net.minecraft.world.item.Items;
 
 @me.shedaniel.rei.forge.REIPluginClient
-public class REIPluginClient implements REIClientPlugin {
+public class REIPlugin implements REIClientPlugin {
     @Override
     public void registerDisplays(DisplayRegistry registry) {
         registry.add(new DefaultBrewingDisplay(

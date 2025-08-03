@@ -77,6 +77,11 @@ public class ItemInit {
                     .fireResistant()
                     .stacksTo(1)));
 
+    public static final DeferredItem<ArmorItem> VIBRANIUM_TURTLE_HELMET = ITEMS.registerItem("vibranium_turtle_helmet",
+            properties -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL_TURTLE, ArmorType.HELMET, properties
+                    .fireResistant()
+                    .stacksTo(1)));
+
     public static final DeferredItem<AnimalArmorItem> VIBRANIUM_WOLF_ARMOR = ITEMS.registerItem("vibranium_wolf_armor",
             properties -> new AnimalArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL_WOLF, AnimalArmorItem.BodyType.CANINE, properties
                     .fireResistant()

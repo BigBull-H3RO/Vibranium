@@ -29,4 +29,11 @@ public class ArmorMaterialsInit {
             }),
             15, SoundEvents.ARMOR_EQUIP_WOLF, 2, 0.0f, TagsInit.Items.VIBRANIUM_REPAIR,
             ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")));
+
+    public static final ArmorMaterial VIBRANIUM_MATERIAL_TURTLE = new ArmorMaterial(50,
+            Util.make(new EnumMap<>(ArmorType.class), map -> {
+                map.put(ArmorType.HELMET, 3);
+            }),
+            12, SoundEvents.ARMOR_EQUIP_TURTLE, 2, 0.0f, TagsInit.Items.VIBRANIUM_REPAIR,
+            ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium_turtle")));
 }

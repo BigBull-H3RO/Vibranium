@@ -21,7 +21,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.FOOT_ARMOR).add(ItemInit.VIBRANIUM_BOOTS.get());
         tag(ItemTags.LEG_ARMOR).add(ItemInit.VIBRANIUM_LEGGINGS.get());
         tag(ItemTags.CHEST_ARMOR).add(ItemInit.VIBRANIUM_CHESTPLATE.get());
-        tag(ItemTags.HEAD_ARMOR).add(ItemInit.VIBRANIUM_HELMET.get());
+        tag(ItemTags.HEAD_ARMOR).add(ItemInit.VIBRANIUM_HELMET.get()).add(ItemInit.VIBRANIUM_TURTLE_HELMET.get());
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(ItemInit.VIBRANIUM_BOOTS.get())
                 .add(ItemInit.VIBRANIUM_LEGGINGS.get())

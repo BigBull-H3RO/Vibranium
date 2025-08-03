@@ -132,6 +132,7 @@ public class ModRecipeProvider extends RecipeProvider {
         vibraniumSmithing(Items.NETHERITE_SHOVEL, ItemInit.VIBRANIUM_SHOVEL.get());
         vibraniumSmithing(Items.NETHERITE_HOE, ItemInit.VIBRANIUM_HOE.get());
         vibraniumSmithing(Items.NETHERITE_HELMET, ItemInit.VIBRANIUM_HELMET.get());
+        vibraniumSmithing(Items.TURTLE_HELMET, ItemInit.VIBRANIUM_TURTLE_HELMET.get());
         vibraniumSmithing(Items.NETHERITE_CHESTPLATE, ItemInit.VIBRANIUM_CHESTPLATE.get());
         vibraniumSmithing(Items.NETHERITE_LEGGINGS, ItemInit.VIBRANIUM_LEGGINGS.get());
         vibraniumSmithing(Items.NETHERITE_BOOTS, ItemInit.VIBRANIUM_BOOTS.get());

@@ -11,16 +11,14 @@ import net.minecraft.world.item.SmithingTemplateItem;
 import java.util.List;
 
 public class VibraniumUpgradeTemplate extends SmithingTemplateItem {
-    private static final ChatFormatting DESCRIPTION_FORMAT = ChatFormatting.BLUE;
-
     public static final Component VIBRANIUM_UPGRADE_APPLIES_TO = Component.translatable(
                     Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "smithing_template.vibranium_upgrade.applies_to"))
             )
-            .withStyle(DESCRIPTION_FORMAT);
+            .withStyle(ChatFormatting.BLUE);
     public static final Component VIBRANIUM_UPGRADE_INGREDIENTS = Component.translatable(
                     Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "smithing_template.vibranium_upgrade.ingredients"))
             )
-            .withStyle(DESCRIPTION_FORMAT);
+            .withStyle(ChatFormatting.BLUE);
     public static final Component VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(
             Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "smithing_template.vibranium_upgrade.base_slot_description"))
     );
