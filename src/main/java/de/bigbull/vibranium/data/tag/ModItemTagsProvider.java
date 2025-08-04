@@ -6,14 +6,14 @@ import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.TagsInit;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.neoforged.neoforge.common.data.ItemTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagsProvider extends ItemTagsProvider {
     public ModItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture, ModBlockTagsProvider modBlockTagsProvider) {
-        super(output, completableFuture, modBlockTagsProvider.contentsGetter(), Vibranium.MODID);
+        super(output, completableFuture, Vibranium.MODID);
     }
 
     @Override

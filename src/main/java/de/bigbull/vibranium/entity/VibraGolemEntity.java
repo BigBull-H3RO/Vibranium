@@ -10,7 +10,6 @@ import de.bigbull.vibranium.entity.client.Crackniess.VibraCrackiness;
 import de.bigbull.vibranium.init.ItemInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -21,7 +20,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -154,13 +152,13 @@ public class VibraGolemEntity extends TamableAnimal {
 //        this.setDefensiveMode(tag.getBoolean("DefensiveMode"), BlockPos.of(tag.getLong("DefensivePosition")));
 //    }
 
-    @Override
-    public void addAdditionalSaveData(CompoundTag tag) {
-        super.addAdditionalSaveData(tag);
-        tag.putBoolean("Sitting", this.isSitting());
-        tag.putBoolean("DefensiveMode", this.isDefensiveMode());
-        tag.putLong("DefensivePosition", this.getDefensivePosition().asLong());
-    }
+//    @Override
+//    public void addAdditionalSaveData(CompoundTag tag) {
+//        super.addAdditionalSaveData(tag);
+//        tag.putBoolean("Sitting", this.isSitting());
+//        tag.putBoolean("DefensiveMode", this.isDefensiveMode());
+//        tag.putLong("DefensivePosition", this.getDefensivePosition().asLong());
+//    }
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {

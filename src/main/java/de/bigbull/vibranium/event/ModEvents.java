@@ -12,8 +12,8 @@ import net.minecraft.client.KeyMapping;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.particle.FallingLeavesParticle;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
@@ -38,14 +38,14 @@ public class ModEvents {
         event.enqueueWork(() -> {
             Sheets.addWoodType(TypesInit.SOULWOOD_WOODTYPE);
 
-            ItemBlockRenderTypes.setRenderLayer(BlockInit.SOULWOOD_DOOR.get(), RenderType.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(BlockInit.SOULWOOD_TRAPDOOR.get(), RenderType.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(BlockInit.SOULWOOD_SAPLING.get(), RenderType.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(BlockInit.VIBRANIUM_CLUSTER.get(), RenderType.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(BlockInit.SMALL_VIBRANIUM_BUD.get(), RenderType.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(BlockInit.MEDIUM_VIBRANIUM_BUD.get(), RenderType.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(BlockInit.LARGE_VIBRANIUM_BUD.get(), RenderType.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(BlockInit.POTTED_SOULWOOD_SAPLING.get(), RenderType.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.SOULWOOD_DOOR.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.SOULWOOD_TRAPDOOR.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.SOULWOOD_SAPLING.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.VIBRANIUM_CLUSTER.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.SMALL_VIBRANIUM_BUD.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.MEDIUM_VIBRANIUM_BUD.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.LARGE_VIBRANIUM_BUD.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(BlockInit.POTTED_SOULWOOD_SAPLING.get(), ChunkSectionLayer.CUTOUT);
 
             EntityRenderers.register(Entitiesinit.VIBRAGOLEM.get(), VibraGolemRenderer::new);
         });

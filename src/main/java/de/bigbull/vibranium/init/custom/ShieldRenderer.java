@@ -22,9 +22,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import org.joml.Vector3f;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
+import java.util.Set;
 
 @OnlyIn(Dist.CLIENT)
 public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
@@ -67,6 +69,13 @@ public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
             this.model.plate().render(poseStack, vertexconsumer, p_387382_, p_387013_);
         }
         poseStack.popPose();
+    }
+
+    @Override
+    public void getExtents(Set<Vector3f> p_428206_) {
+        PoseStack posestack = new PoseStack();
+        posestack.scale(1.0F, -1.0F, -1.0F);
+        this.model.root().getExtentsForGui(posestack, p_428206_);
     }
 
     @Nullable

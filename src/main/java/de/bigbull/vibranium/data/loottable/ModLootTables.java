@@ -31,7 +31,7 @@ public class ModLootTables extends LootTableProvider {
                 .collect(Collectors.toSet());
 
         for (var id : Sets.difference(modLootTablesId, writableregistry.keySet())) {
-            validationcontext.reportProblem("Missing built-in table: " + id);
+            validationcontext.reportProblem(() -> "Missing built-in table: " + id);
         }
 
         writableregistry.forEach((lootTable -> lootTable.validate(validationcontext)));
