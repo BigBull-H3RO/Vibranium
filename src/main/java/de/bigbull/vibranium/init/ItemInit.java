@@ -5,13 +5,19 @@ import de.bigbull.vibranium.init.custom.item.HSHPotionItems;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import de.bigbull.vibranium.init.custom.item.VibraniumUpgradeTemplate;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.BlocksAttacks;
+import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.List;
+import java.util.Optional;
 
 public class ItemInit {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Vibranium.MODID);
@@ -48,8 +54,8 @@ public class ItemInit {
             properties ->  new Item(properties
                     .stacksTo(16)));
 
-    public static final DeferredItem<SpawnEggItem> VIBRA_GOLEM_SPAWN_EGG = ITEMS.registerItem("vibra_golem_spawn_egg",
-            properties -> new SpawnEggItem(Entitiesinit.VIBRAGOLEM.get(), properties));
+//    public static final DeferredItem<SpawnEggItem> VIBRA_GOLEM_SPAWN_EGG = ITEMS.registerItem("vibra_golem_spawn_egg",
+//            properties -> new SpawnEggItem(Entitiesinit.VIBRAGOLEM.get(), properties));
 
     public static final DeferredItem<SmithingTemplateItem> VIBRANIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.registerItem("vibranium_upgrade_smithing_template",
             VibraniumUpgradeTemplate::createVibraniumUpgradeTemplate, new Item.Properties()
@@ -57,66 +63,72 @@ public class ItemInit {
                             .rarity(Rarity.UNCOMMON));
 
     //Armor
-    public static final DeferredItem<ArmorItem> VIBRANIUM_BOOTS = ITEMS.registerItem("vibranium_boots",
-            properties -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorType.BOOTS, properties
+    public static final DeferredItem<Item> VIBRANIUM_BOOTS = ITEMS.registerItem("vibranium_boots",
+            properties -> new Item(properties.humanoidArmor(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorType.BOOTS)
                     .fireResistant()
                     .stacksTo(1)));
 
-    public static final DeferredItem<ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.registerItem("vibranium_leggings",
-            properties -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorType.LEGGINGS, properties
+    public static final DeferredItem<Item> VIBRANIUM_LEGGINGS = ITEMS.registerItem("vibranium_leggings",
+            properties -> new Item(properties.humanoidArmor(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorType.LEGGINGS)
                     .fireResistant()
                     .stacksTo(1)));
 
-    public static final DeferredItem<ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.registerItem("vibranium_chestplate",
-            properties -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorType.CHESTPLATE, properties
+    public static final DeferredItem<Item> VIBRANIUM_CHESTPLATE = ITEMS.registerItem("vibranium_chestplate",
+            properties -> new Item(properties.humanoidArmor(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorType.CHESTPLATE)
                     .fireResistant()
                     .stacksTo(1)));
 
-    public static final DeferredItem<ArmorItem> VIBRANIUM_HELMET = ITEMS.registerItem("vibranium_helmet",
-            properties -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorType.HELMET, properties
+    public static final DeferredItem<Item> VIBRANIUM_HELMET = ITEMS.registerItem("vibranium_helmet",
+            properties -> new Item(properties.humanoidArmor(ArmorMaterialsInit.VIBRANIUM_MATERIAL, ArmorType.HELMET)
                     .fireResistant()
                     .stacksTo(1)));
 
-    public static final DeferredItem<ArmorItem> VIBRANIUM_TURTLE_HELMET = ITEMS.registerItem("vibranium_turtle_helmet",
-            properties -> new ArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL_TURTLE, ArmorType.HELMET, properties
+    public static final DeferredItem<Item> VIBRANIUM_TURTLE_HELMET = ITEMS.registerItem("vibranium_turtle_helmet",
+            properties -> new Item(properties.humanoidArmor(ArmorMaterialsInit.VIBRANIUM_MATERIAL_TURTLE, ArmorType.HELMET)
                     .fireResistant()
                     .stacksTo(1)));
 
-    public static final DeferredItem<AnimalArmorItem> VIBRANIUM_WOLF_ARMOR = ITEMS.registerItem("vibranium_wolf_armor",
-            properties -> new AnimalArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL_WOLF, AnimalArmorItem.BodyType.CANINE, properties
+    public static final DeferredItem<Item> VIBRANIUM_WOLF_ARMOR = ITEMS.registerItem("vibranium_wolf_armor",
+            properties -> new Item(properties.wolfArmor(ArmorMaterialsInit.VIBRANIUM_MATERIAL_WOLF)
                     .fireResistant()
                     .stacksTo(1)));
 
-    public static final DeferredItem<AnimalArmorItem> VIBRANIUM_HORSE_ARMOR = ITEMS.registerItem("vibranium_horse_armor",
-            properties -> new AnimalArmorItem(ArmorMaterialsInit.VIBRANIUM_MATERIAL, AnimalArmorItem.BodyType.EQUESTRIAN, properties
+    public static final DeferredItem<Item> VIBRANIUM_HORSE_ARMOR = ITEMS.registerItem("vibranium_horse_armor",
+            properties -> new Item(properties.horseArmor(ArmorMaterialsInit.VIBRANIUM_MATERIAL)
                     .fireResistant()
                     .stacksTo(1)));
 
     //Tools
-    public static final DeferredItem<SwordItem> VIBRANIUM_SWORD = ITEMS.registerItem("vibranium_sword",
-            properties -> new SwordItem(MaterialsInit.VIBRANIUM, 3.0f, -2.2f, properties
+    public static final DeferredItem<Item> VIBRANIUM_SWORD = ITEMS.registerItem("vibranium_sword",
+            properties -> new Item(properties.sword(MaterialsInit.VIBRANIUM, 3.0f, -2.2f)
                     .fireResistant()));
 
-    public static final DeferredItem<PickaxeItem> VIBRANIUM_PICKAXE = ITEMS.registerItem("vibranium_pickaxe",
-            properties -> new PickaxeItem(MaterialsInit.VIBRANIUM, 0.0f, -2.8f, properties
+    public static final DeferredItem<Item> VIBRANIUM_PICKAXE = ITEMS.registerItem("vibranium_pickaxe",
+            properties -> new Item(properties.pickaxe(MaterialsInit.VIBRANIUM, 0.0f, -2.8f)
                     .fireResistant()));
 
-    public static final DeferredItem<AxeItem> VIBRANIUM_AXE = ITEMS.registerItem("vibranium_axe",
-            properties -> new AxeItem(MaterialsInit.VIBRANIUM, 5.0f, -3.0f, properties
+    public static final DeferredItem<Item> VIBRANIUM_AXE = ITEMS.registerItem("vibranium_axe",
+            properties -> new Item(properties.axe(MaterialsInit.VIBRANIUM, 5.0f, -3.0f)
                     .fireResistant()));
 
-    public static final DeferredItem<ShovelItem> VIBRANIUM_SHOVEL = ITEMS.registerItem("vibranium_shovel",
-            properties -> new ShovelItem(MaterialsInit.VIBRANIUM, 0.5f, -3.0f, properties
+    public static final DeferredItem<Item> VIBRANIUM_SHOVEL = ITEMS.registerItem("vibranium_shovel",
+            properties -> new Item(properties.shovel(MaterialsInit.VIBRANIUM, 0.5f, -3.0f)
                     .fireResistant()));
 
-    public static final DeferredItem<HoeItem> VIBRANIUM_HOE = ITEMS.registerItem("vibranium_hoe",
-            properties -> new HoeItem(MaterialsInit.VIBRANIUM, -5.0f, 0.0f, properties
+    public static final DeferredItem<Item> VIBRANIUM_HOE = ITEMS.registerItem("vibranium_hoe",
+            properties -> new Item(properties.hoe(MaterialsInit.VIBRANIUM, -5.0f, 0.0f)
                     .fireResistant()));
 
     public static final DeferredItem<VibraniumMaceItem> VIBRANIUM_MACE = ITEMS.registerItem("vibranium_mace",
-            properties -> new VibraniumMaceItem(MaterialsInit.VIBRANIUM, BlockTags.MINEABLE_WITH_PICKAXE, 2.0f, -3.2f, properties
+            properties -> new VibraniumMaceItem(MaterialsInit.VIBRANIUM, properties
                     .fireResistant()
-                    .rarity(Rarity.EPIC)));
+                    .rarity(Rarity.EPIC)
+                    .durability(850)
+                    .repairable(VIBRANIUM_INGOT.asItem())
+                    .component(DataComponents.TOOL, VibraniumMaceItem.createToolProperties())
+                    .attributes(VibraniumMaceItem.createAttributes())
+                    .enchantable(18)
+                    .component(DataComponents.WEAPON, new Weapon(1))));
 
     public static final DeferredItem<Item> VIBRANIUM_SHIELD = ITEMS.registerItem("vibranium_shield",
             properties ->  new ShieldItem(properties
@@ -125,7 +137,20 @@ public class ItemInit {
                     .durability(1024)
                     .component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
                     .repairable(TagsInit.Items.VIBRANIUM_REPAIR)
-                    .equippableUnswappable(EquipmentSlot.OFFHAND)));
+                    .equippableUnswappable(EquipmentSlot.OFFHAND)
+                    .component(
+                            DataComponents.BLOCKS_ATTACKS,
+                            new BlocksAttacks(
+                                    0.25F,
+                                    1.0F,
+                                    List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 1.0F)),
+                                    new BlocksAttacks.ItemDamageFunction(3.0F, 1.0F, 1.0F),
+                                    Optional.of(DamageTypeTags.BYPASSES_SHIELD),
+                                    Optional.of(SoundEvents.SHIELD_BLOCK),
+                                    Optional.of(SoundEvents.SHIELD_BREAK)
+                            )
+                    )
+                    .component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK)));
 
     //Advanced Items
     public static final DeferredItem<BlockItem> HEART_SHAPED_HERB = ITEMS.registerSimpleBlockItem("heart_shaped_herb",

@@ -21,7 +21,7 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_NUGGET, "Vibranium Nugget");
         addItem(ItemInit.VIBRANIUM_PLATE, "Vibranium Plate");
         addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Smithing Template");
-        addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawn Egg");
+//        addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawn Egg");
         addItem(ItemInit.VIBRANIUM_CORE, "Vibranium Core");
         addItem(ItemInit.HEART_SHAPED_HERB, "Heart Shaped Herb");
         addItem(ItemInit.SOUL_HERB_MIXTURE, "Soul Herb Mixture");

@@ -21,7 +21,7 @@ public class ModFrLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_NUGGET, "Pépite de vibranium");
         addItem(ItemInit.VIBRANIUM_PLATE, "Plaque de vibranium");
         addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Gabarit de forgeage");
-        addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Oeuf d'apparition de Golem Vibra");
+//        addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Oeuf d'apparition de Golem Vibra");
         addItem(ItemInit.VIBRANIUM_CORE, "Noyau de vibranium");
         addItem(ItemInit.HEART_SHAPED_HERB, "Herbe en forme de coeur");
         addItem(ItemInit.SOUL_HERB_MIXTURE, "Mélange d'herbes d'âme");

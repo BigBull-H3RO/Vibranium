@@ -147,12 +147,12 @@ public class VibraGolemEntity extends TamableAnimal {
         return this.entityData.get(ATTACKING);
     }
 
-    @Override
-    public void readAdditionalSaveData(CompoundTag tag) {
-        super.readAdditionalSaveData(tag);
-        this.setSitting(tag.getBoolean("Sitting"));
-        this.setDefensiveMode(tag.getBoolean("DefensiveMode"), BlockPos.of(tag.getLong("DefensivePosition")));
-    }
+//    @Override
+//    public void readAdditionalSaveData(CompoundTag tag) {
+//        super.readAdditionalSaveData(tag);
+//        this.setSitting(tag.getBoolean("Sitting"));
+//        this.setDefensiveMode(tag.getBoolean("DefensiveMode"), BlockPos.of(tag.getLong("DefensivePosition")));
+//    }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {

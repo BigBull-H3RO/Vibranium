@@ -30,7 +30,6 @@ import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.Level;
@@ -216,7 +215,7 @@ public class ModGameEvents {
         boolean hasRawVibranium = false;
 
         if (!player.isCreative()) {
-            for (ItemStack itemStack : player.getInventory().items) {
+            for (ItemStack itemStack : player.getInventory()) {
                 if (itemStack.getItem() == ItemInit.RAW_VIBRANIUM.get()) {
                     hasRawVibranium = true;
                     break;
@@ -233,7 +232,7 @@ public class ModGameEvents {
             }
         }
 
-        if (!player.isEyeInFluid(FluidTags.WATER) && isEquipped(player, Items.TURTLE_HELMET)) {
+        if (!player.isEyeInFluid(FluidTags.WATER) && isEquipped(player, ItemInit.VIBRANIUM_TURTLE_HELMET.get())) {
             vibraniumTurtleHelmetTick(player);
         }
     }
@@ -276,7 +275,6 @@ public class ModGameEvents {
     private static void shootArrowBack(Player player, Arrow originalArrow) {
         Arrow newArrow = new Arrow(EntityType.ARROW, player.level());
 
-        newArrow.setBaseDamage(originalArrow.getBaseDamage());
         newArrow.setCritArrow(originalArrow.isCritArrow());
         newArrow.setRemainingFireTicks(originalArrow.getRemainingFireTicks());
         newArrow.setOwner(player);

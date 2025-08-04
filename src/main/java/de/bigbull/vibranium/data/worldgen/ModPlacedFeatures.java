@@ -31,7 +31,7 @@ public class ModPlacedFeatures {
         );
 
         PlacementUtils.register(context, VIBRANIUM_GEODE, vibraniumGeodeFeature,
-                List.of(RarityFilter.onAverageOnceEvery(120),
+                List.of(RarityFilter.onAverageOnceEvery(50),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(-45), VerticalAnchor.absolute(15)),
                         BiomeFilter.biome())

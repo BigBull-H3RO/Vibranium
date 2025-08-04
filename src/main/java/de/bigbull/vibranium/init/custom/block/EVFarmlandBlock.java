@@ -45,10 +45,13 @@ public class EVFarmlandBlock extends FarmBlock {
     }
 
     @Override
-    public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-        if (level instanceof ServerLevel serverlevel && net.neoforged.neoforge.common.CommonHooks.onFarmlandTrample(serverlevel, pos, BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState(), fallDistance, entity)) {
-            turnToEnrichedDirt(entity, state, level, pos);
+    public void fallOn(Level level, BlockState blockState, BlockPos pos, Entity entity, double fallDistance) {
+        if (level instanceof ServerLevel serverlevel
+                && net.neoforged.neoforge.common.CommonHooks.onFarmlandTrample(serverlevel, pos, BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState(), fallDistance, entity)) {
+            turnToDirt(entity, blockState, level, pos);
         }
+
+        super.fallOn(level, blockState, pos, entity, fallDistance);
     }
 
     @Override

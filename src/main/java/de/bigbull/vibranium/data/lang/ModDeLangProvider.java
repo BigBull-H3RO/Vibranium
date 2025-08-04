@@ -20,7 +20,7 @@ public class ModDeLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_NUGGET, "Vibraniumklumpen");
         addItem(ItemInit.VIBRANIUM_PLATE, "Vibraniumplatte");
         addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Schmiedevorlage");
-        addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawnei");
+//        addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Vibra Golem Spawnei");
         addItem(ItemInit.VIBRANIUM_CORE, "Vibraniumkern");
         addItem(ItemInit.HEART_SHAPED_HERB, "Herzformiges Kraut");
         addItem(ItemInit.SOUL_HERB_MIXTURE, "Seelenkraut Mischung");

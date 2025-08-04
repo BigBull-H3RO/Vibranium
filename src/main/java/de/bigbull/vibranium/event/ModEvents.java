@@ -8,9 +8,9 @@ import de.bigbull.vibranium.entity.client.VibraGolemRenderer;
 import de.bigbull.vibranium.init.*;
 import de.bigbull.vibranium.init.custom.ShieldRenderer;
 import de.bigbull.vibranium.init.custom.particle.CustomDripParticle;
-import de.bigbull.vibranium.init.custom.particle.CustomLeavesParticle;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.particle.FallingLeavesParticle;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
@@ -55,7 +55,7 @@ public class ModEvents {
         event.registerSprite(ParticleInit.DRIPPING_VIBRANIUM.get(), CustomDripParticle::createVibraniumHangParticle);
         event.registerSprite(ParticleInit.FALLING_VIBRANIUM.get(), CustomDripParticle::createVibraniumFallParticle);
         event.registerSprite(ParticleInit.LANDING_VIBRANIUM.get(), CustomDripParticle::createVibraniumLandParticle);
-        event.registerSpriteSet(ParticleInit.SOULWOOD_LEAVES.get(), CustomLeavesParticle.Provider::new);
+        event.registerSpriteSet(ParticleInit.SOULWOOD_LEAVES.get(), FallingLeavesParticle.CherryProvider::new);
     }
 
     public static void onRegisterSpecialModelRenderers(RegisterSpecialModelRendererEvent event) {

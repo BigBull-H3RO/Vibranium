@@ -21,7 +21,7 @@ public class ModEsLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_NUGGET, "Pepita de Vibranium");
         addItem(ItemInit.VIBRANIUM_PLATE, "Placa de Vibranium");
         addItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, "Plantilla de herrería");
-        addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Huevo de invocación de Golem Vibra");
+//        addItem(ItemInit.VIBRA_GOLEM_SPAWN_EGG, "Huevo de invocación de Golem Vibra");
         addItem(ItemInit.VIBRANIUM_CORE, "Núcleo de Vibranium");
         addItem(ItemInit.HEART_SHAPED_HERB, "Hierba en forma de corazón");
         addItem(ItemInit.SOUL_HERB_MIXTURE, "Mezcla de hierbas de alma");

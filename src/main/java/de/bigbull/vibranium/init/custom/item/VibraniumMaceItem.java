@@ -10,20 +10,25 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.component.Tool;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -32,17 +37,33 @@ import net.minecraft.world.phys.Vec3;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class VibraniumMaceItem extends DiggerItem {
+public class VibraniumMaceItem extends Item {
     private final ToolMaterial material;
     private float lastCalculatedDamage = 0.0F;
 
     public static final Component TOOLTIP = Component.translatable("item.vibranium_mace.tooltip").withStyle(ChatFormatting.GRAY);
 
-    public VibraniumMaceItem(ToolMaterial material, TagKey<Block> tag, float attackDamage, float attackSpeed, Properties properties) {
-        super(material, BlockTags.MINEABLE_WITH_PICKAXE, attackDamage, attackSpeed, properties);
+    public VibraniumMaceItem(ToolMaterial material, Item.Properties properties) {
+        super(properties);
         this.material = material;
+    }
+
+    public static ItemAttributeModifiers createAttributes() {
+        return ItemAttributeModifiers.builder()
+                .add(
+                        Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 5.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND
+                )
+                .add(
+                        Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -3.2F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND
+                )
+                .build();
+    }
+
+    public static Tool createToolProperties() {
+        return new Tool(List.of(), 1.0F, 2, false);
     }
 
     public static List<BlockPos> getBlocksToBeDestroyed(int range, BlockPos initalBlockPos, Player player) {
@@ -82,12 +103,7 @@ public class VibraniumMaceItem extends DiggerItem {
     }
 
     @Override
-    public boolean canAttackBlock(BlockState blockState, Level level, BlockPos blockPos, Player player) {
-        return !player.isCreative();
-    }
-
-    @Override
-    public boolean hurtEnemy(ItemStack itemStack, LivingEntity entity, LivingEntity entity1) {
+    public void hurtEnemy(ItemStack itemStack, LivingEntity entity, LivingEntity entity1) {
         if (canSmashAttack(entity1)) {
             ServerLevel serverlevel = (ServerLevel)entity1.level();
             entity1.setDeltaMovement(entity1.getDeltaMovement().with(Direction.Axis.Y, 0.01F));
@@ -112,8 +128,6 @@ public class VibraniumMaceItem extends DiggerItem {
 
             knockback(serverlevel, entity1, entity);
         }
-
-        return true;
     }
 
     private Vec3 calculateImpactPosition(ServerPlayer p_365384_) {
@@ -126,7 +140,6 @@ public class VibraniumMaceItem extends DiggerItem {
 
     @Override
     public void postHurtEnemy(ItemStack itemStack, LivingEntity entity, LivingEntity entity1) {
-        itemStack.hurtAndBreak(1, entity1, EquipmentSlot.MAINHAND);
         if (canSmashAttack(entity1)) {
             entity1.resetFallDistance();
         }
@@ -138,10 +151,10 @@ public class VibraniumMaceItem extends DiggerItem {
             if (!canSmashAttack(livingentity)) {
                 return 0.0F;
             } else {
-                float f3 = 3.0F;
-                float f = 8.0F;
-                float f1 = livingentity.fallDistance;
-                float damage;
+                double f3 = 3.0F;
+                double f = 8.0F;
+                double f1 = livingentity.fallDistance;
+                double damage;
                 if (f1 <= 3.0F) {
                     damage = 4.0F * f1;
                 } else if (f1 <= 8.0F) {
@@ -150,11 +163,11 @@ public class VibraniumMaceItem extends DiggerItem {
                     damage = 22.0F + f1 - 8.0F;
                 }
 
-                lastCalculatedDamage = damage;
+                lastCalculatedDamage = (float) damage;
 
                 return livingentity.level() instanceof ServerLevel serverlevel
-                        ? damage + EnchantmentHelper.modifyFallBasedDamage(serverlevel, livingentity.getWeaponItem(), entity, damageSource, 0.0F) * f1
-                        : damage;
+                        ? (float) (damage + EnchantmentHelper.modifyFallBasedDamage(serverlevel, livingentity.getWeaponItem(), entity, damageSource, 0.0F) * f1)
+                        : (float) damage;
             }
         } else {
             lastCalculatedDamage = 0.0F;
@@ -185,36 +198,18 @@ public class VibraniumMaceItem extends DiggerItem {
     }
 
     private static Predicate<LivingEntity> knockbackPredicate(Entity entity, Entity entity1) {
-        return livingEntity -> {
-            boolean flag;
-            boolean flag1;
-            boolean flag2;
-            boolean flag6;
-            label62: {
-                flag = !livingEntity.isSpectator();
-                flag1 = livingEntity != entity && livingEntity != entity1;
-                flag2 = !entity.isAlliedTo(livingEntity);
-                if (livingEntity instanceof TamableAnimal tamableanimal && tamableanimal.isTame() && entity.getUUID().equals(tamableanimal.getOwnerUUID())) {
-                    flag6 = true;
-                    break label62;
-                }
-
-                flag6 = false;
-            }
-
-            boolean flag3;
-            label55: {
-                flag3 = !flag6;
-                if (livingEntity instanceof ArmorStand armorstand && armorstand.isMarker()) {
-                    flag6 = false;
-                    break label55;
-                }
-
-                flag6 = true;
-            }
-
-            boolean flag4 = flag6;
-            boolean flag5 = entity1.distanceToSqr(livingEntity) <= Math.pow(3.5, 2.0);
+        return p_393278_ -> {
+            boolean flag = !p_393278_.isSpectator();
+            boolean flag1 = p_393278_ != entity && p_393278_ != entity1;
+            boolean flag2 = !entity.isAlliedTo(p_393278_);
+            boolean flag3 = !(
+                    p_393278_ instanceof TamableAnimal tamableanimal
+                            && entity1 instanceof LivingEntity livingentity
+                            && tamableanimal.isTame()
+                            && tamableanimal.isOwnedBy(livingentity)
+            );
+            boolean flag4 = !(p_393278_ instanceof ArmorStand armorstand && armorstand.isMarker());
+            boolean flag5 = entity1.distanceToSqr(p_393278_) <= Math.pow(3.5, 2.0);
             return flag && flag1 && flag2 && flag3 && flag4 && flag5;
         };
     }
@@ -222,7 +217,7 @@ public class VibraniumMaceItem extends DiggerItem {
     private static double getKnockbackPower(Entity entity, LivingEntity entity1, Vec3 vec3) {
         return (3.5 - vec3.length())
                 * 0.7F
-                * (double)(entity.fallDistance > 5.0F ? 2 : 1)
+                * (entity.fallDistance > 5.0F ? 2 : 1)
                 * (1.0 - entity1.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
     }
 
@@ -253,7 +248,7 @@ public class VibraniumMaceItem extends DiggerItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
-        list.add(TOOLTIP);
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, TooltipDisplay tooltipDisplay, Consumer<Component> consumer, TooltipFlag flag) {
+        consumer.accept(TOOLTIP);
     }
 }

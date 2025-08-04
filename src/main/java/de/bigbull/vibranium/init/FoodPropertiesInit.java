@@ -21,12 +21,11 @@ public class FoodPropertiesInit {
                             new MobEffectInstance(MobEffects.REGENERATION, 400, 0, true, false),
                             new MobEffectInstance(MobEffects.ABSORPTION, 400, 0, true, false),
                             new MobEffectInstance(MobEffects.DARKNESS, 200, 0, true, false),
-                            new MobEffectInstance(MobEffects.DAMAGE_BOOST, 400, 0, true, false),
-                            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 0, true, false),
+                            new MobEffectInstance(MobEffects.STRENGTH, 400, 0, true, false),
+                            new MobEffectInstance(MobEffects.SPEED, 400, 0, true, false),
                             new MobEffectInstance(MobEffects.POISON, 200, 0, true, false),
-                            new MobEffectInstance(MobEffects.CONFUSION, 250, 0, true, false)
-                    ),
-                    1.0F
+                            new MobEffectInstance(MobEffects.NAUSEA, 250, 0, true, false)
+                    )
             ))
             .build();
 }

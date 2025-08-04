@@ -17,7 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -25,16 +25,22 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class HSHBushBlock extends BushBlock implements BonemealableBlock {
+public class HSHBushBlock extends VegetationBlock implements BonemealableBlock {
     public static final MapCodec<HSHBushBlock> CODEC = simpleCodec(HSHBushBlock::new);
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-    private static final VoxelShape SAPLING_SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
-    private static final VoxelShape MID_GROWTH_SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+    private static final VoxelShape SHAPE_SAPLING = Block.column(10.0, 0.0, 8.0);
+    private static final VoxelShape SHAPE_GROWING = Block.column(14.0, 0.0, 16.0);
 
-    public HSHBushBlock(Properties p_51021_) {
-        super(p_51021_);
+    @Override
+    public MapCodec<HSHBushBlock> codec() {
+        return CODEC;
+    }
+
+    public HSHBushBlock(Block.Properties properties) {
+        super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
 
@@ -60,12 +66,12 @@ public class HSHBushBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        if (state.getValue(AGE) == 0) {
-            return SAPLING_SHAPE;
-        } else {
-            return state.getValue(AGE) < 3 ? MID_GROWTH_SHAPE : super.getShape(state, world, pos, context);
-        }
+    protected VoxelShape getShape(BlockState p_57291_, BlockGetter p_57292_, BlockPos p_57293_, CollisionContext p_57294_) {
+        return switch (p_57291_.getValue(AGE)) {
+            case 0 -> SHAPE_SAPLING;
+            case 3 -> Shapes.block();
+            default -> SHAPE_GROWING;
+        };
     }
 
     @Override
@@ -74,12 +80,14 @@ public class HSHBushBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-        int age = state.getValue(AGE);
-        if (age < 3 && world.getRawBrightness(pos.above(), 0) >= 9) {
-            if (random.nextInt(40) == 0) {
-                world.setBlock(pos, state.setValue(AGE, age + 1), 2);
-                world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(state));
+    protected void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos pos, RandomSource randomSource) {
+        int i = blockState.getValue(AGE);
+        if (i < 3 && serverLevel.getRawBrightness(pos.above(), 0) >= 9 && net.neoforged.neoforge.common.CommonHooks.canCropGrow(serverLevel, pos, blockState, randomSource.nextInt(5) == 0)) {
+            if (randomSource.nextInt(40) == 0) {
+                BlockState blockstate = blockState.setValue(AGE, i + 1);
+                serverLevel.setBlock(pos, blockstate, 2);
+                net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(serverLevel, pos, blockState);
+                serverLevel.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockstate));
             }
         }
     }
@@ -106,24 +114,20 @@ public class HSHBushBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        int age = state.getValue(AGE);
-        boolean isMature = age == 3;
-        if (isMature) {
-            level.setBlock(pos, state.setValue(AGE, 1), 2);
-            ItemStack drop = new ItemStack(ItemInit.HEART_SHAPED_HERB.get(), 1);
-            popResource(level, pos, drop);
-            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, state));
-            return level.isClientSide ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;
+    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        int i = blockState.getValue(AGE);
+        boolean flag = i == 3;
+        if (i > 1) {
+            int j = 1 + level.random.nextInt(2);
+            popResource(level, pos, new ItemStack(ItemInit.HEART_SHAPED_HERB.get(), j + (flag ? 1 : 0)));
+            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+            BlockState blockstate = blockState.setValue(AGE, 1);
+            level.setBlock(pos, blockstate, 2);
+            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockstate));
+            return InteractionResult.SUCCESS;
         } else {
-            return InteractionResult.PASS;
+            return super.useWithoutItem(blockState, level, pos, player, hitResult);
         }
-    }
-
-    @Override
-    protected MapCodec<? extends BushBlock> codec() {
-        return CODEC;
     }
 
     @Override

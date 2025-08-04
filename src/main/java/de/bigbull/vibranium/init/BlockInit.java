@@ -5,7 +5,6 @@ import de.bigbull.vibranium.init.custom.block.EVDirtBlock;
 import de.bigbull.vibranium.init.custom.block.EVFarmlandBlock;
 import de.bigbull.vibranium.init.custom.block.HSHBushBlock;
 import de.bigbull.vibranium.init.custom.block.tree.EVTree;
-import de.bigbull.vibranium.init.custom.block.tree.SWLeavesBlock;
 import de.bigbull.vibranium.init.custom.block.tree.SoulTreeSaplingBlock;
 import de.bigbull.vibranium.init.custom.block.tree.VibraniumRotatedPillarBlock;
 import de.bigbull.vibranium.init.custom.block.vibraniumcrystal.BuddingVibraniumBlock;
@@ -102,11 +101,11 @@ public class BlockInit {
                     .sound(SoundType.CHERRY_WOOD)));
 
     public static final DeferredBlock<Block> SOULWOOD_LEAVES = registerBlock("soulwood_leaves",
-            properties -> new SWLeavesBlock(properties
+            properties -> new UntintedParticleLeavesBlock(0.1F, ParticleInit.SOULWOOD_LEAVES.get(), properties
                     .mapColor(MapColor.PLANT)
                     .strength(0.2F)
                     .randomTicks()
-                    .sound(SoundType.GRASS)
+                    .sound(SoundType.CHERRY_LEAVES)
                     .noOcclusion()
                     .isValidSpawn(Blocks::ocelotOrParrot)
                     .isSuffocating((state, reader, pos) -> false)

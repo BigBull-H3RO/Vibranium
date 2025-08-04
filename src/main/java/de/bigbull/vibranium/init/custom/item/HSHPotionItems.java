@@ -12,9 +12,11 @@ import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class HSHPotionItems extends Item {
     private final int duration;
@@ -37,8 +39,8 @@ public class HSHPotionItems extends Item {
                                 new MobEffectInstance(EffectInit.KINETIC_REDISTRIBUTION, duration, amplifier),
                                 new MobEffectInstance(MobEffects.REGENERATION, duration / 4, amplifier, false, false),
                                 new MobEffectInstance(MobEffects.ABSORPTION, duration / 4, amplifier, false, false),
-                                new MobEffectInstance(MobEffects.DAMAGE_BOOST, duration / 4, amplifier, false, false),
-                                new MobEffectInstance(MobEffects.MOVEMENT_SPEED, duration / 4, amplifier, false, false)
+                                new MobEffectInstance(MobEffects.STRENGTH, duration / 4, amplifier, false, false),
+                                new MobEffectInstance(MobEffects.SPEED, duration / 4, amplifier, false, false)
                         ),
                         1.0F
                 ))
@@ -46,9 +48,8 @@ public class HSHPotionItems extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-        super.appendHoverText(stack, context, tooltip, flag);
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, TooltipDisplay tooltipDisplay, Consumer<Component> consumer, TooltipFlag flag) {
         List<MobEffectInstance> effects = List.of(new MobEffectInstance(EffectInit.KINETIC_REDISTRIBUTION, duration, amplifier));
-        PotionContents.addPotionTooltip(effects, tooltip::add, 1.0F, context.tickRate());
+        PotionContents.addPotionTooltip(effects, consumer, 1.0F, tooltipContext.tickRate());
     }
 }
