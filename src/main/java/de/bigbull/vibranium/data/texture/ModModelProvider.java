@@ -52,11 +52,11 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.SOUL_HERB_MIXTURE.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_BOOTS.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ResourceLocation.parse("boots"), false);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_LEGGINGS.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ResourceLocation.parse("leggings"), false);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_CHESTPLATE.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ResourceLocation.parse("chestplate"), false);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_HELMET.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ResourceLocation.parse("helmet"), false);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_TURTLE_HELMET.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ResourceLocation.parse("helmet"), false);
+        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_BOOTS.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_LEGGINGS.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_CHESTPLATE.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_HELMET.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_TURTLE_HELMET.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateTwoLayerDyedItem(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
