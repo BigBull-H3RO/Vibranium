@@ -73,7 +73,7 @@ dependencies {
 
     api "dev.architectury:architectury-neoforge:${architectury_version}"
     api "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
-    api  "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+    api "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
 }
 
 tasks.withType(ProcessResources).configureEach {

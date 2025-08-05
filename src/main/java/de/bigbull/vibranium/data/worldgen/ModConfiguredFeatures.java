@@ -103,9 +103,8 @@ public class ModConfiguredFeatures {
                 List.of(OreConfiguration.target(stoneReplacable, BlockInit.DEPPSLATE_VIBRANIUM_ORE.get().defaultBlockState()),
                         OreConfiguration.target(deepslateReplacable, BlockInit.DEPPSLATE_VIBRANIUM_ORE.get().defaultBlockState()));
 
-        register(context, OVERWORLD_VIBRANIUM_ORE, Feature.ORE, new OreConfiguration(VibraniumOre, 4));
-
-        register(context, VIBRANIUM_GEODE, FeatureInit.VIBRANIUM_GEODE.get(), new GeodeConfiguration(
+        FeatureUtils.register(context, OVERWORLD_VIBRANIUM_ORE, Feature.ORE, new OreConfiguration(VibraniumOre, 4));
+        FeatureUtils.register(context, VIBRANIUM_GEODE, FeatureInit.VIBRANIUM_GEODE.get(), new GeodeConfiguration(
                 new GeodeBlockSettings(
                         BlockStateProvider.simple(Blocks.AIR),
                         BlockStateProvider.simple(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get()),
@@ -142,9 +141,5 @@ public class ModConfiguredFeatures {
 
     private static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, name));
-    }
-
-    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
-        context.register(key, new ConfiguredFeature<>(feature, configuration));
     }
 }
