@@ -46,7 +46,7 @@ public class ItemInit {
                     .stacksTo(1)));
 
     public static final DeferredItem<Item> VIBRANIUM_CRYSTAL_SHARD = ITEMS.registerItem("vibranium_crystal_shard",
-            properties ->  new Item(properties
+            properties ->  new Item(properties.trimMaterial(TrimMaterialsInit.VIBRANIUM)
                     .fireResistant()
                     .stacksTo(64)));
 
