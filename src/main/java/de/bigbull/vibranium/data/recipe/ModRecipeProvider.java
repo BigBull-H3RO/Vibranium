@@ -95,7 +95,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern(" C ")
                 .define('M', Items.MACE)
                 .define('C', ItemInit.VIBRANIUM_CORE)
-                .define('V', BlockInit.VIBRANIUM_BLOCK)
+                .define('V', ItemInit.VIBRANIUM_INGOT)
                 .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
                 .save(this.output, "vibranium_mace");
 
@@ -103,7 +103,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("WVW")
                 .pattern("WHW")
                 .pattern(" W ")
-                .define('H', Items.HEAVY_CORE)
+                .define('H', ItemInit.VIBRANIUM_CORE)
                 .define('W', ItemTags.PLANKS)
                 .define('V', ItemInit.VIBRANIUM_INGOT)
                 .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
