@@ -1,0 +1,44 @@
+name: 💡 Feature Request
+description: Suggest a new feature or improvement
+labels: ["feature request", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Thank you for your suggestion! Please describe your idea as clearly as possible.**
+
+  - type: textarea
+    id: feature_description
+    attributes:
+      label: Feature Description
+      description: Please describe the feature or improvement you would like to see.
+      placeholder: "I would like a feature that allows ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use Case / Motivation
+      description: Why would this feature be useful? When or how would you use it?
+      placeholder: "This feature would be useful because ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives (optional)
+      description: Are there alternative solutions or features that could also work? (Optional)
+      placeholder: "Alternatively, you could also ..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context (optional)
+      description: Add any other context, screenshots, or examples here. (Optional)
+      placeholder: "Additional information, screenshots, or examples ..."
+    validations:
+      required: false
