@@ -30,7 +30,6 @@ import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.Level;
@@ -233,7 +232,7 @@ public class ModGameEvents {
             }
         }
 
-        if (!player.isEyeInFluid(FluidTags.WATER) && isEquipped(player, Items.TURTLE_HELMET)) {
+        if (!player.isEyeInFluid(FluidTags.WATER) && isEquipped(player, ItemInit.VIBRANIUM_TURTLE_HELMET.get())) {
             vibraniumTurtleHelmetTick(player);
         }
     }
