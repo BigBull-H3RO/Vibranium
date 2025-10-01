@@ -63,7 +63,7 @@ public class VibraniumMaceItem extends Item {
     }
 
     public static Tool createToolProperties() {
-        return new Tool(List.of(), 1.0F, 2, false);
+        return new Tool(List.of(), 1.0F, 1, false);
     }
 
     public static List<BlockPos> getBlocksToBeDestroyed(int range, BlockPos initalBlockPos, Player player) {
@@ -242,7 +242,7 @@ public class VibraniumMaceItem extends Item {
             return baseSpeed * 0.3F;
         }
         if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
-            return baseSpeed * 0.5F;
+            return baseSpeed * 0.65F;
         }
         return baseSpeed;
     }

@@ -53,11 +53,9 @@ public class ClientRenderEvent {
             BlockState blockState = mc.level.getBlockState(hitPos);
 
             if (!mc.player.isShiftKeyDown() && isValidBlock(blockState)) {
-                // eigenen Renderer hinzufügen
                 event.addCustomRenderer(new VibraniumOutlineRenderer(hitPos, event.getCamera()));
-                // Vanilla Outline unterdrücken
-                event.setCanceled(true);
             }
+
         }
     }
 
@@ -106,7 +104,7 @@ public class ClientRenderEvent {
 
             poseStack.popPose();
 
-            return true; // Vanilla Outline unterdrücken
+            return true;
         }
 
         private void renderBlockOutline(PoseStack poseStack, MultiBufferSource bufferSource, AABB boundingBox) {
