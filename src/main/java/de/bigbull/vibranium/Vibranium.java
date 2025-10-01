@@ -42,7 +42,7 @@ public class Vibranium {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(DataGenerators::gatherDataClient);
 
-        if (FMLLoader.getDist() == Dist.CLIENT) {
+        if (FMLLoader.getCurrent().getDist() == Dist.CLIENT) {
             modEventBus.addListener(ModEvents::onRegisterParticles);
             modEventBus.addListener(ModEvents::onRegisterSpecialModelRenderers);
             modEventBus.addListener(ModEvents::clientSetup);

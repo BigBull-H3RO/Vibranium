@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.entity.client.VibraGolemModel;
 import de.bigbull.vibranium.entity.client.VibraGolemRenderState;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
@@ -26,15 +26,13 @@ public class VibraGolemCrackinessLayer extends RenderLayer<VibraGolemRenderState
         super(p_117346_);
     }
 
-    @Override
-    public void render(PoseStack poseStack, MultiBufferSource bufferSource, int i, VibraGolemRenderState state, float v, float f) {
-        if (!state.isInvisible) {
-            VibraCrackiness.Level crackiness$level = state.crackiness;
+    public void submit(PoseStack poseStack, SubmitNodeCollector collector, int p_117351_, VibraGolemRenderState renderState, float p_117353_, float p_117354_) {
+        if (!renderState.isInvisible) {
+            VibraCrackiness.Level crackiness$level = renderState.crackiness;
             if (crackiness$level != VibraCrackiness.Level.NONE) {
                 ResourceLocation resourcelocation = resourceLocations.get(crackiness$level);
-                renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, bufferSource, i, state, -1);
+                renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, collector, p_117351_, renderState, -1, 1);
             }
         }
-
     }
 }

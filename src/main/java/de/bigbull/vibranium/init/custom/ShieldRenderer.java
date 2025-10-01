@@ -1,73 +1,100 @@
 package de.bigbull.vibranium.init.custom;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.serialization.MapCodec;
 import de.bigbull.vibranium.Vibranium;
 import net.minecraft.client.model.ShieldModel;
-import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BannerRenderer;
-import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.client.resources.model.Material;
+import net.minecraft.client.resources.model.MaterialSet;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Unit;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.fml.common.EventBusSubscriber;
 import org.joml.Vector3f;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.Set;
 
-@OnlyIn(Dist.CLIENT)
+@EventBusSubscriber(value = Dist.CLIENT)
 public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
+    private final MaterialSet materials;
     private final ShieldModel model;
 
     public static final Material VIBRANIUM_SHIELD_BASE = new Material(Sheets.SHIELD_SHEET, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "entity/vibranium_shield_base"));
     public static final Material VIBRANIUM_SHIELD_BASE_NO_PATTERN = new Material(Sheets.SHIELD_SHEET, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "entity/vibranium_shield_base_nopattern"));
 
-    public ShieldRenderer(ShieldModel model) {
+    public ShieldRenderer(MaterialSet materials, ShieldModel model) {
+        this.materials = materials;
         this.model = model;
     }
 
-    public void render(@Nullable DataComponentMap p_386991_, ItemDisplayContext context, PoseStack poseStack, MultiBufferSource bufferSource, int p_387382_, int p_387013_, boolean p_387902_) {
-        BannerPatternLayers bannerpatternlayers = p_386991_ != null
-                ? p_386991_.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
+    public void submit(@Nullable DataComponentMap dataComponents, ItemDisplayContext context, PoseStack poseStack, SubmitNodeCollector collector, int p_386748_, int p_388858_, boolean p_387642_, int p_451675_) {
+        BannerPatternLayers bannerpatternlayers = dataComponents != null
+                ? dataComponents.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
                 : BannerPatternLayers.EMPTY;
-        DyeColor dyecolor = p_386991_ != null ? p_386991_.get(DataComponents.BASE_COLOR) : null;
+        DyeColor dyecolor = dataComponents != null ? dataComponents.get(DataComponents.BASE_COLOR) : null;
         boolean flag = !bannerpatternlayers.layers().isEmpty() || dyecolor != null;
         poseStack.pushPose();
         poseStack.scale(1.0F, -1.0F, -1.0F);
         Material material = flag ? VIBRANIUM_SHIELD_BASE : VIBRANIUM_SHIELD_BASE_NO_PATTERN;
-        VertexConsumer vertexconsumer = material.sprite()
-                .wrap(ItemRenderer.getFoilBuffer(bufferSource, this.model.renderType(material.atlasLocation()), context == ItemDisplayContext.GUI, p_387902_));
-        this.model.handle().render(poseStack, vertexconsumer, p_387382_, p_387013_);
+        collector.submitModelPart(
+                this.model.handle(),
+                poseStack,
+                this.model.renderType(material.atlasLocation()),
+                p_386748_,
+                p_388858_,
+                this.materials.get(material),
+                false,
+                false,
+                -1,
+                null,
+                p_451675_
+        );
         if (flag) {
-            BannerRenderer.renderPatterns(
+            BannerRenderer.submitPatterns(
+                    this.materials,
                     poseStack,
-                    bufferSource,
-                    p_387382_,
-                    p_387013_,
-                    this.model.plate(),
+                    collector,
+                    p_386748_,
+                    p_388858_,
+                    this.model,
+                    Unit.INSTANCE,
                     material,
                     false,
                     Objects.requireNonNullElse(dyecolor, DyeColor.WHITE),
                     bannerpatternlayers,
-                    p_387902_,
-                    false
+                    p_387642_,
+                    null,
+                    p_451675_
             );
         } else {
-            this.model.plate().render(poseStack, vertexconsumer, p_387382_, p_387013_);
+            collector.submitModelPart(
+                    this.model.plate(),
+                    poseStack,
+                    this.model.renderType(material.atlasLocation()),
+                    p_386748_,
+                    p_388858_,
+                    this.materials.get(material),
+                    false,
+                    p_387642_,
+                    -1,
+                    null,
+                    p_451675_
+            );
         }
+
         poseStack.popPose();
     }
 
@@ -84,8 +111,7 @@ public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
         return stack.immutableComponents();
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public static record Unbaked() implements SpecialModelRenderer.Unbaked {
+    public record Unbaked() implements SpecialModelRenderer.Unbaked {
         public static final ShieldRenderer.Unbaked INSTANCE = new ShieldRenderer.Unbaked();
         public static final MapCodec<ShieldRenderer.Unbaked> MAP_CODEC = MapCodec.unit(INSTANCE);
 
@@ -95,8 +121,8 @@ public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
         }
 
         @Override
-        public SpecialModelRenderer<?> bake(EntityModelSet entityModelSet) {
-            return new ShieldRenderer(new ShieldModel(entityModelSet.bakeLayer(ModelLayers.SHIELD)));
+        public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext bakingContext) {
+            return new ShieldRenderer(bakingContext.materials(), new ShieldModel(bakingContext.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
         }
     }
 }

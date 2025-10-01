@@ -91,7 +91,7 @@ public class ModEsLangProvider extends LanguageProvider {
         add("effect.vibranium.kinetic_redistribution", "Redistribución cinética");
 
         // KeyBinding
-        add("key.categories.vibranium", "Vibranium");
+        add("key.category.vibranium.main", "Vibranium");
         add("key.vibranium.toggle_outline", "Alternar contorno");
 
         // Enchantments

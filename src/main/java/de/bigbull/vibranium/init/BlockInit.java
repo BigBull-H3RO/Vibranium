@@ -53,7 +53,7 @@ public class BlockInit {
             properties -> new HSHBushBlock(properties
                     .mapColor(MapColor.PLANT)
                     .randomTicks()
-                    .noCollission()
+                    .noCollision()
                     .sound(SoundType.SWEET_BERRY_BUSH)
                     .pushReaction(PushReaction.DESTROY)));
 
@@ -116,7 +116,7 @@ public class BlockInit {
     public static final DeferredBlock<Block> SOULWOOD_SAPLING = registerBlock("soulwood_sapling",
             properties -> new SoulTreeSaplingBlock(EVTree.SOUL_TREE, properties
                     .mapColor(MapColor.PLANT)
-                    .noCollission()
+                    .noCollision()
                     .randomTicks()
                     .instabreak()
                     .sound(SoundType.CHERRY_SAPLING)
@@ -148,13 +148,13 @@ public class BlockInit {
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .forceSolidOn()
                     .instrument(NoteBlockInstrument.BASS)
-                    .noCollission()
+                    .noCollision()
                     .strength(0.8F)
                     .pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<ButtonBlock> SOULWOOD_BUTTON = registerBlock("soulwood_button",
             properties -> new ButtonBlock(TypesInit.SOULWOOD_BLOCKSETTYPE, 30, properties
-                    .noCollission()
+                    .noCollision()
                     .strength(0.8F)
                     .pushReaction(PushReaction.DESTROY)));
 
@@ -194,28 +194,28 @@ public class BlockInit {
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .forceSolidOn()
                     .strength(1.0F)
-                    .noCollission()));
+                    .noCollision()));
 
     public static final DeferredBlock<WallSignBlock> SOULWOOD_WALL_SIGN = BLOCKS.registerBlock("soulwood_wall_sign",
             properties -> new WallSignBlock(TypesInit.SOULWOOD_WOODTYPE, properties
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .forceSolidOn()
                     .strength(1.0F)
-                    .noCollission()));
+                    .noCollision()));
 
     public static final DeferredBlock<CeilingHangingSignBlock> SOULWOOD_HANGING_SIGN = BLOCKS.registerBlock("soulwood_hanging_sign",
             properties -> new CeilingHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, properties
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .forceSolidOn()
                     .strength(1.0F)
-                    .noCollission()));
+                    .noCollision()));
 
     public static final DeferredBlock<WallHangingSignBlock> SOULWOOD_WALL_HANGING_SIGN = BLOCKS.registerBlock("soulwood_wall_hanging_sign",
             properties -> new WallHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, properties
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .forceSolidOn()
                     .strength(1.0F)
-                    .noCollission()));
+                    .noCollision()));
 
     public static final DeferredBlock<FlowerPotBlock> POTTED_SOULWOOD_SAPLING = BLOCKS.registerBlock("potted_soulwood_sapling",
             properties -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SOULWOOD_SAPLING, properties

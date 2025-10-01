@@ -230,7 +230,7 @@ public class VibraGolemEntity extends TamableAnimal {
         super.aiStep();
         if (this.isDefensiveMode()) {
             particlecounter++;
-            if (particlecounter > 10 && this.level().isClientSide) {
+            if (particlecounter > 10 && this.level().isClientSide()) {
                 this.level().addParticle(ParticleTypes.END_ROD, this.getX(), this.getY() + 4.0D, this.getZ(), 0.0D, 0.0D, 0.0D);
                 particlecounter = 0;
             }
@@ -286,7 +286,7 @@ public class VibraGolemEntity extends TamableAnimal {
             }
             return super.mobInteract(player, hand);
         } else if (item == TamingItem) {
-            if (!this.level().isClientSide) {
+            if (!this.level().isClientSide()) {
                 itemstack.consume(1, player);
                 this.usePlayerItem(player, hand, itemstack);
                 this.tryToTame(player);

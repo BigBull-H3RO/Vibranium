@@ -90,7 +90,7 @@ public class ModDeLangProvider extends LanguageProvider {
         add("effect.vibranium.kinetic_redistribution", "Kinetische Umverteilung");
 
         //KeyBinding
-        add("key.categories.vibranium", "Vibranium");
+        add("key.category.vibranium.main", "Vibranium");
         add("key.vibranium.toggle_outline", "Umrahmung umschalten");
 
         //Enchantments

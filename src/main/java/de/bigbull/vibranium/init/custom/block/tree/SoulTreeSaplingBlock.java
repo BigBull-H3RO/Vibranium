@@ -38,7 +38,7 @@ public class SoulTreeSaplingBlock extends SaplingBlock {
             BlockPos groundPos = pos.below();
             BlockState groundState = level.getBlockState(groundPos);
             if (!groundState.is(BlockInit.ENRICHED_VIBRANIUM_DIRT.get())) {
-                if (!level.isClientSide) {
+                if (!level.isClientSide()) {
                     ServerLevel serverLevel = (ServerLevel) level;
 
                     serverLevel.sendParticles(ParticleTypes.SMOKE,
