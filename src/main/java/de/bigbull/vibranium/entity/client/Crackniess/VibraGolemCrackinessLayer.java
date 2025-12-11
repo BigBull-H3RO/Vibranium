@@ -8,18 +8,18 @@ import de.bigbull.vibranium.entity.client.VibraGolemRenderState;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.Map;
 
 public class VibraGolemCrackinessLayer extends RenderLayer<VibraGolemRenderState, VibraGolemModel> {
-    private static final Map<VibraCrackiness.Level, ResourceLocation> resourceLocations = ImmutableMap.of(
+    private static final Map<VibraCrackiness.Level, Identifier> resourceLocations = ImmutableMap.of(
             VibraCrackiness.Level.LOW,
-            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "textures/entity/vibra/vibra_golem_crackiness_low.png"),
+            Identifier.fromNamespaceAndPath(Vibranium.MODID, "textures/entity/vibra/vibra_golem_crackiness_low.png"),
             VibraCrackiness.Level.MEDIUM,
-            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "textures/entity/vibra/vibra_golem_crackiness_medium.png"),
+            Identifier.fromNamespaceAndPath(Vibranium.MODID, "textures/entity/vibra/vibra_golem_crackiness_medium.png"),
             VibraCrackiness.Level.HIGH,
-            ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "textures/entity/vibra/vibra_golem_crackiness_high.png")
+            Identifier.fromNamespaceAndPath(Vibranium.MODID, "textures/entity/vibra/vibra_golem_crackiness_high.png")
     );
 
     public VibraGolemCrackinessLayer(RenderLayerParent<VibraGolemRenderState, VibraGolemModel> p_117346_) {
@@ -30,7 +30,7 @@ public class VibraGolemCrackinessLayer extends RenderLayer<VibraGolemRenderState
         if (!renderState.isInvisible) {
             VibraCrackiness.Level crackiness$level = renderState.crackiness;
             if (crackiness$level != VibraCrackiness.Level.NONE) {
-                ResourceLocation resourcelocation = resourceLocations.get(crackiness$level);
+                Identifier resourcelocation = resourceLocations.get(crackiness$level);
                 renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, collector, p_117351_, renderState, -1, 1);
             }
         }

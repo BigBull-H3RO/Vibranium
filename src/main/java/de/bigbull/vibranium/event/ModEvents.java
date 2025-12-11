@@ -7,14 +7,14 @@ import de.bigbull.vibranium.entity.client.VibraGolemRenderer;
 import de.bigbull.vibranium.init.*;
 import de.bigbull.vibranium.init.custom.ShieldRenderer;
 import de.bigbull.vibranium.init.custom.particle.CustomDripParticle;
-import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.object.boat.BoatModel;
 import net.minecraft.client.particle.FallingLeavesParticle;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -51,7 +51,7 @@ public class ModEvents {
     }
 
     public static void onRegisterSpecialModelRenderers(RegisterSpecialModelRendererEvent event) {
-        event.register(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium_shield"), ShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium_shield"), ShieldRenderer.Unbaked.MAP_CODEC);
     }
 
     public static void addBlockEntityTypes(BlockEntityTypeAddBlocksEvent event) {

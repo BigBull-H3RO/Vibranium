@@ -2,9 +2,9 @@ package de.bigbull.vibranium.init.custom.item;
 
 import de.bigbull.vibranium.Vibranium;
 import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.Util;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SmithingTemplateItem;
 
@@ -12,40 +12,40 @@ import java.util.List;
 
 public class VibraniumUpgradeTemplate extends SmithingTemplateItem {
     public static final Component VIBRANIUM_UPGRADE_APPLIES_TO = Component.translatable(
-                    Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "smithing_template.vibranium_upgrade.applies_to"))
+                    Util.makeDescriptionId("item", Identifier.fromNamespaceAndPath(Vibranium.MODID, "smithing_template.vibranium_upgrade.applies_to"))
             )
             .withStyle(ChatFormatting.BLUE);
     public static final Component VIBRANIUM_UPGRADE_INGREDIENTS = Component.translatable(
-                    Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "smithing_template.vibranium_upgrade.ingredients"))
+                    Util.makeDescriptionId("item", Identifier.fromNamespaceAndPath(Vibranium.MODID, "smithing_template.vibranium_upgrade.ingredients"))
             )
             .withStyle(ChatFormatting.BLUE);
     public static final Component VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(
-            Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "smithing_template.vibranium_upgrade.base_slot_description"))
+            Util.makeDescriptionId("item", Identifier.fromNamespaceAndPath(Vibranium.MODID, "smithing_template.vibranium_upgrade.base_slot_description"))
     );
     public static final Component VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(
-            Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "smithing_template.vibranium_upgrade.additions_slot_description"))
+            Util.makeDescriptionId("item", Identifier.fromNamespaceAndPath(Vibranium.MODID, "smithing_template.vibranium_upgrade.additions_slot_description"))
     );
 
-    private static final ResourceLocation EMPTY_SLOT_HELMET = ResourceLocation.withDefaultNamespace("container/slot/helmet");
-    private static final ResourceLocation EMPTY_SLOT_CHESTPLATE = ResourceLocation.withDefaultNamespace("container/slot/chestplate");
-    private static final ResourceLocation EMPTY_SLOT_LEGGINGS = ResourceLocation.withDefaultNamespace("container/slot/leggings");
-    private static final ResourceLocation EMPTY_SLOT_BOOTS = ResourceLocation.withDefaultNamespace("container/slot/boots");
-    private static final ResourceLocation EMPTY_SLOT_HOE = ResourceLocation.withDefaultNamespace("container/slot/hoe");
-    private static final ResourceLocation EMPTY_SLOT_AXE = ResourceLocation.withDefaultNamespace("container/slot/axe");
-    private static final ResourceLocation EMPTY_SLOT_SWORD = ResourceLocation.withDefaultNamespace("container/slot/sword");
-    private static final ResourceLocation EMPTY_SLOT_SHOVEL = ResourceLocation.withDefaultNamespace("container/slot/shovel");
-    private static final ResourceLocation EMPTY_SLOT_PICKAXE = ResourceLocation.withDefaultNamespace("container/slot/pickaxe");
-    private static final ResourceLocation EMPTY_SLOT_INGOT = ResourceLocation.withDefaultNamespace("container/slot/ingot");
-    private static final ResourceLocation EMPTY_SLOT_WOLF_ARMOR = ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "container/slot/wolf_armor");
-    private static final ResourceLocation EMPTY_SLOT_HORSE_ARMOR = ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "container/slot/horse_armor");
+    private static final Identifier EMPTY_SLOT_HELMET = Identifier.withDefaultNamespace("container/slot/helmet");
+    private static final Identifier EMPTY_SLOT_CHESTPLATE = Identifier.withDefaultNamespace("container/slot/chestplate");
+    private static final Identifier EMPTY_SLOT_LEGGINGS = Identifier.withDefaultNamespace("container/slot/leggings");
+    private static final Identifier EMPTY_SLOT_BOOTS = Identifier.withDefaultNamespace("container/slot/boots");
+    private static final Identifier EMPTY_SLOT_HOE = Identifier.withDefaultNamespace("container/slot/hoe");
+    private static final Identifier EMPTY_SLOT_AXE = Identifier.withDefaultNamespace("container/slot/axe");
+    private static final Identifier EMPTY_SLOT_SWORD = Identifier.withDefaultNamespace("container/slot/sword");
+    private static final Identifier EMPTY_SLOT_SHOVEL = Identifier.withDefaultNamespace("container/slot/shovel");
+    private static final Identifier EMPTY_SLOT_PICKAXE = Identifier.withDefaultNamespace("container/slot/pickaxe");
+    private static final Identifier EMPTY_SLOT_INGOT = Identifier.withDefaultNamespace("container/slot/ingot");
+    private static final Identifier EMPTY_SLOT_WOLF_ARMOR = Identifier.fromNamespaceAndPath(Vibranium.MODID, "container/slot/wolf_armor");
+    private static final Identifier EMPTY_SLOT_HORSE_ARMOR = Identifier.fromNamespaceAndPath(Vibranium.MODID, "container/slot/horse_armor");
 
     public VibraniumUpgradeTemplate(
             Component appliesTo,
             Component ingredients,
             Component baseSlotDescription,
             Component additionsSlotDescription,
-            List<ResourceLocation> baseSlotEmptyIcons,
-            List<ResourceLocation> additionalSlotEmptyIcons,
+            List<Identifier> baseSlotEmptyIcons,
+            List<Identifier> additionalSlotEmptyIcons,
             Properties properties) {
         super(appliesTo, ingredients, baseSlotDescription, additionsSlotDescription, baseSlotEmptyIcons, additionalSlotEmptyIcons, properties);
     }
@@ -62,7 +62,7 @@ public class VibraniumUpgradeTemplate extends SmithingTemplateItem {
         );
     }
 
-    private static List<ResourceLocation> createVibraniumUpgradeIconList() {
+    private static List<Identifier> createVibraniumUpgradeIconList() {
         return List.of(
                 EMPTY_SLOT_HELMET,
                 EMPTY_SLOT_SWORD,
@@ -78,7 +78,7 @@ public class VibraniumUpgradeTemplate extends SmithingTemplateItem {
         );
     }
 
-    private static List<ResourceLocation> createVibraniumUpgradeMaterialList() {
+    private static List<Identifier> createVibraniumUpgradeMaterialList() {
         return List.of(EMPTY_SLOT_INGOT);
     }
 }

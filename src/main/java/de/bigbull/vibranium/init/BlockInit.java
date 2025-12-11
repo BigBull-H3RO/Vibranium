@@ -11,8 +11,8 @@ import de.bigbull.vibranium.init.custom.block.vibraniumcrystal.BuddingVibraniumB
 import de.bigbull.vibranium.init.custom.block.vibraniumcrystal.VibraniumClusterBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -287,6 +287,6 @@ public class BlockInit {
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
         ItemInit.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().useBlockDescriptionPrefix()
-                .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, name)))));
+                .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Vibranium.MODID, name)))));
     }
 }

@@ -11,6 +11,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.Util;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BuddingAmethystBlock;
@@ -157,7 +158,7 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
         List<BlockState> list3 = geodeblocksettings.innerPlacements;
 
         for (BlockPos blockpos4 : list2) {
-            BlockState blockstate1 = net.minecraft.Util.getRandom(list3, randomsource);
+            BlockState blockstate1 = Util.getRandom(list3, randomsource);
 
             for (Direction direction : DIRECTIONS) {
                 if (blockstate1.hasProperty(BlockStateProperties.FACING)) {

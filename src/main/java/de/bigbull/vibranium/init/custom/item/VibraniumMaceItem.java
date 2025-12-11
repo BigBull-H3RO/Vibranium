@@ -225,10 +225,9 @@ public class VibraniumMaceItem extends Item {
         return entity.fallDistance > 1.5F && !entity.isFallFlying();
     }
 
-    @Nullable
     @Override
-    public DamageSource getDamageSource(LivingEntity entity) {
-        return canSmashAttack(entity) ? entity.damageSources().mace(entity) : super.getDamageSource(entity);
+    public @Nullable DamageSource getItemDamageSource(LivingEntity p_373049_) {
+        return canSmashAttack(p_373049_) ? p_373049_.damageSources().mace(p_373049_) : super.getItemDamageSource(p_373049_);
     }
 
     @Override

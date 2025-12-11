@@ -1,7 +1,7 @@
 package de.bigbull.vibranium.init;
 
 import de.bigbull.vibranium.Vibranium;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -23,10 +23,10 @@ public class TagsInit {
     }
 
     private static TagKey<Item> createItemTag(String name) {
-        return ItemTags.create(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, name));
+        return ItemTags.create(Identifier.fromNamespaceAndPath(Vibranium.MODID, name));
     }
 
     private static TagKey<Block> createBlockTag(String name) {
-        return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, name));
+        return BlockTags.create(Identifier.fromNamespaceAndPath(Vibranium.MODID, name));
     }
 }

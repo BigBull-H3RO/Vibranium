@@ -116,6 +116,9 @@ public class ModEnLangProvider extends LanguageProvider {
         //Vibranium Mace
         add("item.vibranium_mace.tooltip", "Can mine 3x3 blocks");
 
+        //Entities
+        add("entity.vibranium.soulwood_chest_boat", "Soulwood Boat with Chest");
+
         //others
         add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Vibranium");
 

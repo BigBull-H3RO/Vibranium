@@ -46,19 +46,19 @@ public class ItemInit {
                     .stacksTo(1)));
 
     public static final DeferredItem<Item> VIBRANIUM_CRYSTAL_SHARD = ITEMS.registerItem("vibranium_crystal_shard",
-            properties ->  new Item(properties.trimMaterial(TrimMaterialsInit.VIBRANIUM)
+            properties -> new Item(properties.trimMaterial(TrimMaterialsInit.VIBRANIUM)
                     .fireResistant()
                     .stacksTo(64)));
 
     public static final DeferredItem<Item> SOUL_HERB_MIXTURE = ITEMS.registerItem("soul_herb_mixture",
-            properties ->  new Item(properties
+            properties -> new Item(properties
                     .stacksTo(16)));
 
 //    public static final DeferredItem<SpawnEggItem> VIBRA_GOLEM_SPAWN_EGG = ITEMS.registerItem("vibra_golem_spawn_egg",
 //            properties -> new SpawnEggItem(Entitiesinit.VIBRAGOLEM.get(), properties));
 
-    public static final DeferredItem<SmithingTemplateItem> VIBRANIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.registerItem("vibranium_upgrade_smithing_template",
-            VibraniumUpgradeTemplate::createVibraniumUpgradeTemplate, new Item.Properties()
+    public static final DeferredItem<Item> VIBRANIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.registerItem("vibranium_upgrade_smithing_template",
+            VibraniumUpgradeTemplate::createVibraniumUpgradeTemplate, properties -> new Item.Properties()
                             .fireResistant()
                             .rarity(Rarity.UNCOMMON));
 
@@ -131,7 +131,7 @@ public class ItemInit {
                     .component(DataComponents.WEAPON, new Weapon(1))));
 
     public static final DeferredItem<Item> VIBRANIUM_SHIELD = ITEMS.registerItem("vibranium_shield",
-            properties ->  new ShieldItem(properties
+            properties -> new ShieldItem(properties
                     .fireResistant()
                     .stacksTo(1)
                     .durability(1024)
@@ -154,18 +154,18 @@ public class ItemInit {
 
     //Advanced Items
     public static final DeferredItem<BlockItem> HEART_SHAPED_HERB = ITEMS.registerSimpleBlockItem("heart_shaped_herb",
-            BlockInit.HEART_SHAPED_HERB_BUSH, new Item.Properties()
+            BlockInit.HEART_SHAPED_HERB_BUSH, properties -> new Item.Properties()
                     .food(FoodPropertiesInit.HEART_SHAPED_HERB, FoodPropertiesInit.HEART_SHAPED_HERB_EFFECT)
                     .rarity(Rarity.RARE)
                     .stacksTo(16));
 
     public static final DeferredItem<Item> SOUL_HERB_ELIXIR = ITEMS.registerItem("soul_herb_elixir",
-            properties ->  new HSHPotionItems(properties
+            properties -> new HSHPotionItems(properties
                     .rarity(Rarity.RARE)
                     .stacksTo(1), 3600, 0));
 
     public static final DeferredItem<Item> SOUL_HERB_ELIXIR_EXTENDED = ITEMS.registerItem("soul_herb_elixir_extended",
-            properties ->  new HSHPotionItems(properties
+            properties -> new HSHPotionItems(properties
                     .rarity(Rarity.RARE)
                     .stacksTo(1), 9600, 0));
 
@@ -175,18 +175,18 @@ public class ItemInit {
                     .stacksTo(1), 1800, 1));
 
     public static final DeferredItem<Item> SOULWOOD_SIGN = ITEMS.registerItem("soulwood_sign",
-            properties ->  new SignItem(BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get(), properties
+            properties -> new SignItem(BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get(), properties
                     .stacksTo(16)));
 
     public static final DeferredItem<Item> SOULWOOD_HANGING_SIGN = ITEMS.registerItem("soulwood_hanging_sign",
-            properties ->  new HangingSignItem(BlockInit.SOULWOOD_HANGING_SIGN.get(), BlockInit.SOULWOOD_WALL_HANGING_SIGN.get(), properties
+            properties -> new HangingSignItem(BlockInit.SOULWOOD_HANGING_SIGN.get(), BlockInit.SOULWOOD_WALL_HANGING_SIGN.get(), properties
                     .stacksTo(16)));
 
     public static final DeferredItem<Item> SOULWOOD_BOAT = ITEMS.registerItem("soulwood_boat",
-            properties ->  new BoatItem(Entitiesinit.SOULWOOD_BOAT.get(), properties
+            properties -> new BoatItem(Entitiesinit.SOULWOOD_BOAT.get(), properties
                     .stacksTo(1)));
 
     public static final DeferredItem<Item> SOULWOOD_CHEST_BOAT = ITEMS.registerItem("soulwood_chest_boat",
-            properties ->  new BoatItem(Entitiesinit.SOULWOOD_CHEST_BOAT.get(), properties
+            properties -> new BoatItem(Entitiesinit.SOULWOOD_CHEST_BOAT.get(), properties
                     .stacksTo(1)));
 }

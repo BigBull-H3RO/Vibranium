@@ -10,17 +10,18 @@ import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShapeRenderer;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.BlockOutlineRenderState;
 import net.minecraft.client.renderer.state.LevelRenderState;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -40,13 +41,11 @@ public class ClientRenderEvent {
 
         ItemStack mainHandItem = mc.player.getMainHandItem();
 
-        // Toggle Key
         if (ModKeybinds.TOGGLE_OUTLINE.consumeClick()) {
             isOutlineEnabled = !isOutlineEnabled;
         }
         if (!isOutlineEnabled) return;
 
-        // Nur bei Vibranium Mace + Block-Hit
         if (isValidVibraniumMace(mainHandItem) && event.getHitResult() != null && !mc.player.isCreative()) {
             BlockHitResult hitResult = event.getHitResult();
             BlockPos hitPos = hitResult.getBlockPos();
@@ -68,15 +67,8 @@ public class ClientRenderEvent {
         return !state.isAir() && block.defaultBlockState().isSolidRender();
     }
 
-    // --- eigener Renderer ---
-    private static class VibraniumOutlineRenderer implements CustomBlockOutlineRenderer {
-        private final BlockPos center;
-        private final Camera camera;
-
-        public VibraniumOutlineRenderer(BlockPos center, Camera camera) {
-            this.center = center;
-            this.camera = camera;
-        }
+    // Custom outline renderer for Vibranium Mace
+    private record VibraniumOutlineRenderer(BlockPos center, Camera camera) implements CustomBlockOutlineRenderer {
 
         @Override
         public boolean render(BlockOutlineRenderState renderState,
@@ -87,7 +79,7 @@ public class ClientRenderEvent {
             Minecraft mc = Minecraft.getInstance();
             if (mc.player == null || mc.level == null) return false;
 
-            Vec3 camPos = camera.getPosition();
+            Vec3 camPos = camera.position();
 
             poseStack.pushPose();
             poseStack.translate(-camPos.x, -camPos.y, -camPos.z);
@@ -97,8 +89,8 @@ public class ClientRenderEvent {
             for (BlockPos pos : positions) {
                 BlockState state = mc.level.getBlockState(pos);
                 if (isValidBlock(state)) {
-                    AABB box = state.getShape(mc.level, pos).bounds().move(pos);
-                    renderBlockOutline(poseStack, buffer, box);
+                    VoxelShape shape = state.getShape(mc.level, pos);
+                    renderBlockOutline(poseStack, buffer, shape, pos);
                 }
             }
 
@@ -107,20 +99,23 @@ public class ClientRenderEvent {
             return true;
         }
 
-        private void renderBlockOutline(PoseStack poseStack, MultiBufferSource bufferSource, AABB boundingBox) {
-            VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.lines());
+        private void renderBlockOutline(PoseStack poseStack, MultiBufferSource bufferSource, VoxelShape shape, BlockPos pos) {
+            VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderTypes.LINES);
 
-            float red = (float) ClientConfig.OUTLINE_RED.getAsDouble();
-            float green = (float) ClientConfig.OUTLINE_GREEN.getAsDouble();
-            float blue = (float) ClientConfig.OUTLINE_BLUE.getAsDouble();
-            float alpha = (float) ClientConfig.OUTLINE_ALPHA.getAsDouble();
+            int red = (int) (ClientConfig.OUTLINE_RED.getAsDouble() * 255);
+            int green = (int) (ClientConfig.OUTLINE_GREEN.getAsDouble() * 255);
+            int blue = (int) (ClientConfig.OUTLINE_BLUE.getAsDouble() * 255);
+            int alpha = (int) (ClientConfig.OUTLINE_ALPHA.getAsDouble() * 255);
 
-            ShapeRenderer.renderLineBox(
-                    poseStack.last(),
+            int color = ARGB.color(alpha, red, green, blue);
+
+            ShapeRenderer.renderShape(
+                    poseStack,
                     vertexConsumer,
-                    boundingBox.minX, boundingBox.minY, boundingBox.minZ,
-                    boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ,
-                    red, green, blue, alpha
+                    shape,
+                    pos.getX(), pos.getY(), pos.getZ(),
+                    color,
+                    2.0F
             );
         }
     }

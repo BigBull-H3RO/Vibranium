@@ -39,18 +39,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ItemInit.VIBRANIUM_SHOVEL.get())
                 .add(ItemInit.VIBRANIUM_MACE.get());
         tag(ItemTags.HOES).add(ItemInit.VIBRANIUM_HOE.get());
-
-        tag(ItemTags.DURABILITY_ENCHANTABLE).add(ItemInit.VIBRANIUM_SHIELD.get());
-        tag(ItemTags.WEAPON_ENCHANTABLE).addTag(ItemTags.SHARP_WEAPON_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.FIRE_ASPECT_ENCHANTABLE).addTag(ItemTags.SWORD_ENCHANTABLE)
-                .add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.BREAKS_DECORATED_POTS).add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.MINING_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.VANISHING_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.DURABILITY_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
         tag(ItemTags.MACE_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.BREAKS_DECORATED_POTS).add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.WEAPON_ENCHANTABLE).addTag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
+        tag(ItemTags.DURABILITY_ENCHANTABLE).add(ItemInit.VIBRANIUM_SHIELD.get()).add(ItemInit.VIBRANIUM_MACE.get());
 
         tag(ItemTags.TRIM_MATERIALS).add(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get());
         tag(ItemTags.BEACON_PAYMENT_ITEMS).add(ItemInit.VIBRANIUM_INGOT.get());
