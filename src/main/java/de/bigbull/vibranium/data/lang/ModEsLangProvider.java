@@ -116,6 +116,9 @@ public class ModEsLangProvider extends LanguageProvider {
         // Vibranium Mace
         add("item.vibranium_mace.tooltip", "Puede minar bloques en 3x3");
 
+        // Entities
+        add("entity.vibranium.soulwood_chest_boat", "Barco de madera de alma con cofre");
+
         // Others
         add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Vibranium");
 

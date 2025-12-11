@@ -115,6 +115,9 @@ public class ModDeLangProvider extends LanguageProvider {
         //Vibranium Mace
         add("item.vibranium_mace.tooltip", "Kann 3x3 Blöcke abbauen");
 
+        //Entities
+        add("entity.vibranium.soulwood_chest_boat", "Seelenholz Boot mit Truhe");
+
         //others
         add(CreativeTabInit.MAIN_TAB_ONE_TITLE, "Vibranium");
 
