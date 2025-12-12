@@ -30,11 +30,13 @@ public class CreativeTabInit {
             output.accept(ItemInit.VIBRANIUM_TURTLE_HELMET);
             output.accept(ItemInit.VIBRANIUM_WOLF_ARMOR);
             output.accept(ItemInit.VIBRANIUM_HORSE_ARMOR);
+            output.accept(ItemInit.VIBRANIUM_NAUTILUS_ARMOR);
             output.accept(ItemInit.VIBRANIUM_SWORD);
             output.accept(ItemInit.VIBRANIUM_PICKAXE);
             output.accept(ItemInit.VIBRANIUM_AXE);
             output.accept(ItemInit.VIBRANIUM_SHOVEL);
             output.accept(ItemInit.VIBRANIUM_HOE);
+            output.accept(ItemInit.VIBRANIUM_SPEAR);
             output.accept(ItemInit.VIBRANIUM_MACE);
             output.accept(ItemInit.VIBRANIUM_SHIELD);
             output.accept(ItemInit.HEART_SHAPED_HERB);

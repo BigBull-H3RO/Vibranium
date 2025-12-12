@@ -59,11 +59,13 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_TURTLE_HELMET.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateTwoLayerDyedItem(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
+        itemModels.generateFlatItem(ItemInit.VIBRANIUM_NAUTILUS_ARMOR.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateSpear(ItemInit.VIBRANIUM_SPEAR.get());
         //itemModels.generateSpawnEgg(ItemInit.VIBRA_GOLEM_SPAWN_EGG.get(), 2631467, 131664);
         itemModels.generateFlatItem(ItemInit.HEART_SHAPED_HERB.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.SOUL_HERB_ELIXIR.get(), ModelTemplates.FLAT_ITEM);

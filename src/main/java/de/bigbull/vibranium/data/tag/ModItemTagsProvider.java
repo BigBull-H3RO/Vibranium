@@ -7,6 +7,7 @@ import de.bigbull.vibranium.init.TagsInit;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.ItemTags;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -39,6 +40,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ItemInit.VIBRANIUM_SHOVEL.get())
                 .add(ItemInit.VIBRANIUM_MACE.get());
         tag(ItemTags.HOES).add(ItemInit.VIBRANIUM_HOE.get());
+        tag(ItemTags.SPEARS).add(ItemInit.VIBRANIUM_SPEAR.get());
         tag(ItemTags.MACE_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
         tag(ItemTags.BREAKS_DECORATED_POTS).add(ItemInit.VIBRANIUM_MACE.get());
         tag(ItemTags.WEAPON_ENCHANTABLE).addTag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
@@ -52,6 +54,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(TagsInit.Items.SOUL_HERB_MIXTURE_TAG).add(ItemInit.SOUL_HERB_MIXTURE.get());
         tag(ItemTags.BOATS).add(ItemInit.SOULWOOD_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(ItemInit.SOULWOOD_CHEST_BOAT.get());
+
+        //NeoForge Item Tags
+        tag(Tags.Items.ARMORS_NAUTILUS).add(ItemInit.VIBRANIUM_NAUTILUS_ARMOR.get());
+        tag(Tags.Items.ARMORS_HORSE).add(ItemInit.VIBRANIUM_HORSE_ARMOR.get());
+        tag(Tags.Items.ARMORS_WOLF).add(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
 
         //Block Tags
         tag(ItemTags.PLANKS).add(BlockInit.SOULWOOD_PLANKS.asItem());

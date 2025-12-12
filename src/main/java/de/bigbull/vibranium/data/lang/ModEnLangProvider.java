@@ -66,6 +66,7 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_AXE, "Vibranium Axe");
         addItem(ItemInit.VIBRANIUM_SHOVEL, "Vibranium Shovel");
         addItem(ItemInit.VIBRANIUM_HOE, "Vibranium Hoe");
+        addItem(ItemInit.VIBRANIUM_SPEAR, "Vibranium Spear");
         addItem(ItemInit.VIBRANIUM_MACE, "Vibranium Mace");
         addItem(ItemInit.VIBRANIUM_SHIELD, "Vibranium Shield");
 
@@ -77,6 +78,7 @@ public class ModEnLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_TURTLE_HELMET, "Vibranium Turtle Helmet");
         addItem(ItemInit.VIBRANIUM_WOLF_ARMOR, "Vibranium Wolf Armor");
         addItem(ItemInit.VIBRANIUM_HORSE_ARMOR, "Vibranium Horse Armor");
+        addItem(ItemInit.VIBRANIUM_NAUTILUS_ARMOR, "Vibranium Nautilus Armor");
 
         //SmifhingTemplate
         add(VibraniumUpgradeTemplate.VIBRANIUM_UPGRADE_APPLIES_TO.getString(), "Netherite Equipment");

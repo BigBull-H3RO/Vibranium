@@ -66,6 +66,7 @@ public class ModEsLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_AXE, "Hacha de Vibranium");
         addItem(ItemInit.VIBRANIUM_SHOVEL, "Pala de Vibranium");
         addItem(ItemInit.VIBRANIUM_HOE, "Azada de Vibranium");
+        addItem(ItemInit.VIBRANIUM_SPEAR, "Lanza de Vibranium");
         addItem(ItemInit.VIBRANIUM_MACE, "Maza de Vibranium");
         addItem(ItemInit.VIBRANIUM_SHIELD, "Escudo de Vibranium");
 
@@ -77,6 +78,7 @@ public class ModEsLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_TURTLE_HELMET, "Casco de tortuga de Vibranium");
         addItem(ItemInit.VIBRANIUM_WOLF_ARMOR, "Armadura de lobo de Vibranium");
         addItem(ItemInit.VIBRANIUM_HORSE_ARMOR, "Armadura de caballo de Vibranium");
+        addItem(ItemInit.VIBRANIUM_NAUTILUS_ARMOR, "Armadura de nautilo de Vibranium");
 
         // Smithing Template
         add(VibraniumUpgradeTemplate.VIBRANIUM_UPGRADE_APPLIES_TO.getString(), "Equipo de netherita");

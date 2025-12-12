@@ -1,6 +1,5 @@
 package de.bigbull.vibranium.init;
 
-import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.init.custom.item.HSHPotionItems;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import de.bigbull.vibranium.init.custom.item.VibraniumUpgradeTemplate;
@@ -20,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class ItemInit {
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Vibranium.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(de.bigbull.vibranium.Vibranium.MODID);
 
     //Items
     public static final DeferredItem<Item> RAW_VIBRANIUM = ITEMS.registerItem("raw_vibranium",
@@ -98,6 +97,11 @@ public class ItemInit {
                     .fireResistant()
                     .stacksTo(1)));
 
+    public static final DeferredItem<Item> VIBRANIUM_NAUTILUS_ARMOR = ITEMS.registerItem("vibranium_nautilus_armor",
+            properties -> new Item(properties.nautilusArmor(ArmorMaterialsInit.VIBRANIUM_MATERIAL)
+                    .fireResistant()
+                    .stacksTo(1)));
+
     //Tools
     public static final DeferredItem<Item> VIBRANIUM_SWORD = ITEMS.registerItem("vibranium_sword",
             properties -> new Item(properties.sword(MaterialsInit.VIBRANIUM, 3.0f, -2.2f)
@@ -117,6 +121,11 @@ public class ItemInit {
 
     public static final DeferredItem<Item> VIBRANIUM_HOE = ITEMS.registerItem("vibranium_hoe",
             properties -> new Item(properties.hoe(MaterialsInit.VIBRANIUM, -5.0f, 0.0f)
+                    .fireResistant()));
+
+    public static final DeferredItem<Item> VIBRANIUM_SPEAR = ITEMS.registerItem("vibranium_spear",
+            properties -> new Item(properties.spear(MaterialsInit.VIBRANIUM,
+                    1.25F, 1.3F, 0.3F, 2.0F, 6.0F, 4.5F, 5.1F, 7.5F, 4.6F)
                     .fireResistant()));
 
     public static final DeferredItem<VibraniumMaceItem> VIBRANIUM_MACE = ITEMS.registerItem("vibranium_mace",

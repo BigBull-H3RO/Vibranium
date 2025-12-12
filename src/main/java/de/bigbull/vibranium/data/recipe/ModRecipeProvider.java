@@ -126,18 +126,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_item", has(ItemInit.HEART_SHAPED_HERB))
                 .save(this.output, "soul_herb_mixture");
 
-        vibraniumSmithing(Items.NETHERITE_SWORD, ItemInit.VIBRANIUM_SWORD.get());
-        vibraniumSmithing(Items.NETHERITE_PICKAXE, ItemInit.VIBRANIUM_PICKAXE.get());
-        vibraniumSmithing(Items.NETHERITE_AXE, ItemInit.VIBRANIUM_AXE.get());
-        vibraniumSmithing(Items.NETHERITE_SHOVEL, ItemInit.VIBRANIUM_SHOVEL.get());
-        vibraniumSmithing(Items.NETHERITE_HOE, ItemInit.VIBRANIUM_HOE.get());
-        vibraniumSmithing(Items.NETHERITE_HELMET, ItemInit.VIBRANIUM_HELMET.get());
-        vibraniumSmithing(Items.TURTLE_HELMET, ItemInit.VIBRANIUM_TURTLE_HELMET.get());
-        vibraniumSmithing(Items.NETHERITE_CHESTPLATE, ItemInit.VIBRANIUM_CHESTPLATE.get());
-        vibraniumSmithing(Items.NETHERITE_LEGGINGS, ItemInit.VIBRANIUM_LEGGINGS.get());
-        vibraniumSmithing(Items.NETHERITE_BOOTS, ItemInit.VIBRANIUM_BOOTS.get());
-        vibraniumSmithing(Items.WOLF_ARMOR, ItemInit.VIBRANIUM_WOLF_ARMOR.get());
-        vibraniumSmithing(Items.DIAMOND_HORSE_ARMOR, ItemInit.VIBRANIUM_HORSE_ARMOR.get());
+        vibraniumSmithing(Items.NETHERITE_SWORD, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_SWORD.get());
+        vibraniumSmithing(Items.NETHERITE_PICKAXE, RecipeCategory.TOOLS, ItemInit.VIBRANIUM_PICKAXE.get());
+        vibraniumSmithing(Items.NETHERITE_AXE, RecipeCategory.TOOLS, ItemInit.VIBRANIUM_AXE.get());
+        vibraniumSmithing(Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, ItemInit.VIBRANIUM_SHOVEL.get());
+        vibraniumSmithing(Items.NETHERITE_HOE, RecipeCategory.TOOLS, ItemInit.VIBRANIUM_HOE.get());
+        vibraniumSmithing(Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_HELMET.get());
+        vibraniumSmithing(Items.TURTLE_HELMET, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_TURTLE_HELMET.get());
+        vibraniumSmithing(Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_CHESTPLATE.get());
+        vibraniumSmithing(Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_LEGGINGS.get());
+        vibraniumSmithing(Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_BOOTS.get());
+        vibraniumSmithing(Items.WOLF_ARMOR, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_WOLF_ARMOR.get());
+        vibraniumSmithing(Items.NETHERITE_HORSE_ARMOR, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_HORSE_ARMOR.get());
+        vibraniumSmithing(Items.NETHERITE_NAUTILUS_ARMOR, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_NAUTILUS_ARMOR.get());
+        vibraniumSmithing(Items.NETHERITE_SPEAR, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_SPEAR.get());
 
         oreSmelting(VIBRANIUM_SMELTABLES, RecipeCategory.MISC, ItemInit.VIBRANIUM_PLATE, 2.5F, 400, "vibranium_ingot");
         oreBlasting(VIBRANIUM_SMELTABLES, RecipeCategory.MISC, ItemInit.VIBRANIUM_PLATE, 2.5F, 150, "vibranium_ingot");
@@ -147,12 +149,12 @@ public class ModRecipeProvider extends RecipeProvider {
         BlockFamilyInit.getAllFamilies().filter(BlockFamily::shouldGenerateRecipe).forEach((family) -> generateRecipes(family, flags));
     }
 
-    protected void vibraniumSmithing(Item item, Item outputItem) {
+    protected void vibraniumSmithing(Item item, RecipeCategory category, Item outputItem) {
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE),
                         Ingredient.of(item),
                         this.tag(TagsInit.Items.VIBRANIUM_TOOL_MATERIALS),
-                        RecipeCategory.TOOLS,
+                        category,
                         outputItem
                 )
                 .unlocks("has_vibranium_ingot", this.has(TagsInit.Items.VIBRANIUM_TOOL_MATERIALS))

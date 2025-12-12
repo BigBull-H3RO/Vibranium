@@ -66,6 +66,7 @@ public class ModFrLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_AXE, "Hache en vibranium");
         addItem(ItemInit.VIBRANIUM_SHOVEL, "Pelle en vibranium");
         addItem(ItemInit.VIBRANIUM_HOE, "Houe en vibranium");
+        addItem(ItemInit.VIBRANIUM_SPEAR, "Lance en vibranium");
         addItem(ItemInit.VIBRANIUM_MACE, "Masse en vibranium");
         addItem(ItemInit.VIBRANIUM_SHIELD, "Bouclier en vibranium");
 
@@ -77,6 +78,7 @@ public class ModFrLangProvider extends LanguageProvider {
         addItem(ItemInit.VIBRANIUM_TURTLE_HELMET, "Casque de tortue en vibranium");
         addItem(ItemInit.VIBRANIUM_WOLF_ARMOR, "Armure de loup en vibranium");
         addItem(ItemInit.VIBRANIUM_HORSE_ARMOR, "Armure de cheval en vibranium");
+        addItem(ItemInit.VIBRANIUM_NAUTILUS_ARMOR, "Armure de nautile en vibranium");
 
         // Smithing Template
         add(VibraniumUpgradeTemplate.VIBRANIUM_UPGRADE_APPLIES_TO.getString(), "Équipement en netherite");

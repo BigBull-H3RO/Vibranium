@@ -18,7 +18,7 @@ public class ArmorMaterialsInit {
                 map.put(ArmorType.LEGGINGS, 6);
                 map.put(ArmorType.CHESTPLATE, 8);
                 map.put(ArmorType.HELMET, 3);
-                map.put(ArmorType.BODY, 16);
+                map.put(ArmorType.BODY, 28);
             }),
             20, SoundEvents.ARMOR_EQUIP_NETHERITE, 4, 0.2f, TagsInit.Items.VIBRANIUM_REPAIR,
             ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")));

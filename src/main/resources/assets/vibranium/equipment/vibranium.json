@@ -23,6 +23,11 @@
       {
         "texture": "vibranium:vibranium_layer_2"
       }
+    ],
+    "nautilus_body": [
+      {
+        "texture": "vibranium:vibranium"
+      }
     ]
   }
 }
