@@ -242,7 +242,7 @@ public class VibraniumMaceItem extends Item {
             return baseSpeed * 0.3F;
         }
         if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
-            return baseSpeed * 0.65F;
+            return baseSpeed * 0.7F;
         }
         return baseSpeed;
     }

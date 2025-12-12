@@ -58,7 +58,7 @@ public class ItemInit {
 //            properties -> new SpawnEggItem(Entitiesinit.VIBRAGOLEM.get(), properties));
 
     public static final DeferredItem<SmithingTemplateItem> VIBRANIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.registerItem("vibranium_upgrade_smithing_template",
-            VibraniumUpgradeTemplate::createVibraniumUpgradeTemplate, new Item.Properties()
+            VibraniumUpgradeTemplate::createVibraniumUpgradeTemplate, properties -> new Item.Properties()
                             .fireResistant()
                             .rarity(Rarity.UNCOMMON));
 
@@ -123,7 +123,7 @@ public class ItemInit {
             properties -> new VibraniumMaceItem(MaterialsInit.VIBRANIUM, properties
                     .fireResistant()
                     .rarity(Rarity.EPIC)
-                    .durability(850)
+                    .durability(1260)
                     .repairable(VIBRANIUM_INGOT.asItem())
                     .component(DataComponents.TOOL, VibraniumMaceItem.createToolProperties())
                     .attributes(VibraniumMaceItem.createAttributes())
@@ -154,7 +154,7 @@ public class ItemInit {
 
     //Advanced Items
     public static final DeferredItem<BlockItem> HEART_SHAPED_HERB = ITEMS.registerSimpleBlockItem("heart_shaped_herb",
-            BlockInit.HEART_SHAPED_HERB_BUSH, new Item.Properties()
+            BlockInit.HEART_SHAPED_HERB_BUSH, properties -> new Item.Properties()
                     .food(FoodPropertiesInit.HEART_SHAPED_HERB, FoodPropertiesInit.HEART_SHAPED_HERB_EFFECT)
                     .rarity(Rarity.RARE)
                     .stacksTo(16));
