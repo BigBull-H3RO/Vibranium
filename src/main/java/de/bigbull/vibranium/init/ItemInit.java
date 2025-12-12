@@ -132,7 +132,7 @@ public class ItemInit {
             properties -> new VibraniumMaceItem(MaterialsInit.VIBRANIUM, properties
                     .fireResistant()
                     .rarity(Rarity.EPIC)
-                    .durability(850)
+                    .durability(1260)
                     .repairable(VIBRANIUM_INGOT.asItem())
                     .component(DataComponents.TOOL, VibraniumMaceItem.createToolProperties())
                     .attributes(VibraniumMaceItem.createAttributes())
