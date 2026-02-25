@@ -30,7 +30,7 @@ public class ModModelProvider extends ModelProvider {
         //Block Models
         blockModels.familyWithExistingFullBlock(BlockFamilyInit.SOULWOOD_FAMILY.getBaseBlock()).generateFor(BlockFamilyInit.SOULWOOD_FAMILY);
         blockModels.createTrivialCube(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
-        blockModels.createTrivialCube(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get());
+        blockModels.createTrivialCube(BlockInit.DEEPSLATE_VIBRANIUM_ORE.get());
         blockModels.createTrivialCube(BlockInit.VIBRANIUM_BLOCK.get());
         blockModels.createTrivialCube(BlockInit.SOULWOOD_PLANKS.get());
         blockModels.createTrivialCube(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get());

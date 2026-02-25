@@ -36,7 +36,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get())
-                .add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get())
+                .add(BlockInit.DEEPSLATE_VIBRANIUM_ORE.get())
                 .add(BlockInit.VIBRANIUM_BLOCK.get())
                 .add(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get())
                 .add(BlockInit.BUDDING_VIBRANIUM_CRYSTAL.get())
@@ -50,7 +50,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(Blocks.NEEDS_NETHERITE_TOOL)
                 .add(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get())
-                .add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get())
+                .add(BlockInit.DEEPSLATE_VIBRANIUM_ORE.get())
                 .add(BlockInit.VIBRANIUM_BLOCK.get());
 
         tag(BlockTags.MINEABLE_WITH_HOE)

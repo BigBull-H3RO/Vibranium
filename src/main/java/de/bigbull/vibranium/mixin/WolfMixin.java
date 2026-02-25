@@ -61,6 +61,6 @@ public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
     }
 
     private boolean canArmorAbsorb(DamageSource damageSource) {
-        return this.getBodyArmorItem().is(Items.WOLF_ARMOR) || this.getBodyArmorItem().is(ItemInit.VIBRANIUM_WOLF_ARMOR)  && !damageSource.is(DamageTypeTags.BYPASSES_WOLF_ARMOR);
+        return (this.getBodyArmorItem().is(Items.WOLF_ARMOR) || this.getBodyArmorItem().is(ItemInit.VIBRANIUM_WOLF_ARMOR)) && !damageSource.is(DamageTypeTags.BYPASSES_WOLF_ARMOR);
     }
 }

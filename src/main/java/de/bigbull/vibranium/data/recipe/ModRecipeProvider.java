@@ -23,7 +23,7 @@ import net.minecraft.world.level.ItemLike;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider {
-    public static final ImmutableList<ItemLike> VIBRANIUM_SMELTABLES = ImmutableList.of(ItemInit.RAW_VIBRANIUM, BlockInit.DEPPSLATE_VIBRANIUM_ORE);
+    public static final ImmutableList<ItemLike> VIBRANIUM_SMELTABLES = ImmutableList.of(ItemInit.RAW_VIBRANIUM, BlockInit.DEEPSLATE_VIBRANIUM_ORE);
 
     public ModRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
         super(provider, recipeOutput);

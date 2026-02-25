@@ -1,8 +1,11 @@
 package de.bigbull.vibranium.init.custom.item;
 
+import de.bigbull.vibranium.init.MaterialsInit;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
 import net.minecraft.server.level.ServerLevel;
@@ -29,7 +32,7 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -42,7 +45,7 @@ import java.util.function.Predicate;
 
 public class VibraniumMaceItem extends Item {
     private final ToolMaterial material;
-    private float lastCalculatedDamage = 0.0F;
+    private static final ThreadLocal<Float> lastCalculatedDamage = ThreadLocal.withInitial(() -> 0.0F);
 
     public static final Component TOOLTIP = Component.translatable("item.vibranium_mace.tooltip").withStyle(ChatFormatting.GRAY);
 
@@ -63,7 +66,16 @@ public class VibraniumMaceItem extends Item {
     }
 
     public static Tool createToolProperties() {
-        return new Tool(List.of(), 1.0F, 1, false);
+        HolderGetter<Block> holdergetter = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
+        return new Tool(
+                List.of(
+                        Tool.Rule.deniesDrops(holdergetter.getOrThrow(MaterialsInit.VIBRANIUM.incorrectBlocksForDrops())),
+                        Tool.Rule.minesAndDrops(holdergetter.getOrThrow(BlockTags.MINEABLE_WITH_PICKAXE), MaterialsInit.VIBRANIUM.speed() * 0.7F),
+                        Tool.Rule.minesAndDrops(holdergetter.getOrThrow(BlockTags.MINEABLE_WITH_SHOVEL), MaterialsInit.VIBRANIUM.speed() * 0.1005F),
+                        Tool.Rule.minesAndDrops(holdergetter.getOrThrow(BlockTags.MINEABLE_WITH_AXE), MaterialsInit.VIBRANIUM.speed() * 0.3F)
+                ),
+                1.0F, 1, false
+        );
     }
 
     public static List<BlockPos> getBlocksToBeDestroyed(int range, BlockPos initalBlockPos, Player player) {
@@ -163,14 +175,14 @@ public class VibraniumMaceItem extends Item {
                     damage = 22.0F + f1 - 8.0F;
                 }
 
-                lastCalculatedDamage = (float) damage;
+                lastCalculatedDamage.set((float) damage);
 
                 return livingentity.level() instanceof ServerLevel serverlevel
                         ? (float) (damage + EnchantmentHelper.modifyFallBasedDamage(serverlevel, livingentity.getWeaponItem(), entity, damageSource, 0.0F) * f1)
                         : (float) damage;
             }
         } else {
-            lastCalculatedDamage = 0.0F;
+            lastCalculatedDamage.set(0.0F);
             return 0.0F;
         }
     }
@@ -185,8 +197,8 @@ public class VibraniumMaceItem extends Item {
                     if (d0 > 0.0) {
                         target.push(vec31.x, 0.7F, vec31.z);
 
-                        if (lastCalculatedDamage > 0.0F) {
-                            float pushDamage = lastCalculatedDamage / 6.0F;
+                        if (lastCalculatedDamage.get() > 0.0F) {
+                            float pushDamage = lastCalculatedDamage.get() / 6.0F;
                             target.hurtServer((ServerLevel) level, level.damageSources().mace(entity), pushDamage);
                         }
 
@@ -230,21 +242,6 @@ public class VibraniumMaceItem extends Item {
         return canSmashAttack(p_373049_) ? p_373049_.damageSources().mace(p_373049_) : super.getItemDamageSource(p_373049_);
     }
 
-    @Override
-    public float getDestroySpeed(ItemStack stack, BlockState state) {
-        float baseSpeed = material.speed();
-
-        if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
-            return baseSpeed * 0.1005F;
-        }
-        if (state.is(BlockTags.MINEABLE_WITH_AXE)) {
-            return baseSpeed * 0.3F;
-        }
-        if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
-            return baseSpeed * 0.7F;
-        }
-        return baseSpeed;
-    }
 
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, TooltipDisplay tooltipDisplay, Consumer<Component> consumer, TooltipFlag flag) {

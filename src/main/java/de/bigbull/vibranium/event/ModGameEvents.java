@@ -49,13 +49,13 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 @EventBusSubscriber(modid = Vibranium.MODID)
 public class ModGameEvents {
-    private static final Set<BlockPos> HARVESTED_BLOCKS = new HashSet<>();
+    private static final Set<BlockPos> HARVESTED_BLOCKS = ConcurrentHashMap.newKeySet();
 
     // This event is called when a player breaks a block with the Vibranium Mace
     @SubscribeEvent
@@ -78,11 +78,13 @@ public class ModGameEvents {
                     }
 
                     List<BlockPos> affectedPositions = VibraniumMaceItem.getBlocksToBeDestroyed(1, initialBlockPos, serverPlayer);
-                    affectedPositions.remove(initialBlockPos);
 
                     Holder<Enchantment> universalBreakerEnchantmentHolder = EnchantmentInit.UNIVERSAL_BREAKER;
                     int enchantmentLevel = mainHandItem.getEnchantmentLevel(universalBreakerEnchantmentHolder);
                     boolean hasUniversalBreaker = enchantmentLevel > 0;
+
+                    // Cancel the original break event — we handle ALL blocks (including the middle one) manually
+                    event.setCanceled(true);
 
                     for (BlockPos pos : affectedPositions) {
                         BlockState targetBlockState = level.getBlockState(pos);
@@ -193,7 +195,7 @@ public class ModGameEvents {
         if (!(event.getLevel() instanceof ServerLevel level)) {
             return;
         }
-        if (blockState.is(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get()) && !player.isCreative()) {
+        if (blockState.is(BlockInit.DEEPSLATE_VIBRANIUM_ORE.get()) && !player.isCreative()) {
             List<VibraGolemEntity> golems = level.getEntitiesOfClass(VibraGolemEntity.class, player.getBoundingBox().inflate(20));
             for (VibraGolemEntity vibraGolem : golems) {
                 if (!vibraGolem.isTame()) {
@@ -232,7 +234,9 @@ public class ModGameEvents {
             }
         }
 
-        if (!player.isEyeInFluid(FluidTags.WATER) && isEquipped(player, ItemInit.VIBRANIUM_TURTLE_HELMET.get())) {
+        @SuppressWarnings("deprecation")
+        boolean eyeInWater = player.isEyeInFluid(FluidTags.WATER);
+        if (!eyeInWater && isEquipped(player, ItemInit.VIBRANIUM_TURTLE_HELMET.get())) {
             vibraniumTurtleHelmetTick(player);
         }
     }

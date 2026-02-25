@@ -33,7 +33,7 @@ public class ModFrLangProvider extends LanguageProvider {
 
         // Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Bloc de vibranium brut");
-        addBlock(BlockInit.DEPPSLATE_VIBRANIUM_ORE, "Minerai de vibranium d'ardoise profonde");
+        addBlock(BlockInit.DEEPSLATE_VIBRANIUM_ORE, "Minerai de vibranium d'ardoise profonde");
         addBlock(BlockInit.VIBRANIUM_BLOCK, "Bloc de vibranium");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_DIRT, "Terre enrichie en vibranium");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_FARMLAND, "Terre agricole enrichie en vibranium");

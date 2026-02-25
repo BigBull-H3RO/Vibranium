@@ -15,7 +15,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Locale;
 
-public class Entitiesinit {
+public class EntitiesInit {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(Registries.ENTITY_TYPE, Vibranium.MODID);
 
     public static final DeferredHolder<EntityType<?>, EntityType<Boat>> SOULWOOD_BOAT = register(
@@ -45,3 +45,4 @@ public class Entitiesinit {
         return ENTITY_TYPES.register(name, () -> builder.build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Vibranium.MODID, name.toLowerCase(Locale.ROOT)))));
     }
 }
+

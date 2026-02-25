@@ -35,7 +35,7 @@ public class BlockInit {
                     .requiresCorrectToolForDrops()
                     .strength(6.0F, 1200.0F)));
 
-    public static final DeferredBlock<Block> DEPPSLATE_VIBRANIUM_ORE = registerBlock("deepslate_vibranium_ore",
+    public static final DeferredBlock<Block> DEEPSLATE_VIBRANIUM_ORE = registerBlock("deepslate_vibranium_ore",
             properties -> new Block(properties
                     .mapColor(MapColor.DEEPSLATE)
                     .strength(12.0F, 1200.0F)
@@ -123,7 +123,7 @@ public class BlockInit {
                     .pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> SOULWOOD_PLANKS = registerBlock("soulwood_planks",
-            properties -> new VibraniumRotatedPillarBlock(properties
+            properties -> new Block(properties
                     .mapColor(MapColor.TERRACOTTA_BLUE)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F, 3.0F)

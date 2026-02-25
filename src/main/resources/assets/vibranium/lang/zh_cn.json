@@ -74,7 +74,7 @@
   "jei.vibranium.vibranium_upgrade_smithing_template.desc": "该锻造模板可在试炼密室中找到，藏在一些床旁边的木桶里。",
   "key.category.vibranium.main": "振金",
   "key.vibranium.toggle_outline": "切换轮廓显示",
-  "main.tab.one": "振金",
+  "itemGroup.vibranium.main_tab_one": "振金",
   "trim_material.vibranium.vibranium": "振金纹饰材料",
   "vibranium.config.outlineAlpha": "轮廓透明度",
   "vibranium.config.outlineBlue": "轮廓蓝色分量",

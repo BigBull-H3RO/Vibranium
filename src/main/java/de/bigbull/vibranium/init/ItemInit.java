@@ -54,7 +54,7 @@ public class ItemInit {
                     .stacksTo(16)));
 
 //    public static final DeferredItem<SpawnEggItem> VIBRA_GOLEM_SPAWN_EGG = ITEMS.registerItem("vibra_golem_spawn_egg",
-//            properties -> new SpawnEggItem(Entitiesinit.VIBRAGOLEM.get(), properties));
+//            properties -> new SpawnEggItem(EntitiesInit.VIBRAGOLEM.get(), properties));
 
     public static final DeferredItem<Item> VIBRANIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.registerItem("vibranium_upgrade_smithing_template",
             VibraniumUpgradeTemplate::createVibraniumUpgradeTemplate, properties -> new Item.Properties()
@@ -192,10 +192,10 @@ public class ItemInit {
                     .stacksTo(16)));
 
     public static final DeferredItem<Item> SOULWOOD_BOAT = ITEMS.registerItem("soulwood_boat",
-            properties -> new BoatItem(Entitiesinit.SOULWOOD_BOAT.get(), properties
+            properties -> new BoatItem(EntitiesInit.SOULWOOD_BOAT.get(), properties
                     .stacksTo(1)));
 
     public static final DeferredItem<Item> SOULWOOD_CHEST_BOAT = ITEMS.registerItem("soulwood_chest_boat",
-            properties -> new BoatItem(Entitiesinit.SOULWOOD_CHEST_BOAT.get(), properties
+            properties -> new BoatItem(EntitiesInit.SOULWOOD_CHEST_BOAT.get(), properties
                     .stacksTo(1)));
 }

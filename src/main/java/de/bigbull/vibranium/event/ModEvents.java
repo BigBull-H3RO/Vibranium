@@ -38,7 +38,7 @@ public class ModEvents {
             ItemBlockRenderTypes.setRenderLayer(BlockInit.LARGE_VIBRANIUM_BUD.get(), ChunkSectionLayer.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(BlockInit.POTTED_SOULWOOD_SAPLING.get(), ChunkSectionLayer.CUTOUT);
 
-            EntityRenderers.register(Entitiesinit.VIBRAGOLEM.get(), VibraGolemRenderer::new);
+            EntityRenderers.register(EntitiesInit.VIBRAGOLEM.get(), VibraGolemRenderer::new);
         });
     }
 
@@ -63,9 +63,9 @@ public class ModEvents {
     }
 
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(Entitiesinit.SOULWOOD_BOAT.get(),
+        event.registerEntityRenderer(EntitiesInit.SOULWOOD_BOAT.get(),
                 context -> new BoatRenderer(context, ModelLayersInit.SOULWOOD_BOAT));
-        event.registerEntityRenderer(Entitiesinit.SOULWOOD_CHEST_BOAT.get(),
+        event.registerEntityRenderer(EntitiesInit.SOULWOOD_CHEST_BOAT.get(),
                 context -> new BoatRenderer(context, ModelLayersInit.SOULWOOD_CHEST_BOAT));
     }
 
@@ -76,7 +76,7 @@ public class ModEvents {
     }
 
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
-        event.put(Entitiesinit.VIBRAGOLEM.get(), VibraGolemEntity.setAttributes().build());
+        event.put(EntitiesInit.VIBRAGOLEM.get(), VibraGolemEntity.setAttributes().build());
     }
 
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {

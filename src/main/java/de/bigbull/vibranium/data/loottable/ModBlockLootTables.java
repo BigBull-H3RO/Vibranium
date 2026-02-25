@@ -73,7 +73,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 BlockInit.SOULWOOD_DOOR.get()));
         this.add(BlockInit.SOULWOOD_LEAVES.get(), block -> createLeavesDrops(
                 block, BlockInit.SOULWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
-        this.add(BlockInit.DEPPSLATE_VIBRANIUM_ORE.get(), block -> createSingleItemTableWithSilkTouch(
+        this.add(BlockInit.DEEPSLATE_VIBRANIUM_ORE.get(), block -> createSingleItemTableWithSilkTouch(
                 block, ItemInit.RAW_VIBRANIUM.get()));
         this.add(BlockInit.SOULWOOD_SIGN.get(), createSingleItemTable(BlockInit.SOULWOOD_SIGN.get().asItem()));
         this.add(BlockInit.SOULWOOD_WALL_SIGN.get(), createSingleItemTable(BlockInit.SOULWOOD_SIGN.get().asItem()));

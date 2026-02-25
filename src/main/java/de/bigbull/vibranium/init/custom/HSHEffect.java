@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -15,9 +16,10 @@ import net.minecraft.world.phys.Vec3;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class HSHEffect extends MobEffect {
-    private final Map<Player, Float> damageTracker = new HashMap<>();
+    private final Map<UUID, Float> damageTracker = new HashMap<>();
     private static final float DAMAGE_THRESHOLD = 10.0F;
     private static final float BASE_PUSH_DAMAGE = 4.0F;
     private static final double BASE_PUSH_RADIUS = 2.5F;
@@ -30,8 +32,9 @@ public class HSHEffect extends MobEffect {
     @Override
     public void onMobHurt(ServerLevel level, LivingEntity entity, int amplifier, DamageSource source, float damage) {
         if (entity instanceof Player player) {
+            UUID playerId = player.getUUID();
             if (player.isDeadOrDying()) {
-                damageTracker.remove(player);
+                damageTracker.remove(playerId);
                 return;
             }
 
@@ -42,23 +45,30 @@ public class HSHEffect extends MobEffect {
             float baseDamage = (float) player.getAttribute(Attributes.ATTACK_DAMAGE).getValue();
             float adjustedDamage = Math.max(damage, baseDamage / 2);
 
-            accumulateDamage(player, adjustedDamage);
+            accumulateDamage(playerId, adjustedDamage);
 
-            if (damageTracker.getOrDefault(player, 0.0F) >= DAMAGE_THRESHOLD) {
+            if (damageTracker.getOrDefault(playerId, 0.0F) >= DAMAGE_THRESHOLD) {
                 double pushStrength = BASE_PUSH_STRENGTH + amplifier * 0.5;
                 double pushRadius = BASE_PUSH_RADIUS + amplifier * 2.5;
                 float pushDamage = (float) (BASE_PUSH_DAMAGE + amplifier * 2.0);
 
                 applyPushEffect(player, pushStrength, pushRadius, pushDamage);
-                damageTracker.put(player, 0.0F);
+                damageTracker.put(playerId, 0.0F);
             }
         }
     }
 
-    private void accumulateDamage(Player player, float damage) {
-        float accumulatedDamage = damageTracker.getOrDefault(player, 0.0F);
+    @Override
+    public void onMobRemoved(ServerLevel level, LivingEntity entity, int amplifier, Entity.RemovalReason reason) {
+        if (entity instanceof Player player) {
+            damageTracker.remove(player.getUUID());
+        }
+    }
+
+    private void accumulateDamage(UUID playerId, float damage) {
+        float accumulatedDamage = damageTracker.getOrDefault(playerId, 0.0F);
         accumulatedDamage += damage;
-        damageTracker.put(player, accumulatedDamage);
+        damageTracker.put(playerId, accumulatedDamage);
     }
 
     private void applyPushEffect(Player player, double strength, double radius, float damage) {

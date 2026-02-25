@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class CreativeTabInit {
     public static DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Vibranium.MODID);
 
-    public static String MAIN_TAB_ONE_TITLE = "main.tab.one";
+    public static String MAIN_TAB_ONE_TITLE = "itemGroup.vibranium.main_tab_one";
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_TAB_ONE = CREATIVE_MODE_TABS.register("main_tab_one", () -> {
         CreativeModeTab.Builder builder = CreativeModeTab.builder();
@@ -52,7 +52,7 @@ public class CreativeTabInit {
 //            output.accept(ItemInit.VIBRA_GOLEM_SPAWN_EGG);
 
             output.accept(BlockInit.BLOCK_OF_RAW_VIBRANIUM);
-            output.accept(BlockInit.DEPPSLATE_VIBRANIUM_ORE);
+            output.accept(BlockInit.DEEPSLATE_VIBRANIUM_ORE);
             output.accept(BlockInit.VIBRANIUM_BLOCK);
             output.accept(BlockInit.ENRICHED_VIBRANIUM_DIRT);
             output.accept(BlockInit.ENRICHED_VIBRANIUM_FARMLAND);
