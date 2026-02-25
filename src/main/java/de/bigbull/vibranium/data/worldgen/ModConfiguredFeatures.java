@@ -100,8 +100,8 @@ public class ModConfiguredFeatures {
         RuleTest deepslateReplacable = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
         List<OreConfiguration.TargetBlockState> VibraniumOre =
-                List.of(OreConfiguration.target(stoneReplacable, BlockInit.DEPPSLATE_VIBRANIUM_ORE.get().defaultBlockState()),
-                        OreConfiguration.target(deepslateReplacable, BlockInit.DEPPSLATE_VIBRANIUM_ORE.get().defaultBlockState()));
+                List.of(OreConfiguration.target(stoneReplacable, BlockInit.DEEPSLATE_VIBRANIUM_ORE.get().defaultBlockState()),
+                        OreConfiguration.target(deepslateReplacable, BlockInit.DEEPSLATE_VIBRANIUM_ORE.get().defaultBlockState()));
 
         FeatureUtils.register(context, OVERWORLD_VIBRANIUM_ORE, Feature.ORE, new OreConfiguration(VibraniumOre, 4));
         FeatureUtils.register(context, VIBRANIUM_GEODE, FeatureInit.VIBRANIUM_GEODE.get(), new GeodeConfiguration(

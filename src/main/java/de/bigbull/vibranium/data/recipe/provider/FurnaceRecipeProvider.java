@@ -13,7 +13,7 @@ import net.minecraft.world.level.ItemLike;
 import java.util.concurrent.CompletableFuture;
 
 public class FurnaceRecipeProvider extends MainModRecipeProvider {
-    public static final ImmutableList<ItemLike> VIBRANIUM_SMELTABLES = ImmutableList.of(ItemInit.RAW_VIBRANIUM, BlockInit.DEPPSLATE_VIBRANIUM_ORE);
+    public static final ImmutableList<ItemLike> VIBRANIUM_SMELTABLES = ImmutableList.of(ItemInit.RAW_VIBRANIUM, BlockInit.DEEPSLATE_VIBRANIUM_ORE);
     private final RecipeOutput recipeOutput;
 
     public FurnaceRecipeProvider(DataGenerator generator, CompletableFuture<HolderLookup.Provider> registries, RecipeOutput recipeOutput) {

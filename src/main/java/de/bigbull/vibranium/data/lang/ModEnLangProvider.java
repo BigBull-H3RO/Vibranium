@@ -33,7 +33,7 @@ public class ModEnLangProvider extends LanguageProvider {
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block of Raw Vibranium");
-        addBlock(BlockInit.DEPPSLATE_VIBRANIUM_ORE, "Deepslate Vibranium Ore");
+        addBlock(BlockInit.DEEPSLATE_VIBRANIUM_ORE, "Deepslate Vibranium Ore");
         addBlock(BlockInit.VIBRANIUM_BLOCK, "Vibranium Block");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_DIRT, "Enriched Vibranium Dirt");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_FARMLAND, "Enriched Vibranium Farmland");

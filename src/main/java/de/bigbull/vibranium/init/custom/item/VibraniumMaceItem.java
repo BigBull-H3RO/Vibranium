@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class VibraniumMaceItem extends DiggerItem {
-    private float lastCalculatedDamage = 0.0F;
+    private static final ThreadLocal<Float> lastCalculatedDamage = ThreadLocal.withInitial(() -> 0.0F);
 
     public VibraniumMaceItem(Tier tier, TagKey<Block> tag, Properties properties) {
         super(tier, BlockTags.MINEABLE_WITH_PICKAXE, properties);
@@ -147,10 +147,11 @@ public class VibraniumMaceItem extends DiggerItem {
                     damage += EnchantmentHelper.modifyFallBasedDamage(serverlevel, livingentity.getWeaponItem(), targetEntity, damageSource, 0.0F) * fallDistance;
                 }
 
-                this.lastCalculatedDamage = damage;
+                lastCalculatedDamage.set(damage);
                 return damage;
             }
         } else {
+            lastCalculatedDamage.set(0.0F);
             return 0.0F;
         }
     }
@@ -170,7 +171,7 @@ public class VibraniumMaceItem extends DiggerItem {
 
                         Holder<DamageType> damageTypeHolder = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC);
                         DamageSource damageSource = new DamageSource(damageTypeHolder, player);
-                        float reducedDamage = this.lastCalculatedDamage / 8.0F;
+                        float reducedDamage = lastCalculatedDamage.get() / 8.0F;
                         entity.hurt(damageSource, reducedDamage);
                     }
                 });
@@ -240,3 +241,4 @@ public class VibraniumMaceItem extends DiggerItem {
         list.add(Component.translatable("item.vibranium_mace.tooltip").withStyle(ChatFormatting.GRAY));
     }
 }
+

@@ -1,16 +1,13 @@
 package de.bigbull.vibranium.data.texture;
 
-import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.Vibranium;
+import de.bigbull.vibranium.init.BlockInit;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -22,7 +19,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         normalBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
-        normalBlock((BlockInit.DEPPSLATE_VIBRANIUM_ORE.get()));
+        normalBlock(BlockInit.DEEPSLATE_VIBRANIUM_ORE.get());
         normalBlock(BlockInit.VIBRANIUM_BLOCK.get());
         normalBlock(BlockInit.SOULWOOD_PLANKS.get());
         normalBlock(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get());

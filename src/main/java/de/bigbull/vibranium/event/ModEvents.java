@@ -1,10 +1,10 @@
 package de.bigbull.vibranium.event;
 
 import com.mojang.blaze3d.platform.InputConstants;
+import de.bigbull.vibranium.entity.VibraGolemEntity;
 import de.bigbull.vibranium.entity.client.ModModelLayers;
 import de.bigbull.vibranium.entity.client.VibraGolemModel;
 import de.bigbull.vibranium.entity.client.VibraGolemRenderer;
-import de.bigbull.vibranium.entity.VibraGolemEntity;
 import de.bigbull.vibranium.init.*;
 import de.bigbull.vibranium.init.custom.particle.CustomDripParticle;
 import de.bigbull.vibranium.init.custom.particle.CustomLeavesParticle;
@@ -18,10 +18,12 @@ import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import org.lwjgl.glfw.GLFW;
 
@@ -29,9 +31,7 @@ public class ModEvents {
     public static KeyMapping toggleOutlineKey;
 
     public static void onclientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            Sheets.addWoodType(TypesInit.SOULWOOD_WOODTYPE);
-        });
+        event.enqueueWork(() -> Sheets.addWoodType(TypesInit.SOULWOOD_WOODTYPE));
 
         BlockEntityRenderers.register(EntitiesInit.SOULWOOD_SIGN.get(), SignRenderer::new);
         BlockEntityRenderers.register(EntitiesInit.SOULWOOD_HANGING_SIGN.get(), HangingSignRenderer::new);
@@ -56,6 +56,15 @@ public class ModEvents {
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(EntitiesInit.VIBRA_GOLEM.get(), VibraGolemEntity.setAttributes().build());
     }
+
+    public static void addBlockEntityTypes(BlockEntityTypeAddBlocksEvent event) {
+        event.modify(BlockEntityType.SIGN,
+                BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get());
+
+        event.modify(BlockEntityType.HANGING_SIGN,
+                BlockInit.SOULWOOD_HANGING_SIGN.get(), BlockInit.SOULWOOD_WALL_HANGING_SIGN.get());
+    }
+
 
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
         toggleOutlineKey = new KeyMapping(

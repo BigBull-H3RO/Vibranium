@@ -142,3 +142,4 @@ public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
         }
     }
 }
+

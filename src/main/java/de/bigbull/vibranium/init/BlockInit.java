@@ -41,7 +41,7 @@ public class BlockInit {
                     .requiresCorrectToolForDrops()
                     .strength(6.0F, 1200.0F)));
 
-    public static final DeferredBlock<Block> DEPPSLATE_VIBRANIUM_ORE = registerBlock("deepslate_vibranium_ore", () ->
+    public static final DeferredBlock<Block> DEEPSLATE_VIBRANIUM_ORE = registerBlock("deepslate_vibranium_ore", () ->
             new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.DEEPSLATE)
                     .strength(12.0F, 1200.0F)
@@ -97,7 +97,7 @@ public class BlockInit {
             new SoulTreeSaplingBlock(EVTree.SOUL_TREE, BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SAPLING)));
 
     public static final DeferredBlock<Block> SOULWOOD_PLANKS = registerBlock("soulwood_planks", () ->
-            new VibraniumRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)));
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)));
 
     public static final DeferredBlock<StairBlock> SOULWOOD_STAIRS = registerBlock("soulwood_stairs", () ->
             new StairBlock(SOULWOOD_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_STAIRS)));
@@ -127,45 +127,45 @@ public class BlockInit {
             () -> new StandingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.TERRACOTTA_BLUE)
                     .strength(1.0F)
-                    .noCollission()){
-            @Override
-            public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-                return new SWSignBlockEntity(pPos, pState);
-            }
-    });
+                    .noCollission()) {
+                @Override
+                public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+                    return new SWSignBlockEntity(pPos, pState);
+                }
+            });
 
     public static final DeferredBlock<WallSignBlock> SOULWOOD_WALL_SIGN = BLOCKS.register("soulwood_wall_sign",
             () -> new WallSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.TERRACOTTA_BLUE)
                     .strength(1.0F)
-                    .noCollission()){
-            @Override
-            public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-            return new SWSignBlockEntity(pPos, pState);
-            }
-    });
+                    .noCollission()) {
+                @Override
+                public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+                    return new SWSignBlockEntity(pPos, pState);
+                }
+            });
 
     public static final DeferredBlock<CeilingHangingSignBlock> SOULWOOD_HANGING_SIGN = BLOCKS.register("soulwood_hanging_sign",
             () -> new CeilingHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.TERRACOTTA_BLUE)
                     .strength(1.0F)
                     .noCollission()) {
-            @Override
-            public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-                return new SWHangingSignBlockEntity(pPos, pState);
-            }
-    });
+                @Override
+                public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+                    return new SWHangingSignBlockEntity(pPos, pState);
+                }
+            });
 
     public static final DeferredBlock<WallHangingSignBlock> SOULWOOD_WALL_HANGING_SIGN = BLOCKS.register("soulwood_wall_hanging_sign",
             () -> new WallHangingSignBlock(TypesInit.SOULWOOD_WOODTYPE, BlockBehaviour.Properties.of()
                     .mapColor(MapColor.TERRACOTTA_BLUE)
                     .strength(1.0F)
                     .noCollission()) {
-            @Override
-            public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-                return new SWHangingSignBlockEntity(pPos, pState);
-            }
-    });
+                @Override
+                public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+                    return new SWHangingSignBlockEntity(pPos, pState);
+                }
+            });
 
     public static final DeferredBlock<FlowerPotBlock> POTTED_SOULWOOD_SAPLING = BLOCKS.register("potted_soulwood_sapling",
             () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SOULWOOD_SAPLING,

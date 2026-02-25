@@ -34,7 +34,7 @@ public class ModDeLangProvider extends LanguageProvider {
 
         //Blocks
         addBlock(BlockInit.BLOCK_OF_RAW_VIBRANIUM, "Block aus rohem Vibranium");
-        addBlock(BlockInit.DEPPSLATE_VIBRANIUM_ORE, "Tiefenschiefer Vibraniumerz");
+        addBlock(BlockInit.DEEPSLATE_VIBRANIUM_ORE, "Tiefenschiefer Vibraniumerz");
         addBlock(BlockInit.VIBRANIUM_BLOCK, "Vibranium Block");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_DIRT, "Angereicherte Vibranium Erde");
         addBlock(BlockInit.ENRICHED_VIBRANIUM_FARMLAND, "Angereichertes Vibranium Ackerland");
