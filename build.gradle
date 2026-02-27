@@ -47,6 +47,7 @@ runs {
 
     server {
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        jvmArgument '-Dio.netty.noNative=true'
         arguments.add('--nogui')
     }
 
@@ -74,12 +75,12 @@ sourceSets {
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
-    //compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
-    //runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
-    //runtimeOnly "dev.architectury:architectury-neoforge:${architectury_version}"
-    //runtimeOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
-    //compileOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+    runtimeOnly "dev.architectury:architectury-neoforge:${architectury_version}"
+    runtimeOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+    compileOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
 }
 
 tasks.withType(ProcessResources).configureEach {

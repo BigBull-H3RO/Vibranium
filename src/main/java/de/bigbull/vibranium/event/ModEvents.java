@@ -1,7 +1,6 @@
 package de.bigbull.vibranium.event;
 
 import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.entity.VibraGolemEntity;
 import de.bigbull.vibranium.entity.client.VibraGolemModel;
 import de.bigbull.vibranium.entity.client.VibraGolemRenderer;
 import de.bigbull.vibranium.init.*;
@@ -15,14 +14,11 @@ import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterSpecialModelRendererEvent;
-import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
-import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 
 public class ModEvents {
     public static void clientSetup(FMLClientSetupEvent event) {
@@ -54,13 +50,6 @@ public class ModEvents {
         event.register(Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium_shield"), ShieldRenderer.Unbaked.MAP_CODEC);
     }
 
-    public static void addBlockEntityTypes(BlockEntityTypeAddBlocksEvent event) {
-        event.modify(BlockEntityType.SIGN,
-                BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get());
-
-        event.modify(BlockEntityType.HANGING_SIGN,
-                BlockInit.SOULWOOD_HANGING_SIGN.get(), BlockInit.SOULWOOD_WALL_HANGING_SIGN.get());
-    }
 
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(EntitiesInit.SOULWOOD_BOAT.get(),
@@ -75,9 +64,6 @@ public class ModEvents {
         event.registerLayerDefinition(ModelLayersInit.VIBRAGOLEM_LAYER, VibraGolemModel::createBodyLayer);
     }
 
-    public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
-        event.put(EntitiesInit.VIBRAGOLEM.get(), VibraGolemEntity.setAttributes().build());
-    }
 
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
         event.registerCategory(ModKeybinds.VIBRANIUM_CATEGORY);
