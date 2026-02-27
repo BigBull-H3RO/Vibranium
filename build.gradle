@@ -51,6 +51,7 @@ runs {
 
     server {
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        jvmArgument '-Dio.netty.noNative=true'
         arguments.add('--nogui')
     }
 

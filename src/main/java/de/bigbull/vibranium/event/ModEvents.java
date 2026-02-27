@@ -1,7 +1,6 @@
 package de.bigbull.vibranium.event;
 
 import com.mojang.blaze3d.platform.InputConstants;
-import de.bigbull.vibranium.entity.VibraGolemEntity;
 import de.bigbull.vibranium.entity.client.ModModelLayers;
 import de.bigbull.vibranium.entity.client.VibraGolemModel;
 import de.bigbull.vibranium.entity.client.VibraGolemRenderer;
@@ -17,14 +16,10 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
-import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
-import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import org.lwjgl.glfw.GLFW;
 
 public class ModEvents {
@@ -51,18 +46,6 @@ public class ModEvents {
         event.registerLayerDefinition(ModelLayersInit.SOULWOOD_BOAT, BoatModel::createBodyModel);
         event.registerLayerDefinition(ModelLayersInit.SOULWOOD_CHEST_BOAT, ChestBoatModel::createBodyModel);
         event.registerLayerDefinition(ModModelLayers.VIBRAGOLEM_LAYER, VibraGolemModel::createBodyLayer);
-    }
-
-    public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
-        event.put(EntitiesInit.VIBRA_GOLEM.get(), VibraGolemEntity.setAttributes().build());
-    }
-
-    public static void addBlockEntityTypes(BlockEntityTypeAddBlocksEvent event) {
-        event.modify(BlockEntityType.SIGN,
-                BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get());
-
-        event.modify(BlockEntityType.HANGING_SIGN,
-                BlockInit.SOULWOOD_HANGING_SIGN.get(), BlockInit.SOULWOOD_WALL_HANGING_SIGN.get());
     }
 
 
