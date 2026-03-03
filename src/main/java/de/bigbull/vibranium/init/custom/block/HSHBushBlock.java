@@ -5,7 +5,6 @@ import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.ParticleInit;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -43,7 +42,7 @@ public class HSHBushBlock extends BushBlock implements BonemealableBlock {
     @Override
     public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
         BlockState soil = worldIn.getBlockState(pos.below());
-        return soil.is(BlockInit.ENRICHED_VIBRANIUM_DIRT.get()) || state.is(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get());
+        return soil.is(BlockInit.ENRICHED_VIBRANIUM_DIRT.get()) || soil.is(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get());
     }
 
     @Override
