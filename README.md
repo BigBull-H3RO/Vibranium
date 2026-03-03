@@ -35,6 +35,7 @@
 ✅ **Vibranium Resource Line**
 - **Deepslate Vibranium Ore**, **Raw Vibranium**, **Ingots**, **Nuggets**, **Plates**, and a **Vibranium Core**.
 - **Block of Raw Vibranium** and **Vibranium Block**.
+- **Vibranium Upgrade Smithing Template** for gear progression.
 
 ✅ **Vibranium Tools & Combat Gear**
 - Full **tool set** (sword, pickaxe, axe, shovel, hoe).
@@ -46,7 +47,7 @@
 - **Vibranium Armor Trim Material** using **Vibranium Crystal Shard**.
 
 ✅ **Kinetic Redistribution Effect**
-- **Heart Shaped Herb** and **Soul Herb Elixir** grant **Kinetic Redistribution**.
+- **Heart Shaped Herb**, **Soul Herb Mixture**, and **Soul Herb Elixir** grant **Kinetic Redistribution**.
 - When damaged, stored energy **pushes back nearby enemies** and **deals damage**.
 - The elixir also grants **Speed**, **Regeneration**, **Absorption**, and **Damage Boost** for a short duration.
 
@@ -57,20 +58,26 @@
 ✅ **Worldgen & Biome Flavor**
 - **Vibranium Geodes** with crystal growth.
 - **Heart Shaped Herb Bushes** and **Soulwood Trees** can spawn inside **Vibranium Geodes**.
+- **Enriched Vibranium Dirt** patches can appear inside geodes.
 - **Enriched Vibranium Dirt/Farmland** (can be created by right-clicking with Raw Vibranium).
+- **Enriched Vibranium Farmland** boosts crop growth over time.
 - Mining **Enriched Vibranium Dirt/Farmland** with a **hoe** can yield **Raw Vibranium** or **Vibranium Nuggets**.
+
+✅ **Loot & Progression**
+- **Heart Shaped Herb** can appear in **Ruined Portal chests**.
+- **Vibranium Upgrade Smithing Template** can appear in **Trial Chambers** chests.
 
 ✅ **Universal Breaker Enchantment**
 - **Mace-only enchantment** that lets the 3x3 mining break **all block types** in the area.
 - Without it, the Mace only breaks the **same block type** as the center block you targeted.
 
 ✅ **JEI / REI Compatibility**
-- Shows **brewing recipes** for Soul Herb Elixirs.
-- Adds **item descriptions** for key items/blocks (e.g., Enriched Vibranium Dirt/Farmland).
+- Shows **brewing recipes** for Soul Herb Elixirs (JEI/REI).
+- JEI adds **item descriptions** for Heart Shaped Herb, Vibranium Core, Vibranium Upgrade Smithing Template, and Enriched Vibranium Dirt/Farmland.
 
 ❌ **Vibra Golem (Prototype / WIP)**
 - Currently **not fully usable in normal gameplay**.
-- **No natural spawns** yet; gameplay availability is still experimental.
+- **No natural spawns** yet; the spawn egg is **command-only** (not in creative tabs).
 
 ---
 
@@ -114,7 +121,7 @@ The Vibranium Mace includes simple config options via **`client-config.toml`** a
 - The **Vibranium Mace** highlights its 3x3 mining area; adjust colors in the client config.
 - **Heart Shaped Herb** can be harvested directly from its bush when fully grown.
 
-> Hold the **outline toggle key** (default **O**) to enable/disable the 3x3 preview.
+> Press the **outline toggle key** (default **O**) to enable/disable the 3x3 preview.
 
 ---
 
