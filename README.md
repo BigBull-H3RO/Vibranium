@@ -35,20 +35,23 @@
 ✅ **Vibranium Resource Line**
 - **Deepslate Vibranium Ore**, **Raw Vibranium**, **Ingots**, **Nuggets**, **Plates**, and a **Vibranium Core**.
 - **Block of Raw Vibranium** and **Vibranium Block**.
+- **Vibranium Crystal Shards** and crystal blocks (**Budding**, **Clusters**, **Buds**) from geodes.
 
 ✅ **Vibranium Tools & Combat Gear**
 - Full **tool set** (sword, pickaxe, axe, shovel, hoe).
+- **Vibranium Spear** for fast melee combat.
 - **Vibranium Mace**: mines a **3x3 area** (hold **Shift** to mine a single block) and the push effect **deals damage** to affected enemies.
 - **Vibranium Shield**: blocks melee hits and can **reflect arrows** back.
 
 ✅ **Vibranium Armor & Trims**
-- Full **armor set**, plus **Wolf Armor**, **Horse Armor**, and **Turtle Helmet**.
+- Full **armor set**, plus **Wolf Armor**, **Horse Armor**, **Turtle Helmet**, and **Nautilus Armor**.
 - **Vibranium Armor Trim Material** using **Vibranium Crystal Shard**.
 
 ✅ **Kinetic Redistribution Effect**
 - **Heart Shaped Herb** and **Soul Herb Elixir** grant **Kinetic Redistribution**.
 - When damaged, stored energy **pushes back nearby enemies** and **deals damage**.
 - The elixir also grants **Speed**, **Regeneration**, **Absorption**, and **Damage Boost** for a short duration.
+- **Soul Herb Mixture** is the primary brewing ingredient for the elixir.
 
 ✅ **Soulwood Set**
 - **Soulwood** log/wood variants, planks, stairs, slab, door, trapdoor, fence, gate, pressure plate, button.
@@ -59,6 +62,8 @@
 - **Heart Shaped Herb Bushes** and **Soulwood Trees** can spawn inside **Vibranium Geodes**.
 - **Enriched Vibranium Dirt/Farmland** (can be created by right-clicking with Raw Vibranium).
 - Mining **Enriched Vibranium Dirt/Farmland** with a **hoe** can yield **Raw Vibranium** or **Vibranium Nuggets**.
+- **Heart Shaped Herb** can appear in **Ruined Portal chests**.
+- **Vibranium Upgrade Smithing Template** can be found in **Trial Chambers** (intersection barrels).
 
 ✅ **Universal Breaker Enchantment**
 - **Mace-only enchantment** that lets the 3x3 mining break **all block types** in the area.
@@ -66,11 +71,11 @@
 
 ✅ **JEI / REI Compatibility**
 - Shows **brewing recipes** for Soul Herb Elixirs.
-- Adds **item descriptions** for key items/blocks (e.g., Enriched Vibranium Dirt/Farmland).
+- Adds **item descriptions** for key items/blocks (e.g., Enriched Vibranium Dirt/Farmland, Heart Shaped Herb, Upgrade Template).
 
 ❌ **Vibra Golem (Prototype / WIP)**
 - Currently **not fully usable in normal gameplay**.
-- **No natural spawns** yet; gameplay availability is still experimental.
+- **No natural spawns** and **no spawn egg** yet; gameplay availability is still experimental.
 
 ---
 
