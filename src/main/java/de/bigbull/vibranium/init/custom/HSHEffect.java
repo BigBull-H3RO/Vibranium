@@ -9,7 +9,6 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
@@ -60,7 +59,7 @@ public class HSHEffect extends MobEffect {
     }
 
     @Override
-    public void onMobRemoved(ServerLevel level, LivingEntity entity, int amplifier, Entity.RemovalReason reason) {
+    public void onMobRemoved(LivingEntity entity, int p_338476_, Entity.RemovalReason p_338373_) {
         if (entity instanceof Player player) {
             damageTracker.remove(player.getUUID());
         }
