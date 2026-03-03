@@ -1,29 +1,127 @@
-<p align="center"><img src=".idea/icon.png" alt="Logo" width="250"></p>
-<h1 align="center">Vibranium  <br>
-	<a href="https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge/files"><img src="https://cf.way2muchnoise.eu/versions/1100508(0280ff).svg?cachebuster=1" alt="Supported Versions"></a>
-	<a href="https://github.com/BigBull-H3RO/Vibranium/blob/main/LICENSE"><img src="https://img.shields.io/github/license/BigBull-H3RO/Vibranium?style=flat&color=0280ff" alt="License"></a>
-	<a href="https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge"><img src="https://cf.way2muchnoise.eu/1100508.svg?" alt="CurseForge"></a>
-	<a href="https://modrinth.com/mod/vibranium"><img src="https://img.shields.io/modrinth/dt/K3I2cKId?logo=modrinth&label=&suffix=%20&style=flat&color=242629&labelColor=5ca424&logoColor=1c1c1c" alt="Modrinth"></a>
-	<a href="https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge/files/all?page=1&pageSize=20"><img src="https://img.shields.io/curseforge/v/1100508?logo=adguard&label=&suffix=%20&style=flat&color=1c1c1c&labelColor=121212&logoColor=5ca424" alt=Version"></a>
-    <br><br>
-</h1>
+<div align="center">
 
-**Welcome to the Vibranium Mod, an exciting addition to your Minecraft experience that introduces a powerful new resource and a variety of innovative tools and features.**
+<p><img src="./.idea/icon.png" alt="Logo" width="250"></p>
 
-Discover **Vibranium**, a rare and valuable ore that empowers you to craft an array of unique items. With Vibranium, you can create durable Vibranium Armor to protect yourself, as well as specialized **Wolf and Horse Armor** to safeguard your loyal companions.
+# Vibranium
 
-To craft Vibranium tools, weapons, and armor, you will need the **Vibranium Upgrade**, a special template found in **Trial Chambers**. This template is essential for enhancing your equipment and unlocking the full potential of Vibranium.
+<a href="https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge/files"><img src="https://cf.way2muchnoise.eu/versions/1100508(0280ff).svg?cachebuster=1" alt="Supported Versions"></a>
+<a href="https://github.com/BigBull-H3RO/Vibranium/blob/main/LICENSE"><img src="https://img.shields.io/github/license/BigBull-H3RO/Vibranium?style=flat&color=0280ff" alt="License"></a>
+<a href="https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge"><img src="https://cf.way2muchnoise.eu/1100508.svg?" alt="CurseForge"></a>
+<a href="https://modrinth.com/mod/vibranium"><img src="https://img.shields.io/modrinth/dt/K3I2cKId?logo=modrinth&label=&suffix=%20&style=flat&color=242629&labelColor=5ca424&logoColor=1c1c1c" alt="Modrinth"></a>
+<a href="https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge/files/all?page=1&pageSize=20"><img src="https://img.shields.io/curseforge/v/1100508?logo=adguard&label=&suffix=%20&style=flat&color=1c1c1c&labelColor=121212&logoColor=5ca424" alt="Version"></a>
 
-Equip yourself with Vibranium Tools, including the essential sword, pickaxe, axe, shovel, and hoe, designed to withstand the toughest challenges. For defense, craft the unique **Vibranium Shield** to bolster your protection in battle. For those who seek efficiency, the **Vibranium Mace** allows you to mine in a 3x3 area, making resource gathering faster and more enjoyable.
+</div>
 
-But the Vibranium Mod offers more than just tools. Deep beneath the earth, you may encounter the mysterious Vibra Golem. This powerful entity can be tamed and will loyally follow and protect you on your adventures, adding an exciting new dimension to your underground explorations.
+**Vibranium** is a NeoForge mod that introduces a powerful new resource line, custom gear, and a compact set of worldgen features built around **Vibranium crystals**, **Soulwood**, and **Enriched Vibranium** soil. It aims to feel like a natural expansion to vanilla progression: find rare ore, upgrade your gear, and unlock unique tools and effects that change how you explore and fight.
 
-Immerse yourself in the world of Vibranium and discover how this extraordinary material can change the way you play Minecraft. Whether you're a builder, an explorer, or a fighter, the Vibranium Mod offers something for everyone.
+---
 
-<h1></h1>
+## **Supported Versions**
+**Actively supported (full updates and fixes):**
+- **Minecraft 1.21.1**
+- **Minecraft 1.21.11 (main)**
 
-⚠️**Note: The Vibra Golem is currently in the alpha phase and does not spawn naturally in the world yet. This feature is still in development and will be added in future updates.**
+**Legacy builds (no active updates, only critical fixes if needed):**
+- **Minecraft 1.21**
+- **Minecraft 1.21.4**
+- **Minecraft 1.21.5**
+- **Minecraft 1.21.6 - 1.21.8**
+- **Minecraft 1.21.9**
+- **Minecraft 1.21.10**
 
-<h1></h1>
-<h4 align="center">Please report issues to the <a href="https://github.com/BigBull-H3RO/Vibranium/issues">Issue Tracker</a></h4>
-<h4 align="center">Find out more about Vibranium on our <a href="https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge">Curseforge</a> or <a href="https://modrinth.com/mod/vibranium">Modrinth</a> Page</h4>
+---
+
+## **✨ Features**
+✅ **Vibranium Resource Line**
+- **Deepslate Vibranium Ore**, **Raw Vibranium**, **Ingots**, **Nuggets**, **Plates**, and a **Vibranium Core**.
+- **Block of Raw Vibranium** and **Vibranium Block**.
+
+✅ **Vibranium Tools & Combat Gear**
+- Full **tool set** (sword, pickaxe, axe, shovel, hoe).
+- **Vibranium Mace**: mines a **3x3 area** (hold **Shift** to mine a single block) and the push effect **deals damage** to affected enemies.
+- **Vibranium Shield**: blocks melee hits and can **reflect arrows** back.
+
+✅ **Vibranium Armor & Trims**
+- Full **armor set**, plus **Wolf Armor**, **Horse Armor**, and **Turtle Helmet**.
+- **Vibranium Armor Trim Material** using **Vibranium Crystal Shard**.
+
+✅ **Kinetic Redistribution Effect**
+- **Heart Shaped Herb** and **Soul Herb Elixir** grant **Kinetic Redistribution**.
+- When damaged, stored energy **pushes back nearby enemies** and **deals damage**.
+- The elixir also grants **Speed**, **Regeneration**, **Absorption**, and **Damage Boost** for a short duration.
+
+✅ **Soulwood Set**
+- **Soulwood** log/wood variants, planks, stairs, slab, door, trapdoor, fence, gate, pressure plate, button.
+- **Soulwood Leaves**, **Sapling**, **Signs** and **Hanging Signs**, **Boat** and **Chest Boat**.
+
+✅ **Worldgen & Biome Flavor**
+- **Vibranium Geodes** with crystal growth.
+- **Heart Shaped Herb Bushes** and **Soulwood Trees** can spawn inside **Vibranium Geodes**.
+- **Enriched Vibranium Dirt/Farmland** (can be created by right-clicking with Raw Vibranium).
+- Mining **Enriched Vibranium Dirt/Farmland** with a **hoe** can yield **Raw Vibranium** or **Vibranium Nuggets**.
+
+✅ **Universal Breaker Enchantment**
+- **Mace-only enchantment** that lets the 3x3 mining break **all block types** in the area.
+- Without it, the Mace only breaks the **same block type** as the center block you targeted.
+
+✅ **JEI / REI Compatibility**
+- Shows **brewing recipes** for Soul Herb Elixirs.
+- Adds **item descriptions** for key items/blocks (e.g., Enriched Vibranium Dirt/Farmland).
+
+❌ **Vibra Golem (Prototype / WIP)**
+- Currently **not fully usable in normal gameplay**.
+- **No natural spawns** yet; gameplay availability is still experimental.
+
+---
+
+## **🌍 Languages**
+The mod includes the following translations:
+- **English (en_us)** — AI translated
+- **German (de_de)**
+- **French (fr_fr)** — AI translated
+- **Chinese (Simplified) (zh_cn)** — thanks to **@shenyx110**
+- **Spanish (es_es)** — AI translated
+
+---
+
+## **⚙️ Configuration Options**
+The Vibranium Mace includes simple config options via **`client-config.toml`** and **`server-config.toml`**.
+
+<details>
+<summary style="font-size: 1.2em;"><strong>Client Configuration</strong> (<code>client-config.toml</code>)</summary>
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `red` | `0.0` | Outline color - red component (0.0 - 1.0). |
+| `green` | `0.0` | Outline color - green component (0.0 - 1.0). |
+| `blue` | `0.0` | Outline color - blue component (0.0 - 1.0). |
+| `alpha` | `0.6` | Outline color - alpha component (0.0 - 1.0). |
+
+</details>
+
+<details>
+<summary style="font-size: 1.2em;"><strong>Server Configuration</strong> (<code>server-config.toml</code>)</summary>
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `fastMode` | `false` | Use fast 3x3 mining (better performance, less detailed block handling). |
+
+</details>
+
+---
+
+## **🧭 Tips & Notes**
+- The **Vibranium Mace** highlights its 3x3 mining area; adjust colors in the client config.
+- **Heart Shaped Herb** can be harvested directly from its bush when fully grown.
+
+> Hold the **outline toggle key** (default **O**) to enable/disable the 3x3 preview.
+
+---
+
+<div align="center">
+
+#### 📢 **Found a bug or have a suggestion?**
+Report issues to the [Issue Tracker](https://github.com/BigBull-H3RO/Vibranium/issues)
+
+#### 💡 Find out more about Vibranium on [Curseforge](https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge) or [Modrinth](https://modrinth.com/mod/vibranium)
+</div>
