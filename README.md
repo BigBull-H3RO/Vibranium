@@ -117,7 +117,6 @@ The Vibranium Mace includes simple config options via **`client-config.toml`** a
 
 ## **🧭 Tips & Notes**
 - The **Vibranium Mace** highlights its 3x3 mining area; adjust colors in the client config.
-- **Heart Shaped Herb** can be harvested directly from its bush when fully grown.
 
 > Hold the **outline toggle key** (default **O**) to enable/disable the 3x3 preview.
 
