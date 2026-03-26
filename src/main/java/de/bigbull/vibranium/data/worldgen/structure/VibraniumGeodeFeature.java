@@ -48,7 +48,7 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
         WorldgenRandom worldgenrandom = new WorldgenRandom(new LegacyRandomSource(worldgenlevel.getSeed()));
         NormalNoise normalnoise = NormalNoise.create(worldgenrandom, -4, 1.0);
         List<BlockPos> list1 = Lists.newLinkedList();
-        double d0 = (double)k / (double)geodeconfiguration.outerWallDistance.getMaxValue();
+        double d0 = (double)k / (double)geodeconfiguration.outerWallDistance.maxInclusive();
         GeodeLayerSettings geodelayersettings = geodeconfiguration.geodeLayerSettings;
         GeodeBlockSettings geodeblocksettings = geodeconfiguration.geodeBlockSettings;
         GeodeCrackSettings geodecracksettings = geodeconfiguration.geodeCrackSettings;
@@ -128,12 +128,12 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
                         }
                     }
                 } else if (d6 >= d1) {
-                    this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.fillingProvider.getState(randomsource, blockpos3), predicate);
+                    this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.fillingProvider.getState(worldgenlevel, randomsource, blockpos3), predicate);
                 } else if (d6 >= d2) {
                     boolean flag1 = randomsource.nextFloat() < geodeconfiguration.useAlternateLayer0Chance;
                     BlockState innerLayerState = flag1
-                            ? geodeblocksettings.alternateInnerLayerProvider.getState(randomsource, blockpos3)
-                            : geodeblocksettings.innerLayerProvider.getState(randomsource, blockpos3);
+                            ? geodeblocksettings.alternateInnerLayerProvider.getState(worldgenlevel, randomsource, blockpos3)
+                            : geodeblocksettings.innerLayerProvider.getState(worldgenlevel, randomsource, blockpos3);
 
                     if (innerLayerState.is(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get())) {
                         int y = blockpos3.getY();
@@ -148,9 +148,9 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
                         list2.add(blockpos3.immutable());
                     }
                 } else if (d6 >= d3) {
-                    this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.middleLayerProvider.getState(randomsource, blockpos3), predicate);
+                    this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.middleLayerProvider.getState(worldgenlevel, randomsource, blockpos3), predicate);
                 } else if (d6 >= d4) {
-                    this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.outerLayerProvider.getState(randomsource, blockpos3), predicate);
+                    this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.outerLayerProvider.getState(worldgenlevel, randomsource, blockpos3), predicate);
                 }
             }
         }

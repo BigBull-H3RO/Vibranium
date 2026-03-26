@@ -10,12 +10,13 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.block.FarmlandBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 
-public class EVFarmlandBlock extends FarmBlock {
-    public EVFarmlandBlock(Properties properties) {
+public class EVFarmlandBlock extends FarmlandBlock {
+    public EVFarmlandBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }
 
@@ -24,12 +25,12 @@ public class EVFarmlandBlock extends FarmBlock {
         int moisture = state.getValue(MOISTURE);
         if (!isNearWater(level, pos) && !level.isRainingAt(pos.above())) {
             if (moisture > 0) {
-                level.setBlock(pos, state.setValue(MOISTURE, Integer.valueOf(moisture - 1)), 2);
+                level.setBlock(pos, state.setValue(MOISTURE, moisture - 1), 2);
             } else if (!shouldMaintainFarmland(level, pos)) {
                 turnToEnrichedDirt(null, state, level, pos);
             }
         } else if (moisture < 7) {
-            level.setBlock(pos, state.setValue(MOISTURE, Integer.valueOf(7)), 2);
+            level.setBlock(pos, state.setValue(MOISTURE, 7), 2);
         }
 
         BlockPos abovePos = pos.above();
@@ -48,7 +49,7 @@ public class EVFarmlandBlock extends FarmBlock {
     public void fallOn(Level level, BlockState blockState, BlockPos pos, Entity entity, double fallDistance) {
         if (level instanceof ServerLevel serverlevel
                 && net.neoforged.neoforge.common.CommonHooks.onFarmlandTrample(serverlevel, pos, BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState(), fallDistance, entity)) {
-            turnToDirt(entity, blockState, level, pos);
+            turnToEnrichedDirt(entity, blockState, level, pos);
         }
 
         super.fallOn(level, blockState, pos, entity, fallDistance);

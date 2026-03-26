@@ -17,6 +17,7 @@ import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
@@ -141,12 +142,12 @@ public class ModRecipeProvider extends RecipeProvider {
         vibraniumSmithing(Items.NETHERITE_NAUTILUS_ARMOR, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_NAUTILUS_ARMOR.get());
         vibraniumSmithing(Items.NETHERITE_SPEAR, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_SPEAR.get());
 
-        oreSmelting(VIBRANIUM_SMELTABLES, RecipeCategory.MISC, ItemInit.VIBRANIUM_PLATE, 2.5F, 400, "vibranium_ingot");
-        oreBlasting(VIBRANIUM_SMELTABLES, RecipeCategory.MISC, ItemInit.VIBRANIUM_PLATE, 2.5F, 150, "vibranium_ingot");
+        oreSmelting(VIBRANIUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ItemInit.VIBRANIUM_PLATE, 2.5F, 400, "vibranium_ingot");
+        oreBlasting(VIBRANIUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ItemInit.VIBRANIUM_PLATE, 2.5F, 150, "vibranium_ingot");
     }
 
     protected void generateBlockFamilies(FeatureFlagSet flags) {
-        BlockFamilyInit.getAllFamilies().filter(BlockFamily::shouldGenerateRecipe).forEach((family) -> generateRecipes(family, flags));
+        BlockFamilyInit.getAllFamilies().filter(BlockFamily::shouldGenerateCraftingRecipe).forEach((family) -> generateRecipes(family, flags));
     }
 
     protected void vibraniumSmithing(Item item, RecipeCategory category, Item outputItem) {

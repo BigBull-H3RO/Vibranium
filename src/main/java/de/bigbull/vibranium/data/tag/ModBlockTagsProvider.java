@@ -73,7 +73,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(BlockInit.SOULWOOD_BUTTON.get())
                 .add(BlockInit.SOULWOOD_PRESSURE_PLATE.get());
 
-        tag(BlockTags.BIG_DRIPLEAF_PLACEABLE)
+        tag(BlockTags.SUPPORTS_BIG_DRIPLEAF)
                 .add(BlockInit.ENRICHED_VIBRANIUM_DIRT.get())
                 .add(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get());
 

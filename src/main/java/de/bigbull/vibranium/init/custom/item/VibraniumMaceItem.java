@@ -121,7 +121,7 @@ public class VibraniumMaceItem extends Item {
             entity1.setDeltaMovement(entity1.getDeltaMovement().with(Direction.Axis.Y, 0.01F));
             if (entity1 instanceof ServerPlayer serverplayer) {
                 serverplayer.currentImpulseImpactPos = this.calculateImpactPosition(serverplayer);
-                serverplayer.setIgnoreFallDamageFromCurrentImpulse(true);
+                serverplayer.setIgnoreFallDamageFromCurrentImpulse(true, serverplayer.currentImpulseImpactPos);
                 serverplayer.connection.send(new ClientboundSetEntityMotionPacket(serverplayer));
             }
 

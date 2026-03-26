@@ -3,26 +3,38 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.192'
+    id 'net.neoforged.gradle.userdev' version '7.1.21'
 }
 
 version = mod_version
 group = mod_group_id
 
+def enableJei = (findProperty('enable_jei') ?: 'false').toString().toBoolean()
+def enableRei = (findProperty('enable_rei') ?: 'false').toString().toBoolean()
+def enableArchitectury = (findProperty('enable_architectury') ?: 'false').toString().toBoolean()
+def enableClothConfig = (findProperty('enable_cloth_config') ?: 'false').toString().toBoolean()
+
 repositories {
-    maven {
-        // location of the maven that hosts JEI files since January 2023
-        name = "Jared's maven"
-        url = "https://maven.blamejared.com/"
-    }
-    maven {
-        // location of a maven mirror for JEI files, as a fallback
-        name = "ModMaven"
-        url = "https://modmaven.dev"
+    if (enableJei) {
+        maven {
+            // location of the maven that hosts JEI files since January 2023
+            name = "Jared's maven"
+            url = "https://maven.blamejared.com/"
+        }
+        maven {
+            // location of a maven mirror for JEI files, as a fallback
+            name = "ModMaven"
+            url = "https://modmaven.dev"
+        }
     }
 
-    maven { url "https://maven.shedaniel.me/" }
-    maven { url "https://maven.architectury.dev/" }
+    if (enableRei || enableClothConfig) {
+        maven { url "https://maven.shedaniel.me/" }
+    }
+
+    if (enableArchitectury) {
+        maven { url "https://maven.architectury.dev/" }
+    }
 
     mavenLocal()
 }
@@ -31,7 +43,7 @@ base {
     archivesName = mod_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 runs {
     configureEach {
@@ -75,12 +87,22 @@ sourceSets {
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
-    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
-    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    if (enableJei) {
+        compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+        runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    }
 
-    runtimeOnly "dev.architectury:architectury-neoforge:${architectury_version}"
-    runtimeOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
-    compileOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+    if (enableArchitectury) {
+        runtimeOnly "dev.architectury:architectury-neoforge:${architectury_version}"
+    }
+
+    if (enableClothConfig) {
+        runtimeOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+    }
+
+    if (enableRei) {
+        compileOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+    }
 }
 
 tasks.withType(ProcessResources).configureEach {

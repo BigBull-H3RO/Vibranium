@@ -41,8 +41,8 @@ public class CustomDripParticle extends SingleQuadParticle {
     }
 
     @Override
-    public int getLightColor(float p_106065_) {
-        return this.isGlowing ? 240 : super.getLightColor(p_106065_);
+    protected int getLightCoords(float partialTickTime) {
+        return this.isGlowing ? 240 : super.getLightCoords(partialTickTime);
     }
 
     @Override

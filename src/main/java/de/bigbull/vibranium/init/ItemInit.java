@@ -5,7 +5,6 @@ import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import de.bigbull.vibranium.init.custom.item.VibraniumUpgradeTemplate;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.BlocksAttacks;
@@ -154,7 +153,7 @@ public class ItemInit {
                                     1.0F,
                                     List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 1.0F)),
                                     new BlocksAttacks.ItemDamageFunction(3.0F, 1.0F, 1.0F),
-                                    Optional.of(DamageTypeTags.BYPASSES_SHIELD),
+                                    Optional.empty(),
                                     Optional.of(SoundEvents.SHIELD_BLOCK),
                                     Optional.of(SoundEvents.SHIELD_BREAK)
                             )

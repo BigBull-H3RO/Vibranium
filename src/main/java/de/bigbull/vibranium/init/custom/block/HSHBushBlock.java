@@ -118,9 +118,10 @@ public class HSHBushBlock extends VegetationBlock implements BonemealableBlock {
         int i = blockState.getValue(AGE);
         boolean flag = i == 3;
         if (i > 1) {
-            int j = 1 + level.random.nextInt(2);
+            RandomSource random = level.getRandom();
+            int j = 1 + random.nextInt(2);
             popResource(level, pos, new ItemStack(ItemInit.HEART_SHAPED_HERB.get(), j + (flag ? 1 : 0)));
-            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + random.nextFloat() * 0.4F);
             BlockState blockstate = blockState.setValue(AGE, 1);
             level.setBlock(pos, blockstate, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockstate));

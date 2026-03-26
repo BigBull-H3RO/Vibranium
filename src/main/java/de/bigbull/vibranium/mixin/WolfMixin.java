@@ -33,7 +33,7 @@ public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
             if ((Crackiness.WOLF_ARMOR.byDamage(i, j) != Crackiness.WOLF_ARMOR.byDamage(this.getBodyArmorItem()) && this.getBodyArmorItem().is(ItemInit.VIBRANIUM_WOLF_ARMOR))) {
                 this.playSound(SoundEvents.WOLF_ARMOR_CRACK);
                 serverLevel.sendParticles(
-                        new ItemParticleOption(ParticleTypes.ITEM, ItemInit.VIBRANIUM_INGOT.get().getDefaultInstance()),
+                        new ItemParticleOption(ParticleTypes.ITEM, ItemInit.VIBRANIUM_INGOT.get()),
                         this.getX(),
                         this.getY() + 1.0,
                         this.getZ(),
@@ -46,7 +46,7 @@ public abstract class WolfMixin extends TamableAnimal implements NeutralMob {
             } else if ((Crackiness.WOLF_ARMOR.byDamage(i, j) != Crackiness.WOLF_ARMOR.byDamage(this.getBodyArmorItem()) && this.getBodyArmorItem().is(Items.WOLF_ARMOR))) {
                 this.playSound(SoundEvents.WOLF_ARMOR_CRACK);
                 serverLevel.sendParticles(
-                        new ItemParticleOption(ParticleTypes.ITEM, Items.ARMADILLO_SCUTE.getDefaultInstance()),
+                        new ItemParticleOption(ParticleTypes.ITEM, Items.ARMADILLO_SCUTE),
                         this.getX(),
                         this.getY() + 1.0,
                         this.getZ(),

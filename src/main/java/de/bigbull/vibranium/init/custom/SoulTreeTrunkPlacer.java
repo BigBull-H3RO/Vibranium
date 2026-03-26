@@ -7,7 +7,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
@@ -27,10 +28,10 @@ public class SoulTreeTrunkPlacer extends TrunkPlacer {
             instance -> trunkPlacerParts(instance)
                     .and(
                             instance.group(
-                                    IntProvider.codec(1, 4).fieldOf("branch_count").forGetter(placer -> placer.branchCount),
-                                    IntProvider.codec(2, 16).fieldOf("branch_horizontal_length").forGetter(placer -> placer.branchHorizontalLength),
-                                    IntProvider.codec(-16, 0).fieldOf("branch_start_offset_from_top").forGetter(placer -> placer.branchStartOffsetFromTop),
-                                    IntProvider.codec(-16, 16).fieldOf("branch_end_offset_from_top").forGetter(placer -> placer.branchEndOffsetFromTop)
+                                    IntProviders.codec(1, 4).fieldOf("branch_count").forGetter(placer -> placer.branchCount),
+                                    IntProviders.codec(2, 16).fieldOf("branch_horizontal_length").forGetter(placer -> placer.branchHorizontalLength),
+                                    IntProviders.codec(-16, 0).fieldOf("branch_start_offset_from_top").forGetter(placer -> placer.branchStartOffsetFromTop),
+                                    IntProviders.codec(-16, 16).fieldOf("branch_end_offset_from_top").forGetter(placer -> placer.branchEndOffsetFromTop)
                             )
                     )
                     .apply(instance, SoulTreeTrunkPlacer::new)
@@ -61,14 +62,14 @@ public class SoulTreeTrunkPlacer extends TrunkPlacer {
 
     @Override
     public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-            LevelSimulatedReader level,
+            WorldGenLevel level,
             BiConsumer<BlockPos, BlockState> blockSetter,
             RandomSource random,
             int trunkHeight,
             BlockPos pos,
             TreeConfiguration config
     ) {
-        setDirtAt(level, blockSetter, random, pos.below(), config);
+        placeBelowTrunkBlock(level, blockSetter, random, pos.below(), config);
 
         for (int i = 0; i < trunkHeight; i++) {
             this.placeLog(level, blockSetter, random, pos.above(i), config);
@@ -97,7 +98,7 @@ public class SoulTreeTrunkPlacer extends TrunkPlacer {
     }
 
     private FoliagePlacer.FoliageAttachment generateBranch(
-            LevelSimulatedReader level,
+            WorldGenLevel level,
             BiConsumer<BlockPos, BlockState> blockSetter,
             RandomSource random,
             int trunkHeight,

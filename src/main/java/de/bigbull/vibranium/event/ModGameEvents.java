@@ -35,7 +35,7 @@ import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.block.FarmlandBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -125,10 +125,10 @@ public class ModGameEvents {
                 level.setBlock(pos, BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState(), 3);
                 transformed = true;
             } else if (blockState.is(Blocks.FARMLAND)) {
-                int moisture = blockState.getValue(FarmBlock.MOISTURE);
+                int moisture = blockState.getValue(FarmlandBlock.MOISTURE);
                 BlockState enrichedFarmlandState = BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get()
                         .defaultBlockState()
-                        .setValue(FarmBlock.MOISTURE, moisture);
+                        .setValue(FarmlandBlock.MOISTURE, moisture);
 
                 level.setBlock(pos, enrichedFarmlandState, 3);
                 transformed = true;
