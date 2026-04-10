@@ -78,8 +78,12 @@ sourceSets {
             srcDir 'src/generated/resources'
         }
         java {
-            exclude 'de/bigbull/vibranium/integration/JEIPlugin.java'
-            exclude 'de/bigbull/vibranium/integration/REIPlugin.java'
+            if (!enableJei) {
+                exclude 'de/bigbull/vibranium/integration/JEIPlugin.java'
+            }
+            if (!enableRei) {
+                exclude 'de/bigbull/vibranium/integration/REIPlugin.java'
+            }
         }
     }
 }

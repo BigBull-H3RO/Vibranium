@@ -12,7 +12,7 @@ import mezz.jei.api.recipe.vanilla.IVanillaRecipeFactory;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -26,10 +26,10 @@ import java.util.List;
 
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
-    public static final ResourceLocation PLUGIN_ID = ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "jei_plugin");
+    public static final Identifier PLUGIN_ID = Identifier.fromNamespaceAndPath(Vibranium.MODID, "jei_plugin");
 
     @Override
-    public ResourceLocation getPluginUid() {
+    public Identifier getPluginUid() {
         return PLUGIN_ID;
     }
 
@@ -41,23 +41,23 @@ public class JEIPlugin implements IModPlugin {
                         TagsInit.Items.SOUL_HERB_MIXTURE_TAG,
                         PotionContents.createItemStack(Items.POTION, Potions.AWKWARD),
                         new ItemStack(ItemInit.SOUL_HERB_ELIXIR.get()),
-                        ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium_herb_elixir_brewing")),
+                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium_herb_elixir_brewing")),
                 createBrewingRecipe(factory,
                         Tags.Items.DUSTS_REDSTONE,
                         new ItemStack(ItemInit.SOUL_HERB_ELIXIR.get()),
                         new ItemStack(ItemInit.SOUL_HERB_ELIXIR_EXTENDED.get()),
-                        ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium_extended_brewing")),
+                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium_extended_brewing")),
                 createBrewingRecipe(factory,
                         Tags.Items.DUSTS_GLOWSTONE,
                         new ItemStack(ItemInit.SOUL_HERB_ELIXIR.get()),
                         new ItemStack(ItemInit.SOUL_HERB_ELIXIR_ENHANCED.get()),
-                        ResourceLocation.fromNamespaceAndPath(Vibranium.MODID, "vibranium_enhanced_brewing"))
+                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium_enhanced_brewing"))
         ));
 
         addItemDescriptions(registration);
     }
 
-    private static IJeiBrewingRecipe createBrewingRecipe(IVanillaRecipeFactory factory, TagKey<Item> catalystTag, ItemStack inputPotion, ItemStack outputPotion, ResourceLocation uid) {
+    private static IJeiBrewingRecipe createBrewingRecipe(IVanillaRecipeFactory factory, TagKey<Item> catalystTag, ItemStack inputPotion, ItemStack outputPotion, Identifier uid) {
         List<ItemStack> catalysts = new ArrayList<>();
         for (var item : BuiltInRegistries.ITEM.getTagOrEmpty(catalystTag)) {
             catalysts.add(new ItemStack(item));

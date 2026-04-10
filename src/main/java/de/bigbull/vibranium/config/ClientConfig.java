@@ -18,10 +18,10 @@ public class ClientConfig {
                 .defineInRange("red", 0.0, 0.0, 1.0);
         OUTLINE_GREEN = CLIENT_BUILDER.comment("Green component of the outline color [0.0 - 1.0]")
                 .translation("vibranium.config.outlineGreen")
-                .defineInRange("green", 0.6, 0.0, 1.0);
+                .defineInRange("green", 0.0, 0.0, 1.0);
         OUTLINE_BLUE = CLIENT_BUILDER.comment("Blue component of the outline color [0.0 - 1.0]")
                 .translation("vibranium.config.outlineBlue")
-                .defineInRange("blue", 1.0, 0.0, 1.0);
+                .defineInRange("blue", 0.0, 0.0, 1.0);
         OUTLINE_ALPHA = CLIENT_BUILDER.comment("Alpha (transparency) component of the outline color [0.0 - 1.0]")
                 .translation("vibranium.config.outlineAlpha")
                 .defineInRange("alpha", 0.6, 0.0, 1.0);
