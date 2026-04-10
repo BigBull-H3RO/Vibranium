@@ -19,7 +19,7 @@
 ## **Supported Versions**
 **Actively supported (full updates and fixes):**
 - **Minecraft 1.21.1**
-- **Minecraft 1.21.11 (main)**
+- **Minecraft 26.1.2 (main)**
 
 **Legacy builds (no active updates, only critical fixes if needed):**
 - **Minecraft 1.21**
@@ -28,6 +28,9 @@
 - **Minecraft 1.21.6 - 1.21.8**
 - **Minecraft 1.21.9**
 - **Minecraft 1.21.10**
+- **Minecraft 1.21.11**
+- **Minecraft 26.1**
+- **Minecraft 26.1.1**
 
 ---
 
