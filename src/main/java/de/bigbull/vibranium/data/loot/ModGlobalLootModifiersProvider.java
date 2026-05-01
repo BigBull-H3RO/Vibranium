@@ -23,11 +23,13 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                 new LootTableIdCondition.Builder(
                         Identifier.parse("chests/ruined_portal")).build(),
                 LootItemRandomChanceCondition.randomChance(0.4f).build() },
+                1000,
                 ItemInit.HEART_SHAPED_HERB.get()));
 
         add("spawn_vibranium_upgrade_smithing_template", new AddItemModifier(new LootItemCondition[] {
                 new LootTableIdCondition.Builder(
                         Identifier.parse("chests/trial_chambers/intersection_barrel")).build()},
+                1000,
                 ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get()));
     }
 }

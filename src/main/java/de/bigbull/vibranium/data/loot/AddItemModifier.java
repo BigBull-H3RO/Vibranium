@@ -18,13 +18,14 @@ import java.util.function.Supplier;
 public class AddItemModifier extends LootModifier {
     public static final Supplier<MapCodec<AddItemModifier>> CODEC = Suppliers.memoize(()
             -> RecordCodecBuilder.mapCodec(inst -> codecStart(inst).and(
-                    BuiltInRegistries.ITEM.byNameCodec().fieldOf("item").forGetter(m -> m.item)).apply(inst, AddItemModifier::new)));
+            BuiltInRegistries.ITEM.byNameCodec().fieldOf("item").forGetter(m -> m.item)
+    ).apply(inst, AddItemModifier::new)));
 
     private final Item item;
 
-
-    public AddItemModifier(LootItemCondition[] conditionsIn, Item item) {
-        super(conditionsIn);
+    // HIer ist die Änderung: "int priority" wurde hinzugefügt!
+    public AddItemModifier(LootItemCondition[] conditionsIn, int priority, Item item) {
+        super(conditionsIn, priority); // Die Priorität wird an die NeoForge-Oberklasse weitergegeben
         this.item = item;
     }
 
