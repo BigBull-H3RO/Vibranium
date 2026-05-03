@@ -19,14 +19,11 @@ import net.minecraft.util.Unit;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.fml.common.EventBusSubscriber;
 import org.joml.Vector3fc;
 import org.jspecify.annotations.Nullable;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-@EventBusSubscriber(value = Dist.CLIENT)
 public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
     private final SpriteGetter sprites;
     private final ShieldModel model;
