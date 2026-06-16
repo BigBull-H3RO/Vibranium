@@ -234,7 +234,6 @@ public class ModGameEvents {
             }
         }
 
-        @SuppressWarnings("deprecation")
         boolean eyeInWater = player.isEyeInFluid(FluidTags.WATER);
         if (!eyeInWater && isEquipped(player, ItemInit.VIBRANIUM_TURTLE_HELMET.get())) {
             vibraniumTurtleHelmetTick(player);

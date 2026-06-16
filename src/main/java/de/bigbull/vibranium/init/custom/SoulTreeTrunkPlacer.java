@@ -34,7 +34,7 @@ public class SoulTreeTrunkPlacer extends TrunkPlacer {
                                     IntProviders.codec(-16, 16).fieldOf("branch_end_offset_from_top").forGetter(placer -> placer.branchEndOffsetFromTop)
                             )
                     )
-                    .apply(instance, SoulTreeTrunkPlacer::new)
+                    .apply(instance, (a, b, c, d, e, f, g) -> new SoulTreeTrunkPlacer(a, b, c, d, e, f, g))
     );
 
     private final IntProvider branchCount;

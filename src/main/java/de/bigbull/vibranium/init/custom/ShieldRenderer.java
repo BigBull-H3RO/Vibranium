@@ -28,8 +28,10 @@ public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
     private final SpriteGetter sprites;
     private final ShieldModel model;
 
-    public static final SpriteId VIBRANIUM_SHIELD_BASE = new SpriteId(Sheets.SHIELD_SHEET, Identifier.fromNamespaceAndPath(Vibranium.MODID, "entity/vibranium_shield_base"));
-    public static final SpriteId VIBRANIUM_SHIELD_BASE_NO_PATTERN = new SpriteId(Sheets.SHIELD_SHEET, Identifier.fromNamespaceAndPath(Vibranium.MODID, "entity/vibranium_shield_base_nopattern"));
+    private static final class Sprites {
+        static final SpriteId VIBRANIUM_SHIELD_BASE = new SpriteId(Sheets.SHIELD_SHEET, Identifier.fromNamespaceAndPath(Vibranium.MODID, "entity/vibranium_shield_base"));
+        static final SpriteId VIBRANIUM_SHIELD_BASE_NO_PATTERN = new SpriteId(Sheets.SHIELD_SHEET, Identifier.fromNamespaceAndPath(Vibranium.MODID, "entity/vibranium_shield_base_nopattern"));
+    }
 
     public ShieldRenderer(SpriteGetter sprites, ShieldModel model) {
         this.sprites = sprites;
@@ -43,7 +45,7 @@ public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
                 : BannerPatternLayers.EMPTY;
         DyeColor baseColor = components != null ? components.get(DataComponents.BASE_COLOR) : null;
         boolean hasPatterns = !patterns.layers().isEmpty() || baseColor != null;
-        SpriteId base = hasPatterns ? VIBRANIUM_SHIELD_BASE : VIBRANIUM_SHIELD_BASE_NO_PATTERN;
+        SpriteId base = hasPatterns ? Sprites.VIBRANIUM_SHIELD_BASE : Sprites.VIBRANIUM_SHIELD_BASE_NO_PATTERN;
 
         submitNodeCollector.submitModel(this.model, Unit.INSTANCE, poseStack, lightCoords, overlayCoords, -1, base, this.sprites, outlineColor, null);
         if (hasPatterns) {
