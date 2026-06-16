@@ -44,10 +44,12 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class VibraniumMaceItem extends Item {
+    @SuppressWarnings("unused")
     private final ToolMaterial material;
     private static final ThreadLocal<Float> lastCalculatedDamage = ThreadLocal.withInitial(() -> 0.0F);
 
-    public static final Component TOOLTIP = Component.translatable("item.vibranium_mace.tooltip").withStyle(ChatFormatting.GRAY);
+    public static final Component TOOLTIP = Component.translatable("item.vibranium_mace.tooltip")
+            .withStyle(ChatFormatting.GRAY);
 
     public VibraniumMaceItem(ToolMaterial material, Item.Properties properties) {
         super(properties);
@@ -57,25 +59,30 @@ public class VibraniumMaceItem extends Item {
     public static ItemAttributeModifiers createAttributes() {
         return ItemAttributeModifiers.builder()
                 .add(
-                        Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 5.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND
-                )
+                        Attributes.ATTACK_DAMAGE,
+                        new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 5.0, AttributeModifier.Operation.ADD_VALUE),
+                        EquipmentSlotGroup.MAINHAND)
                 .add(
-                        Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -3.2F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND
-                )
+                        Attributes.ATTACK_SPEED,
+                        new AttributeModifier(BASE_ATTACK_SPEED_ID, -3.2F, AttributeModifier.Operation.ADD_VALUE),
+                        EquipmentSlotGroup.MAINHAND)
                 .build();
     }
 
     public static Tool createToolProperties() {
-        HolderGetter<Block> holdergetter = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
+        HolderGetter<Block> holdergetter = BuiltInRegistries
+                .acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
         return new Tool(
                 List.of(
-                        Tool.Rule.deniesDrops(holdergetter.getOrThrow(MaterialsInit.VIBRANIUM.incorrectBlocksForDrops())),
-                        Tool.Rule.minesAndDrops(holdergetter.getOrThrow(BlockTags.MINEABLE_WITH_PICKAXE), MaterialsInit.VIBRANIUM.speed() * 0.7F),
-                        Tool.Rule.minesAndDrops(holdergetter.getOrThrow(BlockTags.MINEABLE_WITH_SHOVEL), MaterialsInit.VIBRANIUM.speed() * 0.1005F),
-                        Tool.Rule.minesAndDrops(holdergetter.getOrThrow(BlockTags.MINEABLE_WITH_AXE), MaterialsInit.VIBRANIUM.speed() * 0.3F)
-                ),
-                1.0F, 1, false
-        );
+                        Tool.Rule.deniesDrops(
+                                holdergetter.getOrThrow(MaterialsInit.VIBRANIUM.incorrectBlocksForDrops())),
+                        Tool.Rule.minesAndDrops(holdergetter.getOrThrow(BlockTags.MINEABLE_WITH_PICKAXE),
+                                MaterialsInit.VIBRANIUM.speed() * 0.7F),
+                        Tool.Rule.minesAndDrops(holdergetter.getOrThrow(BlockTags.MINEABLE_WITH_SHOVEL),
+                                MaterialsInit.VIBRANIUM.speed() * 0.1005F),
+                        Tool.Rule.minesAndDrops(holdergetter.getOrThrow(BlockTags.MINEABLE_WITH_AXE),
+                                MaterialsInit.VIBRANIUM.speed() * 0.3F)),
+                1.0F, 1, false);
     }
 
     public static List<BlockPos> getBlocksToBeDestroyed(int range, BlockPos initalBlockPos, Player player) {
@@ -84,30 +91,33 @@ public class VibraniumMaceItem extends Item {
         BlockHitResult traceResult = player.level().clip(new ClipContext(player.getEyePosition(1f),
                 (player.getEyePosition(1f).add(player.getViewVector(1f).scale(6f))),
                 ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
-        if(traceResult.getType() == HitResult.Type.MISS) {
+        if (traceResult.getType() == HitResult.Type.MISS) {
             return positions;
         }
 
-        if(traceResult.getDirection() == Direction.DOWN || traceResult.getDirection() == Direction.UP) {
-            for(int x = -range; x <= range; x++) {
-                for(int y = -range; y <= range; y++) {
-                    positions.add(new BlockPos(initalBlockPos.getX() + x, initalBlockPos.getY(), initalBlockPos.getZ() + y));
+        if (traceResult.getDirection() == Direction.DOWN || traceResult.getDirection() == Direction.UP) {
+            for (int x = -range; x <= range; x++) {
+                for (int y = -range; y <= range; y++) {
+                    positions.add(
+                            new BlockPos(initalBlockPos.getX() + x, initalBlockPos.getY(), initalBlockPos.getZ() + y));
                 }
             }
         }
 
-        if(traceResult.getDirection() == Direction.NORTH || traceResult.getDirection() == Direction.SOUTH) {
-            for(int x = -range; x <= range; x++) {
-                for(int y = -range; y <= range; y++) {
-                    positions.add(new BlockPos(initalBlockPos.getX() + x, initalBlockPos.getY() + y, initalBlockPos.getZ()));
+        if (traceResult.getDirection() == Direction.NORTH || traceResult.getDirection() == Direction.SOUTH) {
+            for (int x = -range; x <= range; x++) {
+                for (int y = -range; y <= range; y++) {
+                    positions.add(
+                            new BlockPos(initalBlockPos.getX() + x, initalBlockPos.getY() + y, initalBlockPos.getZ()));
                 }
             }
         }
 
-        if(traceResult.getDirection() == Direction.EAST || traceResult.getDirection() == Direction.WEST) {
-            for(int x = -range; x <= range; x++) {
-                for(int y = -range; y <= range; y++) {
-                    positions.add(new BlockPos(initalBlockPos.getX(), initalBlockPos.getY() + y, initalBlockPos.getZ() + x));
+        if (traceResult.getDirection() == Direction.EAST || traceResult.getDirection() == Direction.WEST) {
+            for (int x = -range; x <= range; x++) {
+                for (int y = -range; y <= range; y++) {
+                    positions.add(
+                            new BlockPos(initalBlockPos.getX(), initalBlockPos.getY() + y, initalBlockPos.getZ() + x));
                 }
             }
         }
@@ -117,7 +127,7 @@ public class VibraniumMaceItem extends Item {
     @Override
     public void hurtEnemy(ItemStack itemStack, LivingEntity entity, LivingEntity entity1) {
         if (canSmashAttack(entity1)) {
-            ServerLevel serverlevel = (ServerLevel)entity1.level();
+            ServerLevel serverlevel = (ServerLevel) entity1.level();
             entity1.setDeltaMovement(entity1.getDeltaMovement().with(Direction.Axis.Y, 0.01F));
             if (entity1 instanceof ServerPlayer serverplayer) {
                 serverplayer.currentImpulseImpactPos = this.calculateImpactPosition(serverplayer);
@@ -130,12 +140,14 @@ public class VibraniumMaceItem extends Item {
                     serverplayer1.setSpawnExtraParticlesOnFall(true);
                 }
 
-                SoundEvent soundevent = entity1.fallDistance > 5.0F ? SoundEvents.MACE_SMASH_GROUND_HEAVY : SoundEvents.MACE_SMASH_GROUND;
-                serverlevel.playSound(null, entity1.getX(), entity1.getY(), entity1.getZ(), soundevent, entity1.getSoundSource(), 1.0F, 1.0F);
+                SoundEvent soundevent = entity1.fallDistance > 5.0F ? SoundEvents.MACE_SMASH_GROUND_HEAVY
+                        : SoundEvents.MACE_SMASH_GROUND;
+                serverlevel.playSound(null, entity1.getX(), entity1.getY(), entity1.getZ(), soundevent,
+                        entity1.getSoundSource(), 1.0F, 1.0F);
             } else {
                 serverlevel.playSound(
-                        null, entity1.getX(), entity1.getY(), entity1.getZ(), SoundEvents.MACE_SMASH_AIR, entity1.getSoundSource(), 1.0F, 1.0F
-                );
+                        null, entity1.getX(), entity1.getY(), entity1.getZ(), SoundEvents.MACE_SMASH_AIR,
+                        entity1.getSoundSource(), 1.0F, 1.0F);
             }
 
             knockback(serverlevel, entity1, entity);
@@ -146,8 +158,8 @@ public class VibraniumMaceItem extends Item {
         return p_365384_.isIgnoringFallDamageFromCurrentImpulse()
                 && p_365384_.currentImpulseImpactPos != null
                 && p_365384_.currentImpulseImpactPos.y <= p_365384_.position().y
-                ? p_365384_.currentImpulseImpactPos
-                : p_365384_.position();
+                        ? p_365384_.currentImpulseImpactPos
+                        : p_365384_.position();
     }
 
     @Override
@@ -163,8 +175,6 @@ public class VibraniumMaceItem extends Item {
             if (!canSmashAttack(livingentity)) {
                 return 0.0F;
             } else {
-                double f3 = 3.0F;
-                double f = 8.0F;
                 double f1 = livingentity.fallDistance;
                 double damage;
                 if (f1 <= 3.0F) {
@@ -178,7 +188,8 @@ public class VibraniumMaceItem extends Item {
                 lastCalculatedDamage.set((float) damage);
 
                 return livingentity.level() instanceof ServerLevel serverlevel
-                        ? (float) (damage + EnchantmentHelper.modifyFallBasedDamage(serverlevel, livingentity.getWeaponItem(), entity, damageSource, 0.0F) * f1)
+                        ? (float) (damage + EnchantmentHelper.modifyFallBasedDamage(serverlevel,
+                                livingentity.getWeaponItem(), entity, damageSource, 0.0F) * f1)
                         : (float) damage;
             }
         } else {
@@ -189,7 +200,8 @@ public class VibraniumMaceItem extends Item {
 
     private void knockback(Level level, Entity entity, Entity entity1) {
         level.levelEvent(2013, entity1.getOnPos(), 750);
-        level.getEntitiesOfClass(LivingEntity.class, entity1.getBoundingBox().inflate(3.5), knockbackPredicate(entity, entity1))
+        level.getEntitiesOfClass(LivingEntity.class, entity1.getBoundingBox().inflate(3.5),
+                knockbackPredicate(entity, entity1))
                 .forEach(target -> {
                     Vec3 vec3 = target.position().subtract(entity1.position());
                     double d0 = getKnockbackPower(entity, target, vec3);
@@ -214,12 +226,10 @@ public class VibraniumMaceItem extends Item {
             boolean flag = !p_393278_.isSpectator();
             boolean flag1 = p_393278_ != entity && p_393278_ != entity1;
             boolean flag2 = !entity.isAlliedTo(p_393278_);
-            boolean flag3 = !(
-                    p_393278_ instanceof TamableAnimal tamableanimal
-                            && entity1 instanceof LivingEntity livingentity
-                            && tamableanimal.isTame()
-                            && tamableanimal.isOwnedBy(livingentity)
-            );
+            boolean flag3 = !(p_393278_ instanceof TamableAnimal tamableanimal
+                    && entity1 instanceof LivingEntity livingentity
+                    && tamableanimal.isTame()
+                    && tamableanimal.isOwnedBy(livingentity));
             boolean flag4 = !(p_393278_ instanceof ArmorStand armorstand && armorstand.isMarker());
             boolean flag5 = entity1.distanceToSqr(p_393278_) <= Math.pow(3.5, 2.0);
             return flag && flag1 && flag2 && flag3 && flag4 && flag5;
@@ -238,13 +248,15 @@ public class VibraniumMaceItem extends Item {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public @Nullable DamageSource getItemDamageSource(LivingEntity p_373049_) {
-        return canSmashAttack(p_373049_) ? p_373049_.damageSources().mace(p_373049_) : super.getItemDamageSource(p_373049_);
+        return canSmashAttack(p_373049_) ? p_373049_.damageSources().mace(p_373049_)
+                : super.getItemDamageSource(p_373049_);
     }
 
-
     @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, TooltipDisplay tooltipDisplay, Consumer<Component> consumer, TooltipFlag flag) {
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, TooltipDisplay tooltipDisplay,
+            Consumer<Component> consumer, TooltipFlag flag) {
         consumer.accept(TOOLTIP);
     }
 }

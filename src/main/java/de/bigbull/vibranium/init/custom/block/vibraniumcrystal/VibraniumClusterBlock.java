@@ -31,7 +31,7 @@ public class VibraniumClusterBlock extends AmethystBlock implements SimpleWaterl
                             Codec.FLOAT.fieldOf("aabb_offset").forGetter(p_304908_ -> p_304908_.aabbOffset),
                             propertiesCodec()
                     )
-                    .apply(p_367977_, VibraniumClusterBlock::new)
+                    .apply(p_367977_, (height, aabbOffset, props) -> new VibraniumClusterBlock(height, aabbOffset, props))
     );
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<Direction> FACING = BlockStateProperties.FACING;
@@ -111,6 +111,7 @@ public class VibraniumClusterBlock extends AmethystBlock implements SimpleWaterl
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     protected BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }

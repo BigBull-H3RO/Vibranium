@@ -74,6 +74,7 @@ public class VibraGolemModel extends EntityModel<VibraGolemRenderState> {
         this.leftLeg.yRot = 0.0F;
     }
 
+	@SuppressWarnings("unused")
 	private void applyHeadRotation(float netHeadYaw, float headPitch, float ageInTicks) {
 		netHeadYaw = Mth.clamp(netHeadYaw, -30.0F, 30.0F);
 		headPitch = Mth.clamp(headPitch, -25.0F, 45.0F);

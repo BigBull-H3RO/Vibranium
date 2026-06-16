@@ -12,6 +12,7 @@ import java.util.function.Predicate;
 public class MoveToTargetItemGoal extends Goal {
     private final VibraGolemEntity vibraGolem;
     private final double speedModifier;
+    @SuppressWarnings("unused")
     private final Predicate<ItemStack> items;
 
     public MoveToTargetItemGoal(VibraGolemEntity vibraGolem, double speedModifier, Predicate<ItemStack> items) {

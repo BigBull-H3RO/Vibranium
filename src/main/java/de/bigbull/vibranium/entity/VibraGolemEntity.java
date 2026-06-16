@@ -49,6 +49,7 @@ public class VibraGolemEntity extends TamableAnimal {
     private static final EntityDataAccessor<BlockPos> DEFENSIVE_POSITION = SynchedEntityData.defineId(VibraGolemEntity.class, EntityDataSerializers.BLOCK_POS);
     private UUID ownerUUID;
     private DamageSource lastDamageSource;
+    @SuppressWarnings("unused")
     private boolean isRaging = false;
     private int particlecounter = 10;
 
