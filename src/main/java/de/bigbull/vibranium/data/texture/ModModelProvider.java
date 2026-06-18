@@ -27,23 +27,27 @@ public class ModModelProvider extends ModelProvider {
 
     @Override
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
-        //Block Models
-        blockModels.familyWithExistingFullBlock(BlockFamilyInit.SOULWOOD_FAMILY.getBaseBlock()).generateFor(BlockFamilyInit.SOULWOOD_FAMILY);
+        // Block Models
+        blockModels.familyWithExistingFullBlock(BlockFamilyInit.SOULWOOD_FAMILY.getBaseBlock())
+                .generateFor(BlockFamilyInit.SOULWOOD_FAMILY);
         blockModels.createTrivialCube(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
         blockModels.createTrivialCube(BlockInit.DEEPSLATE_VIBRANIUM_ORE.get());
         blockModels.createTrivialCube(BlockInit.VIBRANIUM_BLOCK.get());
         blockModels.createTrivialCube(BlockInit.SOULWOOD_PLANKS.get());
         blockModels.createTrivialCube(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get());
         blockModels.createTrivialCube(BlockInit.BUDDING_VIBRANIUM_CRYSTAL.get());
-        blockModels.woodProvider(BlockInit.STRIPPED_SOULWOOD_LOG.get()).logWithHorizontal(BlockInit.STRIPPED_SOULWOOD_LOG.get()).wood(BlockInit.STRIPPED_SOULWOOD_WOOD.get());
-        blockModels.createHangingSign(BlockInit.STRIPPED_SOULWOOD_LOG.get(), BlockInit.SOULWOOD_HANGING_SIGN.get(), BlockInit.SOULWOOD_WALL_HANGING_SIGN.get());
-        blockModels.createPlantWithDefaultItem(BlockInit.SOULWOOD_SAPLING.get(), BlockInit.POTTED_SOULWOOD_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.woodProvider(BlockInit.STRIPPED_SOULWOOD_LOG.get())
+                .logWithHorizontal(BlockInit.STRIPPED_SOULWOOD_LOG.get()).wood(BlockInit.STRIPPED_SOULWOOD_WOOD.get());
+        blockModels.createTrivialCube(BlockInit.SOULWOOD_HANGING_SIGN.get());
+        blockModels.createTrivialCube(BlockInit.SOULWOOD_WALL_HANGING_SIGN.get());
+        blockModels.createPlantWithDefaultItem(BlockInit.SOULWOOD_SAPLING.get(),
+                BlockInit.POTTED_SOULWOOD_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createAmethystCluster(BlockInit.VIBRANIUM_CLUSTER.get());
         blockModels.createAmethystCluster(BlockInit.SMALL_VIBRANIUM_BUD.get());
         blockModels.createAmethystCluster(BlockInit.MEDIUM_VIBRANIUM_BUD.get());
         blockModels.createAmethystCluster(BlockInit.LARGE_VIBRANIUM_BUD.get());
 
-        //Item Models
+        // Item Models
         itemModels.generateFlatItem(ItemInit.RAW_VIBRANIUM.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_INGOT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_NUGGET.get(), ModelTemplates.FLAT_ITEM);
@@ -52,11 +56,26 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.SOUL_HERB_MIXTURE.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_BOOTS.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_LEGGINGS.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_CHESTPLATE.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_HELMET.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_TURTLE_HELMET.get(), ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")), ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_BOOTS.get(),
+                ResourceKey.create(EquipmentAssets.ROOT_ID,
+                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")),
+                ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_LEGGINGS.get(),
+                ResourceKey.create(EquipmentAssets.ROOT_ID,
+                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")),
+                ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_CHESTPLATE.get(),
+                ResourceKey.create(EquipmentAssets.ROOT_ID,
+                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")),
+                ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_HELMET.get(),
+                ResourceKey.create(EquipmentAssets.ROOT_ID,
+                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")),
+                ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_TURTLE_HELMET.get(),
+                ResourceKey.create(EquipmentAssets.ROOT_ID,
+                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")),
+                ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateTwoLayerDyedItem(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_NAUTILUS_ARMOR.get(), ModelTemplates.FLAT_ITEM);
@@ -66,11 +85,14 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateSpear(ItemInit.VIBRANIUM_SPEAR.get());
-        //itemModels.generateSpawnEgg(ItemInit.VIBRA_GOLEM_SPAWN_EGG.get(), 2631467, 131664);
+        // itemModels.generateSpawnEgg(ItemInit.VIBRA_GOLEM_SPAWN_EGG.get(), 2631467,
+        // 131664);
         itemModels.generateFlatItem(ItemInit.HEART_SHAPED_HERB.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.SOUL_HERB_ELIXIR.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ItemInit.SOUL_HERB_ELIXIR_EXTENDED.get(), ItemInit.SOUL_HERB_ELIXIR.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ItemInit.SOUL_HERB_ELIXIR_ENHANCED.get(), ItemInit.SOUL_HERB_ELIXIR.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ItemInit.SOUL_HERB_ELIXIR_EXTENDED.get(), ItemInit.SOUL_HERB_ELIXIR.get(),
+                ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ItemInit.SOUL_HERB_ELIXIR_ENHANCED.get(), ItemInit.SOUL_HERB_ELIXIR.get(),
+                ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.SOULWOOD_BOAT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.SOULWOOD_CHEST_BOAT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.declareCustomModelItem(BlockInit.VIBRANIUM_CLUSTER.get().asItem());
@@ -88,22 +110,21 @@ public class ModModelProvider extends ModelProvider {
                 BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get(),
                 BlockInit.SOULWOOD_LOG.get(),
                 BlockInit.SOULWOOD_WOOD.get(),
-                BlockInit.SOULWOOD_LEAVES.get()
-        );
+                BlockInit.SOULWOOD_LEAVES.get());
 
         return BuiltInRegistries.BLOCK.listElements()
-                .filter(holder -> holder.getKey().identifier().getNamespace().equals(modId)) //klappt das so?
+                .filter(holder -> holder.getKey().identifier().getNamespace().equals(modId)) // klappt das so?
                 .filter(holder -> !excludedBlocks.contains(holder.value()));
     }
 
     @Override
     protected Stream<? extends Holder<Item>> getKnownItems() {
         Set<Item> excludedItems = Set.of(
-                ItemInit.VIBRANIUM_SHIELD.get()
-        );
+                ItemInit.VIBRANIUM_SHIELD.get());
 
         return BuiltInRegistries.ITEM.listElements()
-                .filter(holder -> holder.getKey().identifier().getNamespace().equals(modId)) //klappt das so?
+                .filter(holder -> holder.getKey().identifier().getNamespace().equals(modId)) // klappt das so?
                 .filter(holder -> !excludedItems.contains(holder.value()));
     }
 }
+

@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.1.37'
+    id 'net.neoforged.gradle.userdev' version '7.1.38'
 }
 
 version = mod_version
@@ -152,3 +152,5 @@ idea {
         downloadJavadoc = true
     }
 }
+
+

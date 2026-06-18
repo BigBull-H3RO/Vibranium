@@ -21,7 +21,7 @@ import net.neoforged.neoforge.client.event.RegisterSpecialModelRendererEvent;
 public class ModEvents {
     public static void clientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            Sheets.addWoodType(TypesInit.SOULWOOD_WOODTYPE);
+            // Sheets.addWoodType(TypesInit.SOULWOOD_WOODTYPE);
 
             EntityRenderers.register(EntitiesInit.VIBRAGOLEM.get(), VibraGolemRenderer::new);
         });

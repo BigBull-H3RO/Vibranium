@@ -276,7 +276,7 @@ public class ModGameEvents {
     }
 
     private static void shootArrowBack(Player player, Arrow originalArrow) {
-        Arrow newArrow = new Arrow(EntityType.ARROW, player.level());
+        Arrow newArrow = new Arrow(net.minecraft.world.entity.EntityTypes.ARROW, player.level());
 
         newArrow.setCritArrow(originalArrow.isCritArrow());
         newArrow.setRemainingFireTicks(originalArrow.getRemainingFireTicks());

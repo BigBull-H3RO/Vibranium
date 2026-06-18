@@ -1,16 +1,13 @@
 package de.bigbull.vibranium.event;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import de.bigbull.vibranium.Vibranium;
 import de.bigbull.vibranium.config.ClientConfig;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.ModKeybinds;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
-import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.ShapeRenderer;
+
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.BlockOutlineRenderState;
 import net.minecraft.client.renderer.state.level.LevelRenderState;
@@ -28,6 +25,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.CustomBlockOutlineRenderer;
 import net.neoforged.neoforge.client.event.ExtractBlockOutlineRenderStateEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @EventBusSubscriber(modid = Vibranium.MODID, value = Dist.CLIENT)
@@ -37,14 +35,16 @@ public class ClientRenderEvent {
     @SubscribeEvent
     public static void onExtractBlockOutline(ExtractBlockOutlineRenderStateEvent event) {
         Minecraft mc = Minecraft.getInstance();
-        if (mc.player == null || mc.level == null) return;
+        if (mc.player == null || mc.level == null)
+            return;
 
         ItemStack mainHandItem = mc.player.getMainHandItem();
 
         if (ModKeybinds.TOGGLE_OUTLINE.consumeClick()) {
             isOutlineEnabled = !isOutlineEnabled;
         }
-        if (!isOutlineEnabled) return;
+        if (!isOutlineEnabled)
+            return;
 
         if (isValidVibraniumMace(mainHandItem) && event.getHitResult() != null && !mc.player.isCreative()) {
             BlockHitResult hitResult = event.getHitResult();
@@ -52,9 +52,27 @@ public class ClientRenderEvent {
             BlockState blockState = mc.level.getBlockState(hitPos);
 
             if (!mc.player.isShiftKeyDown() && isValidBlock(blockState)) {
-                event.addCustomRenderer(new VibraniumOutlineRenderer(hitPos, event.getCamera()));
-            }
+                List<BlockPos> positions = VibraniumMaceItem.getBlocksToBeDestroyed(1, hitPos, mc.player);
+                List<OutlineData> outlines = new ArrayList<>();
+                Vec3 cameraPos = event.getCamera().position();
 
+                for (BlockPos pos : positions) {
+                    BlockState state = mc.level.getBlockState(pos);
+                    if (isValidBlock(state)) {
+                        VoxelShape shape = state.getShape(mc.level, pos);
+                        if (!shape.isEmpty()) {
+                            double x = pos.getX() - cameraPos.x;
+                            double y = pos.getY() - cameraPos.y;
+                            double z = pos.getZ() - cameraPos.z;
+                            outlines.add(new OutlineData(shape, x, y, z));
+                        }
+                    }
+                }
+
+                if (!outlines.isEmpty()) {
+                    event.addCustomRenderer(new VibraniumOutlineRenderer(outlines));
+                }
+            }
         }
     }
 
@@ -67,56 +85,40 @@ public class ClientRenderEvent {
         return !state.isAir() && block.defaultBlockState().isSolidRender();
     }
 
-    // Custom outline renderer for Vibranium Mace
-    private record VibraniumOutlineRenderer(BlockPos center, Camera camera) implements CustomBlockOutlineRenderer {
+    private record OutlineData(VoxelShape shape, double dx, double dy, double dz) {}
 
-        @Override
-        public boolean render(BlockOutlineRenderState renderState,
-                              MultiBufferSource.BufferSource buffer,
-                              PoseStack poseStack,
-                              boolean translucentPass,
-                              LevelRenderState levelRenderState) {
-            Minecraft mc = Minecraft.getInstance();
-            if (mc.player == null || mc.level == null) return false;
+    private static class VibraniumOutlineRenderer implements CustomBlockOutlineRenderer {
+        private final List<OutlineData> outlines;
 
-            Vec3 camPos = camera.position();
-
-            poseStack.pushPose();
-            poseStack.translate(-camPos.x, -camPos.y, -camPos.z);
-
-            List<BlockPos> positions = VibraniumMaceItem.getBlocksToBeDestroyed(1, center, mc.player);
-
-            for (BlockPos pos : positions) {
-                BlockState state = mc.level.getBlockState(pos);
-                if (isValidBlock(state)) {
-                    VoxelShape shape = state.getShape(mc.level, pos);
-                    renderBlockOutline(poseStack, buffer, shape, pos);
-                }
-            }
-
-            poseStack.popPose();
-
-            return true;
+        public VibraniumOutlineRenderer(List<OutlineData> outlines) {
+            this.outlines = outlines;
         }
 
-        private void renderBlockOutline(PoseStack poseStack, MultiBufferSource bufferSource, VoxelShape shape, BlockPos pos) {
-            VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderTypes.LINES);
-
-            int red = (int) (ClientConfig.OUTLINE_RED.getAsDouble() * 255);
-            int green = (int) (ClientConfig.OUTLINE_GREEN.getAsDouble() * 255);
-            int blue = (int) (ClientConfig.OUTLINE_BLUE.getAsDouble() * 255);
-            int alpha = (int) (ClientConfig.OUTLINE_ALPHA.getAsDouble() * 255);
-
+        @Override
+        public boolean render(BlockOutlineRenderState renderState, net.minecraft.client.renderer.SubmitNodeCollector collector, PoseStack poseStack, LevelRenderState levelRenderState) {
+            int red = (int) (ClientConfig.OUTLINE_RED.get() * 255.0);
+            int green = (int) (ClientConfig.OUTLINE_GREEN.get() * 255.0);
+            int blue = (int) (ClientConfig.OUTLINE_BLUE.get() * 255.0);
+            int alpha = (int) (ClientConfig.OUTLINE_ALPHA.get() * 255.0);
             int color = ARGB.color(alpha, red, green, blue);
 
-            ShapeRenderer.renderShape(
-                    poseStack,
-                    vertexConsumer,
-                    shape,
-                    pos.getX(), pos.getY(), pos.getZ(),
+            for (OutlineData data : outlines) {
+                poseStack.pushPose();
+                poseStack.translate(data.dx, data.dy, data.dz);
+                
+                collector.submitShapeOutline(
+                    poseStack, 
+                    data.shape, 
+                    RenderTypes.lines(),
                     color,
-                    2.0F
-            );
+                    2.0F,
+                    false
+                );
+
+                poseStack.popPose();
+            }
+
+            return true;
         }
     }
 }

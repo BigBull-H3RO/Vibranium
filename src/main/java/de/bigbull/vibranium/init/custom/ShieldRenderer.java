@@ -29,8 +29,10 @@ public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
     private final ShieldModel model;
 
     private static final class Sprites {
-        static final SpriteId VIBRANIUM_SHIELD_BASE = new SpriteId(Sheets.SHIELD_SHEET, Identifier.fromNamespaceAndPath(Vibranium.MODID, "entity/vibranium_shield_base"));
-        static final SpriteId VIBRANIUM_SHIELD_BASE_NO_PATTERN = new SpriteId(Sheets.SHIELD_SHEET, Identifier.fromNamespaceAndPath(Vibranium.MODID, "entity/vibranium_shield_base_nopattern"));
+        static final SpriteId VIBRANIUM_SHIELD_BASE = new SpriteId(Sheets.SHIELD_SHEET,
+                Identifier.fromNamespaceAndPath(Vibranium.MODID, "entity/vibranium_shield_base"));
+        static final SpriteId VIBRANIUM_SHIELD_BASE_NO_PATTERN = new SpriteId(Sheets.SHIELD_SHEET,
+                Identifier.fromNamespaceAndPath(Vibranium.MODID, "entity/vibranium_shield_base_nopattern"));
     }
 
     public ShieldRenderer(SpriteGetter sprites, ShieldModel model) {
@@ -39,7 +41,9 @@ public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
     }
 
     @Override
-    public void submit(@Nullable DataComponentMap components, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, int overlayCoords, boolean hasFoil, int outlineColor) {
+    public void submit(@Nullable DataComponentMap components, PoseStack poseStack,
+            SubmitNodeCollector submitNodeCollector, int lightCoords, int overlayCoords, boolean hasFoil,
+            int outlineColor) {
         BannerPatternLayers patterns = components != null
                 ? components.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
                 : BannerPatternLayers.EMPTY;
@@ -47,7 +51,8 @@ public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
         boolean hasPatterns = !patterns.layers().isEmpty() || baseColor != null;
         SpriteId base = hasPatterns ? Sprites.VIBRANIUM_SHIELD_BASE : Sprites.VIBRANIUM_SHIELD_BASE_NO_PATTERN;
 
-        submitNodeCollector.submitModel(this.model, Unit.INSTANCE, poseStack, lightCoords, overlayCoords, -1, base, this.sprites, outlineColor, null);
+        submitNodeCollector.submitModel(this.model, Unit.INSTANCE, poseStack, lightCoords, overlayCoords, -1, base,
+                this.sprites, outlineColor, null);
         if (hasPatterns) {
             BannerRenderer.submitPatterns(
                     this.sprites,
@@ -60,8 +65,7 @@ public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
                     false,
                     Objects.requireNonNullElse(baseColor, DyeColor.WHITE),
                     patterns,
-                    null
-            );
+                    null);
         }
 
         if (hasFoil) {
@@ -75,8 +79,7 @@ public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
                     -1,
                     this.sprites.get(base),
                     0,
-                    null
-            );
+                    null);
         }
     }
 
@@ -103,7 +106,8 @@ public class ShieldRenderer implements SpecialModelRenderer<DataComponentMap> {
 
         @Override
         public ShieldRenderer bake(SpecialModelRenderer.BakingContext bakingContext) {
-            return new ShieldRenderer(bakingContext.sprites(), new ShieldModel(bakingContext.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
+            return new ShieldRenderer(bakingContext.sprites(),
+                    new ShieldModel(bakingContext.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
         }
     }
 }

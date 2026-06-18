@@ -24,158 +24,165 @@ import net.minecraft.world.level.ItemLike;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider {
-    public static final ImmutableList<ItemLike> VIBRANIUM_SMELTABLES = ImmutableList.of(ItemInit.RAW_VIBRANIUM, BlockInit.DEEPSLATE_VIBRANIUM_ORE);
+        public static final ImmutableList<ItemLike> VIBRANIUM_SMELTABLES = ImmutableList.of(ItemInit.RAW_VIBRANIUM,
+                        BlockInit.DEEPSLATE_VIBRANIUM_ORE);
 
-    public ModRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
-        super(provider, recipeOutput);
-    }
-
-    @Override
-    protected void buildRecipes() {
-        generateBlockFamilies(FeatureFlagSet.of(FeatureFlags.VANILLA));
-
-        planksFromLogs(BlockInit.SOULWOOD_PLANKS, TagsInit.Items.SOULWOOD_LOGS, 4);
-        woodFromLogs(BlockInit.SOULWOOD_WOOD, BlockInit.SOULWOOD_LOG);
-        woodenBoat(ItemInit.SOULWOOD_BOAT, BlockInit.SOULWOOD_PLANKS);
-        chestBoat(ItemInit.SOULWOOD_CHEST_BOAT, ItemInit.SOULWOOD_BOAT);
-        hangingSign(ItemInit.SOULWOOD_HANGING_SIGN, BlockInit.STRIPPED_SOULWOOD_LOG);
-        copySmithingTemplate(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, ItemInit.VIBRANIUM_INGOT);
-
-        shapeless(RecipeCategory.MISC, ItemInit.RAW_VIBRANIUM, 9)
-                .requires(Ingredient.of(BlockInit.BLOCK_OF_RAW_VIBRANIUM), 1)
-                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM))
-                .save(this.output, "raw_vibranium_from_bock_of_raw_vibranium");
-
-        shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_NUGGET, 9)
-                .requires(Ingredient.of(ItemInit.VIBRANIUM_INGOT), 1)
-                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
-                .save(this.output, "vibranium_nugget");
-
-        shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT, 9)
-                .requires(Ingredient.of(BlockInit.VIBRANIUM_BLOCK), 1)
-                .group("vibranium_ingot")
-                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM))
-                .save(this.output, "vibranium_ingot_from_vibranium_block");
-
-        shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT, 1)
-                .requires(Ingredient.of(ItemInit.VIBRANIUM_NUGGET), 9)
-                .group("vibranium_ingot")
-                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM))
-                .save(this.output, "vibranium_ingot_from_vibranium_nugget");
-
-        shapeless(RecipeCategory.BUILDING_BLOCKS, BlockInit.BLOCK_OF_RAW_VIBRANIUM, 1)
-                .requires(Ingredient.of(ItemInit.RAW_VIBRANIUM), 9)
-                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM))
-                .save(this.output, "block_of_raw_vibranium");
-
-        shapeless(RecipeCategory.BUILDING_BLOCKS, BlockInit.VIBRANIUM_BLOCK, 1)
-                .requires(Ingredient.of(ItemInit.VIBRANIUM_INGOT), 9)
-                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
-                .save(this.output, "vibranium_block");
-
-        shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT, 1)
-                .requires(Ingredient.of(ItemInit.VIBRANIUM_PLATE), 4)
-                .requires(Ingredient.of(Items.NETHERITE_SCRAP), 1)
-                .requires(Ingredient.of(Items.DIAMOND), 4)
-                .group("vibranium_ingot")
-                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM))
-                .save(this.output, "vibranium_ingot");
-
-        shaped(RecipeCategory.MISC, ItemInit.VIBRANIUM_CORE, 1)
-                .pattern(" V ")
-                .pattern("VEV")
-                .pattern(" V ")
-                .define('E', Items.EMERALD_BLOCK)
-                .define('V', ItemInit.VIBRANIUM_INGOT)
-                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
-                .save(this.output, "vibranium_core");
-
-        shaped(RecipeCategory.TOOLS, ItemInit.VIBRANIUM_MACE, 1)
-                .pattern(" C ")
-                .pattern("VMV")
-                .pattern(" C ")
-                .define('M', Items.MACE)
-                .define('C', ItemInit.VIBRANIUM_CORE)
-                .define('V', ItemInit.VIBRANIUM_INGOT)
-                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
-                .save(this.output, "vibranium_mace");
-
-        shaped(RecipeCategory.TOOLS, ItemInit.VIBRANIUM_SHIELD, 1)
-                .pattern("WVW")
-                .pattern("WHW")
-                .pattern(" W ")
-                .define('H', ItemInit.VIBRANIUM_CORE)
-                .define('W', ItemTags.PLANKS)
-                .define('V', ItemInit.VIBRANIUM_INGOT)
-                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
-                .save(this.output, "vibranium_shield");
-
-        shaped(RecipeCategory.BUILDING_BLOCKS, BlockInit.VIBRANIUM_CRYSTAL_BLOCK, 1)
-                .pattern("##")
-                .pattern("##")
-                .define('#', ItemInit.VIBRANIUM_CRYSTAL_SHARD)
-                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_CRYSTAL_SHARD))
-                .save(this.output, "vibranium_crystal_block");
-
-        shaped(RecipeCategory.MISC, ItemInit.SOUL_HERB_MIXTURE, 1)
-                .pattern("#F ")
-                .pattern("GC ")
-                .define('#', ItemInit.HEART_SHAPED_HERB)
-                .define('F', Items.FERMENTED_SPIDER_EYE)
-                .define('C', Items.GOLDEN_CARROT)
-                .define('G', Items.GHAST_TEAR)
-                .unlockedBy("has_item", has(ItemInit.HEART_SHAPED_HERB))
-                .save(this.output, "soul_herb_mixture");
-
-        vibraniumSmithing(Items.NETHERITE_SWORD, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_SWORD.get());
-        vibraniumSmithing(Items.NETHERITE_PICKAXE, RecipeCategory.TOOLS, ItemInit.VIBRANIUM_PICKAXE.get());
-        vibraniumSmithing(Items.NETHERITE_AXE, RecipeCategory.TOOLS, ItemInit.VIBRANIUM_AXE.get());
-        vibraniumSmithing(Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, ItemInit.VIBRANIUM_SHOVEL.get());
-        vibraniumSmithing(Items.NETHERITE_HOE, RecipeCategory.TOOLS, ItemInit.VIBRANIUM_HOE.get());
-        vibraniumSmithing(Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_HELMET.get());
-        vibraniumSmithing(Items.TURTLE_HELMET, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_TURTLE_HELMET.get());
-        vibraniumSmithing(Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_CHESTPLATE.get());
-        vibraniumSmithing(Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_LEGGINGS.get());
-        vibraniumSmithing(Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_BOOTS.get());
-        vibraniumSmithing(Items.WOLF_ARMOR, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_WOLF_ARMOR.get());
-        vibraniumSmithing(Items.NETHERITE_HORSE_ARMOR, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_HORSE_ARMOR.get());
-        vibraniumSmithing(Items.NETHERITE_NAUTILUS_ARMOR, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_NAUTILUS_ARMOR.get());
-        vibraniumSmithing(Items.NETHERITE_SPEAR, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_SPEAR.get());
-
-        oreSmelting(VIBRANIUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ItemInit.VIBRANIUM_PLATE, 2.5F, 400, "vibranium_ingot");
-        oreBlasting(VIBRANIUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC, ItemInit.VIBRANIUM_PLATE, 2.5F, 150, "vibranium_ingot");
-    }
-
-    protected void generateBlockFamilies(FeatureFlagSet flags) {
-        BlockFamilyInit.getAllFamilies().filter(BlockFamily::shouldGenerateCraftingRecipe).forEach((family) -> generateRecipes(family, flags));
-    }
-
-    protected void vibraniumSmithing(Item item, RecipeCategory category, Item outputItem) {
-        SmithingTransformRecipeBuilder.smithing(
-                        Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE),
-                        Ingredient.of(item),
-                        this.tag(TagsInit.Items.VIBRANIUM_TOOL_MATERIALS),
-                        category,
-                        outputItem
-                )
-                .unlocks("has_vibranium_ingot", this.has(TagsInit.Items.VIBRANIUM_TOOL_MATERIALS))
-                .save(this.output, getItemName(outputItem) + "_smithing");
-    }
-
-    public static class Runner extends RecipeProvider.Runner {
-        public Runner(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> completableFuture) {
-            super(packOutput, completableFuture);
+        public ModRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+                super(provider, recipeOutput);
         }
 
         @Override
-        protected RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
-            return new ModRecipeProvider(provider, recipeOutput);
+        protected void buildRecipes() {
+                generateBlockFamilies(FeatureFlagSet.of(FeatureFlags.VANILLA));
 
+                planksFromLogs(BlockInit.SOULWOOD_PLANKS, TagsInit.Items.SOULWOOD_LOGS, 4);
+                woodFromLogs(BlockInit.SOULWOOD_WOOD, BlockInit.SOULWOOD_LOG);
+                woodenBoat(ItemInit.SOULWOOD_BOAT, BlockInit.SOULWOOD_PLANKS);
+                chestBoat(ItemInit.SOULWOOD_CHEST_BOAT, ItemInit.SOULWOOD_BOAT);
+                // hangingSign(ItemInit.SOULWOOD_HANGING_SIGN, BlockInit.STRIPPED_SOULWOOD_LOG);
+                copySmithingTemplate(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE, ItemInit.VIBRANIUM_INGOT);
+
+                shapeless(RecipeCategory.MISC, ItemInit.RAW_VIBRANIUM, 9)
+                                .requires(Ingredient.of(BlockInit.BLOCK_OF_RAW_VIBRANIUM), 1)
+                                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM))
+                                .save(this.output, "raw_vibranium_from_bock_of_raw_vibranium");
+
+                shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_NUGGET, 9)
+                                .requires(Ingredient.of(ItemInit.VIBRANIUM_INGOT), 1)
+                                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
+                                .save(this.output, "vibranium_nugget");
+
+                shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT, 9)
+                                .requires(Ingredient.of(BlockInit.VIBRANIUM_BLOCK), 1)
+                                .group("vibranium_ingot")
+                                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM))
+                                .save(this.output, "vibranium_ingot_from_vibranium_block");
+
+                shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT, 1)
+                                .requires(Ingredient.of(ItemInit.VIBRANIUM_NUGGET), 9)
+                                .group("vibranium_ingot")
+                                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM))
+                                .save(this.output, "vibranium_ingot_from_vibranium_nugget");
+
+                shapeless(RecipeCategory.BUILDING_BLOCKS, BlockInit.BLOCK_OF_RAW_VIBRANIUM, 1)
+                                .requires(Ingredient.of(ItemInit.RAW_VIBRANIUM), 9)
+                                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM))
+                                .save(this.output, "block_of_raw_vibranium");
+
+                shapeless(RecipeCategory.BUILDING_BLOCKS, BlockInit.VIBRANIUM_BLOCK, 1)
+                                .requires(Ingredient.of(ItemInit.VIBRANIUM_INGOT), 9)
+                                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
+                                .save(this.output, "vibranium_block");
+
+                shapeless(RecipeCategory.MISC, ItemInit.VIBRANIUM_INGOT, 1)
+                                .requires(Ingredient.of(ItemInit.VIBRANIUM_PLATE), 4)
+                                .requires(Ingredient.of(Items.NETHERITE_SCRAP), 1)
+                                .requires(Ingredient.of(Items.DIAMOND), 4)
+                                .group("vibranium_ingot")
+                                .unlockedBy("has_item", has(ItemInit.RAW_VIBRANIUM))
+                                .save(this.output, "vibranium_ingot");
+
+                shaped(RecipeCategory.MISC, ItemInit.VIBRANIUM_CORE, 1)
+                                .pattern(" V ")
+                                .pattern("VEV")
+                                .pattern(" V ")
+                                .define('E', Items.EMERALD_BLOCK)
+                                .define('V', ItemInit.VIBRANIUM_INGOT)
+                                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
+                                .save(this.output, "vibranium_core");
+
+                shaped(RecipeCategory.TOOLS, ItemInit.VIBRANIUM_MACE, 1)
+                                .pattern(" C ")
+                                .pattern("VMV")
+                                .pattern(" C ")
+                                .define('M', Items.MACE)
+                                .define('C', ItemInit.VIBRANIUM_CORE)
+                                .define('V', ItemInit.VIBRANIUM_INGOT)
+                                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
+                                .save(this.output, "vibranium_mace");
+
+                shaped(RecipeCategory.TOOLS, ItemInit.VIBRANIUM_SHIELD, 1)
+                                .pattern("WVW")
+                                .pattern("WHW")
+                                .pattern(" W ")
+                                .define('H', ItemInit.VIBRANIUM_CORE)
+                                .define('W', ItemTags.PLANKS)
+                                .define('V', ItemInit.VIBRANIUM_INGOT)
+                                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_INGOT))
+                                .save(this.output, "vibranium_shield");
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, BlockInit.VIBRANIUM_CRYSTAL_BLOCK, 1)
+                                .pattern("##")
+                                .pattern("##")
+                                .define('#', ItemInit.VIBRANIUM_CRYSTAL_SHARD)
+                                .unlockedBy("has_item", has(ItemInit.VIBRANIUM_CRYSTAL_SHARD))
+                                .save(this.output, "vibranium_crystal_block");
+
+                shaped(RecipeCategory.MISC, ItemInit.SOUL_HERB_MIXTURE, 1)
+                                .pattern("#F ")
+                                .pattern("GC ")
+                                .define('#', ItemInit.HEART_SHAPED_HERB)
+                                .define('F', Items.FERMENTED_SPIDER_EYE)
+                                .define('C', Items.GOLDEN_CARROT)
+                                .define('G', Items.GHAST_TEAR)
+                                .unlockedBy("has_item", has(ItemInit.HEART_SHAPED_HERB))
+                                .save(this.output, "soul_herb_mixture");
+
+                vibraniumSmithing(Items.NETHERITE_SWORD, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_SWORD.get());
+                vibraniumSmithing(Items.NETHERITE_PICKAXE, RecipeCategory.TOOLS, ItemInit.VIBRANIUM_PICKAXE.get());
+                vibraniumSmithing(Items.NETHERITE_AXE, RecipeCategory.TOOLS, ItemInit.VIBRANIUM_AXE.get());
+                vibraniumSmithing(Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, ItemInit.VIBRANIUM_SHOVEL.get());
+                vibraniumSmithing(Items.NETHERITE_HOE, RecipeCategory.TOOLS, ItemInit.VIBRANIUM_HOE.get());
+                vibraniumSmithing(Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_HELMET.get());
+                vibraniumSmithing(Items.TURTLE_HELMET, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_TURTLE_HELMET.get());
+                vibraniumSmithing(Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT,
+                                ItemInit.VIBRANIUM_CHESTPLATE.get());
+                vibraniumSmithing(Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_LEGGINGS.get());
+                vibraniumSmithing(Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_BOOTS.get());
+                vibraniumSmithing(Items.WOLF_ARMOR, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_WOLF_ARMOR.get());
+                vibraniumSmithing(Items.NETHERITE_HORSE_ARMOR, RecipeCategory.COMBAT,
+                                ItemInit.VIBRANIUM_HORSE_ARMOR.get());
+                vibraniumSmithing(Items.NETHERITE_NAUTILUS_ARMOR, RecipeCategory.COMBAT,
+                                ItemInit.VIBRANIUM_NAUTILUS_ARMOR.get());
+                vibraniumSmithing(Items.NETHERITE_SPEAR, RecipeCategory.COMBAT, ItemInit.VIBRANIUM_SPEAR.get());
+
+                oreSmelting(VIBRANIUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC,
+                                ItemInit.VIBRANIUM_PLATE, 2.5F, 400, "vibranium_ingot");
+                oreBlasting(VIBRANIUM_SMELTABLES, RecipeCategory.MISC, CookingBookCategory.MISC,
+                                ItemInit.VIBRANIUM_PLATE, 2.5F, 150, "vibranium_ingot");
         }
 
-        @Override
-        public String getName() {
-            return "Vibranium Recipes";
+        protected void generateBlockFamilies(FeatureFlagSet flags) {
+                BlockFamilyInit.getAllFamilies().filter(BlockFamily::shouldGenerateCraftingRecipe)
+                                .forEach((family) -> generateRecipes(family, flags));
         }
-    }
+
+        protected void vibraniumSmithing(Item item, RecipeCategory category, Item outputItem) {
+                SmithingTransformRecipeBuilder.smithing(
+                                Ingredient.of(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE),
+                                Ingredient.of(item),
+                                this.tag(TagsInit.Items.VIBRANIUM_TOOL_MATERIALS),
+                                category,
+                                outputItem)
+                                .unlocks("has_vibranium_ingot", this.has(TagsInit.Items.VIBRANIUM_TOOL_MATERIALS))
+                                .save(this.output, getItemName(outputItem) + "_smithing");
+        }
+
+        public static class Runner extends RecipeProvider.Runner {
+                public Runner(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> completableFuture) {
+                        super(packOutput, completableFuture);
+                }
+
+                @Override
+                protected RecipeProvider createRecipeProvider(HolderLookup.Provider provider,
+                                RecipeOutput recipeOutput) {
+                        return new ModRecipeProvider(provider, recipeOutput);
+
+                }
+
+                @Override
+                public String getName() {
+                        return "Vibranium Recipes";
+                }
+        }
 }

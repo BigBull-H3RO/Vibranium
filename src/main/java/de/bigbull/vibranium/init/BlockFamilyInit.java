@@ -25,8 +25,7 @@ public class BlockFamilyInit {
             .recipeUnlockedBy("has_planks")
             .getFamily();
 
-    private static BlockFamily.Builder familyBuilder(Block block)
-    {
+    private static BlockFamily.Builder familyBuilder(Block block) {
         BlockFamily.Builder blockfamily$builder = new BlockFamily.Builder(block);
         BlockFamily blockfamily = MAP.put(block, blockfamily$builder.getFamily());
         if (blockfamily != null) {

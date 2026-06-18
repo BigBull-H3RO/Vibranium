@@ -19,82 +19,82 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(ItemTags.FOOT_ARMOR).add(ItemInit.VIBRANIUM_BOOTS.get());
-        tag(ItemTags.LEG_ARMOR).add(ItemInit.VIBRANIUM_LEGGINGS.get());
-        tag(ItemTags.CHEST_ARMOR).add(ItemInit.VIBRANIUM_CHESTPLATE.get());
-        tag(ItemTags.HEAD_ARMOR).add(ItemInit.VIBRANIUM_HELMET.get()).add(ItemInit.VIBRANIUM_TURTLE_HELMET.get());
+        tag(ItemTags.FOOT_ARMOR).add(ItemInit.VIBRANIUM_BOOTS.getKey());
+        tag(ItemTags.LEG_ARMOR).add(ItemInit.VIBRANIUM_LEGGINGS.getKey());
+        tag(ItemTags.CHEST_ARMOR).add(ItemInit.VIBRANIUM_CHESTPLATE.getKey());
+        tag(ItemTags.HEAD_ARMOR).add(ItemInit.VIBRANIUM_HELMET.getKey()).add(ItemInit.VIBRANIUM_TURTLE_HELMET.getKey());
         tag(ItemTags.TRIMMABLE_ARMOR)
-                .add(ItemInit.VIBRANIUM_BOOTS.get())
-                .add(ItemInit.VIBRANIUM_LEGGINGS.get())
-                .add(ItemInit.VIBRANIUM_CHESTPLATE.get())
-                .add(ItemInit.VIBRANIUM_HELMET.get());
+                .add(ItemInit.VIBRANIUM_BOOTS.getKey())
+                .add(ItemInit.VIBRANIUM_LEGGINGS.getKey())
+                .add(ItemInit.VIBRANIUM_CHESTPLATE.getKey())
+                .add(ItemInit.VIBRANIUM_HELMET.getKey());
 
-        tag(ItemTags.SWORDS).add(ItemInit.VIBRANIUM_SWORD.get());
+        tag(ItemTags.SWORDS).add(ItemInit.VIBRANIUM_SWORD.getKey());
         tag(ItemTags.PICKAXES)
-                .add(ItemInit.VIBRANIUM_PICKAXE.get())
-                .add(ItemInit.VIBRANIUM_MACE.get());
+                .add(ItemInit.VIBRANIUM_PICKAXE.getKey())
+                .add(ItemInit.VIBRANIUM_MACE.getKey());
         tag(ItemTags.AXES)
-                .add(ItemInit.VIBRANIUM_AXE.get())
-                .add(ItemInit.VIBRANIUM_MACE.get());
+                .add(ItemInit.VIBRANIUM_AXE.getKey())
+                .add(ItemInit.VIBRANIUM_MACE.getKey());
         tag(ItemTags.SHOVELS)
-                .add(ItemInit.VIBRANIUM_SHOVEL.get())
-                .add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.HOES).add(ItemInit.VIBRANIUM_HOE.get());
-        tag(ItemTags.SPEARS).add(ItemInit.VIBRANIUM_SPEAR.get());
-        tag(ItemTags.MACE_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.BREAKS_DECORATED_POTS).add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.WEAPON_ENCHANTABLE).addTag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.get());
-        tag(ItemTags.DURABILITY_ENCHANTABLE).add(ItemInit.VIBRANIUM_SHIELD.get()).add(ItemInit.VIBRANIUM_MACE.get());
+                .add(ItemInit.VIBRANIUM_SHOVEL.getKey())
+                .add(ItemInit.VIBRANIUM_MACE.getKey());
+        tag(ItemTags.HOES).add(ItemInit.VIBRANIUM_HOE.getKey());
+        tag(ItemTags.SPEARS).add(ItemInit.VIBRANIUM_SPEAR.getKey());
+        tag(ItemTags.MACE_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.getKey());
+        tag(ItemTags.BREAKS_DECORATED_POTS).add(ItemInit.VIBRANIUM_MACE.getKey());
+        tag(ItemTags.WEAPON_ENCHANTABLE).addTag(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(ItemInit.VIBRANIUM_MACE.getKey());
+        tag(ItemTags.DURABILITY_ENCHANTABLE).add(ItemInit.VIBRANIUM_SHIELD.getKey()).add(ItemInit.VIBRANIUM_MACE.getKey());
 
-        tag(ItemTags.TRIM_MATERIALS).add(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get());
-        tag(ItemTags.BEACON_PAYMENT_ITEMS).add(ItemInit.VIBRANIUM_INGOT.get());
-        tag(TagsInit.Items.VIBRANIUM_REPAIR).add(ItemInit.VIBRANIUM_INGOT.get());
-        tag(TagsInit.Items.VIBRANIUM_TOOL_MATERIALS).add(ItemInit.VIBRANIUM_INGOT.get());
-        tag(TagsInit.Items.SOUL_HERB_MIXTURE_TAG).add(ItemInit.SOUL_HERB_MIXTURE.get());
-        tag(ItemTags.BOATS).add(ItemInit.SOULWOOD_BOAT.get());
-        tag(ItemTags.CHEST_BOATS).add(ItemInit.SOULWOOD_CHEST_BOAT.get());
+        tag(ItemTags.TRIM_MATERIALS).add(ItemInit.VIBRANIUM_CRYSTAL_SHARD.getKey());
+        tag(ItemTags.BEACON_PAYMENT_ITEMS).add(ItemInit.VIBRANIUM_INGOT.getKey());
+        tag(TagsInit.Items.VIBRANIUM_REPAIR).add(ItemInit.VIBRANIUM_INGOT.getKey());
+        tag(TagsInit.Items.VIBRANIUM_TOOL_MATERIALS).add(ItemInit.VIBRANIUM_INGOT.getKey());
+        tag(TagsInit.Items.SOUL_HERB_MIXTURE_TAG).add(ItemInit.SOUL_HERB_MIXTURE.getKey());
+        tag(ItemTags.BOATS).add(ItemInit.SOULWOOD_BOAT.getKey());
+        tag(ItemTags.CHEST_BOATS).add(ItemInit.SOULWOOD_CHEST_BOAT.getKey());
 
         //NeoForge Item Tags
-        tag(Tags.Items.ARMORS_NAUTILUS).add(ItemInit.VIBRANIUM_NAUTILUS_ARMOR.get());
-        tag(Tags.Items.ARMORS_HORSE).add(ItemInit.VIBRANIUM_HORSE_ARMOR.get());
-        tag(Tags.Items.ARMORS_WOLF).add(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
+        tag(Tags.Items.ARMORS_NAUTILUS).add(ItemInit.VIBRANIUM_NAUTILUS_ARMOR.getKey());
+        tag(Tags.Items.ARMORS_HORSE).add(ItemInit.VIBRANIUM_HORSE_ARMOR.getKey());
+        tag(Tags.Items.ARMORS_WOLF).add(ItemInit.VIBRANIUM_WOLF_ARMOR.getKey());
 
         //Block Tags
-        tag(ItemTags.PLANKS).add(BlockInit.SOULWOOD_PLANKS.asItem());
-        tag(ItemTags.SAPLINGS).add(BlockInit.SOULWOOD_SAPLING.asItem());
-        tag(ItemTags.LOGS).add(BlockInit.SOULWOOD_LOG.asItem());
-        tag(ItemTags.LEAVES).add(BlockInit.SOULWOOD_LEAVES.asItem());
-        tag(ItemTags.DIRT).add(BlockInit.ENRICHED_VIBRANIUM_DIRT.asItem());
-        tag(ItemTags.STAIRS).add(BlockInit.SOULWOOD_STAIRS.asItem());
-        tag(ItemTags.SLABS).add(BlockInit.SOULWOOD_SLAB.asItem());
-        tag(ItemTags.FENCES).add(BlockInit.SOULWOOD_FENCE.asItem());
-        tag(ItemTags.FENCE_GATES).add(BlockInit.SOULWOOD_FENCE_GATE.asItem());
-        tag(ItemTags.DOORS).add(BlockInit.SOULWOOD_DOOR.asItem());
-        tag(ItemTags.TRAPDOORS).add(BlockInit.SOULWOOD_TRAPDOOR.asItem());
-        tag(ItemTags.BUTTONS).add(BlockInit.SOULWOOD_BUTTON.asItem());
+        tag(ItemTags.PLANKS).addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_PLANKS.getId()));
+        tag(ItemTags.SAPLINGS).addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_SAPLING.getId()));
+        tag(ItemTags.LOGS).addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_LOG.getId()));
+        tag(ItemTags.LEAVES).addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_LEAVES.getId()));
+        tag(ItemTags.DIRT).addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.ENRICHED_VIBRANIUM_DIRT.getId()));
+        tag(ItemTags.WOODEN_STAIRS).addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_STAIRS.getId()));
+        tag(ItemTags.WOODEN_SLABS).addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_SLAB.getId()));
+        tag(ItemTags.WOODEN_FENCES).addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_FENCE.getId()));
+        tag(ItemTags.FENCE_GATES).addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_FENCE_GATE.getId()));
+        tag(ItemTags.WOODEN_DOORS).addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_DOOR.getId()));
+        tag(ItemTags.WOODEN_TRAPDOORS).addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_TRAPDOOR.getId()));
+        tag(ItemTags.WOODEN_BUTTONS).addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_BUTTON.getId()));
 
         tag(TagsInit.Items.SOULWOOD_LOGS)
-                .add(BlockInit.SOULWOOD_LOG.asItem())
-                .add(BlockInit.STRIPPED_SOULWOOD_LOG.asItem())
-                .add(BlockInit.SOULWOOD_WOOD.asItem())
-                .add(BlockInit.STRIPPED_SOULWOOD_WOOD.asItem());
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_LOG.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.STRIPPED_SOULWOOD_LOG.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_WOOD.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.STRIPPED_SOULWOOD_WOOD.getId()));
 
         tag(ItemTags.NON_FLAMMABLE_WOOD)
-                .add(BlockInit.SOULWOOD_LOG.asItem())
-                .add(BlockInit.STRIPPED_SOULWOOD_LOG.asItem())
-                .add(BlockInit.STRIPPED_SOULWOOD_WOOD.asItem())
-                .add(BlockInit.SOULWOOD_WOOD.asItem())
-                .add(BlockInit.SOULWOOD_PLANKS.asItem())
-                .add(BlockInit.SOULWOOD_STAIRS.asItem())
-                .add(BlockInit.SOULWOOD_SLAB.asItem())
-                .add(BlockInit.SOULWOOD_FENCE.asItem())
-                .add(BlockInit.SOULWOOD_FENCE_GATE.asItem())
-                .add(BlockInit.SOULWOOD_PRESSURE_PLATE.asItem())
-                .add(BlockInit.SOULWOOD_DOOR.asItem())
-                .add(BlockInit.SOULWOOD_TRAPDOOR.asItem())
-                .add(BlockInit.SOULWOOD_BUTTON.asItem())
-                .add(BlockInit.SOULWOOD_SAPLING.asItem())
-                .add(BlockInit.SOULWOOD_SIGN.asItem())
-                .add(BlockInit.SOULWOOD_HANGING_SIGN.asItem());
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_LOG.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.STRIPPED_SOULWOOD_LOG.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.STRIPPED_SOULWOOD_WOOD.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_WOOD.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_PLANKS.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_STAIRS.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_SLAB.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_FENCE.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_FENCE_GATE.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_PRESSURE_PLATE.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_DOOR.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_TRAPDOOR.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_BUTTON.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_SAPLING.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_SIGN.getId()))
+                .addOptional(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM, BlockInit.SOULWOOD_HANGING_SIGN.getId()));
     }
 }

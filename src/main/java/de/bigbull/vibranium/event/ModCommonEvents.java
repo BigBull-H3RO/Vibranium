@@ -9,10 +9,10 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 
 public class ModCommonEvents {
     public static void addBlockEntityTypes(BlockEntityTypeAddBlocksEvent event) {
-        event.modify(BlockEntityType.SIGN,
+        event.modify(net.minecraft.world.level.block.entity.BlockEntityTypes.SIGN,
                 BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get());
 
-        event.modify(BlockEntityType.HANGING_SIGN,
+        event.modify(net.minecraft.world.level.block.entity.BlockEntityTypes.HANGING_SIGN,
                 BlockInit.SOULWOOD_HANGING_SIGN.get(), BlockInit.SOULWOOD_WALL_HANGING_SIGN.get());
     }
 

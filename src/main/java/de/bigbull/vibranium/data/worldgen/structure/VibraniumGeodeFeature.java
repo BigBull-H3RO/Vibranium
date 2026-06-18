@@ -41,22 +41,22 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
         RandomSource randomsource = context.random();
         BlockPos blockpos = context.origin();
         WorldGenLevel worldgenlevel = context.level();
-        int i = geodeconfiguration.minGenOffset;
-        int j = geodeconfiguration.maxGenOffset;
+        int i = geodeconfiguration.minGenOffset();
+        int j = geodeconfiguration.maxGenOffset();
         List<Pair<BlockPos, Integer>> list = Lists.newLinkedList();
-        int k = geodeconfiguration.distributionPoints.sample(randomsource);
+        int k = geodeconfiguration.distributionPoints().sample(randomsource);
         WorldgenRandom worldgenrandom = new WorldgenRandom(new LegacyRandomSource(worldgenlevel.getSeed()));
         NormalNoise normalnoise = NormalNoise.create(worldgenrandom, -4, 1.0);
         List<BlockPos> list1 = Lists.newLinkedList();
-        double d0 = (double)k / (double)geodeconfiguration.outerWallDistance.maxInclusive();
-        GeodeLayerSettings geodelayersettings = geodeconfiguration.geodeLayerSettings;
-        GeodeBlockSettings geodeblocksettings = geodeconfiguration.geodeBlockSettings;
-        GeodeCrackSettings geodecracksettings = geodeconfiguration.geodeCrackSettings;
+        double d0 = (double)k / (double)geodeconfiguration.outerWallDistance().maxInclusive();
+        GeodeLayerSettings geodelayersettings = geodeconfiguration.geodeLayerSettings();
+        GeodeBlockSettings geodeblocksettings = geodeconfiguration.geodeBlockSettings();
+        GeodeCrackSettings geodecracksettings = geodeconfiguration.geodeCrackSettings();
         double d1 = 1.0 / Math.sqrt(geodelayersettings.filling);
-        double d2 = 1.0 / Math.sqrt(geodelayersettings.innerLayer + d0);
-        double d3 = 1.0 / Math.sqrt(geodelayersettings.middleLayer + d0);
-        double d4 = 1.0 / Math.sqrt(geodelayersettings.outerLayer + d0);
-        double d5 = 1.0 / Math.sqrt(geodecracksettings.baseCrackSize + randomsource.nextDouble() / 2.0 + (k > 3 ? d0 : 0.0));
+        double d2 = 1.0 / Math.sqrt(geodelayersettings.innerLayer) + d0;
+        double d3 = 1.0 / Math.sqrt(geodelayersettings.middleLayer) + d0;
+        double d4 = 1.0 / Math.sqrt(geodelayersettings.outerLayer) + d0;
+        double d5 = 1.0 / Math.sqrt(geodecracksettings.baseCrackSize) + randomsource.nextDouble() / 2.0 + (k > 3 ? d0 : 0.0);
         boolean flag = (double)randomsource.nextFloat() < geodecracksettings.generateCrackChance;
         int l = 0;
 
@@ -64,18 +64,18 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
         int lowestY = Integer.MAX_VALUE;
 
         for (int i1 = 0; i1 < k; i1++) {
-            int j1 = geodeconfiguration.outerWallDistance.sample(randomsource);
-            int k1 = geodeconfiguration.outerWallDistance.sample(randomsource);
-            int l1 = geodeconfiguration.outerWallDistance.sample(randomsource);
+            int j1 = geodeconfiguration.outerWallDistance().sample(randomsource);
+            int k1 = geodeconfiguration.outerWallDistance().sample(randomsource);
+            int l1 = geodeconfiguration.outerWallDistance().sample(randomsource);
             BlockPos blockpos1 = blockpos.offset(j1, k1, l1);
             BlockState blockstate = worldgenlevel.getBlockState(blockpos1);
             if (blockstate.isAir() || blockstate.is(BlockTags.GEODE_INVALID_BLOCKS)) {
-                if (++l > geodeconfiguration.invalidBlocksThreshold) {
+                if (++l > geodeconfiguration.invalidBlocksThreshold()) {
                     return false;
                 }
             }
 
-            list.add(Pair.of(blockpos1, geodeconfiguration.pointOffset.sample(randomsource)));
+            list.add(Pair.of(blockpos1, geodeconfiguration.pointOffset().sample(randomsource)));
         }
 
         if (flag) {
@@ -101,10 +101,10 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
         }
 
         List<BlockPos> list2 = Lists.newArrayList();
-        Predicate<BlockState> predicate = isReplaceable(geodeconfiguration.geodeBlockSettings.cannotReplace);
+        Predicate<BlockState> predicate = state -> !state.is(geodeconfiguration.geodeBlockSettings().cannotReplace());
 
         for (BlockPos blockpos3 : BlockPos.betweenClosed(blockpos.offset(i, i, i), blockpos.offset(j, j, j))) {
-            double d8 = normalnoise.getValue((double)blockpos3.getX(), (double)blockpos3.getY(), (double)blockpos3.getZ()) * geodeconfiguration.noiseMultiplier;
+            double d8 = normalnoise.getValue((double)blockpos3.getX(), (double)blockpos3.getY(), (double)blockpos3.getZ()) * geodeconfiguration.noiseMultiplier();
             double d6 = 0.0;
             double d7 = 0.0;
 
@@ -128,12 +128,12 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
                         }
                     }
                 } else if (d6 >= d1) {
-                    this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.fillingProvider.getState(worldgenlevel, randomsource, blockpos3), predicate);
+                    this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.fillingProvider().getState(worldgenlevel, randomsource, blockpos3), predicate);
                 } else if (d6 >= d2) {
-                    boolean flag1 = randomsource.nextFloat() < geodeconfiguration.useAlternateLayer0Chance;
+                    boolean flag1 = randomsource.nextFloat() < geodeconfiguration.useAlternateLayer0Chance();
                     BlockState innerLayerState = flag1
-                            ? geodeblocksettings.alternateInnerLayerProvider.getState(worldgenlevel, randomsource, blockpos3)
-                            : geodeblocksettings.innerLayerProvider.getState(worldgenlevel, randomsource, blockpos3);
+                            ? geodeblocksettings.alternateInnerLayerProvider().getState(worldgenlevel, randomsource, blockpos3)
+                            : geodeblocksettings.innerLayerProvider().getState(worldgenlevel, randomsource, blockpos3);
 
                     if (innerLayerState.is(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get())) {
                         int y = blockpos3.getY();
@@ -143,21 +143,20 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
 
                     this.safeSetBlock(worldgenlevel, blockpos3, innerLayerState, predicate);
 
-                    if ((!geodeconfiguration.placementsRequireLayer0Alternate || flag1)
-                            && (double)randomsource.nextFloat() < geodeconfiguration.usePotentialPlacementsChance) {
+                    if ((!geodeconfiguration.placementsRequireLayer0Alternate()|| flag1)
+                            && (double)randomsource.nextFloat() < geodeconfiguration.usePotentialPlacementsChance()) {
                         list2.add(blockpos3.immutable());
                     }
                 } else if (d6 >= d3) {
-                    this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.middleLayerProvider.getState(worldgenlevel, randomsource, blockpos3), predicate);
+                    this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.middleLayerProvider().getState(worldgenlevel, randomsource, blockpos3), predicate);
                 } else if (d6 >= d4) {
-                    this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.outerLayerProvider.getState(worldgenlevel, randomsource, blockpos3), predicate);
+                    this.safeSetBlock(worldgenlevel, blockpos3, geodeblocksettings.outerLayerProvider().getState(worldgenlevel, randomsource, blockpos3), predicate);
                 }
             }
         }
 
-        List<BlockState> list3 = geodeblocksettings.innerPlacements;
-
-        for (BlockPos blockpos4 : list2) {
+        List<BlockState> list3 = geodeblocksettings.innerPlacements();
+for (BlockPos blockpos4 : list2) {
             BlockState blockstate1 = Util.getRandom(list3, randomsource);
 
             for (Direction direction : DIRECTIONS) {
@@ -291,3 +290,9 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
         }
     }
 }
+
+
+
+
+
+
