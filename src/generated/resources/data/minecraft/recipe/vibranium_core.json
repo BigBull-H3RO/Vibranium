@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "E": "minecraft:emerald_block",
+    "V": "vibranium:vibranium_ingot"
+  },
+  "pattern": [
+    " V ",
+    "VEV",
+    " V "
+  ],
+  "result": {
+    "id": "vibranium:vibranium_core"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "values": [
+    {
+      "id": "vibranium:soulwood_log",
+      "required": false
+    },
+    {
+      "id": "vibranium:stripped_soulwood_log",
+      "required": false
+    },
+    {
+      "id": "vibranium:stripped_soulwood_wood",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_wood",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_planks",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_stairs",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_slab",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_fence",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_fence_gate",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_door",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_trapdoor",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_button",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_sapling",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_sign",
+      "required": false
+    },
+    {
+      "id": "vibranium:soulwood_hanging_sign",
+      "required": false
+    }
+  ]
+}

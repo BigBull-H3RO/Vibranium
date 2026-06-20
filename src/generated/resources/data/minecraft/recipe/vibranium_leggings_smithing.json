@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#vibranium:vibranium_tool_materials",
+  "base": "minecraft:netherite_leggings",
+  "result": {
+    "id": "vibranium:vibranium_leggings"
+  },
+  "template": "vibranium:vibranium_upgrade_smithing_template"
+}

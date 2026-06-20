@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "vibranium:block_of_raw_vibranium"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "vibranium:blocks/block_of_raw_vibranium"
+}

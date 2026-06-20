@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": "vibranium:vibranium_core",
+    "M": "minecraft:mace",
+    "V": "vibranium:vibranium_ingot"
+  },
+  "pattern": [
+    " C ",
+    "VMV",
+    " C "
+  ],
+  "result": {
+    "id": "vibranium:vibranium_mace"
+  }
+}

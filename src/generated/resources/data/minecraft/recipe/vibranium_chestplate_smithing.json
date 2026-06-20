@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#vibranium:vibranium_tool_materials",
+  "base": "minecraft:netherite_chestplate",
+  "result": {
+    "id": "vibranium:vibranium_chestplate"
+  },
+  "template": "vibranium:vibranium_upgrade_smithing_template"
+}

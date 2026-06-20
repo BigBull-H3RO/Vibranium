@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_attached_hanging_sign_rot_1",
+  "textures": {
+    "all": "vibranium:block/soulwood_hanging_sign",
+    "particle": "vibranium:block/stripped_soulwood_log"
+  }
+}

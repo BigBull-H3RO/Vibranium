@@ -2,9 +2,13 @@
 /.gradle/
 /build/
 /build/classes/java/main/
-/src/generated/
+/src/generated/resources/.cache/
 /runs/
 /.idea/
 /bin/
 /logs/
 /.vscode/
+
+# Agent instructions / notes
+AGENT_INSTRUCTIONS.md
+26.2.md

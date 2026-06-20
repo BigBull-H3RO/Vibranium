@@ -36,7 +36,7 @@ public class ModBiomesModifiers {
                 new BiomeModifiers.AddFeaturesBiomeModifier(
                         biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                         HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.VIBRANIUM_GEODE)),
-                        GenerationStep.Decoration.UNDERGROUND_STRUCTURES
+                        GenerationStep.Decoration.LOCAL_MODIFICATIONS
                 )
         );
     }

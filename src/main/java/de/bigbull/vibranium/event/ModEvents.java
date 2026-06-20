@@ -8,7 +8,6 @@ import de.bigbull.vibranium.init.custom.ShieldRenderer;
 import de.bigbull.vibranium.init.custom.particle.CustomDripParticle;
 import net.minecraft.client.model.object.boat.BoatModel;
 import net.minecraft.client.particle.FallingLeavesParticle;
-import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.Identifier;
@@ -21,8 +20,6 @@ import net.neoforged.neoforge.client.event.RegisterSpecialModelRendererEvent;
 public class ModEvents {
     public static void clientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            // Sheets.addWoodType(TypesInit.SOULWOOD_WOODTYPE);
-
             EntityRenderers.register(EntitiesInit.VIBRAGOLEM.get(), VibraGolemRenderer::new);
         });
     }
@@ -36,9 +33,9 @@ public class ModEvents {
     }
 
     public static void onRegisterSpecialModelRenderers(RegisterSpecialModelRendererEvent event) {
-        event.register(Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium_shield"), ShieldRenderer.Unbaked.MAP_CODEC);
+        event.register(Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium_shield"),
+                ShieldRenderer.Unbaked.MAP_CODEC);
     }
-
 
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(EntitiesInit.SOULWOOD_BOAT.get(),
@@ -52,7 +49,6 @@ public class ModEvents {
         event.registerLayerDefinition(ModelLayersInit.SOULWOOD_CHEST_BOAT, BoatModel::createChestBoatModel);
         event.registerLayerDefinition(ModelLayersInit.VIBRAGOLEM_LAYER, VibraGolemModel::createBodyLayer);
     }
-
 
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
         event.registerCategory(ModKeybinds.VIBRANIUM_CATEGORY);

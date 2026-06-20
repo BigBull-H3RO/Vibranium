@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "vibranium:stripped_soulwood_log"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "vibranium:blocks/stripped_soulwood_log"
+}

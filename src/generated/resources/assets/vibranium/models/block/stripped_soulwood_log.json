@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "vibranium:block/stripped_soulwood_log_top",
+    "side": "vibranium:block/stripped_soulwood_log"
+  }
+}

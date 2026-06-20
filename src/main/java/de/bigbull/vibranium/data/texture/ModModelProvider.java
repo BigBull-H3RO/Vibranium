@@ -38,8 +38,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(BlockInit.BUDDING_VIBRANIUM_CRYSTAL.get());
         blockModels.woodProvider(BlockInit.STRIPPED_SOULWOOD_LOG.get())
                 .logWithHorizontal(BlockInit.STRIPPED_SOULWOOD_LOG.get()).wood(BlockInit.STRIPPED_SOULWOOD_WOOD.get());
-        blockModels.createTrivialCube(BlockInit.SOULWOOD_HANGING_SIGN.get());
-        blockModels.createTrivialCube(BlockInit.SOULWOOD_WALL_HANGING_SIGN.get());
+        
         blockModels.createPlantWithDefaultItem(BlockInit.SOULWOOD_SAPLING.get(),
                 BlockInit.POTTED_SOULWOOD_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createAmethystCluster(BlockInit.VIBRANIUM_CLUSTER.get());

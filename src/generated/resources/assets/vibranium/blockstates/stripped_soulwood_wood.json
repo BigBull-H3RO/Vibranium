@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "vibranium:block/stripped_soulwood_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "vibranium:block/stripped_soulwood_wood"
+    },
+    "axis=z": {
+      "model": "vibranium:block/stripped_soulwood_wood",
+      "x": 90
+    }
+  }
+}

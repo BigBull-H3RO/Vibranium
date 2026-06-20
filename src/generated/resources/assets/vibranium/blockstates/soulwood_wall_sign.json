@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "vibranium:block/soulwood_wall_sign",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "vibranium:block/soulwood_wall_sign",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "vibranium:block/soulwood_wall_sign"
+    },
+    "facing=west": {
+      "model": "vibranium:block/soulwood_wall_sign",
+      "y": 90
+    }
+  }
+}

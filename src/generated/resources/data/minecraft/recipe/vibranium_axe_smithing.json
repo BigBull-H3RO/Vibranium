@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#vibranium:vibranium_tool_materials",
+  "base": "minecraft:netherite_axe",
+  "result": {
+    "id": "vibranium:vibranium_axe"
+  },
+  "template": "vibranium:vibranium_upgrade_smithing_template"
+}

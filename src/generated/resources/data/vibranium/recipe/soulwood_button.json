@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    "vibranium:soulwood_planks"
+  ],
+  "result": {
+    "id": "vibranium:soulwood_button"
+  }
+}
