@@ -17,11 +17,14 @@
 ---
 
 ## **Supported Versions**
+
 **Actively supported (full updates and fixes):**
+
 - **Minecraft 1.21.1**
-- **Minecraft 26.1.2 (main)**
+- **Minecraft 26.2 (main)**
 
 **Legacy builds (no active updates, only critical fixes if needed):**
+
 - **Minecraft 1.21**
 - **Minecraft 1.21.4**
 - **Minecraft 1.21.5**
@@ -31,36 +34,44 @@
 - **Minecraft 1.21.11**
 - **Minecraft 26.1**
 - **Minecraft 26.1.1**
+- **Minecraft 26.1.2**
 
 ---
 
 ## **✨ Features**
+
 ✅ **Vibranium Resource Line**
+
 - **Deepslate Vibranium Ore**, **Raw Vibranium**, **Ingots**, **Nuggets**, **Plates**, and a **Vibranium Core**.
 - **Block of Raw Vibranium** and **Vibranium Block**.
 - **Vibranium Crystal Shards** and crystal blocks (**Budding**, **Clusters**, **Buds**) from geodes.
 
 ✅ **Vibranium Tools & Combat Gear**
+
 - Full **tool set** (sword, pickaxe, axe, shovel, hoe).
 - **Vibranium Spear** for fast melee combat.
 - **Vibranium Mace**: mines a **3x3 area** (hold **Shift** to mine a single block) and the push effect **deals damage** to affected enemies.
 - **Vibranium Shield**: blocks melee hits and can **reflect arrows** back.
 
 ✅ **Vibranium Armor & Trims**
+
 - Full **armor set**, plus **Wolf Armor**, **Horse Armor**, **Turtle Helmet**, and **Nautilus Armor**.
 - **Vibranium Armor Trim Material** using **Vibranium Crystal Shard**.
 
 ✅ **Kinetic Redistribution Effect**
+
 - **Heart Shaped Herb** and **Soul Herb Elixir** grant **Kinetic Redistribution**.
 - When damaged, stored energy **pushes back nearby enemies** and **deals damage**.
 - The elixir also grants **Speed**, **Regeneration**, **Absorption**, and **Damage Boost** for a short duration.
 - **Soul Herb Mixture** is the primary brewing ingredient for the elixir.
 
 ✅ **Soulwood Set**
+
 - **Soulwood** log/wood variants, planks, stairs, slab, door, trapdoor, fence, gate, pressure plate, button.
 - **Soulwood Leaves**, **Sapling**, **Signs** and **Hanging Signs**, **Boat** and **Chest Boat**.
 
 ✅ **Worldgen & Biome Flavor**
+
 - **Vibranium Geodes** with crystal growth.
 - **Heart Shaped Herb Bushes** and **Soulwood Trees** can spawn inside **Vibranium Geodes**.
 - **Enriched Vibranium Dirt/Farmland** (can be created by right-clicking with Raw Vibranium).
@@ -69,21 +80,26 @@
 - **Vibranium Upgrade Smithing Template** can be found in **Trial Chambers** (intersection barrels).
 
 ✅ **Universal Breaker Enchantment**
+
 - **Mace-only enchantment** that lets the 3x3 mining break **all block types** in the area.
 - Without it, the Mace only breaks the **same block type** as the center block you targeted.
 
 ✅ **JEI / REI Compatibility**
+
 - Shows **brewing recipes** for Soul Herb Elixirs.
 - Adds **item descriptions** for key items/blocks (e.g., Enriched Vibranium Dirt/Farmland, Heart Shaped Herb, Upgrade Template).
 
 ❌ **Vibra Golem (Prototype / WIP)**
+
 - Currently **not fully usable in normal gameplay**.
 - **No natural spawns** and **no spawn egg** yet; gameplay availability is still experimental.
 
 ---
 
 ## **🌍 Languages**
+
 The mod includes the following translations:
+
 - **English (en_us)** — AI translated
 - **German (de_de)**
 - **French (fr_fr)** — AI translated
@@ -93,6 +109,7 @@ The mod includes the following translations:
 ---
 
 ## **⚙️ Configuration Options**
+
 The Vibranium Mace includes simple config options via **`client-config.toml`** and **`server-config.toml`**.
 
 <details>
@@ -119,6 +136,7 @@ The Vibranium Mace includes simple config options via **`client-config.toml`** a
 ---
 
 ## **🧭 Tips & Notes**
+
 - The **Vibranium Mace** highlights its 3x3 mining area; adjust colors in the client config.
 
 > Hold the **outline toggle key** (default **O**) to enable/disable the 3x3 preview.
@@ -128,7 +146,9 @@ The Vibranium Mace includes simple config options via **`client-config.toml`** a
 <div align="center">
 
 #### 📢 **Found a bug or have a suggestion?**
+
 Report issues to the [Issue Tracker](https://github.com/BigBull-H3RO/Vibranium/issues)
 
 #### 💡 Find out more about Vibranium on [Curseforge](https://www.curseforge.com/minecraft/mc-mods/vibranium-neoforge) or [Modrinth](https://modrinth.com/mod/vibranium)
+
 </div>
