@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "H": {
+      "item": "vibranium:vibranium_core"
+    },
+    "V": {
+      "item": "vibranium:vibranium_ingot"
+    },
+    "W": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "WVW",
+    "WHW",
+    " W "
+  ],
+  "result": {
+    "count": 1,
+    "id": "vibranium:vibranium_shield"
+  }
+}

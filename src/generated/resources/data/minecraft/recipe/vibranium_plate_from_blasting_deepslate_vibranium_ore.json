@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 2.5,
+  "group": "vibranium_ingot",
+  "ingredient": {
+    "item": "vibranium:deepslate_vibranium_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "vibranium:vibranium_plate"
+  }
+}

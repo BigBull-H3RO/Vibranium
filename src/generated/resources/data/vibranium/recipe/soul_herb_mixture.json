@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "vibranium:heart_shaped_herb"
+    },
+    "C": {
+      "item": "minecraft:golden_carrot"
+    },
+    "F": {
+      "item": "minecraft:fermented_spider_eye"
+    },
+    "G": {
+      "item": "minecraft:ghast_tear"
+    }
+  },
+  "pattern": [
+    "#F ",
+    "GC "
+  ],
+  "result": {
+    "count": 1,
+    "id": "vibranium:soul_herb_mixture"
+  }
+}

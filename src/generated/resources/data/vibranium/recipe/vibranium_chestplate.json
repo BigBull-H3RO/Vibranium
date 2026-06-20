@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "vibranium:vibranium_ingot"
+  },
+  "base": {
+    "item": "minecraft:netherite_chestplate"
+  },
+  "result": {
+    "count": 1,
+    "id": "vibranium:vibranium_chestplate"
+  },
+  "template": {
+    "item": "vibranium:vibranium_upgrade_smithing_template"
+  }
+}

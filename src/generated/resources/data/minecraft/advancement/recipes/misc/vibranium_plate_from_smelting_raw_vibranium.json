@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_vibranium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vibranium:raw_vibranium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:vibranium_plate_from_smelting_raw_vibranium"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_vibranium"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:vibranium_plate_from_smelting_raw_vibranium"
+    ]
+  }
+}

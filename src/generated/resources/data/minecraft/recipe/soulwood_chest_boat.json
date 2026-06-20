@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "chest_boat",
+  "key": {
+    "#": {
+      "item": "vibranium:soulwood_planks"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    }
+  },
+  "pattern": [
+    "# #",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "vibranium:soulwood_chest_boat"
+  }
+}

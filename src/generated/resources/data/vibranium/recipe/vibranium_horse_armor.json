@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "vibranium:vibranium_ingot"
+  },
+  "base": {
+    "item": "minecraft:diamond_horse_armor"
+  },
+  "result": {
+    "count": 1,
+    "id": "vibranium:vibranium_horse_armor"
+  },
+  "template": {
+    "item": "vibranium:vibranium_upgrade_smithing_template"
+  }
+}
