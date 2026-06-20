@@ -1,0 +1,14 @@
+{
+  "type": "vibranium:add_item",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/ruined_portal"
+    },
+    {
+      "chance": 0.4,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "item": "vibranium:heart_shaped_herb"
+}

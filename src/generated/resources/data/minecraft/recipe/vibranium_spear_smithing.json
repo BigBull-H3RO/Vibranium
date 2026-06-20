@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#vibranium:vibranium_tool_materials",
+  "base": "minecraft:netherite_spear",
+  "result": {
+    "id": "vibranium:vibranium_spear"
+  },
+  "template": "vibranium:vibranium_upgrade_smithing_template"
+}

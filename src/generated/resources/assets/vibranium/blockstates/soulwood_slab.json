@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "vibranium:block/soulwood_slab"
+    },
+    "type=double": {
+      "model": "vibranium:block/soulwood_planks"
+    },
+    "type=top": {
+      "model": "vibranium:block/soulwood_slab_top"
+    }
+  }
+}

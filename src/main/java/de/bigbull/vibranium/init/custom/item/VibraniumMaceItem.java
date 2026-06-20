@@ -219,6 +219,7 @@ public class VibraniumMaceItem extends Item {
                         }
                     }
                 });
+        lastCalculatedDamage.remove();
     }
 
     private static Predicate<LivingEntity> knockbackPredicate(Entity entity, Entity entity1) {

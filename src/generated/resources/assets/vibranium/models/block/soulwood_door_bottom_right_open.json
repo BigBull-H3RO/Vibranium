@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right_open",
+  "textures": {
+    "bottom": "vibranium:block/soulwood_door_bottom",
+    "top": "vibranium:block/soulwood_door_top"
+  }
+}

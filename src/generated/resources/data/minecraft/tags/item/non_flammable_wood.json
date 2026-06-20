@@ -1,0 +1,20 @@
+{
+  "values": [
+    "vibranium:soulwood_log",
+    "vibranium:stripped_soulwood_log",
+    "vibranium:stripped_soulwood_wood",
+    "vibranium:soulwood_wood",
+    "vibranium:soulwood_planks",
+    "vibranium:soulwood_stairs",
+    "vibranium:soulwood_slab",
+    "vibranium:soulwood_fence",
+    "vibranium:soulwood_fence_gate",
+    "vibranium:soulwood_pressure_plate",
+    "vibranium:soulwood_door",
+    "vibranium:soulwood_trapdoor",
+    "vibranium:soulwood_button",
+    "vibranium:soulwood_sapling",
+    "vibranium:soulwood_sign",
+    "vibranium:soulwood_hanging_sign"
+  ]
+}

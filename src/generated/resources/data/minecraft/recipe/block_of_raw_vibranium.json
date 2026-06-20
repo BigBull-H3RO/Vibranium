@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "vibranium:raw_vibranium",
+    "vibranium:raw_vibranium",
+    "vibranium:raw_vibranium",
+    "vibranium:raw_vibranium",
+    "vibranium:raw_vibranium",
+    "vibranium:raw_vibranium",
+    "vibranium:raw_vibranium",
+    "vibranium:raw_vibranium",
+    "vibranium:raw_vibranium"
+  ],
+  "result": {
+    "id": "vibranium:block_of_raw_vibranium"
+  }
+}

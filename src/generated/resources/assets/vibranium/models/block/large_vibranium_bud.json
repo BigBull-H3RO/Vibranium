@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "vibranium:block/large_vibranium_bud"
+  }
+}

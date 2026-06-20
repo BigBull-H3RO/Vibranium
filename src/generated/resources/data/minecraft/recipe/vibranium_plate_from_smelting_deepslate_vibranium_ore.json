@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 400,
+  "experience": 2.5,
+  "group": "vibranium_ingot",
+  "ingredient": "vibranium:deepslate_vibranium_ore",
+  "result": {
+    "id": "vibranium:vibranium_plate"
+  }
+}

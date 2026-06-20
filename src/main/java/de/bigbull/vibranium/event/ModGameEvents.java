@@ -89,6 +89,10 @@ public class ModGameEvents {
                     for (BlockPos pos : affectedPositions) {
                         BlockState targetBlockState = level.getBlockState(pos);
 
+                        if (targetBlockState.getDestroySpeed(level, pos) < 0.0F) {
+                            continue;
+                        }
+
                         if (hasUniversalBreaker || ((middleBlockNeedsAdvancedTool && isValidBlockForTool(targetBlockState, requiredTool)) ||
                                 (!middleBlockNeedsAdvancedTool && !targetBlockState.is(BlockTags.NEEDS_DIAMOND_TOOL) && !targetBlockState.is(Tags.Blocks.NEEDS_NETHERITE_TOOL) && isValidBlockForTool(targetBlockState, requiredTool)))) {
                             HARVESTED_BLOCKS.add(pos);
@@ -214,21 +218,24 @@ public class ModGameEvents {
         if (!(player.level() instanceof ServerLevel level)) {
             return;
         }
-        boolean hasRawVibranium = false;
 
-        if (!player.isCreative()) {
-            for (ItemStack itemStack : player.getInventory()) {
-                if (itemStack.getItem() == ItemInit.RAW_VIBRANIUM.get()) {
-                    hasRawVibranium = true;
-                    break;
+        if (player.tickCount % 20 == 0) {
+            boolean hasRawVibranium = false;
+
+            if (!player.isCreative()) {
+                for (ItemStack itemStack : player.getInventory()) {
+                    if (itemStack.getItem() == ItemInit.RAW_VIBRANIUM.get()) {
+                        hasRawVibranium = true;
+                        break;
+                    }
                 }
-            }
-            if (hasRawVibranium) {
-                List<VibraGolemEntity> golems = level.getEntitiesOfClass(VibraGolemEntity.class, player.getBoundingBox().inflate(20));
-                for (VibraGolemEntity vibraGolem : golems) {
-                    if (!vibraGolem.isTame()) {
-                        vibraGolem.setTarget(player);
-                        vibraGolem.setAggressive(true);
+                if (hasRawVibranium) {
+                    List<VibraGolemEntity> golems = level.getEntitiesOfClass(VibraGolemEntity.class, player.getBoundingBox().inflate(20));
+                    for (VibraGolemEntity vibraGolem : golems) {
+                        if (!vibraGolem.isTame()) {
+                            vibraGolem.setTarget(player);
+                            vibraGolem.setAggressive(true);
+                        }
                     }
                 }
             }

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#vibranium:vibranium_tool_materials",
+  "base": "minecraft:turtle_helmet",
+  "result": {
+    "id": "vibranium:vibranium_turtle_helmet"
+  },
+  "template": "vibranium:vibranium_upgrade_smithing_template"
+}

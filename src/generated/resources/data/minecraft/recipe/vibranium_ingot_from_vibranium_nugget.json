@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "vibranium_ingot",
+  "ingredients": [
+    "vibranium:vibranium_nugget",
+    "vibranium:vibranium_nugget",
+    "vibranium:vibranium_nugget",
+    "vibranium:vibranium_nugget",
+    "vibranium:vibranium_nugget",
+    "vibranium:vibranium_nugget",
+    "vibranium:vibranium_nugget",
+    "vibranium:vibranium_nugget",
+    "vibranium:vibranium_nugget"
+  ],
+  "result": {
+    "id": "vibranium:vibranium_ingot"
+  }
+}

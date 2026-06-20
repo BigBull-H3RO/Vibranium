@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "vibranium:vibranium_ingot",
+    "vibranium:vibranium_ingot",
+    "vibranium:vibranium_ingot",
+    "vibranium:vibranium_ingot",
+    "vibranium:vibranium_ingot",
+    "vibranium:vibranium_ingot",
+    "vibranium:vibranium_ingot",
+    "vibranium:vibranium_ingot",
+    "vibranium:vibranium_ingot"
+  ],
+  "result": {
+    "id": "vibranium:vibranium_block"
+  }
+}

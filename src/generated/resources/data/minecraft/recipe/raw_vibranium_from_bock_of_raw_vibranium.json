@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "vibranium:block_of_raw_vibranium"
+  ],
+  "result": {
+    "count": 9,
+    "id": "vibranium:raw_vibranium"
+  }
+}

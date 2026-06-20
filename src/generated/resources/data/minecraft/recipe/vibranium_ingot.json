@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "vibranium_ingot",
+  "ingredients": [
+    "vibranium:vibranium_plate",
+    "vibranium:vibranium_plate",
+    "vibranium:vibranium_plate",
+    "vibranium:vibranium_plate",
+    "minecraft:netherite_scrap",
+    "minecraft:diamond",
+    "minecraft:diamond",
+    "minecraft:diamond",
+    "minecraft:diamond"
+  ],
+  "result": {
+    "id": "vibranium:vibranium_ingot"
+  }
+}
