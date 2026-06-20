@@ -55,7 +55,7 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
         double d2 = 1.0 / Math.sqrt(geodelayersettings.innerLayer + d0);
         double d3 = 1.0 / Math.sqrt(geodelayersettings.middleLayer + d0);
         double d4 = 1.0 / Math.sqrt(geodelayersettings.outerLayer + d0);
-        double d5 = 1.0 / Math.sqrt(geodecracksettings.baseCrackSize + randomsource.nextDouble() / 2.0 + (k > 3 ? d0 : 0.0));
+        double d5 = 1.0 / Math.sqrt(geodecracksettings.baseCrackSize + randomsource.nextDouble() / 2.0) + (k > 3 ? d0 : 0.0);
         boolean flag = (double)randomsource.nextFloat() < geodecracksettings.generateCrackChance;
         int l = 0;
 

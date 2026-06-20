@@ -175,6 +175,7 @@ public class VibraniumMaceItem extends DiggerItem {
                         entity.hurt(damageSource, reducedDamage);
                     }
                 });
+        lastCalculatedDamage.remove();
     }
 
     private static Predicate<LivingEntity> knockbackPredicate(Player player, Entity entity) {

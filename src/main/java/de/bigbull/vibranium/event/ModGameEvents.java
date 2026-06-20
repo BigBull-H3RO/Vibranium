@@ -28,7 +28,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -69,26 +68,36 @@ public class ModGameEvents {
                 TagKey<Block> requiredTool = getRequiredToolForBlock(middleBlockState);
 
                 if (requiredTool != null && isValidBlockForTool(middleBlockState, requiredTool)) {
-                    boolean middleBlockNeedsAdvancedTool = middleBlockState.is(BlockTags.NEEDS_DIAMOND_TOOL) || middleBlockState.is(Tags.Blocks.NEEDS_NETHERITE_TOOL);
+                    boolean middleBlockNeedsAdvancedTool = middleBlockState.is(BlockTags.NEEDS_DIAMOND_TOOL)
+                            || middleBlockState.is(Tags.Blocks.NEEDS_NETHERITE_TOOL);
 
                     if (HARVESTED_BLOCKS.contains(initialBlockPos)) {
                         return;
                     }
 
-                    List<BlockPos> affectedPositions = VibraniumMaceItem.getBlocksToBeDestroyed(1, initialBlockPos, serverPlayer);
+                    List<BlockPos> affectedPositions = VibraniumMaceItem.getBlocksToBeDestroyed(1, initialBlockPos,
+                            serverPlayer);
 
                     Holder<Enchantment> universalBreakerEnchantmentHolder = EnchantmentInit.UNIVERSAL_BREAKER;
                     int enchantmentLevel = mainHandItem.getEnchantmentLevel(universalBreakerEnchantmentHolder);
                     boolean hasUniversalBreaker = enchantmentLevel > 0;
 
-                    // Cancel the original break event — we handle ALL blocks (including the middle one) manually
+                    // Cancel the original break event — we handle ALL blocks (including the middle
+                    // one) manually
                     event.setCanceled(true);
 
                     for (BlockPos pos : affectedPositions) {
                         BlockState targetBlockState = level.getBlockState(pos);
 
-                        if (hasUniversalBreaker || ((middleBlockNeedsAdvancedTool && isValidBlockForTool(targetBlockState, requiredTool)) ||
-                                (!middleBlockNeedsAdvancedTool && !targetBlockState.is(BlockTags.NEEDS_DIAMOND_TOOL) && !targetBlockState.is(Tags.Blocks.NEEDS_NETHERITE_TOOL) && isValidBlockForTool(targetBlockState, requiredTool)))) {
+                        if (targetBlockState.getDestroySpeed(level, pos) < 0.0F) {
+                            continue;
+                        }
+
+                        if (hasUniversalBreaker || ((middleBlockNeedsAdvancedTool
+                                && isValidBlockForTool(targetBlockState, requiredTool)) ||
+                                (!middleBlockNeedsAdvancedTool && !targetBlockState.is(BlockTags.NEEDS_DIAMOND_TOOL)
+                                        && !targetBlockState.is(Tags.Blocks.NEEDS_NETHERITE_TOOL)
+                                        && isValidBlockForTool(targetBlockState, requiredTool)))) {
                             HARVESTED_BLOCKS.add(pos);
 
                             if (ServerConfig.USE_FAST_MODE.get()) {
@@ -167,7 +176,8 @@ public class ModGameEvents {
         }
     }
 
-    // This event is called when a LivingEntity attacks a Player with a Vibranium Shield
+    // This event is called when a LivingEntity attacks a Player with a Vibranium
+    // Shield
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent.Pre event) {
         if (event.getEntity() instanceof Player player && player.isBlocking()) {
@@ -194,7 +204,8 @@ public class ModGameEvents {
             return;
         }
         if (blockState.is(BlockInit.DEEPSLATE_VIBRANIUM_ORE.get()) && !player.isCreative()) {
-            List<VibraGolemEntity> golems = level.getEntitiesOfClass(VibraGolemEntity.class, player.getBoundingBox().inflate(20));
+            List<VibraGolemEntity> golems = level.getEntitiesOfClass(VibraGolemEntity.class,
+                    player.getBoundingBox().inflate(20));
             for (VibraGolemEntity vibraGolem : golems) {
                 if (!vibraGolem.isTame()) {
                     vibraGolem.setTarget(player);
@@ -212,21 +223,24 @@ public class ModGameEvents {
         if (!(player.level() instanceof ServerLevel level)) {
             return;
         }
-        boolean hasRawVibranium = false;
+        if (player.tickCount % 20 == 0) {
+            boolean hasRawVibranium = false;
 
-        if (!player.isCreative()) {
-            for (ItemStack itemStack : player.getInventory().items) {
-                if (itemStack.getItem() == ItemInit.RAW_VIBRANIUM.get()) {
-                    hasRawVibranium = true;
-                    break;
+            if (!player.isCreative()) {
+                for (ItemStack itemStack : player.getInventory().items) {
+                    if (itemStack.getItem() == ItemInit.RAW_VIBRANIUM.get()) {
+                        hasRawVibranium = true;
+                        break;
+                    }
                 }
-            }
-            if (hasRawVibranium) {
-                List<VibraGolemEntity> golems = level.getEntitiesOfClass(VibraGolemEntity.class, player.getBoundingBox().inflate(20));
-                for (VibraGolemEntity vibraGolem : golems) {
-                    if (!vibraGolem.isTame()) {
-                        vibraGolem.setTarget(player);
-                        vibraGolem.setAggressive(true);
+                if (hasRawVibranium) {
+                    List<VibraGolemEntity> golems = level.getEntitiesOfClass(VibraGolemEntity.class,
+                            player.getBoundingBox().inflate(20));
+                    for (VibraGolemEntity vibraGolem : golems) {
+                        if (!vibraGolem.isTame()) {
+                            vibraGolem.setTarget(player);
+                            vibraGolem.setAggressive(true);
+                        }
                     }
                 }
             }
@@ -302,7 +316,8 @@ public class ModGameEvents {
 
     private static void knockbackAttacker(Player player, LivingEntity attacker) {
         double strength = 1.25;
-        Vec3 knockbackDirection = new Vec3(attacker.getX() - player.getX(), 0, attacker.getZ() - player.getZ()).normalize();
+        Vec3 knockbackDirection = new Vec3(attacker.getX() - player.getX(), 0, attacker.getZ() - player.getZ())
+                .normalize();
         attacker.push(knockbackDirection.x * strength, 0.5, knockbackDirection.z * strength);
     }
 
@@ -313,4 +328,3 @@ public class ModGameEvents {
         }
     }
 }
-
