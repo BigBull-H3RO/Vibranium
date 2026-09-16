@@ -7,13 +7,10 @@ import de.bigbull.vibranium.data.DataGenerators;
 import de.bigbull.vibranium.data.loot.ModLootModifiers;
 import de.bigbull.vibranium.event.ModCommonEvents;
 import de.bigbull.vibranium.init.*;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FlowerPotBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
 
 @Mod(Vibranium.MODID)
@@ -33,18 +30,11 @@ public class Vibranium {
         ParticleInit.PARTICLES.register(modEventBus);
         EntitiesInit.ENTITY_TYPES.register(modEventBus);
 
-        modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(DataGenerators::gatherDataClient);
         modEventBus.addListener(ModCommonEvents::addBlockEntityTypes);
         modEventBus.addListener(ModCommonEvents::registerEntityAttributes);
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.CLIENT_SPEC, "vibranium-client.toml");
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SERVER_SPEC, "vibranium-server.toml");
-    }
-
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(BlockInit.SOULWOOD_SAPLING.getId(), BlockInit.POTTED_SOULWOOD_SAPLING);
-        });
     }
 }
