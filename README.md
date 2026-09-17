@@ -21,7 +21,7 @@
 **Actively supported (full updates and fixes):**
 
 - **Minecraft 1.21.1**
-- **Minecraft 26.2 (main)**
+- **Minecraft 26.3 (main)**
 
 **Legacy builds (no active updates, only critical fixes if needed):**
 
@@ -35,6 +35,7 @@
 - **Minecraft 26.1**
 - **Minecraft 26.1.1**
 - **Minecraft 26.1.2**
+- **Minecraft 26.2**
 
 ---
 
@@ -96,7 +97,7 @@
 
 ---
 
-## **🌍 Languages**
+## **🌐 Languages**
 
 The mod includes the following translations:
 

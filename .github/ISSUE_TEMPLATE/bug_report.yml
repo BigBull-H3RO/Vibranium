@@ -1,4 +1,4 @@
-name: 🐞 Bug Report
+name: 🐛 Bug Report
 description: Report an issue you've encountered 
 labels: [ bug ]
 body:
@@ -38,6 +38,7 @@ body:
         - "26.1.1"
         - "26.1.2"
         - "26.2"
+        - "26.3"
       default: 0
     validations:
       required: true
