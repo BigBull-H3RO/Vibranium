@@ -6,6 +6,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.item.component.SwingAnimation;
 
 public class VibraGolemAttackGoal extends MeleeAttackGoal {
     private final VibraGolemEntity entity;
@@ -83,7 +84,7 @@ public class VibraGolemAttackGoal extends MeleeAttackGoal {
 
     protected void performAttack(LivingEntity pEnemy) {
         this.resetAttackCooldown();
-        this.mob.swing(InteractionHand.MAIN_HAND);
+        this.mob.swing(InteractionHand.MAIN_HAND, SwingAnimation.DEFAULT);
         this.mob.doHurtTarget((ServerLevel) this.mob.level(), pEnemy);
     }
 

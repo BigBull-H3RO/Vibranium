@@ -11,7 +11,7 @@ import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.TreeFeature;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
@@ -67,12 +67,12 @@ public class SoulTreeTrunkPlacer extends TrunkPlacer {
             RandomSource random,
             int trunkHeight,
             BlockPos pos,
-            TreeConfiguration config
+            TreeFeature tree
     ) {
-        placeBelowTrunkBlock(level, blockSetter, random, pos.below(), config);
+        placeBelowTrunkBlock(level, blockSetter, random, pos.below(), tree);
 
         for (int i = 0; i < trunkHeight; i++) {
-            this.placeLog(level, blockSetter, random, pos.above(i), config);
+            this.placeLog(level, blockSetter, random, pos.above(i), tree);
         }
 
         List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
@@ -89,7 +89,7 @@ public class SoulTreeTrunkPlacer extends TrunkPlacer {
 
             attachments.add(
                     this.generateBranch(
-                            level, blockSetter, random, trunkHeight, pos, config,
+                            level, blockSetter, random, trunkHeight, pos, tree,
                             direction, branchStartHeight, branchStartHeight < trunkHeight - 1
                     )
             );
@@ -103,7 +103,7 @@ public class SoulTreeTrunkPlacer extends TrunkPlacer {
             RandomSource random,
             int trunkHeight,
             BlockPos pos,
-            TreeConfiguration config,
+            TreeFeature tree,
             Direction direction,
             int branchStartHeight,
             boolean extraLength
@@ -118,7 +118,7 @@ public class SoulTreeTrunkPlacer extends TrunkPlacer {
 
         Function<BlockState, BlockState> axisSetter = (state) -> state.setValue(RotatedPillarBlock.AXIS, direction.getAxis());
         for (int i = 0; i < steps; i++) {
-            this.placeLog(level, blockSetter, random, mutablePos.move(direction), config, axisSetter);
+            this.placeLog(level, blockSetter, random, mutablePos.move(direction), tree, axisSetter);
         }
 
         Direction verticalDirection = branchEndPos.getY() > mutablePos.getY() ? Direction.UP : Direction.DOWN;
@@ -127,7 +127,7 @@ public class SoulTreeTrunkPlacer extends TrunkPlacer {
             float chance = (float)Math.abs(branchEndPos.getY() - mutablePos.getY()) / (float)distance;
             boolean moveVertically = random.nextFloat() < chance;
             mutablePos.move(moveVertically ? verticalDirection : direction);
-            this.placeLog(level, blockSetter, random, mutablePos, config, moveVertically ? Function.identity() : axisSetter);
+            this.placeLog(level, blockSetter, random, mutablePos, tree, moveVertically ? Function.identity() : axisSetter);
         }
 
         return new FoliagePlacer.FoliageAttachment(branchEndPos.above(), 0, false);

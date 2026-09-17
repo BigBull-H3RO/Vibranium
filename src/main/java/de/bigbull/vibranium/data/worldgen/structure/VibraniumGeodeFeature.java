@@ -3,184 +3,219 @@ package de.bigbull.vibranium.data.worldgen.structure;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import de.bigbull.vibranium.data.worldgen.ModConfiguredFeatures;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.custom.block.HSHBushBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderSet;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
+import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BuddingAmethystBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.*;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.TreeFeature;
+import net.minecraft.world.level.levelgen.synth.Noise;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.minecraft.world.level.material.FluidState;
 
 import java.util.*;
 import java.util.function.Predicate;
 
-public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
+public record VibraniumGeodeFeature(
+    GeodeBlockSettings blockSettings,
+    GeodeLayerSettings layerSettings,
+    GeodeCrackSettings crackSettings,
+    double usePotentialPlacementsChance,
+    double useAlternateLayer0Chance,
+    boolean placementsRequireLayer0Alternate,
+    IntProvider outerWallDistance,
+    IntProvider distributionPoints,
+    IntProvider pointOffset,
+    int minGenOffset,
+    int maxGenOffset,
+    double noiseMultiplier,
+    int invalidBlocksThreshold
+) implements Feature {
+    private static final NormalNoise NOISE_PARAMETERS = NormalNoise.createParity(-4, 1.0);
+    public static final Codec<Double> CHANCE_RANGE = Codec.doubleRange(0.0, 1.0);
+    public static final MapCodec<VibraniumGeodeFeature> CODEC = RecordCodecBuilder.mapCodec(
+        i -> i.group(
+                GeodeBlockSettings.CODEC.fieldOf("blocks").forGetter(VibraniumGeodeFeature::blockSettings),
+                GeodeLayerSettings.CODEC.fieldOf("layers").forGetter(VibraniumGeodeFeature::layerSettings),
+                GeodeCrackSettings.CODEC.fieldOf("crack").forGetter(VibraniumGeodeFeature::crackSettings),
+                CHANCE_RANGE.optionalFieldOf("use_potential_placements_chance", 0.35).forGetter(VibraniumGeodeFeature::usePotentialPlacementsChance),
+                CHANCE_RANGE.optionalFieldOf("use_alternate_layer0_chance", 0.0).forGetter(VibraniumGeodeFeature::useAlternateLayer0Chance),
+                Codec.BOOL.optionalFieldOf("placements_require_layer0_alternate", true).forGetter(VibraniumGeodeFeature::placementsRequireLayer0Alternate),
+                IntProviders.codec(1, 20).optionalFieldOf("outer_wall_distance", UniformInt.of(4, 5)).forGetter(VibraniumGeodeFeature::outerWallDistance),
+                IntProviders.codec(1, 20).optionalFieldOf("distribution_points", UniformInt.of(3, 4)).forGetter(VibraniumGeodeFeature::distributionPoints),
+                IntProviders.codec(0, 10).optionalFieldOf("point_offset", UniformInt.of(1, 2)).forGetter(VibraniumGeodeFeature::pointOffset),
+                Codec.INT.optionalFieldOf("min_gen_offset", -16).forGetter(VibraniumGeodeFeature::minGenOffset),
+                Codec.INT.optionalFieldOf("max_gen_offset", 16).forGetter(VibraniumGeodeFeature::maxGenOffset),
+                CHANCE_RANGE.optionalFieldOf("noise_multiplier", 0.05).forGetter(VibraniumGeodeFeature::noiseMultiplier),
+                Codec.INT.fieldOf("invalid_blocks_threshold").forGetter(VibraniumGeodeFeature::invalidBlocksThreshold)
+            )
+            .apply(i, VibraniumGeodeFeature::new)
+    );
+
     private static final Direction[] DIRECTIONS = Direction.values();
 
-    public VibraniumGeodeFeature(Codec<GeodeConfiguration> codec) {
-        super(codec);
+    @Override
+    public MapCodec<VibraniumGeodeFeature> codec() {
+        return CODEC;
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<GeodeConfiguration> context) {
-        GeodeConfiguration geodeconfiguration = context.config();
-        RandomSource randomsource = context.random();
-        BlockPos blockpos = context.origin();
-        WorldGenLevel worldgenlevel = context.level();
-        int i = geodeconfiguration.minGenOffset();
-        int j = geodeconfiguration.maxGenOffset();
-        List<Pair<BlockPos, Integer>> list = Lists.newLinkedList();
-        int k = geodeconfiguration.distributionPoints().sample(randomsource);
-        WorldgenRandom worldgenrandom = new WorldgenRandom(new LegacyRandomSource(worldgenlevel.getSeed()));
-        NormalNoise normalnoise = NormalNoise.create(worldgenrandom, -4, 1.0);
-        List<BlockPos> list1 = Lists.newLinkedList();
-        double d0 = (double) k / (double) geodeconfiguration.outerWallDistance().maxInclusive();
-        GeodeLayerSettings geodelayersettings = geodeconfiguration.geodeLayerSettings();
-        GeodeBlockSettings geodeblocksettings = geodeconfiguration.geodeBlockSettings();
-        GeodeCrackSettings geodecracksettings = geodeconfiguration.geodeCrackSettings();
-        double d1 = 1.0 / Math.sqrt(geodelayersettings.filling);
-        double d2 = 1.0 / Math.sqrt(geodelayersettings.innerLayer + d0);
-        double d3 = 1.0 / Math.sqrt(geodelayersettings.middleLayer + d0);
-        double d4 = 1.0 / Math.sqrt(geodelayersettings.outerLayer + d0);
-        double d5 = 1.0 / Math.sqrt(geodecracksettings.baseCrackSize + randomsource.nextDouble() / 2.0
-                + (k > 3 ? d0 : 0.0));
-        boolean flag = (double) randomsource.nextFloat() < geodecracksettings.generateCrackChance;
-        int l = 0;
+    public boolean place(WorldGenLevel level, ChunkGenerator chunkGenerator, RandomSource random, BlockPos origin) {
+        List<Pair<BlockPos, Integer>> points = Lists.newLinkedList();
+        int numPoints = this.distributionPoints.sample(random);
+        Noise noise = NOISE_PARAMETERS.create(new WorldgenRandom(new LegacyRandomSource(level.getSeed())));
+        List<BlockPos> crackPoints = Lists.newLinkedList();
+        double crackSizeAdjustment = (double) numPoints / (double) this.outerWallDistance.maxInclusive();
+        double innerAir = 1.0 / Math.sqrt(this.layerSettings.filling);
+        double innermostBlockLayer = 1.0 / Math.sqrt(this.layerSettings.innerLayer + crackSizeAdjustment);
+        double innerCrust = 1.0 / Math.sqrt(this.layerSettings.middleLayer + crackSizeAdjustment);
+        double outerCrust = 1.0 / Math.sqrt(this.layerSettings.outerLayer + crackSizeAdjustment);
+        double crackSize = 1.0 / Math.sqrt(this.crackSettings.baseCrackSize + random.nextDouble() / 2.0
+                + (numPoints > 3 ? crackSizeAdjustment : 0.0));
+        boolean shouldGenerateCrack = (double) random.nextFloat() < this.crackSettings.generateCrackChance;
+        int numInvalidPoints = 0;
 
         Map<Integer, List<BlockPos>> innerLayerPositionsByY = new HashMap<>();
         int lowestY = Integer.MAX_VALUE;
 
-        for (int i1 = 0; i1 < k; i1++) {
-            int j1 = geodeconfiguration.outerWallDistance().sample(randomsource);
-            int k1 = geodeconfiguration.outerWallDistance().sample(randomsource);
-            int l1 = geodeconfiguration.outerWallDistance().sample(randomsource);
-            BlockPos blockpos1 = blockpos.offset(j1, k1, l1);
-            BlockState blockstate = worldgenlevel.getBlockState(blockpos1);
-            if (blockstate.isAir() || blockstate.is(geodeblocksettings.invalidBlocks())) {
-                if (++l > geodeconfiguration.invalidBlocksThreshold()) {
+        for (int i = 0; i < numPoints; i++) {
+            int x = this.outerWallDistance.sample(random);
+            int y = this.outerWallDistance.sample(random);
+            int z = this.outerWallDistance.sample(random);
+            BlockPos pos = origin.offset(x, y, z);
+            BlockState state = level.getBlockState(pos);
+            if (state.isAir() || state.is(this.blockSettings.invalidBlocks())) {
+                if (++numInvalidPoints > this.invalidBlocksThreshold) {
                     return false;
                 }
             }
 
-            list.add(Pair.of(blockpos1, geodeconfiguration.pointOffset().sample(randomsource)));
+            points.add(Pair.of(pos, this.pointOffset.sample(random)));
         }
 
-        if (flag) {
-            int i2 = randomsource.nextInt(4);
-            int j2 = k * 2 + 1;
-            if (i2 == 0) {
-                list1.add(blockpos.offset(j2, 7, 0));
-                list1.add(blockpos.offset(j2, 5, 0));
-                list1.add(blockpos.offset(j2, 1, 0));
-            } else if (i2 == 1) {
-                list1.add(blockpos.offset(0, 7, j2));
-                list1.add(blockpos.offset(0, 5, j2));
-                list1.add(blockpos.offset(0, 1, j2));
-            } else if (i2 == 2) {
-                list1.add(blockpos.offset(j2, 7, j2));
-                list1.add(blockpos.offset(j2, 5, j2));
-                list1.add(blockpos.offset(j2, 1, j2));
+        if (shouldGenerateCrack) {
+            int offsetIndex = random.nextInt(4);
+            int crackOffset = numPoints * 2 + 1;
+            if (offsetIndex == 0) {
+                crackPoints.add(origin.offset(crackOffset, 7, 0));
+                crackPoints.add(origin.offset(crackOffset, 5, 0));
+                crackPoints.add(origin.offset(crackOffset, 1, 0));
+            } else if (offsetIndex == 1) {
+                crackPoints.add(origin.offset(0, 7, crackOffset));
+                crackPoints.add(origin.offset(0, 5, crackOffset));
+                crackPoints.add(origin.offset(0, 1, crackOffset));
+            } else if (offsetIndex == 2) {
+                crackPoints.add(origin.offset(crackOffset, 7, crackOffset));
+                crackPoints.add(origin.offset(crackOffset, 5, crackOffset));
+                crackPoints.add(origin.offset(crackOffset, 1, crackOffset));
             } else {
-                list1.add(blockpos.offset(0, 7, 0));
-                list1.add(blockpos.offset(0, 5, 0));
-                list1.add(blockpos.offset(0, 1, 0));
+                crackPoints.add(origin.offset(0, 7, 0));
+                crackPoints.add(origin.offset(0, 5, 0));
+                crackPoints.add(origin.offset(0, 1, 0));
             }
         }
 
-        List<BlockPos> list2 = Lists.newArrayList();
-        Predicate<BlockState> predicate = state -> !state.is(geodeconfiguration.geodeBlockSettings().cannotReplace());
+        List<BlockPos> potentialCrystalPlacements = Lists.newArrayList();
+        HolderSet<Block> cantReplace = this.blockSettings.cannotReplace();
+        Predicate<BlockState> canReplace = s -> !s.is(cantReplace);
 
-        for (BlockPos blockpos3 : BlockPos.betweenClosed(blockpos.offset(i, i, i), blockpos.offset(j, j, j))) {
-            double d8 = normalnoise.getValue((double) blockpos3.getX(), (double) blockpos3.getY(),
-                    (double) blockpos3.getZ()) * geodeconfiguration.noiseMultiplier();
-            double d6 = 0.0;
-            double d7 = 0.0;
+        for (BlockPos pointInside : BlockPos.betweenClosed(
+                origin.offset(this.minGenOffset, this.minGenOffset, this.minGenOffset),
+                origin.offset(this.maxGenOffset, this.maxGenOffset, this.maxGenOffset))) {
+            double noiseOffset = noise.get((double) pointInside.getX(), (double) pointInside.getY(),
+                    (double) pointInside.getZ()) * this.noiseMultiplier;
+            double distSumShell = 0.0;
+            double distSumCrack = 0.0;
 
-            for (Pair<BlockPos, Integer> pair : list) {
-                d6 += Mth.invSqrt(blockpos3.distSqr(pair.getFirst()) + (double) pair.getSecond().intValue()) + d8;
+            for (Pair<BlockPos, Integer> point : points) {
+                distSumShell += Mth.invSqrt(pointInside.distSqr(point.getFirst()) + (double) point.getSecond().intValue()) + noiseOffset;
             }
 
-            for (BlockPos blockpos6 : list1) {
-                d7 += Mth.invSqrt(blockpos3.distSqr(blockpos6) + (double) geodecracksettings.crackPointOffset) + d8;
+            for (BlockPos point : crackPoints) {
+                distSumCrack += Mth.invSqrt(pointInside.distSqr(point) + (double) this.crackSettings.crackPointOffset) + noiseOffset;
             }
 
-            if (!(d6 < d4)) {
-                if (flag && d7 >= d5 && d6 < d1) {
-                    this.safeSetBlock(worldgenlevel, blockpos3, Blocks.AIR.defaultBlockState(), predicate);
+            if (!(distSumShell < outerCrust)) {
+                if (shouldGenerateCrack && distSumCrack >= crackSize && distSumShell < innerAir) {
+                    this.safeSetBlock(level, pointInside, Blocks.AIR.defaultBlockState(), canReplace);
 
-                    for (Direction direction1 : DIRECTIONS) {
-                        BlockPos blockpos2 = blockpos3.relative(direction1);
-                        FluidState fluidstate = worldgenlevel.getFluidState(blockpos2);
-                        if (!fluidstate.isEmpty()) {
-                            worldgenlevel.scheduleTick(blockpos2, fluidstate.getType(), 0);
+                    for (Direction direction : DIRECTIONS) {
+                        BlockPos adjacentPos = pointInside.relative(direction);
+                        FluidState adjacentFluidState = level.getFluidState(adjacentPos);
+                        if (!adjacentFluidState.isEmpty()) {
+                            level.scheduleTick(adjacentPos, adjacentFluidState.getType(), 0);
                         }
                     }
-                } else if (d6 >= d1) {
-                    this.safeSetBlock(worldgenlevel, blockpos3,
-                            geodeblocksettings.fillingProvider().getState(worldgenlevel, randomsource, blockpos3),
-                            predicate);
-                } else if (d6 >= d2) {
-                    boolean flag1 = randomsource.nextFloat() < geodeconfiguration.useAlternateLayer0Chance();
-                    BlockState innerLayerState = flag1
-                            ? geodeblocksettings.alternateInnerLayerProvider().getState(worldgenlevel, randomsource,
-                                    blockpos3)
-                            : geodeblocksettings.innerLayerProvider().getState(worldgenlevel, randomsource, blockpos3);
+                } else if (distSumShell >= innerAir) {
+                    this.safeSetBlock(level, pointInside,
+                            this.blockSettings.fillingProvider().value().getState(level, random, pointInside),
+                            canReplace);
+                } else if (distSumShell >= innermostBlockLayer) {
+                    boolean useAlternateLayer = random.nextFloat() < this.useAlternateLayer0Chance;
+                    BlockState innerLayerState = useAlternateLayer
+                            ? this.blockSettings.alternateInnerLayerProvider().value().getState(level, random, pointInside)
+                            : this.blockSettings.innerLayerProvider().value().getState(level, random, pointInside);
 
                     if (innerLayerState.is(BlockInit.VIBRANIUM_CRYSTAL_BLOCK.get())) {
-                        int y = blockpos3.getY();
-                        innerLayerPositionsByY.computeIfAbsent(y, k2 -> new ArrayList<>()).add(blockpos3.immutable());
+                        int y = pointInside.getY();
+                        innerLayerPositionsByY.computeIfAbsent(y, k2 -> new ArrayList<>()).add(pointInside.immutable());
                         lowestY = Math.min(lowestY, y);
                     }
 
-                    this.safeSetBlock(worldgenlevel, blockpos3, innerLayerState, predicate);
+                    this.safeSetBlock(level, pointInside, innerLayerState, canReplace);
 
-                    if ((!geodeconfiguration.placementsRequireLayer0Alternate() || flag1)
-                            && (double) randomsource.nextFloat() < geodeconfiguration.usePotentialPlacementsChance()) {
-                        list2.add(blockpos3.immutable());
+                    if ((!this.placementsRequireLayer0Alternate || useAlternateLayer)
+                            && (double) random.nextFloat() < this.usePotentialPlacementsChance) {
+                        potentialCrystalPlacements.add(pointInside.immutable());
                     }
-                } else if (d6 >= d3) {
-                    this.safeSetBlock(worldgenlevel, blockpos3,
-                            geodeblocksettings.middleLayerProvider().getState(worldgenlevel, randomsource, blockpos3),
-                            predicate);
-                } else if (d6 >= d4) {
-                    this.safeSetBlock(worldgenlevel, blockpos3,
-                            geodeblocksettings.outerLayerProvider().getState(worldgenlevel, randomsource, blockpos3),
-                            predicate);
+                } else if (distSumShell >= innerCrust) {
+                    this.safeSetBlock(level, pointInside,
+                            this.blockSettings.middleLayerProvider().value().getState(level, random, pointInside),
+                            canReplace);
+                } else if (distSumShell >= outerCrust) {
+                    this.safeSetBlock(level, pointInside,
+                            this.blockSettings.outerLayerProvider().value().getState(level, random, pointInside),
+                            canReplace);
                 }
             }
         }
 
-        List<BlockState> list3 = geodeblocksettings.innerPlacements();
-        for (BlockPos blockpos4 : list2) {
-            BlockState blockstate1 = Util.getRandom(list3, randomsource);
+        List<BlockState> innerPlacements = this.blockSettings.innerPlacements();
+        for (BlockPos crystalPos : potentialCrystalPlacements) {
+            BlockState blockState = Util.getRandom(innerPlacements, random);
 
             for (Direction direction : DIRECTIONS) {
-                if (blockstate1.hasProperty(BlockStateProperties.FACING)) {
-                    blockstate1 = blockstate1.setValue(BlockStateProperties.FACING, direction);
+                if (blockState.hasProperty(BlockStateProperties.FACING)) {
+                    blockState = blockState.setValue(BlockStateProperties.FACING, direction);
                 }
 
-                BlockPos blockpos5 = blockpos4.relative(direction);
-                BlockState blockstate2 = worldgenlevel.getBlockState(blockpos5);
-                if (blockstate1.hasProperty(BlockStateProperties.WATERLOGGED)) {
-                    blockstate1 = blockstate1.setValue(BlockStateProperties.WATERLOGGED,
-                            Boolean.valueOf(blockstate2.getFluidState().isSource()));
+                BlockPos placePos = crystalPos.relative(direction);
+                BlockState placeState = level.getBlockState(placePos);
+                if (blockState.hasProperty(BlockStateProperties.WATERLOGGED)) {
+                    blockState = blockState.setValue(BlockStateProperties.WATERLOGGED,
+                            placeState.getFluidState().isSource());
                 }
 
-                if (BuddingAmethystBlock.canClusterGrowAtState(blockstate2)) {
-                    this.safeSetBlock(worldgenlevel, blockpos5, blockstate1, predicate);
+                if (BuddingAmethystBlock.canClusterGrowAtState(placeState)) {
+                    this.safeSetBlock(level, placePos, blockState, canReplace);
                     break;
                 }
             }
@@ -197,7 +232,7 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
 
                 for (BlockPos pos : positions) {
                     BlockPos abovePos = pos.above();
-                    if (worldgenlevel.isEmptyBlock(abovePos)) {
+                    if (level.isEmptyBlock(abovePos)) {
                         airExposedLevel = y;
                         break;
                     }
@@ -212,10 +247,10 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
 
                     for (BlockPos pos : positions) {
                         BlockPos abovePos = pos.above();
-                        if (worldgenlevel.isEmptyBlock(abovePos)) {
-                            if (randomsource.nextFloat() < 0.3F) {
-                                this.safeSetBlock(worldgenlevel, pos,
-                                        BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState(), predicate);
+                        if (level.isEmptyBlock(abovePos)) {
+                            if (random.nextFloat() < 0.3F) {
+                                this.safeSetBlock(level, pos,
+                                        BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState(), canReplace);
                                 enrichedDirtPositions.add(pos.immutable());
                             }
                         }
@@ -224,13 +259,12 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
             }
         }
 
-        placeVegetation(worldgenlevel, enrichedDirtPositions, randomsource, context);
+        placeVegetation(level, chunkGenerator, enrichedDirtPositions, random);
 
         return true;
     }
 
-    private void placeVegetation(WorldGenLevel world, List<BlockPos> enrichedDirtPositions, RandomSource random,
-            FeaturePlaceContext<GeodeConfiguration> context) {
+    private void placeVegetation(WorldGenLevel world, ChunkGenerator chunkGenerator, List<BlockPos> enrichedDirtPositions, RandomSource random) {
         if (enrichedDirtPositions.isEmpty())
             return;
 
@@ -242,7 +276,7 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
                 continue;
 
             if (random.nextFloat() < 0.35F && hasEnoughSpaceForTree(world, above)) {
-                placeSoulTree(world, above, random, context);
+                placeSoulTree(world, chunkGenerator, above, random);
             } else if (random.nextFloat() < 0.45F) {
                 world.setBlock(above, BlockInit.HEART_SHAPED_HERB_BUSH.get().defaultBlockState()
                         .setValue(HSHBushBlock.AGE, random.nextInt(4)), 2);
@@ -261,25 +295,17 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
         return true;
     }
 
-    private void placeSoulTree(WorldGenLevel worldgenlevel, BlockPos soulTreePos, RandomSource random,
-            FeaturePlaceContext<GeodeConfiguration> context) {
+    private void placeSoulTree(WorldGenLevel worldgenlevel, ChunkGenerator chunkGenerator, BlockPos soulTreePos, RandomSource random) {
         BlockState before = worldgenlevel.getBlockState(soulTreePos);
 
-        TreeConfiguration soulTreeConfig;
+        TreeFeature soulTree;
         if (random.nextFloat() < 0.25F) {
-            soulTreeConfig = ModConfiguredFeatures.soulTree().build();
+            soulTree = ModConfiguredFeatures.soulTree().build();
         } else {
-            soulTreeConfig = ModConfiguredFeatures.soulTreeSmall().build();
+            soulTree = ModConfiguredFeatures.soulTreeSmall().build();
         }
 
-        Feature.TREE.place(
-                new FeaturePlaceContext<>(
-                        Optional.empty(),
-                        worldgenlevel,
-                        context.chunkGenerator(),
-                        random,
-                        soulTreePos,
-                        soulTreeConfig));
+        soulTree.place(worldgenlevel, chunkGenerator, random, soulTreePos);
 
         BlockState after = worldgenlevel.getBlockState(soulTreePos);
         if (before != after && !after.isAir()) {
@@ -287,15 +313,8 @@ public class VibraniumGeodeFeature extends Feature<GeodeConfiguration> {
         }
 
         if (random.nextFloat() < 0.2F) {
-            TreeConfiguration miniConfig = ModConfiguredFeatures.soulTreeMini().build();
-            Feature.TREE.place(
-                    new FeaturePlaceContext<>(
-                            Optional.empty(),
-                            worldgenlevel,
-                            context.chunkGenerator(),
-                            random,
-                            soulTreePos,
-                            miniConfig));
+            TreeFeature miniTree = ModConfiguredFeatures.soulTreeMini().build();
+            miniTree.place(worldgenlevel, chunkGenerator, random, soulTreePos);
         } else if (random.nextFloat() < 0.3F) {
             worldgenlevel.setBlock(soulTreePos, BlockInit.HEART_SHAPED_HERB_BUSH.get().defaultBlockState()
                     .setValue(HSHBushBlock.AGE, random.nextInt(2)), 2);

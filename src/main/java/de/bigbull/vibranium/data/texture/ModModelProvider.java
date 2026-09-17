@@ -11,12 +11,10 @@ import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.equipment.EquipmentAssets;
 import net.minecraft.world.level.block.Block;
 
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -55,26 +53,15 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_UPGRADE_SMITHING_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ItemInit.SOUL_HERB_MIXTURE.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_BOOTS.get(),
-                ResourceKey.create(EquipmentAssets.ROOT_ID,
-                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")),
-                ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_LEGGINGS.get(),
-                ResourceKey.create(EquipmentAssets.ROOT_ID,
-                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")),
-                ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_CHESTPLATE.get(),
-                ResourceKey.create(EquipmentAssets.ROOT_ID,
-                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")),
-                ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_HELMET.get(),
-                ResourceKey.create(EquipmentAssets.ROOT_ID,
-                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")),
-                ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModels.generateTrimmableArmorSet(
+                ItemInit.VIBRANIUM_HELMET.get(),
+                ItemInit.VIBRANIUM_CHESTPLATE.get(),
+                ItemInit.VIBRANIUM_LEGGINGS.get(),
+                ItemInit.VIBRANIUM_BOOTS.get(),
+                false,
+                Map.of());
         itemModels.generateTrimmableItem(ItemInit.VIBRANIUM_TURTLE_HELMET.get(),
-                ResourceKey.create(EquipmentAssets.ROOT_ID,
-                        Identifier.fromNamespaceAndPath(Vibranium.MODID, "vibranium")),
-                ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+                ItemModelGenerators.TRIM_PREFIX_HELMET, false, Map.of());
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateTwoLayerDyedItem(ItemInit.VIBRANIUM_WOLF_ARMOR.get());
         itemModels.generateFlatItem(ItemInit.VIBRANIUM_NAUTILUS_ARMOR.get(), ModelTemplates.FLAT_ITEM);
@@ -112,7 +99,7 @@ public class ModModelProvider extends ModelProvider {
                 BlockInit.SOULWOOD_LEAVES.get());
 
         return BuiltInRegistries.BLOCK.listElements()
-                .filter(holder -> holder.getKey().identifier().getNamespace().equals(modId)) // klappt das so?
+                .filter(holder -> holder.getKey().identifier().getNamespace().equals(modId))
                 .filter(holder -> !excludedBlocks.contains(holder.value()));
     }
 
@@ -122,8 +109,7 @@ public class ModModelProvider extends ModelProvider {
                 ItemInit.VIBRANIUM_SHIELD.get());
 
         return BuiltInRegistries.ITEM.listElements()
-                .filter(holder -> holder.getKey().identifier().getNamespace().equals(modId)) // klappt das so?
+                .filter(holder -> holder.getKey().identifier().getNamespace().equals(modId))
                 .filter(holder -> !excludedItems.contains(holder.value()));
     }
 }
-

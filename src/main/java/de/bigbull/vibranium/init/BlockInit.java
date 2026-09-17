@@ -16,6 +16,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.sounds.AmbientLeavesBlockSoundPlayer;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -55,7 +56,7 @@ public class BlockInit {
                     .randomTicks()
                     .noCollision()
                     .sound(SoundType.SWEET_BERRY_BUSH)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<EVDirtBlock> ENRICHED_VIBRANIUM_DIRT = registerBlock("enriched_vibranium_dirt",
             properties -> new EVDirtBlock(properties
@@ -65,7 +66,7 @@ public class BlockInit {
                     .requiresCorrectToolForDrops()));
 
     public static final DeferredBlock<Block> ENRICHED_VIBRANIUM_FARMLAND = registerBlock("enriched_vibranium_farmland",
-            properties -> new EVFarmlandBlock(properties
+            properties -> new EVFarmlandBlock(ENRICHED_VIBRANIUM_DIRT.get(), properties
                     .mapColor(MapColor.DIRT)
                     .randomTicks()
                     .strength(0.6F)
@@ -101,7 +102,7 @@ public class BlockInit {
                     .sound(SoundType.CHERRY_WOOD)));
 
     public static final DeferredBlock<Block> SOULWOOD_LEAVES = registerBlock("soulwood_leaves",
-            properties -> new UntintedParticleLeavesBlock(0.1F, ParticleInit.SOULWOOD_LEAVES.get(), properties
+            properties -> new UntintedParticleLeavesBlock(0.1F, ParticleInit.SOULWOOD_LEAVES.get(), AmbientLeavesBlockSoundPlayer.noAmbientSound(), properties
                     .mapColor(MapColor.PLANT)
                     .strength(0.2F)
                     .randomTicks()
@@ -109,8 +110,8 @@ public class BlockInit {
                     .noOcclusion()
                     .isValidSpawn(Blocks::ocelotOrParrot)
                     .isSuffocating((state, reader, pos) -> false)
-                    .isViewBlocking((state, reader, pos) -> false)
-                    .pushReaction(PushReaction.DESTROY)
+                    .isViewBlocking((state, reader, pos, aabb) -> false)
+                    .pushReaction(PushReaction.POPPED)
                     .isRedstoneConductor((state, reader, pos) -> false)));
 
     public static final DeferredBlock<Block> SOULWOOD_SAPLING = registerBlock("soulwood_sapling",
@@ -120,7 +121,7 @@ public class BlockInit {
                     .randomTicks()
                     .instabreak()
                     .sound(SoundType.CHERRY_SAPLING)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> SOULWOOD_PLANKS = registerBlock("soulwood_planks",
             properties -> new Block(properties
@@ -129,7 +130,7 @@ public class BlockInit {
                     .strength(2.0F, 3.0F)
                     .sound(SoundType.CHERRY_WOOD)));
 
-    public static final DeferredBlock<StairBlock> SOULWOOD_STAIRS = registerBlock("soulwood_stairs",
+    public static final DeferredBlock<StairBlock> SOULWOOD_STAIRS = registerBlock("soulwood_stair",
             properties -> new StairBlock(SOULWOOD_PLANKS.get().defaultBlockState(), properties
                     .mapColor(SOULWOOD_PLANKS.get().defaultMapColor())
                     .instrument(NoteBlockInstrument.BASS)
@@ -150,13 +151,13 @@ public class BlockInit {
                     .instrument(NoteBlockInstrument.BASS)
                     .noCollision()
                     .strength(0.8F)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<ButtonBlock> SOULWOOD_BUTTON = registerBlock("soulwood_button",
             properties -> new ButtonBlock(TypesInit.SOULWOOD_BLOCKSETTYPE, 30, properties
                     .noCollision()
                     .strength(0.8F)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<FenceBlock> SOULWOOD_FENCE = registerBlock("soulwood_fence",
             properties -> new FenceBlock(properties
@@ -179,7 +180,7 @@ public class BlockInit {
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(3.0F)
                     .noOcclusion()
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<TrapDoorBlock> SOULWOOD_TRAPDOOR = registerBlock("soulwood_trapdoor",
             properties -> new TrapDoorBlock(TypesInit.SOULWOOD_BLOCKSETTYPE, properties
@@ -221,7 +222,7 @@ public class BlockInit {
             properties -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SOULWOOD_SAPLING, properties
                     .instabreak()
                     .noOcclusion()
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> VIBRANIUM_CRYSTAL_BLOCK = registerBlock("vibranium_crystal_block",
             properties ->  new AmethystBlock(properties
@@ -237,7 +238,7 @@ public class BlockInit {
                     .strength(5f)
                     .sound(SoundType.AMETHYST)
                     .requiresCorrectToolForDrops()
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> VIBRANIUM_CLUSTER = registerBlock("vibranium_cluster",
             properties ->  new VibraniumClusterBlock(7.0F, 3.0F, properties
@@ -247,7 +248,7 @@ public class BlockInit {
                     .sound(SoundType.AMETHYST_CLUSTER)
                     .strength(5f)
                     .lightLevel(state -> 8)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> LARGE_VIBRANIUM_BUD = registerBlock("large_vibranium_bud",
             properties ->  new VibraniumClusterBlock(5.0F, 3.0F, properties
@@ -257,7 +258,7 @@ public class BlockInit {
                     .sound(SoundType.LARGE_AMETHYST_BUD)
                     .strength(1.5F)
                     .lightLevel(state -> 6)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> MEDIUM_VIBRANIUM_BUD = registerBlock("medium_vibranium_bud",
             properties ->  new VibraniumClusterBlock(4.0F, 3.0F, properties
@@ -267,7 +268,7 @@ public class BlockInit {
                     .sound(SoundType.MEDIUM_AMETHYST_BUD)
                     .strength(1.5F)
                     .lightLevel(state -> 4)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> SMALL_VIBRANIUM_BUD = registerBlock("small_vibranium_bud",
             properties ->  new VibraniumClusterBlock(3.0F, 4.0F, properties
@@ -277,7 +278,7 @@ public class BlockInit {
                     .sound(SoundType.SMALL_AMETHYST_BUD)
                     .strength(1.5F)
                     .lightLevel(state -> 2)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     private static <B extends Block> DeferredBlock<B> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends B> func) {
         DeferredBlock<B> toReturn = BLOCKS.registerBlock(name, func);

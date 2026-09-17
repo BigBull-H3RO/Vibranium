@@ -109,6 +109,8 @@ dependencies {
 }
 
 tasks.withType(ProcessResources).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
     var replaceProperties = [
             minecraft_version         : minecraft_version,
             minecraft_version_range   : minecraft_version_range,

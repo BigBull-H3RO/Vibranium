@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:brewing",
+  "input": {
+    "item": "minecraft:potion",
+    "potion_contents": {
+      "potions": "minecraft:awkward"
+    }
+  },
+  "output": {
+    "id": "vibranium:soul_herb_elixir"
+  },
+  "reagent": {
+    "item": "#vibranium:soul_herb_mixture"
+  }
+}

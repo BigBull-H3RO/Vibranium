@@ -10,7 +10,7 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
@@ -20,11 +20,11 @@ public class ModPlacedFeatures {
         public static ResourceKey<PlacedFeature> VIBRANIUM_GEODE = createKey("vibranium_geode");
 
         public static void bootstrap(BootstrapContext<PlacedFeature> context) {
-                HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context
-                                .lookup(Registries.CONFIGURED_FEATURE);
-                Holder<ConfiguredFeature<?, ?>> vibraniumOreFeature = configuredFeatures
+                HolderGetter<Feature> features = context
+                                .lookup(Registries.FEATURE);
+                Holder<Feature> vibraniumOreFeature = features
                                 .getOrThrow(ModConfiguredFeatures.OVERWORLD_VIBRANIUM_ORE);
-                Holder<ConfiguredFeature<?, ?>> vibraniumGeodeFeature = configuredFeatures
+                Holder<Feature> vibraniumGeodeFeature = features
                                 .getOrThrow(ModConfiguredFeatures.VIBRANIUM_GEODE);
 
                 PlacementUtils.register(context, VIBRANIUM_ORE, vibraniumOreFeature,

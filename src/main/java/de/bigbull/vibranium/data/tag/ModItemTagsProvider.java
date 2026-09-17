@@ -13,7 +13,7 @@ import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagsProvider extends ItemTagsProvider {
-    public ModItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture, ModBlockTagsProvider modBlockTagsProvider) {
+    public ModItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
         super(output, completableFuture, Vibranium.MODID);
     }
 

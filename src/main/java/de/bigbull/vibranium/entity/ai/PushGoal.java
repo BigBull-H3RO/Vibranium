@@ -61,8 +61,7 @@ public class PushGoal extends Goal {
                 continue;
             }
             Vec3 direction = livingEntity.position().subtract(this.entity.position()).normalize().scale(strength);
-            livingEntity.setDeltaMovement(livingEntity.getDeltaMovement().add(direction.x, direction.y + 0.75, direction.z));
-            livingEntity.hurtMarked = true;
+            livingEntity.push(direction.x, direction.y + 0.75, direction.z);
         }
 
         if (this.entity.level() instanceof ServerLevel serverLevel) {

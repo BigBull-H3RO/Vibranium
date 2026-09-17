@@ -4,6 +4,7 @@ import com.google.common.base.Suppliers;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -13,31 +14,29 @@ import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class AddItemModifier extends LootModifier {
     public static final Supplier<MapCodec<AddItemModifier>> CODEC = Suppliers.memoize(()
             -> RecordCodecBuilder.mapCodec(inst -> codecStart(inst).and(
             BuiltInRegistries.ITEM.byNameCodec().fieldOf("item").forGetter(m -> m.item)
-    ).apply(inst, (conditions, priority, item) -> new AddItemModifier(conditions, priority, item))));
+    ).apply(inst, AddItemModifier::new)));
 
     private final Item item;
 
-    // HIer ist die Änderung: "int priority" wurde hinzugefügt!
-    public AddItemModifier(LootItemCondition[] conditionsIn, int priority, Item item) {
-        super(conditionsIn, priority); // Die Priorität wird an die NeoForge-Oberklasse weitergegeben
+    public AddItemModifier(Optional<Holder<LootItemCondition>> condition, int priority, Item item) {
+        super(condition, priority);
         this.item = item;
+    }
+
+    public AddItemModifier(LootItemCondition condition, int priority, Item item) {
+        this(Optional.of(Holder.direct(condition)), priority, item);
     }
 
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        for (LootItemCondition condition : this.conditions) {
-            if (!condition.test(context)) {
-                return generatedLoot;
-            }
-        }
         generatedLoot.add(new ItemStack(this.item));
-
         return generatedLoot;
     }
 

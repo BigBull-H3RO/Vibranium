@@ -1,6 +1,5 @@
 package de.bigbull.vibranium.init.custom.block;
 
-import com.mojang.serialization.MapCodec;
 import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
 import de.bigbull.vibranium.init.ParticleInit;
@@ -16,6 +15,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,15 +29,9 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class HSHBushBlock extends VegetationBlock implements BonemealableBlock {
-    public static final MapCodec<HSHBushBlock> CODEC = simpleCodec(HSHBushBlock::new);
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     private static final VoxelShape SHAPE_SAPLING = Block.column(10.0, 0.0, 8.0);
     private static final VoxelShape SHAPE_GROWING = Block.column(14.0, 0.0, 16.0);
-
-    @Override
-    public MapCodec<HSHBushBlock> codec() {
-        return CODEC;
-    }
 
     public HSHBushBlock(Block.Properties properties) {
         super(properties);
@@ -132,15 +126,15 @@ public class HSHBushBlock extends VegetationBlock implements BonemealableBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader world, BlockPos pos, BlockState state) {
+    public boolean isValidBonemealTarget(LevelReader world, BlockPos pos, BlockState state, BonemealSource source) {
         return false;
     }
 
     @Override
-    public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
         return false;
     }
 
     @Override
-    public void performBonemeal(ServerLevel p_220874_, RandomSource p_220875_, BlockPos p_220876_, BlockState p_220877_) {}
+    public void performBonemeal(ServerLevel p_220874_, RandomSource p_220875_, BlockPos p_220876_, BlockState p_220877_, BonemealSource source) {}
 }

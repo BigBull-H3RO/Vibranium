@@ -16,10 +16,9 @@ import org.slf4j.Logger;
 @Mod(Vibranium.MODID)
 public class Vibranium {
     public static final String MODID = "vibranium";
-    public static final Logger logger = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public Vibranium(IEventBus modEventBus, ModContainer modContainer) {
-
         ItemInit.ITEMS.register(modEventBus);
         BlockInit.BLOCKS.register(modEventBus);
         CreativeTabInit.CREATIVE_MODE_TABS.register(modEventBus);
@@ -30,7 +29,7 @@ public class Vibranium {
         ParticleInit.PARTICLES.register(modEventBus);
         EntitiesInit.ENTITY_TYPES.register(modEventBus);
 
-        modEventBus.addListener(DataGenerators::gatherDataClient);
+        modEventBus.addListener(DataGenerators::gatherData);
         modEventBus.addListener(ModCommonEvents::addBlockEntityTypes);
         modEventBus.addListener(ModCommonEvents::registerEntityAttributes);
 

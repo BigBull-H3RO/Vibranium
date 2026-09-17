@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "vibranium:soulwood_pressure_plate"
+        "recipes": "vibranium:soulwood_pressure_plate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

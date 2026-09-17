@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "vibranium:soulwood_planks"
+        "recipes": "vibranium:soulwood_planks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

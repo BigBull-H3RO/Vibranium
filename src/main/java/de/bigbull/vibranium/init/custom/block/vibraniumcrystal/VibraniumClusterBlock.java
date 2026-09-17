@@ -1,8 +1,5 @@
 package de.bigbull.vibranium.init.custom.block.vibraniumcrystal;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -25,14 +22,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 
 public class VibraniumClusterBlock extends AmethystBlock implements SimpleWaterloggedBlock {
-    public static final MapCodec<VibraniumClusterBlock> CODEC = RecordCodecBuilder.mapCodec(
-            p_367977_ -> p_367977_.group(
-                            Codec.FLOAT.fieldOf("height").forGetter(p_304411_ -> p_304411_.height),
-                            Codec.FLOAT.fieldOf("aabb_offset").forGetter(p_304908_ -> p_304908_.aabbOffset),
-                            propertiesCodec()
-                    )
-                    .apply(p_367977_, (height, aabbOffset, props) -> new VibraniumClusterBlock(height, aabbOffset, props))
-    );
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<Direction> FACING = BlockStateProperties.FACING;
     private final float height;
@@ -43,11 +32,6 @@ public class VibraniumClusterBlock extends AmethystBlock implements SimpleWaterl
     protected final VoxelShape westAabb;
     protected final VoxelShape upAabb;
     protected final VoxelShape downAabb;
-
-    @Override
-    public MapCodec<VibraniumClusterBlock> codec() {
-        return CODEC;
-    }
 
     public VibraniumClusterBlock(float height, float aabbOffset, Properties properties) {
         super(properties);
@@ -96,7 +80,6 @@ public class VibraniumClusterBlock extends AmethystBlock implements SimpleWaterl
                 ? Blocks.AIR.defaultBlockState()
                 : super.updateShape(blockState, levelReader, tickAccess, pos, direction, blockPos, state, randomSource);
     }
-
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {

@@ -3,7 +3,7 @@ package de.bigbull.vibranium.init.custom.block.tree;
 import de.bigbull.vibranium.init.BlockInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.AxeItem;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -23,7 +23,7 @@ public class VibraniumRotatedPillarBlock extends RotatedPillarBlock {
 
     @Override
     public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility itemAbility, boolean simulate) {
-        if (context.getItemInHand().getItem() instanceof AxeItem) {
+        if (context.getItemInHand().is(ItemTags.AXES)) {
             if (state.is(BlockInit.SOULWOOD_LOG.get())) {
                 return BlockInit.STRIPPED_SOULWOOD_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }

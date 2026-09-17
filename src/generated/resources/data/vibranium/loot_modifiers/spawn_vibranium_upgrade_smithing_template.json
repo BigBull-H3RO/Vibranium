@@ -1,10 +1,8 @@
 {
   "type": "vibranium:add_item",
-  "conditions": [
-    {
-      "condition": "neoforge:loot_table_id",
-      "loot_table_id": "minecraft:chests/trial_chambers/intersection_barrel"
-    }
-  ],
+  "condition": {
+    "type": "neoforge:loot_table_id",
+    "loot_table_id": "minecraft:chests/trial_chambers/intersection_barrel"
+  },
   "item": "vibranium:vibranium_upgrade_smithing_template"
 }

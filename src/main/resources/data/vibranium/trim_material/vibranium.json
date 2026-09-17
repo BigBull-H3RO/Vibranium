@@ -1,7 +1,7 @@
 {
-  "asset_name": "vibranium",
   "description": {
     "color": "#00005C",
     "translate": "trim_material.vibranium.vibranium"
-  }
+  },
+  "palette_id": "vibranium:trim/vibranium"
 }

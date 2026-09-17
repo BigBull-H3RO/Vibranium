@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:brewing",
+  "input": {
+    "item": "vibranium:soul_herb_elixir"
+  },
+  "output": {
+    "id": "vibranium:soul_herb_elixir_enhanced"
+  },
+  "reagent": {
+    "item": "#c:dusts/glowstone"
+  }
+}

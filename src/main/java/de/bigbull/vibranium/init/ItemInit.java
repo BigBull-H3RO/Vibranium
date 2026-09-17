@@ -3,6 +3,7 @@ package de.bigbull.vibranium.init;
 import de.bigbull.vibranium.init.custom.item.HSHPotionItems;
 import de.bigbull.vibranium.init.custom.item.VibraniumMaceItem;
 import de.bigbull.vibranium.init.custom.item.VibraniumUpgradeTemplate;
+import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -195,7 +196,7 @@ public class ItemInit {
                                         .stacksTo(1), 1800, 1));
 
         public static final DeferredItem<Item> SOULWOOD_SIGN = ITEMS.registerItem("soulwood_sign",
-                        properties -> new SignItem(BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get(),
+                        properties -> new StandingAndWallBlockItem(BlockInit.SOULWOOD_SIGN.get(), BlockInit.SOULWOOD_WALL_SIGN.get(), Direction.DOWN,
                                         properties
                                                         .stacksTo(16)));
 

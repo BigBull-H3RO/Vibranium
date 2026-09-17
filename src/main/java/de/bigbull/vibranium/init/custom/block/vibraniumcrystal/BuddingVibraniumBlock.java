@@ -1,6 +1,5 @@
 package de.bigbull.vibranium.init.custom.block.vibraniumcrystal;
 
-import com.mojang.serialization.MapCodec;
 import de.bigbull.vibranium.init.BlockInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,14 +14,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
 
 public class BuddingVibraniumBlock extends AmethystBlock {
-    public static final MapCodec<BuddingVibraniumBlock> CODEC = simpleCodec(BuddingVibraniumBlock::new);
     public static final Direction[] DIRECTIONS = Direction.values();
     private static final int GROWTH_CHANCE = 5;
-
-    @Override
-    public MapCodec<BuddingVibraniumBlock> codec() {
-        return CODEC;
-    }
 
     public BuddingVibraniumBlock(BlockBehaviour.Properties properties) {
         super(properties);

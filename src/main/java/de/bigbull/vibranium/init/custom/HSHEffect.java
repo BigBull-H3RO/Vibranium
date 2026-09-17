@@ -80,8 +80,7 @@ public class HSHEffect extends MobEffect {
             if (entity == player) continue;
 
             Vec3 direction = entity.position().subtract(player.position()).normalize().scale(strength);
-            entity.setDeltaMovement(entity.getDeltaMovement().add(direction.x, 0.5, direction.z));
-            entity.hurtMarked = true;
+            entity.push(direction.x, 0.5, direction.z);
 
             DamageSource pushDamageSource = player.damageSources().playerAttack(player);
 

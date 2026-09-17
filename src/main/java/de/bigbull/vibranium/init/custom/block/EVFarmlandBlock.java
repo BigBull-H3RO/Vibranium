@@ -9,15 +9,16 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.FarmlandBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
 
 public class EVFarmlandBlock extends FarmlandBlock {
-    public EVFarmlandBlock(BlockBehaviour.Properties properties) {
-        super(properties);
+    public EVFarmlandBlock(Block baseBlock, BlockBehaviour.Properties properties) {
+        super(baseBlock, properties);
     }
 
     @Override
@@ -27,7 +28,7 @@ public class EVFarmlandBlock extends FarmlandBlock {
             if (moisture > 0) {
                 level.setBlock(pos, state.setValue(MOISTURE, moisture - 1), 2);
             } else if (!shouldMaintainFarmland(level, pos)) {
-                turnToEnrichedDirt(null, state, level, pos);
+                turnToBaseBlock(null, state, level, pos);
             }
         } else if (moisture < 7) {
             level.setBlock(pos, state.setValue(MOISTURE, 7), 2);
@@ -38,8 +39,8 @@ public class EVFarmlandBlock extends FarmlandBlock {
 
         if (plantState.getBlock() instanceof BonemealableBlock plant) {
             if (random.nextFloat() < 0.2F) {
-                if (plant.isValidBonemealTarget(level, abovePos, plantState)) {
-                    plant.performBonemeal(level, random, abovePos, plantState);
+                if (plant.isValidBonemealTarget(level, abovePos, plantState, BonemealSource.MOB)) {
+                    plant.performBonemeal(level, random, abovePos, plantState, BonemealSource.MOB);
                 }
             }
         }
@@ -49,7 +50,7 @@ public class EVFarmlandBlock extends FarmlandBlock {
     public void fallOn(Level level, BlockState blockState, BlockPos pos, Entity entity, double fallDistance) {
         if (level instanceof ServerLevel serverlevel
                 && net.neoforged.neoforge.common.CommonHooks.onFarmlandTrample(serverlevel, pos, BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState(), fallDistance, entity)) {
-            turnToEnrichedDirt(entity, blockState, level, pos);
+            turnToBaseBlock(entity, blockState, level, pos);
         }
 
         super.fallOn(level, blockState, pos, entity, fallDistance);
@@ -58,14 +59,8 @@ public class EVFarmlandBlock extends FarmlandBlock {
     @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!state.canSurvive(level, pos)) {
-            turnToEnrichedDirt(null, state, level, pos);
+            turnToBaseBlock(null, state, level, pos);
         }
-    }
-
-    public static void turnToEnrichedDirt(Entity entity, BlockState state, Level level, BlockPos pos) {
-        BlockState newState = pushEntitiesUp(state, BlockInit.ENRICHED_VIBRANIUM_DIRT.get().defaultBlockState(), level, pos);
-        level.setBlockAndUpdate(pos, newState);
-        level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(entity, newState));
     }
 
     private static boolean shouldMaintainFarmland(BlockGetter world, BlockPos pos) {
@@ -75,7 +70,7 @@ public class EVFarmlandBlock extends FarmlandBlock {
     private static boolean isNearWater(LevelReader world, BlockPos pos) {
         BlockState state = world.getBlockState(pos);
         for (BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, 0, -4), pos.offset(4, 1, 4))) {
-            if (state.canBeHydrated(world, pos, world.getFluidState(blockpos), blockpos)) {
+            if (state.canBeHydrated(world, blockpos, world.getFluidState(blockpos))) {
                 return true;
             }
         }

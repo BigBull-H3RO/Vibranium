@@ -1,45 +1,45 @@
 package de.bigbull.vibranium.data;
 
-import de.bigbull.vibranium.Vibranium;
-import de.bigbull.vibranium.data.lang.ModDeLangProvider;
-import de.bigbull.vibranium.data.lang.ModEnLangProvider;
-import de.bigbull.vibranium.data.lang.ModEsLangProvider;
-import de.bigbull.vibranium.data.lang.ModFrLangProvider;
 import de.bigbull.vibranium.data.loot.ModGlobalLootModifiersProvider;
 import de.bigbull.vibranium.data.loottable.ModLootTables;
 import de.bigbull.vibranium.data.recipe.ModRecipeProvider;
 import de.bigbull.vibranium.data.tag.ModBlockTagsProvider;
 import de.bigbull.vibranium.data.tag.ModItemTagsProvider;
 import de.bigbull.vibranium.data.texture.ModModelProvider;
-import de.bigbull.vibranium.data.worldgen.ModWorldGenProvider;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
+import de.bigbull.vibranium.data.worldgen.ModBiomesModifiers;
+import de.bigbull.vibranium.data.worldgen.ModConfiguredFeatures;
+import de.bigbull.vibranium.data.worldgen.ModPlacedFeatures;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.recipes.RecipeProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-
-import java.util.concurrent.CompletableFuture;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class DataGenerators {
-    public static void gatherDataClient(GatherDataEvent.Client event) {
-        DataGenerator generator = event.getGenerator();
-        PackOutput output = generator.getPackOutput();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+    public static void gatherData(GatherDataEvent.Client event) {
+        // Models
+        event.createProvider(ModModelProvider::new);
 
-        try {
-            generator.addProvider(true, new ModEnLangProvider(output));
-            generator.addProvider(true, new ModDeLangProvider(output));
-            generator.addProvider(true, new ModEsLangProvider(output));
-            generator.addProvider(true, new ModFrLangProvider(output));
-            ModBlockTagsProvider modBlockTagsProvider = new ModBlockTagsProvider(output, lookupProvider);
-            generator.addProvider(true, modBlockTagsProvider);
-            generator.addProvider(true, new ModItemTagsProvider(output, lookupProvider, modBlockTagsProvider));
-            generator.addProvider(true, new ModLootTables(output, lookupProvider));
-            generator.addProvider(true, new ModModelProvider(output));
-            generator.addProvider(true, new ModWorldGenProvider(output, lookupProvider));
-            generator.addProvider(true, new ModGlobalLootModifiersProvider(output, lookupProvider));
-            generator.addProvider(true, new ModRecipeProvider.Runner(output, lookupProvider));
-        } catch (RuntimeException e) {
-            Vibranium.logger.error("Failed to generate data", e);
-        }
+        // Tags
+        event.createProvider(ModBlockTagsProvider::new);
+        event.createProvider(ModItemTagsProvider::new);
+
+        // Global Loot Modifiers
+        event.createProvider(ModGlobalLootModifiersProvider::new);
+
+        // Reloadable Registries (Loot Tables, Recipes)
+        event.createReloadableRegistryObjects(
+                new RegistrySetBuilder()
+                        .add(Registries.LOOT_TABLE, new ModLootTables())
+                        .add(RecipeProvider.asBootstrap(ModRecipeProvider::new))
+        );
+
+        // WorldGen Registries (Features, Placed Features, Biome Modifiers)
+        event.createWorldRegistryObjects(
+                new RegistrySetBuilder()
+                        .add(Registries.FEATURE, ModConfiguredFeatures::bootstrap)
+                        .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
+                        .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomesModifiers::bootstrap)
+        );
     }
 }

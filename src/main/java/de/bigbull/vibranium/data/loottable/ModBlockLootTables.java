@@ -5,14 +5,11 @@ import de.bigbull.vibranium.init.BlockInit;
 import de.bigbull.vibranium.init.ItemInit;
 import net.minecraft.advancements.predicates.ItemPredicate;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -23,11 +20,10 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchBlock;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.Optional;
 import java.util.Set;
@@ -35,15 +31,12 @@ import java.util.stream.Collectors;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
 
-    protected ModBlockLootTables(HolderLookup.Provider p_344943_) {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), p_344943_);
+    protected ModBlockLootTables(LootTableSubProvider.Context context) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), context);
     }
 
     @Override
     protected void generate() {
-        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        HolderLookup.RegistryLookup<Item> itemRegistryLookup = this.registries.lookupOrThrow(Registries.ITEM);
-
         this.dropSelf(BlockInit.BLOCK_OF_RAW_VIBRANIUM.get());
         this.dropSelf(BlockInit.VIBRANIUM_BLOCK.get());
         this.dropSelf(BlockInit.SOULWOOD_LOG.get());
@@ -83,30 +76,30 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.add(BlockInit.ENRICHED_VIBRANIUM_DIRT.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .add(
                                 LootItem.lootTableItem(ItemInit.RAW_VIBRANIUM.get())
                                         .when(LootItemRandomChanceCondition.randomChance(0.15f))
                                         .otherwise(
                                                 LootItem.lootTableItem(ItemInit.VIBRANIUM_NUGGET.get())
-                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f)))
+                                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3)))
                                         )
                         )
-                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.HOES)))
+                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(this.items, ItemTags.HOES)))
                 )
                 .withPool(LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .add(LootItem.lootTableItem(Blocks.DIRT))
-                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.HOES)))
+                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(this.items, ItemTags.HOES)))
                 )
                 .withPool(LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .add(LootItem.lootTableItem(Blocks.DIRT))
-                        .when(InvertedLootItemCondition.invert(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.HOES))))
+                        .when(InvertedLootItemCondition.invert(MatchTool.toolMatches(ItemPredicate.Builder.item().of(this.items, ItemTags.HOES))))
                         .when(this.doesNotHaveSilkTouch())
                 )
                 .withPool(LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .add(LootItem.lootTableItem(BlockInit.ENRICHED_VIBRANIUM_DIRT.get()))
                         .when(this.hasSilkTouch())
                 )
@@ -114,30 +107,30 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.add(BlockInit.ENRICHED_VIBRANIUM_FARMLAND.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .add(
                                 LootItem.lootTableItem(ItemInit.RAW_VIBRANIUM.get())
                                         .when(LootItemRandomChanceCondition.randomChance(0.15f))
                                         .otherwise(
                                                 LootItem.lootTableItem(ItemInit.VIBRANIUM_NUGGET.get())
-                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f)))
+                                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 3)))
                                         )
                         )
-                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.HOES)))
+                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(this.items, ItemTags.HOES)))
                 )
                 .withPool(LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .add(LootItem.lootTableItem(Blocks.DIRT))
-                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.HOES)))
+                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(this.items, ItemTags.HOES)))
                 )
                 .withPool(LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .add(LootItem.lootTableItem(Blocks.DIRT))
-                        .when(InvertedLootItemCondition.invert(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.HOES))))
+                        .when(InvertedLootItemCondition.invert(MatchTool.toolMatches(ItemPredicate.Builder.item().of(this.items, ItemTags.HOES))))
                         .when(this.doesNotHaveSilkTouch())
                 )
                 .withPool(LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .add(LootItem.lootTableItem(BlockInit.ENRICHED_VIBRANIUM_DIRT.get()))
                         .when(this.hasSilkTouch())
                 )
@@ -151,20 +144,22 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                 .withPool(
                                         LootPool.lootPool()
                                                 .when(
-                                                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(BlockInit.HEART_SHAPED_HERB_BUSH.get())
-                                                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3))
+                                                        MatchBlock.blockMatches(
+                                                                this.blocks, BlockInit.HEART_SHAPED_HERB_BUSH.get(), StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3)
+                                                        )
                                                 )
                                                 .add(LootItem.lootTableItem(ItemInit.HEART_SHAPED_HERB.get()))
-                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F)))
+                                                .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 3)))
                                 )
                                 .withPool(
                                         LootPool.lootPool()
                                                 .when(
-                                                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(BlockInit.HEART_SHAPED_HERB_BUSH.get())
-                                                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2))
+                                                        MatchBlock.blockMatches(
+                                                                this.blocks, BlockInit.HEART_SHAPED_HERB_BUSH.get(), StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2)
+                                                        )
                                                 )
                                                 .add(LootItem.lootTableItem(ItemInit.HEART_SHAPED_HERB.get()))
-                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                                .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2)))
                                 )
                 )
         );
@@ -174,13 +169,13 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 block -> this.createSilkTouchDispatchTable(
                         block,
                         LootItem.lootTableItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get())
-                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
-                                .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
-                                .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(itemRegistryLookup, ItemTags.CLUSTER_MAX_HARVESTABLES)))
+                                .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(4)))
+                                .apply(ApplyBonusCount.addOreBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE)))
+                                .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(this.items, ItemTags.CLUSTER_MAX_HARVESTABLES)))
                                 .otherwise(
                                         this.applyExplosionDecay(
                                                 block, LootItem.lootTableItem(ItemInit.VIBRANIUM_CRYSTAL_SHARD.get())
-                                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
+                                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(2)))
                                         )
                                 )
                 )
